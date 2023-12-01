@@ -11,7 +11,8 @@ namespace RegistroDeAsistencia
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            DataBaseHelper.InitializeDatabase();
+            Application.Run(new Test());
         }
     }
 }

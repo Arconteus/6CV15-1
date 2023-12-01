@@ -1,8 +1,8 @@
 namespace RegistroDeAsistencia
 {
-    public partial class Form1 : Form
+    public partial class Test : Form
     {
-        public Form1()
+        public Test()
         {
             InitializeComponent();
         }
