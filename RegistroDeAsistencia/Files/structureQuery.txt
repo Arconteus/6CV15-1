@@ -1,0 +1,81 @@
+CREATE TABLE ctl_codigoGrupo(
+	id_codigo	smallint PRIMARY KEY,
+  	desc_grupo	varchar(5) not NULL
+);
+CREATE TABLE ctl_materias(
+	id_materia	smallint PRIMARY KEY,
+  	nom_materia	varchar(50) not NULL
+);
+CREATE TABLE ctl_profesor(
+	id_profesor smallint PRIMARY KEY,
+  	num_trabajador varchar(15) not NULL,
+  	nom_profesor varchar(40) not NULL,
+  	apa_profesor varchar(20) not NULL,
+  	ama_profesor varchar(20) not NULL
+);
+CREATE TABLE ctl_grupo(
+	id_grupo smallint PRIMARY KEY,
+  	codigo_grupo smallint not NULL,
+  	anio smallint not NULL,
+  	periodo smallint not NULL,
+  	id_materia_grupo smallint NOT NULL,
+  	id_profesor_grupo smallint not NULL,
+  	CONSTRAINT "fk_grupo" FOREIGN KEY(codigo_grupo)
+  	REFERENCES ctl_codigogrupo(id_codigo),
+  	CONSTRAINT "fk_materia" FOREIGN KEY(id_materia_grupo)
+  	REFERENCES ctl_materia(id_materia),
+  	CONSTRAINT "fk_profesor" FOREIGN KEY(id_profesor_grupo)
+  	REFERENCES ctl_profesor(id_profesor)
+);
+CREATE TABLE tbl_registroAsistencia(
+	id_registro int PRIMARY KEY,
+  	id_grupo_registro smallint not NULL,
+  	fecha_registro date not NULL,
+  	hora_registro time not null,
+  	CONSTRAINT "fk_grupo" FOREIGN KEY(id_grupo_registro)
+  	REFERENCES ctl_grupo(id_grupo)
+);
+CREATE TABLE tbl_observacionRegistro(
+	id_observacionRegistro int PRIMARY KEY,
+  	id_registro_observacion int not NULL,
+  	observacion varchar(255) not NULL,
+  	CONSTRAINT "fk_registro" FOREIGN KEY(id_registro_observacion)
+  	REFERENCES tbl_registroAsistencia(id_registro)
+);
+CREATE TABLE ctl_carrera(
+	id_carrera smallint PRIMARY KEY,
+  	nom_carrera varchar(30) not NULL
+);
+CREATE TABLE ctl_escuela(
+	id_escuela smallint PRIMARY KEY,
+  	nom_escuela varchar(30) not NULL
+);
+CREATE TABLE ctl_alumno(
+	id_alumno int PRIMARY KEY,
+  	boleta varchar(16) not NULL,
+  	nom_alumno varchar(40) not NULL,
+  	apa_alumno varchar(20) not NULL,
+  	ama_alumno varchar(20) not NULL,
+  	carrera_alumno smallint not NULL,
+  	escuela_alumno smallint not NULL,
+  	CONSTRAINT "fk_carrera" FOREIGN KEY(carrera_alumno)
+  	REFERENCES ctl_carrera(id_carrera),
+  	CONSTRAINT "fk_escuela" FOREIGN KEY(escuela_alumno)
+  	REFERENCES ctl_escuela(id_escuela)
+);
+CREATE TABLE tbl_relacionRegistroAlumno(
+	id_relacion int PRIMARY KEY,
+  	id_registro_relacion int not NULL,
+  	id_alumno_registro int not NULL,
+  	CONSTRAINT "fk_registro" FOREIGN KEY(id_registro_relacion)
+  	REFERENCES tbl_registroAsistencia(id_registro),
+  	CONSTRAINT "fk_alumno" FOREIGN KEY(id_alumno_registro)
+  	REFERENCES ctl_alumno(id_alumno)
+);
+CREATE TABLE tbl_observacionAlumno(
+	id_observacionAlumno int not NULL,
+  	id_relacion_observacion int NOT NULL,
+  	observacion varchar(255) not NULL,
+  	CONSTRAINT "fk_relacion" FOREIGN KEY(id_relacion_observacion)
+  	REFERENCES tbl_relacionRegistroAlumno(id_relacion)
+);

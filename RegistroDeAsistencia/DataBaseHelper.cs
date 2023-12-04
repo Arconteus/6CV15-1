@@ -2,26 +2,28 @@
 using System.IO;
 using System.Runtime.CompilerServices;
 
-public class DataBaseHelper {
-    private static string connectionString = @"Data Source=..\..\Files\LibraryManagementSystem.db;Version=3;";
-
+public class DataBaseHelper
+{
+    //==============================================
+    // Variables de control de la base de datos
+    //==============================================
+    private static string connectionString = @"Data Source=..\..\..\Files\LibraryManagementSystem.db;Version=3;";
+    private static string rootDataBase = @"..\..\..\Files\LibraryManagementSystem.db";
+    private static string structureQueryPath = @"..\..\..\Files\structureQuery.txt";
     public static void InitializeDatabase()
     {
-        string fileroot = @"..\..\Files\LibraryManagementSystem.db";
-        if (!File.Exists(fileroot)) 
+        if (!File.Exists(rootDataBase))
         {
-            SQLiteConnection.CreateFile(fileroot);
+            SQLiteConnection.CreateFile(rootDataBase);
             using(var connection = new SQLiteConnection(connectionString)) 
             {
                 connection.Open();
-                // create tables for your data
-                string createBooksTableQuery = @"
-                CREATE TABLE IF NOT EXISTS books(
-                    
-                )
-                ";
+                using (var command = new SQLiteCommand(connection) )
+                {
+                    command.CommandText = File.ReadAllText(structureQueryPath);
+                    command.ExecuteNonQuery();
+                }
             }
         }
-
     }
 }
