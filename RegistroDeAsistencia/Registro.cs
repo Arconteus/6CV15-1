@@ -51,5 +51,10 @@ namespace RegistroDeAsistencia
         {
 
         }
+
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
