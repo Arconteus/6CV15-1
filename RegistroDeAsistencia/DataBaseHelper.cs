@@ -10,6 +10,9 @@ public class DataBaseHelper
     private static string connectionString = @"Data Source=..\..\..\Files\LibraryManagementSystem.db;Version=3;";
     private static string rootDataBase = @"..\..\..\Files\LibraryManagementSystem.db";
     private static string structureQueryPath = @"..\..\..\Files\structureQuery.txt";
+    /**
+     * Esta funcion inicializa la base de datos si es que no existe.
+     **/
     public static void InitializeDatabase()
     {
         if (!File.Exists(rootDataBase))
