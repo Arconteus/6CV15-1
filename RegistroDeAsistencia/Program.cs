@@ -12,6 +12,7 @@ namespace RegistroDeAsistencia
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             DataBaseHelper.InitializeDatabase();
+            DataBaseHelper.addCodigoGrupo("6CV15");
             Application.Run(new Test());
         }
     }

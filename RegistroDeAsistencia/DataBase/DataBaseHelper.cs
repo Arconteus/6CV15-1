@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Configuration;
-
+using RegistroDeAsistencia.DataBase.Modelo;
 public class DataBaseHelper
 {
     //==============================================

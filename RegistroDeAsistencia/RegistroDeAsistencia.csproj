@@ -9,11 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+    <None Remove="DataBase\Scripts\DB_Structure.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataBase\" />
+    <Content Include="DataBase\Scripts\DB_Structure.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
   </ItemGroup>
 
 </Project>
