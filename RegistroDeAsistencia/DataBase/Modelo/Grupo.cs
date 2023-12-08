@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RegistroDeAsistencia.DataBase.Modelo
+﻿namespace RegistroDeAsistencia.DataBase.Modelo
 {
-    internal class Grupo
+    public class Grupo
     {
-        public int id_grupo {  get; set; }
+        public int id_grupo { get; set; }
         public int codigo_grupo { get; set; }
         public int anio { get; set; }
         public int periodo { get; set; }

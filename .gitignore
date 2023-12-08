@@ -403,3 +403,5 @@ RegistroDeAsistencia/Form1.cs
 RegistroDeAsistencia/Form1.Designer.cs
 RegistroDeAsistencia/Form1.resx
 /RegistroDeAsistencia/DataBase/Modelo/CodigoGrupo.cs
+/RegistroDeAsistencia/DataBase/Modelo/Escuela.cs
+/RegistroDeAsistencia/DataBase/Modelo/CodigoGrupo.cs
