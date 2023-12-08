@@ -71,16 +71,16 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from tbl_registroAsistencia where id_registro = @id_registro";
-                    command.Parameters.AddWithValue("@id_registro", registroAsistenciaInput.id_registro);
+                        "select * from tbl_registroAsistencia " +
+                        "where id_registro = @id_grupo_registro " +
+                        "and fecha_registro = @fecha_registro";
+                    command.Parameters.AddWithValue("@id_grupo_registro", registroAsistenciaInput.id_grupo_registro);
+                    command.Parameters.AddWithValue("@fecha_registro", registroAsistenciaInput.fecha_registro);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            if (reader["id_registro"].ToString() == registroAsistenciaInput.id_registro.ToString())
-                            {
-                                output = true;
-                            }
+                            output = true;
                         }
                     }
                     command.Parameters.Clear();
@@ -170,10 +170,9 @@ namespace RegistroDeAsistencia.DataBase.Control
                 {
                     command.CommandText =
                         @"INSERT INTO tbl_registroAsistencia 
-                        (id_registro,id_grupo_registro,fecha_registro,hora_registro) 
+                        (id_grupo_registro,fecha_registro,hora_registro) 
                         values 
-                        (@id_registro,@id_grupo_registro,@fecha_registro,@hora_registro)";
-                    command.Parameters.AddWithValue("@id_registro", registroAsistenciaInput.id_registro);
+                        (@id_grupo_registro,@fecha_registro,@hora_registro)";
                     command.Parameters.AddWithValue("@id_grupo_registro", registroAsistenciaInput.id_grupo_registro);
                     command.Parameters.AddWithValue("@fecha_registro", registroAsistenciaInput.fecha_registro);
                     command.Parameters.AddWithValue("@hora_registro", registroAsistenciaInput.hora_registro);
