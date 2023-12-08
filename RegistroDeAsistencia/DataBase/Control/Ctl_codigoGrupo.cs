@@ -87,7 +87,7 @@ namespace RegistroDeAsistencia.DataBase.Control
          * la adicion es exitosa regresa un valor verdadero, pero si el codigo ya existe no se añadira el
          * mismo codigo dos veces y regresara un valor falso.
          * Sintaxis: Ctl_CodigoGrupo.add([CodigoGrupo])
-         * Variables: [CodigoGrupo] -> string
+         * Variables: [CodigoGrupo] -> CodigoGrupo(){codigo_grupo=[string]}
          * Return type: bool
          **/
         public static bool Add(CodigoGrupo codigoGrupoInput)
@@ -157,7 +157,8 @@ namespace RegistroDeAsistencia.DataBase.Control
                     command.CommandText =
                         @"INSERT INTO ctl_codigoGrupo (desc_grupo) values (@codigo_grupo)";
                     command.Parameters.AddWithValue("@codigo_grupo", codigoGrupoInput.desc_grupo);
-                    if(command.ExecuteNonQuery()>0){ 
+                    if (command.ExecuteNonQuery() > 0)
+                    {
                         output = true;
                     }
                     command.Parameters.Clear();

@@ -4,7 +4,7 @@ using System.Data.SQLite;
 
 namespace RegistroDeAsistencia.DataBase.Control
 {
-    internal class Ctl_Profesor
+    internal class Ctl_Grupo
     {
         //=============================================================================================================
         // Variables de control de la base de datos
@@ -17,32 +17,33 @@ namespace RegistroDeAsistencia.DataBase.Control
         //=============================================================================================================
 
         /**
-         * Esta funcion regresa una lista de la clase Profesor, que contiene toda la lista de
-         * profesores dados de alta.
-         * Sintaxis: Ctl_Profesor.GetList()
-         * Return Type: List<Profesor>
+         * Esta funcion regresa una lista de la clase Grupo, que contiene toda la lista de
+         * grupos dados de alta.
+         * Sintaxis: Ctl_Grupo.GetList()
+         * Return Type: List<Grupo>
          **/
-        public static List<Profesor> GetList()
+        public static List<Grupo> GetList()
         {
-            List<Profesor> output = new List<Profesor>();
+            List<Grupo> output = new List<Grupo>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_profesor";
+                        "select * from ctl_grupo";
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            output.Add(new Profesor()
+                            output.Add(new Grupo()
                             {
-                                id_profesor = int.Parse(reader["id_profesor"].ToString()),
-                                num_trabajador = reader["num_trabajador"].ToString(),
-                                nom_profesor = reader["nom_trabajador"].ToString(),
-                                apa_profesor = reader["apa_trabajador"].ToString(),
-                                ama_profesor = reader["ama_trabajador"].ToString()
+                                id_grupo = int.Parse(reader["id_codigo"].ToString()),
+                                codigo_grupo = int.Parse(reader["codigo_grupo"].ToString()),
+                                anio = int.Parse(reader["anio"].ToString()),
+                                periodo = int.Parse(reader["periodo"].ToString()),
+                                id_materia_grupo = int.Parse(reader["id_materia_grupo"].ToString()),
+                                id_profesor_grupo = int.Parse(reader["id_profesor_grupo"].ToString())
                             });
                         }
                     }
@@ -52,14 +53,13 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         /**
-         * Esta funcion regresa un valor verdadero si es que existe el profesor, Para verificar
-         * la identidad del profesor unicamente se comprueba el numero de trabajador.
+         * Esta funcion regresa un valor verdadero si es que existe el grupo,
          * en caso contrario, regresara false.
-         * Sintaxis: Ctl_Materias.Contain([profesorInput])
-         * Variables: [profesorInput] -> profesorInput(){nom_carrera=[string]}
+         * Sintaxis: Ctl_Grupo.Contain([grupoInput])
+         * Variables: [grupoInput] -> Grupo{codigo_grupo=[int],anio=[int],periodo=[int]}
          * Return type: bool
          **/
-        public static bool Contain(Profesor profesorInput)
+        public static bool Contain(Grupo grupoInput)
         {
             bool output = false;
             using (var connection = new SQLiteConnection(connectionString))
@@ -68,16 +68,15 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_profesor where num_trabajador = @num_trabajador";
-                    command.Parameters.AddWithValue("@num_trabajador", profesorInput.num_trabajador);
+                        "select * from Ctl_Grupo where desc_grupo = @desc_grupo";
+                    command.Parameters.AddWithValue("@codigo_grupo", grupoInput.codigo_grupo);
+                    command.Parameters.AddWithValue("@anio", grupoInput.anio);
+                    command.Parameters.AddWithValue("@periodo", grupoInput.periodo);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            if (reader["num_trabajador"].ToString() == profesorInput.num_trabajador)
-                            {
-                                output = true;
-                            }
+                            output = true;
                         }
                     }
                     command.Parameters.Clear();
@@ -87,25 +86,25 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         /**
-         * Esta funcion añade un profesor si y solo no esta registrado esta antes, cuando la adicion
-         * es exitosa regresa un valor verdadero, pero si la materia ya existe no se añadira el
-         * mismo profesor (o mas bien el mismo numero de trabajador) dos veces y regresara un valor falso.
-         * Sintaxis: Ctl_Materias.add([materia])
-         * Variables: [profesorInput] -> Profesor()
+         * Esta funcion añade un codigo de grupo si y solo no esta registrado este codigo antes, cuando
+         * la adicion es exitosa regresa un valor verdadero, pero si el codigo ya existe no se añadira el
+         * mismo codigo dos veces y regresara un valor falso.
+         * Sintaxis: ctl_grupo.add([Grupo])
+         * Variables: [Grupo] -> Grupo()
          * {
-         *      num_trabajador=[string],
-         *      nom_profesor=[string],
-         *      apa_profesor=[string],
-         *      ama_profesor=[string]
+         *      codigo_grupo = [int],
+         *      anio,periodo = [int],
+         *      id_materia_grupo = [int],
+         *      id_profesor_grupo = [int]
          * }
          * Return type: bool
          **/
-        public static bool Add(Profesor profesorInput)
+        public static bool Add(Grupo grupoInput)
         {
             bool output = false;
-            if (!Contain(profesorInput))
+            if (!Contain(grupoInput))
             {
-                output = ForceAdd(profesorInput);
+                output = ForceAdd(grupoInput);
             }
             return output;
         }
@@ -115,35 +114,36 @@ namespace RegistroDeAsistencia.DataBase.Control
         //=============================================================================================================
 
         /**
-         * Esta funcion retorna una lista de Carreas que cumple con la clausula where establecida
+         * Esta funcion retorna una lista de CodigoGrupo que cumple con la clausula where establecida
          * en los parametros.
-         * Sintaxis: Ctl_Profesor.getListWhere([parameter],[value])
+         * Sintaxis: ctl_grupo.getListWhere([parameter],[value])
          * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<Profesor>
+         * Return type: List<Grupo>
          **/
-        public static List<Profesor> GetListWhere(string parameter, string value)
+        public static List<Grupo> GetListWhere(string parameter, string value)
         {
-            List<Profesor> output = new List<Profesor>();
+            List<Grupo> output = new List<Grupo>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_profesor where @parameter = @value";
+                        "select * from ctl_grupo where @parameter = @value";
                     command.Parameters.AddWithValue("@parameter", parameter);
                     command.Parameters.AddWithValue("@value", value);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            output.Add(new Profesor()
+                            output.Add(new Grupo()
                             {
-                                id_profesor = int.Parse(reader["id_profesor"].ToString()),
-                                num_trabajador = reader["num_trabajador"].ToString(),
-                                nom_profesor = reader["nom_profesor"].ToString(),
-                                apa_profesor = reader["apa_profesor"].ToString(),
-                                ama_profesor = reader["ama_profesor"].ToString()
+                                id_grupo = int.Parse(reader["id_grupo"].ToString()),
+                                codigo_grupo = int.Parse(reader["codigo_grupo"].ToString()),
+                                anio = int.Parse(reader["anio"].ToString()),
+                                periodo = int.Parse(reader["periodo"].ToString()),
+                                id_materia_grupo = int.Parse(reader["id_materia_grupo"].ToString()),
+                                id_profesor_grupo = int.Parse(reader["id_profesor_grupo"].ToString())
                             });
                         }
                     }
@@ -151,6 +151,7 @@ namespace RegistroDeAsistencia.DataBase.Control
             }
             return output;
         }
+
         //=============================================================================================================
         // Metodos privados
         //=============================================================================================================
@@ -158,7 +159,7 @@ namespace RegistroDeAsistencia.DataBase.Control
         /**
          * Funcion interna, neta si no sabes que hace no lo toques
          **/
-        private static bool ForceAdd(Profesor profesorInput)
+        private static bool ForceAdd(Grupo grupoInput)
         {
             bool output = false;
             using (var connection = new SQLiteConnection(connectionString))
@@ -167,12 +168,15 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        @"INSERT INTO ctl_profesor (num_trabajador,nom_profesor,apa_profesor,ama_profesor) 
-                        values (@num_trabajador,@nom_profesor,@apa_profesor,@ama_profesor)";
-                    command.Parameters.AddWithValue("@num_trabajador", profesorInput.num_trabajador);
-                    command.Parameters.AddWithValue("@nom_profesor", profesorInput.nom_profesor);
-                    command.Parameters.AddWithValue("@apa_profesor", profesorInput.apa_profesor);
-                    command.Parameters.AddWithValue("@ama_profesor", profesorInput.ama_profesor);
+                        @"INSERT INTO ctl_codigoGrupo 
+                        (codigo_grupo,anio,periodo,id_materia_grupo,id_profesor_grupo) 
+                        values 
+                        (@codigo_grupo,@anio,@periodo,@id_materia_grupo,@id_profesor_grupo)";
+                    command.Parameters.AddWithValue("@codigo_grupo", grupoInput.codigo_grupo);
+                    command.Parameters.AddWithValue("@anio", grupoInput.anio);
+                    command.Parameters.AddWithValue("@periodo", grupoInput.periodo);
+                    command.Parameters.AddWithValue("@id_materia_grupo", grupoInput.id_materia_grupo);
+                    command.Parameters.AddWithValue("@id_profesor_grupo", grupoInput.id_profesor_grupo);
                     if (command.ExecuteNonQuery() > 0)
                     {
                         output = true;
@@ -182,5 +186,6 @@ namespace RegistroDeAsistencia.DataBase.Control
             }
             return output;
         }
+
     }
 }

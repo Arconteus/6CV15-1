@@ -157,7 +157,7 @@ namespace RegistroDeAsistencia.DataBase.Control
                     command.CommandText =
                         @"INSERT INTO ctl_materias (nom_carrera) values (@nom_carrera)";
                     command.Parameters.AddWithValue("@nom_carrera", materiaInput.nom_materia);
-                    if (command.ExecuteNonQuery()>0)
+                    if (command.ExecuteNonQuery() > 0)
                     {
                         output = true;
                     }

@@ -1,10 +1,15 @@
 ﻿using RegistroDeAsistencia.DataBase.Modelo;
+using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RegistroDeAsistencia.DataBase.Control
 {
-    internal class Ctl_Profesor
+    internal class Tbl_RegistroAsistencia
     {
         //=============================================================================================================
         // Variables de control de la base de datos
@@ -17,32 +22,31 @@ namespace RegistroDeAsistencia.DataBase.Control
         //=============================================================================================================
 
         /**
-         * Esta funcion regresa una lista de la clase Profesor, que contiene toda la lista de
-         * profesores dados de alta.
-         * Sintaxis: Ctl_Profesor.GetList()
-         * Return Type: List<Profesor>
+         * Esta funcion regresa una lista de la clase RegistroAsistencia, que contiene toda la lista de
+         * todos los registros de asistencia dados de alta.
+         * Sintaxis: tbl_registroAsistencia.GetList()
+         * Return Type: List<RegistroAsistencia>
          **/
-        public static List<Profesor> GetList()
+        public static List<RegistroAsistencia> GetList()
         {
-            List<Profesor> output = new List<Profesor>();
+            List<RegistroAsistencia> output = new List<RegistroAsistencia>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_profesor";
+                        "select * from tbl_registroAsistencia";
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            output.Add(new Profesor()
+                            output.Add(new RegistroAsistencia()
                             {
-                                id_profesor = int.Parse(reader["id_profesor"].ToString()),
-                                num_trabajador = reader["num_trabajador"].ToString(),
-                                nom_profesor = reader["nom_trabajador"].ToString(),
-                                apa_profesor = reader["apa_trabajador"].ToString(),
-                                ama_profesor = reader["ama_trabajador"].ToString()
+                                id_registro = int.Parse(reader["id_registro"].ToString()),
+                                id_grupo_registro = int.Parse(reader["id_grupo_registro"].ToString()),
+                                fecha_registro = reader["fecha_registro"].ToString(),
+                                hora_registro = reader["hora_registro"].ToString()
                             });
                         }
                     }
@@ -52,14 +56,13 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         /**
-         * Esta funcion regresa un valor verdadero si es que existe el profesor, Para verificar
-         * la identidad del profesor unicamente se comprueba el numero de trabajador.
+         * Esta funcion regresa un valor verdadero si es que existe el registro de asistencia,
          * en caso contrario, regresara false.
-         * Sintaxis: Ctl_Materias.Contain([profesorInput])
-         * Variables: [profesorInput] -> profesorInput(){nom_carrera=[string]}
+         * Sintaxis: tbl_registroAsistencia.Contain([RegistroAsistencia])
+         * Variables: [RegistroAsistencia] -> RegistroAsistencia{id_registro=[int]}
          * Return type: bool
          **/
-        public static bool Contain(Profesor profesorInput)
+        public static bool Contain(RegistroAsistencia registroAsistenciaInput)
         {
             bool output = false;
             using (var connection = new SQLiteConnection(connectionString))
@@ -68,13 +71,13 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_profesor where num_trabajador = @num_trabajador";
-                    command.Parameters.AddWithValue("@num_trabajador", profesorInput.num_trabajador);
+                        "select * from tbl_registroAsistencia where id_registro = @id_registro";
+                    command.Parameters.AddWithValue("@id_registro", registroAsistenciaInput.id_registro);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            if (reader["num_trabajador"].ToString() == profesorInput.num_trabajador)
+                            if (reader["id_registro"].ToString() == registroAsistenciaInput.id_registro.ToString())
                             {
                                 output = true;
                             }
@@ -87,25 +90,24 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         /**
-         * Esta funcion añade un profesor si y solo no esta registrado esta antes, cuando la adicion
-         * es exitosa regresa un valor verdadero, pero si la materia ya existe no se añadira el
-         * mismo profesor (o mas bien el mismo numero de trabajador) dos veces y regresara un valor falso.
-         * Sintaxis: Ctl_Materias.add([materia])
-         * Variables: [profesorInput] -> Profesor()
+         * Esta funcion añade un registro de asistencia si y solo no esta registrado antes, cuando
+         * la adicion es exitosa regresa un valor verdadero, pero si el registro ya existe no se añadira el
+         * mismo registro dos veces y regresara un valor falso.
+         * Sintaxis: tbl_registroAsistencia.add([RegistroAsistencia])
+         * Variables: [RegistroAsistencia] -> RegistroAsistencia()
          * {
-         *      num_trabajador=[string],
-         *      nom_profesor=[string],
-         *      apa_profesor=[string],
-         *      ama_profesor=[string]
+         *      id_grupo_registro = [int],
+         *      fecha_registro = [string],
+         *      hora_registro = [string]
          * }
          * Return type: bool
          **/
-        public static bool Add(Profesor profesorInput)
+        public static bool Add(RegistroAsistencia registroAsistenciaInput)
         {
             bool output = false;
-            if (!Contain(profesorInput))
+            if (!Contain(registroAsistenciaInput))
             {
-                output = ForceAdd(profesorInput);
+                output = ForceAdd(registroAsistenciaInput);
             }
             return output;
         }
@@ -115,35 +117,34 @@ namespace RegistroDeAsistencia.DataBase.Control
         //=============================================================================================================
 
         /**
-         * Esta funcion retorna una lista de Carreas que cumple con la clausula where establecida
+         * Esta funcion retorna una lista de RegistroAsistencia que cumple con la clausula where establecida
          * en los parametros.
-         * Sintaxis: Ctl_Profesor.getListWhere([parameter],[value])
+         * Sintaxis: tbl_registroAsistencia.getListWhere([parameter],[value])
          * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<Profesor>
+         * Return type: List<RegistroAsistencia>
          **/
-        public static List<Profesor> GetListWhere(string parameter, string value)
+        public static List<RegistroAsistencia> GetListWhere(string parameter, string value)
         {
-            List<Profesor> output = new List<Profesor>();
+            List<RegistroAsistencia> output = new List<RegistroAsistencia>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_profesor where @parameter = @value";
+                        "select * from tbl_registroAsistencia where @parameter = @value";
                     command.Parameters.AddWithValue("@parameter", parameter);
                     command.Parameters.AddWithValue("@value", value);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            output.Add(new Profesor()
+                            output.Add(new RegistroAsistencia()
                             {
-                                id_profesor = int.Parse(reader["id_profesor"].ToString()),
-                                num_trabajador = reader["num_trabajador"].ToString(),
-                                nom_profesor = reader["nom_profesor"].ToString(),
-                                apa_profesor = reader["apa_profesor"].ToString(),
-                                ama_profesor = reader["ama_profesor"].ToString()
+                                id_registro = int.Parse(reader["id_registro"].ToString()),
+                                id_grupo_registro = int.Parse(reader["id_grupo_registro"].ToString()),
+                                fecha_registro = reader["fecha_registro"].ToString(),
+                                hora_registro = reader["hora_registro"].ToString()
                             });
                         }
                     }
@@ -151,6 +152,7 @@ namespace RegistroDeAsistencia.DataBase.Control
             }
             return output;
         }
+
         //=============================================================================================================
         // Metodos privados
         //=============================================================================================================
@@ -158,7 +160,7 @@ namespace RegistroDeAsistencia.DataBase.Control
         /**
          * Funcion interna, neta si no sabes que hace no lo toques
          **/
-        private static bool ForceAdd(Profesor profesorInput)
+        private static bool ForceAdd(RegistroAsistencia registroAsistenciaInput)
         {
             bool output = false;
             using (var connection = new SQLiteConnection(connectionString))
@@ -167,12 +169,14 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        @"INSERT INTO ctl_profesor (num_trabajador,nom_profesor,apa_profesor,ama_profesor) 
-                        values (@num_trabajador,@nom_profesor,@apa_profesor,@ama_profesor)";
-                    command.Parameters.AddWithValue("@num_trabajador", profesorInput.num_trabajador);
-                    command.Parameters.AddWithValue("@nom_profesor", profesorInput.nom_profesor);
-                    command.Parameters.AddWithValue("@apa_profesor", profesorInput.apa_profesor);
-                    command.Parameters.AddWithValue("@ama_profesor", profesorInput.ama_profesor);
+                        @"INSERT INTO tbl_registroAsistencia 
+                        (id_registro,id_grupo_registro,fecha_registro,hora_registro) 
+                        values 
+                        (@id_registro,@id_grupo_registro,@fecha_registro,@hora_registro)";
+                    command.Parameters.AddWithValue("@id_registro", registroAsistenciaInput.id_registro);
+                    command.Parameters.AddWithValue("@id_grupo_registro", registroAsistenciaInput.id_grupo_registro);
+                    command.Parameters.AddWithValue("@fecha_registro", registroAsistenciaInput.fecha_registro);
+                    command.Parameters.AddWithValue("@hora_registro", registroAsistenciaInput.hora_registro);
                     if (command.ExecuteNonQuery() > 0)
                     {
                         output = true;
@@ -182,5 +186,6 @@ namespace RegistroDeAsistencia.DataBase.Control
             }
             return output;
         }
+
     }
 }
