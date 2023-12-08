@@ -44,6 +44,7 @@ namespace RegistroDeAsistencia.DataBase.Control
             }
             return output;
         }
+        
         /**
          * Esta funcion regresa un valor verdadero si es que existe el codigo de grupo,
          * en caso contrario, regresara false.
@@ -74,31 +75,36 @@ namespace RegistroDeAsistencia.DataBase.Control
             }
             return output;
         }
+        
         /**
-         * Esta funcion regresa el ID de un codigo grupo, en dado caso que no exista retornara
-         * un valor 0 (el valor 0 no es una id valida en sqlite)
-         * Sintaxis: Ctl_codigoGrupo.getID([codigoGrupo])
-         * Variable: [codigoGrupo] -> string
-         * Return Type: int
+         * Esta funcion retorna una lista de CodigoGrupo que cumple con la clausula where establecida
+         * en los parametros.
+         * Sintaxis: Ctl_codigoGrupo.getListWhere([parameter],[value])
+         * Variables: [parameter] -> string, [value] -> string
+         * Return type: List<CodigoGrupo>
          **/
-        public static int getId(string codigoGrupo) {
-            int output = 0;
+        public static List<CodigoGrupo> getListWhere(string parameter,string value) {
+            List<CodigoGrupo> output = new List<CodigoGrupo>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_codigoGrupo where desc_grupo = @desc";
-                    command.Parameters.AddWithValue("@desc", codigoGrupo);
-
+                        "select * from ctl_codigoGrupo where @parameter = @value";
+                    command.Parameters.AddWithValue("@parameter", parameter);
+                    command.Parameters.AddWithValue("@value", value);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             if (reader["desc_grupo"].ToString() == codigoGrupo)
                             {
-                                output = int.Parse(reader["id_codigo"].ToString());
+                                output.Add(new CodigoGrupo()
+                                {
+                                    id_codigo = int.Parse(reader["id_codigo"].ToString()),
+                                    desc_grupo = reader["desc_grupo"].ToString()
+                                });
                             }
                         }
                     }
