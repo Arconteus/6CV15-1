@@ -4,7 +4,7 @@ using System.Data.SQLite;
 
 namespace RegistroDeAsistencia.DataBase.Control
 {
-    public static class Ctl_CodigoGrupo
+    internal class Ctl_Materias
     {
         //=============================================================================================================
         // Variables de control de la base de datos
@@ -17,29 +17,29 @@ namespace RegistroDeAsistencia.DataBase.Control
         //=============================================================================================================
 
         /**
-         * Esta funcion regresa una lista de la clase CodigoGrupo, que contiene toda la lista de
-         * codigos de grupo dados de alta.
-         * Sintaxis: Ctl_CodigoGrupo.GetList()
-         * Return Type: List<CodigoGrupo>
+         * Esta funcion regresa una lista de la clase Materia, que contiene toda la lista de
+         * Materia dados de alta.
+         * Sintaxis: Ctl_Materias.GetList()
+         * Return Type: List<Materia>
          **/
-        public static List<CodigoGrupo> GetList()
+        public static List<Materia> GetList()
         {
-            List<CodigoGrupo> output = new List<CodigoGrupo>();
+            List<Materia> output = new List<Materia>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_codigoGrupo";
+                        "select * from ctl_materias";
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            output.Add(new CodigoGrupo()
+                            output.Add(new Materia()
                             {
-                                id_codigo = int.Parse(reader["id_codigo"].ToString()),
-                                desc_grupo = reader["desc_grupo"].ToString()
+                                id_materia = int.Parse(reader["id_materia"].ToString()),
+                                nom_materia = reader["nom_materia"].ToString()
                             });
                         }
                     }
@@ -49,13 +49,13 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         /**
-         * Esta funcion regresa un valor verdadero si es que existe el codigo de grupo,
+         * Esta funcion regresa un valor verdadero si es que existe la materia,
          * en caso contrario, regresara false.
-         * Sintaxis: Ctl_CodigoGrupo.Contain([codigoGrupo])
-         * Variables: [codigoGrupoInput] -> CodigoGrupo{desc_grupo=[string]}
+         * Sintaxis: Ctl_Materias.Contain([materiaInput])
+         * Variables: [materiaInput] -> Materia(){nom_materia=[string]}
          * Return type: bool
          **/
-        public static bool Contain(CodigoGrupo codigoGrupoInput)
+        public static bool Contain(Materia materiaInput)
         {
             bool output = false;
             using (var connection = new SQLiteConnection(connectionString))
@@ -64,13 +64,13 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_codigoGrupo where desc_grupo = @desc_grupo";
-                    command.Parameters.AddWithValue("@desc_grupo", codigoGrupoInput.desc_grupo);
+                        "select * from ctl_materias where nom_materia = @nom_materia";
+                    command.Parameters.AddWithValue("@nom_materia", materiaInput.nom_materia);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            if (reader["desc_grupo"].ToString() == codigoGrupoInput.desc_grupo)
+                            if (reader["nom_materia"].ToString() == materiaInput.nom_materia)
                             {
                                 output = true;
                             }
@@ -83,19 +83,19 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         /**
-         * Esta funcion añade un codigo de grupo si y solo no esta registrado este codigo antes, cuando
-         * la adicion es exitosa regresa un valor verdadero, pero si el codigo ya existe no se añadira el
-         * mismo codigo dos veces y regresara un valor falso.
-         * Sintaxis: Ctl_CodigoGrupo.add([CodigoGrupo])
-         * Variables: [CodigoGrupo] -> string
+         * Esta funcion añade la materia si y solo no esta registrado esta antes, cuando la adicion
+         * es exitosa regresa un valor verdadero, pero si la materia ya existe no se añadira la
+         * misma materia dos veces y regresara un valor falso.
+         * Sintaxis: Ctl_Materias.add([materiaInput])
+         * Variables: [materia] -> Materia(){nom_materia=[string]}
          * Return type: bool
          **/
-        public static bool Add(CodigoGrupo codigoGrupoInput)
+        public static bool Add(Materia materiaInput)
         {
             bool output = false;
-            if (!Contain(codigoGrupoInput))
+            if (!Contain(materiaInput))
             {
-                output = ForceAdd(codigoGrupoInput);
+                output = ForceAdd(materiaInput);
             }
             return output;
         }
@@ -105,32 +105,32 @@ namespace RegistroDeAsistencia.DataBase.Control
         //=============================================================================================================
 
         /**
-         * Esta funcion retorna una lista de CodigoGrupo que cumple con la clausula where establecida
+         * Esta funcion retorna una lista de Carreas que cumple con la clausula where establecida
          * en los parametros.
-         * Sintaxis: Ctl_CodigoGrupo.getListWhere([parameter],[value])
+         * Sintaxis: Ctl_Materias.getListWhere([parameter],[value])
          * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<CodigoGrupo>
+         * Return type: List<Carrera>
          **/
-        public static List<CodigoGrupo> GetListWhere(string parameter, string value)
+        public static List<Materia> GetListWhere(string parameter, string value)
         {
-            List<CodigoGrupo> output = new List<CodigoGrupo>();
+            List<Materia> output = new List<Materia>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_codigoGrupo where @parameter = @value";
+                        "select * from ctl_materias where @parameter = @value";
                     command.Parameters.AddWithValue("@parameter", parameter);
                     command.Parameters.AddWithValue("@value", value);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            output.Add(new CodigoGrupo()
+                            output.Add(new Materia()
                             {
-                                id_codigo = int.Parse(reader["id_codigo"].ToString()),
-                                desc_grupo = reader["desc_grupo"].ToString()
+                                id_materia = int.Parse(reader["id_materia"].ToString()),
+                                nom_materia = reader["nom_materia"].ToString()
                             });
                         }
                     }
@@ -146,7 +146,7 @@ namespace RegistroDeAsistencia.DataBase.Control
         /**
          * Funcion interna, neta si no sabes que hace no lo toques
          **/
-        private static bool ForceAdd(CodigoGrupo codigoGrupoInput)
+        private static bool ForceAdd(Materia materiaInput)
         {
             bool output = false;
             using (var connection = new SQLiteConnection(connectionString))
@@ -155,9 +155,10 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        @"INSERT INTO ctl_codigoGrupo (desc_grupo) values (@codigo_grupo)";
-                    command.Parameters.AddWithValue("@codigo_grupo", codigoGrupoInput.desc_grupo);
-                    if(command.ExecuteNonQuery()>0){ 
+                        @"INSERT INTO ctl_materias (nom_carrera) values (@nom_carrera)";
+                    command.Parameters.AddWithValue("@nom_carrera", materiaInput.nom_materia);
+                    if (command.ExecuteNonQuery()>0)
+                    {
                         output = true;
                     }
                     command.Parameters.Clear();

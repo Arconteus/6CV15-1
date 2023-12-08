@@ -1,4 +1,5 @@
-using RegistroDeAsistencia.DataBase.Control;
+﻿using RegistroDeAsistencia.DataBase.Control;
+using RegistroDeAsistencia.DataBase.Modelo;
 
 namespace RegistroDeAsistencia
 {
@@ -9,30 +10,28 @@ namespace RegistroDeAsistencia
             InitializeComponent();
         }
 
-        private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
+            CodigoGrupo codigo = new CodigoGrupo()
+            {
+                desc_grupo = GrupoTextBox.Text.ToString()
+            };
+            Ctl_CodigoGrupo.Add(codigo);
         }
 
-        private void AceptarButton_Click(object sender, EventArgs e)
+        private void ContainButton_Click(object sender, EventArgs e)
         {
-
+            CodigoGrupo codigo = new CodigoGrupo()
+            {
+                desc_grupo = GrupoTextBox.Text.ToString()
+            };
+            ContainCheckBox.Checked = Ctl_CodigoGrupo.Contain(codigo);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void Test_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void UpdateButton_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = Ctl_codigoGrupo.GetList();
-            Ctl_codigoGrupo.Contain("6CV15");
+            dataGridView1.DataSource = Ctl_CodigoGrupo.GetList();
         }
     }
 }
