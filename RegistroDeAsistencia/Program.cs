@@ -12,6 +12,7 @@ namespace RegistroDeAsistencia
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new RegistroQR());
+
         }
     }
 }
