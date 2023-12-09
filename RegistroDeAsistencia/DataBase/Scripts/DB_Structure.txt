@@ -1,0 +1,81 @@
+CREATE TABLE IF NOT EXISTS ctl_codigoGrupo(
+	id_codigo INTEGER PRIMARY KEY AUTOINCREMENT,
+  	desc_grupo	varchar(5) not NULL
+);
+CREATE TABLE IF NOT EXISTS ctl_materias(
+	id_materia INTEGER PRIMARY KEY AUTOINCREMENT,
+  	nom_materia	varchar(50) not NULL
+);
+CREATE TABLE IF NOT EXISTS ctl_profesor(
+	id_profesor INTEGER PRIMARY KEY AUTOINCREMENT,
+  	num_trabajador varchar(15) not NULL,
+  	nom_profesor varchar(40) not NULL,
+  	apa_profesor varchar(20) not NULL,
+  	ama_profesor varchar(20) not NULL
+);
+CREATE TABLE IF NOT EXISTS ctl_grupo(
+	id_grupo INTEGER PRIMARY KEY AUTOINCREMENT,
+  	codigo_grupo INTEGER not NULL,
+  	anio smallint not NULL,
+  	periodo smallint not NULL,
+  	id_materia_grupo INTEGER NOT NULL,
+  	id_profesor_grupo INTEGER not NULL,
+  	CONSTRAINT "fk_grupo" FOREIGN KEY(codigo_grupo)
+  	REFERENCES ctl_codigogrupo(id_codigo),
+  	CONSTRAINT "fk_materia" FOREIGN KEY(id_materia_grupo)
+  	REFERENCES ctl_materia(id_materia),
+  	CONSTRAINT "fk_profesor" FOREIGN KEY(id_profesor_grupo)
+  	REFERENCES ctl_profesor(id_profesor)
+);
+CREATE TABLE IF NOT EXISTS tbl_registroAsistencia(
+	id_registro INTEGER PRIMARY KEY AUTOINCREMENT,
+  	id_grupo_registro INTEGER not NULL,
+  	fecha_registro date not NULL,
+  	hora_registro time not null,
+  	CONSTRAINT "fk_grupo" FOREIGN KEY(id_grupo_registro)
+  	REFERENCES ctl_grupo(id_grupo)
+);
+CREATE TABLE IF NOT EXISTS tbl_observacionRegistro(
+	id_observacionRegistro INTEGER PRIMARY KEY AUTOINCREMENT,
+  	id_registro_observacion INTEGER not NULL,
+  	observacion varchar(255) not NULL,
+  	CONSTRAINT "fk_registro" FOREIGN KEY(id_registro_observacion)
+  	REFERENCES tbl_registroAsistencia(id_registro)
+);
+CREATE TABLE IF NOT EXISTS ctl_carrera(
+	id_carrera INTEGER PRIMARY KEY AUTOINCREMENT,
+  	nom_carrera varchar(30) not NULL
+);
+CREATE TABLE IF NOT EXISTS ctl_escuela(
+	id_escuela INTEGER PRIMARY KEY AUTOINCREMENT,
+  	nom_escuela varchar(30) not NULL
+);
+CREATE TABLE IF NOT EXISTS ctl_alumno(
+	id_alumno INTEGER PRIMARY KEY AUTOINCREMENT,
+  	boleta varchar(16) not NULL,
+  	nom_alumno varchar(40) not NULL,
+  	apa_alumno varchar(20) not NULL,
+  	ama_alumno varchar(20) not NULL,
+  	carrera_alumno INTEGER not NULL,
+  	escuela_alumno INTEGER not NULL,
+  	CONSTRAINT "fk_carrera" FOREIGN KEY(carrera_alumno)
+  	REFERENCES ctl_carrera(id_carrera),
+  	CONSTRAINT "fk_escuela" FOREIGN KEY(escuela_alumno)
+  	REFERENCES ctl_escuela(id_escuela)
+);
+CREATE TABLE IF NOT EXISTS tbl_relacionRegistroAlumno(
+	id_relacion INTEGER PRIMARY KEY AUTOINCREMENT,
+  	id_registro_relacion INTEGER not NULL,
+  	id_alumno_registro INTEGER not NULL,
+  	CONSTRAINT "fk_registro" FOREIGN KEY(id_registro_relacion)
+  	REFERENCES tbl_registroAsistencia(id_registro),
+  	CONSTRAINT "fk_alumno" FOREIGN KEY(id_alumno_registro)
+  	REFERENCES ctl_alumno(id_alumno)
+);
+CREATE TABLE IF NOT EXISTS tbl_observacionAlumno(
+	id_observacionAlumno INTEGER PRIMARY KEY AUTOINCREMENT,
+  	id_relacion_observacion INTEGER NOT NULL,
+  	observacion varchar(255) not NULL,
+  	CONSTRAINT "fk_relacion" FOREIGN KEY(id_relacion_observacion)
+  	REFERENCES tbl_relacionRegistroAlumno(id_relacion)
+);
