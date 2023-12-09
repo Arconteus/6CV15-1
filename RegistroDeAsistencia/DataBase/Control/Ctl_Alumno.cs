@@ -4,7 +4,7 @@ using System.Data.SQLite;
 
 namespace RegistroDeAsistencia.DataBase.Control
 {
-    internal class Ctl_Escuela
+    public class Ctl_Alumno
     {
         //=============================================================================================================
         // Variables de control de la base de datos
@@ -17,29 +17,34 @@ namespace RegistroDeAsistencia.DataBase.Control
         //=============================================================================================================
 
         /**
-         * Esta funcion regresa una lista de la clase Carrera, que contiene toda la lista de
-         * carreras dadas de alta.
+         * Esta funcion regresa una lista de la clase Alumno, que contiene toda la lista de
+         * todos los alumnos dadas de alta.
          * Sintaxis: Ctl_Carrera.GetList()
-         * Return Type: List<Carrera>
+         * Return Type: List<Alumno>
          **/
-        public static List<Escuela> GetList()
+        public static List<Alumno> GetList()
         {
-            List<Escuela> output = new List<Escuela>();
+            List<Alumno> output = new List<Alumno>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_escuela";
+                        "select * from ctl_alumno";
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            output.Add(new Escuela()
+                            output.Add(new Alumno()
                             {
-                                id_escuela = int.Parse(reader["id_escuela"].ToString()),
-                                nom_escuela = reader["nom_escuela"].ToString()
+                                id_alumno = int.Parse(reader["id_alumno"].ToString()),
+                                boleta = reader["boleta"].ToString(),
+                                nom_alumno = reader["nom_alumno"].ToString(),
+                                apa_alumno = reader["apa_alumno"].ToString(),
+                                ama_alumno = reader["ama_alumno"].ToString(),
+                                carrera_alumno = int.Parse(reader["carrera_alumno"].ToString()),
+                                escuela_alumno = int.Parse(reader["escuela_alumno"].ToString()),
                             });
                         }
                     }
@@ -49,13 +54,13 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         /**
-         * Esta funcion regresa un valor verdadero si es que existe el codigo de grupo,
-         * en caso contrario, regresara false.
-         * Sintaxis: Ctl_CodigoGrupo.Contain([codigoGrupo])
-         * Variables: [codigoGrupoInput] -> CodigoGrupo{desc_grupo=[string]}
+         * Esta funcion regresa un valor verdadero si es que existe un alumno registrad con la
+         * boleta dada, en caso contrario, regresara false.
+         * Sintaxis: Ctl_Alumno.Contain([alumnoInput])
+         * Variables: [alumnoInput] -> Alumno(){boleta=[string]}
          * Return type: bool
          **/
-        public static bool Contain(Escuela escuelaInput)
+        public static bool Contain(Alumno alumnoInput)
         {
             bool output = false;
             using (var connection = new SQLiteConnection(connectionString))
@@ -64,13 +69,13 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_escuela where nom_escuela = @nom_escuela";
-                    command.Parameters.AddWithValue("@nom_escuela", escuelaInput.nom_escuela);
+                        "select * from ctl_alumno where boleta = @boleta";
+                    command.Parameters.AddWithValue("@boleta", alumnoInput.boleta);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            if (reader["nom_escuela"].ToString() == escuelaInput.nom_escuela)
+                            if (reader["boleta"].ToString() == alumnoInput.boleta)
                             {
                                 output = true;
                             }
@@ -83,44 +88,54 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         /**
-         * Esta funcion añade una escuela si y solo no esta registrada antes, cuando
-         * la adicion es exitosa regresa un valor verdadero, pero si la materia ya existe no se añadira 
-         * la misma dos veces y regresara un valor falso.
-         * Sintaxis: Ctl_Escuela.add([escuelaInput])
-         * Variables: [escuelaInput] -> Escuela(){nom_escuela=[string]}
+         * Esta funcion añade un alumno si y solo no esta registrado alguien con esa boleta antes, cuando
+         * la adicion es exitosa regresa un valor verdadero, pero si el codigo ya existe no se añadira el
+         * mismo codigo dos veces y regresara un valor falso.
+         * Sintaxis: Ctl_Alumno.add([alumnoInput])
+         * Variables: [alumnoInput] -> Alumno()
+         *  {
+         *      boleta = [stirng],
+         *      nom_alumno = [stirng],
+         *      apa_alumno = [stirng],
+         *      ama_alumno = [stirng],
+         *      carrera_alumno = [int],
+         *      escuela_alumno = [int]
+         *  }
          * Return type: bool
          **/
-        public static bool Add(Escuela escuelaInput)
+        public static bool Add(Alumno alumnoInput)
         {
             bool output = false;
-            if (!Contain(escuelaInput))
+            if (!Contain(alumnoInput))
             {
-                output = ForceAdd(escuelaInput);
+                output = ForceAdd(alumnoInput);
             }
             return output;
         }
+
+
 
         //=============================================================================================================
         // Metodos de busqueda con parametros
         //=============================================================================================================
 
         /**
-         * Esta funcion retorna una lista de Escuela que cumple con la clausula where establecida
+         * Esta funcion retorna una lista de CodigoGrupo que cumple con la clausula where establecida
          * en los parametros.
-         * Sintaxis: Ctl_Escuela.getListWhere([parameter],[value])
+         * Sintaxis: Ctl_Alumno.getListWhere([parameter],[value])
          * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<Escuela>
+         * Return type: List<Alumno>
          **/
-        public static List<Escuela> GetListWhere(string parameter, string logic, string value)
+        public static List<Alumno> GetListWhere(string parameter, string logic, string value)
         {
-            List<Escuela> output = new List<Escuela>();
+            List<Alumno> output = new List<Alumno>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_escuela where @parameter @logic @value";
+                        "select * from ctl_alumno where @parameter @logic @value";
                     command.Parameters.AddWithValue("@parameter", parameter);
                     command.Parameters.AddWithValue("@logic", logic);
                     command.Parameters.AddWithValue("@value", value);
@@ -128,10 +143,15 @@ namespace RegistroDeAsistencia.DataBase.Control
                     {
                         while (reader.Read())
                         {
-                            output.Add(new Escuela()
+                            output.Add(new Alumno()
                             {
-                                id_escuela = int.Parse(reader["id_escuela"].ToString()),
-                                nom_escuela = reader["nom_escuela"].ToString()
+                                id_alumno = int.Parse(reader["id_alumno"].ToString()),
+                                boleta = reader["boleta"].ToString(),
+                                nom_alumno = reader["nom_alumno"].ToString(),
+                                apa_alumno = reader["apa_alumno"].ToString(),
+                                ama_alumno = reader["ama_alumno"].ToString(),
+                                carrera_alumno = int.Parse(reader["carrera_alumno"].ToString()),
+                                escuela_alumno = int.Parse(reader["escuela_alumno"].ToString())
                             });
                         }
                     }
@@ -147,7 +167,7 @@ namespace RegistroDeAsistencia.DataBase.Control
         /**
          * Funcion interna, neta si no sabes que hace no lo toques
          **/
-        private static bool ForceAdd(Escuela escuelaInput)
+        private static bool ForceAdd(Alumno alumnoInput)
         {
             bool output = false;
             using (var connection = new SQLiteConnection(connectionString))
@@ -156,8 +176,16 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        @"INSERT INTO ctl_escuela (nom_escuela) values (@nom_escuela)";
-                    command.Parameters.AddWithValue("@nom_escuela", escuelaInput.nom_escuela);
+                        @"INSERT INTO ctl_alumno 
+                        (boleta,nom_alumno,apa_alumno,ama_alumno,carrera_alumno,escuela_alumno) 
+                        values 
+                        (@boleta,@nom_alumno,@apa_alumno,@ama_alumno,@carrera_alumno,@escuela_alumno)";
+                    command.Parameters.AddWithValue("@boleta", alumnoInput.boleta);
+                    command.Parameters.AddWithValue("@nom_alumno", alumnoInput.nom_alumno);
+                    command.Parameters.AddWithValue("@apa_alumno", alumnoInput.apa_alumno);
+                    command.Parameters.AddWithValue("@ama_alumno", alumnoInput.ama_alumno);
+                    command.Parameters.AddWithValue("@carrera_alumno", alumnoInput.carrera_alumno);
+                    command.Parameters.AddWithValue("@escuela_alumno", alumnoInput.escuela_alumno);
                     if (command.ExecuteNonQuery() > 0)
                     {
                         output = true;

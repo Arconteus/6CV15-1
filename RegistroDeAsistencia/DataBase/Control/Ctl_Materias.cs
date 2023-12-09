@@ -111,7 +111,7 @@ namespace RegistroDeAsistencia.DataBase.Control
          * Variables: [parameter] -> string, [value] -> string
          * Return type: List<Carrera>
          **/
-        public static List<Materia> GetListWhere(string parameter,string logic, string value)
+        public static List<Materia> GetListWhere(string parameter, string logic, string value)
         {
             List<Materia> output = new List<Materia>();
             using (var connection = new SQLiteConnection(connectionString))

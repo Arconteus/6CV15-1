@@ -1,11 +1,6 @@
 ﻿using RegistroDeAsistencia.DataBase.Modelo;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RegistroDeAsistencia.DataBase.Control
 {
@@ -123,7 +118,7 @@ namespace RegistroDeAsistencia.DataBase.Control
          * Variables: [parameter] -> string, [value] -> string
          * Return type: List<RegistroAsistencia>
          **/
-        public static List<RegistroAsistencia> GetListWhere(string parameter,string logic, string value)
+        public static List<RegistroAsistencia> GetListWhere(string parameter, string logic, string value)
         {
             List<RegistroAsistencia> output = new List<RegistroAsistencia>();
             using (var connection = new SQLiteConnection(connectionString))

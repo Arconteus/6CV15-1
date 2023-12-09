@@ -111,7 +111,7 @@ namespace RegistroDeAsistencia.DataBase.Control
          * Variables: [parameter] -> string, [value] -> string
          * Return type: List<CodigoGrupo>
          **/
-        public static List<CodigoGrupo> GetListWhere(string parameter,string logic, string value)
+        public static List<CodigoGrupo> GetListWhere(string parameter, string logic, string value)
         {
             List<CodigoGrupo> output = new List<CodigoGrupo>();
             using (var connection = new SQLiteConnection(connectionString))
