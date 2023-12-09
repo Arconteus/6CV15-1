@@ -1,10 +1,15 @@
 ﻿using RegistroDeAsistencia.DataBase.Modelo;
+using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RegistroDeAsistencia.DataBase.Control
 {
-    internal class Ctl_Grupo
+    internal class Ctl_Escuela
     {
         //=============================================================================================================
         // Variables de control de la base de datos
@@ -17,33 +22,29 @@ namespace RegistroDeAsistencia.DataBase.Control
         //=============================================================================================================
 
         /**
-         * Esta funcion regresa una lista de la clase Grupo, que contiene toda la lista de
-         * grupos dados de alta.
-         * Sintaxis: Ctl_Grupo.GetList()
-         * Return Type: List<Grupo>
+         * Esta funcion regresa una lista de la clase Carrera, que contiene toda la lista de
+         * carreras dadas de alta.
+         * Sintaxis: Ctl_Carrera.GetList()
+         * Return Type: List<Carrera>
          **/
-        public static List<Grupo> GetList()
+        public static List<Escuela> GetList()
         {
-            List<Grupo> output = new List<Grupo>();
+            List<Escuela> output = new List<Escuela>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_grupo";
+                        "select * from ctl_escuela";
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            output.Add(new Grupo()
+                            output.Add(new Escuela()
                             {
-                                id_grupo = int.Parse(reader["id_codigo"].ToString()),
-                                codigo_grupo = int.Parse(reader["codigo_grupo"].ToString()),
-                                anio = int.Parse(reader["anio"].ToString()),
-                                periodo = int.Parse(reader["periodo"].ToString()),
-                                id_materia_grupo = int.Parse(reader["id_materia_grupo"].ToString()),
-                                id_profesor_grupo = int.Parse(reader["id_profesor_grupo"].ToString())
+                                id_escuela = int.Parse(reader["id_escuela"].ToString()),
+                                nom_escuela = reader["nom_escuela"].ToString()
                             });
                         }
                     }
@@ -53,13 +54,13 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         /**
-         * Esta funcion regresa un valor verdadero si es que existe el grupo,
+         * Esta funcion regresa un valor verdadero si es que existe el codigo de grupo,
          * en caso contrario, regresara false.
-         * Sintaxis: Ctl_Grupo.Contain([grupoInput])
-         * Variables: [grupoInput] -> Grupo{codigo_grupo=[int],anio=[int],periodo=[int]}
+         * Sintaxis: Ctl_CodigoGrupo.Contain([codigoGrupo])
+         * Variables: [codigoGrupoInput] -> CodigoGrupo{desc_grupo=[string]}
          * Return type: bool
          **/
-        public static bool Contain(Grupo grupoInput)
+        public static bool Contain(Escuela escuelaInput)
         {
             bool output = false;
             using (var connection = new SQLiteConnection(connectionString))
@@ -68,15 +69,16 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from Ctl_Grupo where desc_grupo = @desc_grupo";
-                    command.Parameters.AddWithValue("@codigo_grupo", grupoInput.codigo_grupo);
-                    command.Parameters.AddWithValue("@anio", grupoInput.anio);
-                    command.Parameters.AddWithValue("@periodo", grupoInput.periodo);
+                        "select * from ctl_escuela where nom_escuela = @nom_escuela";
+                    command.Parameters.AddWithValue("@nom_escuela", escuelaInput.nom_escuela);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            output = true;
+                            if (reader["nom_escuela"].ToString() == escuelaInput.nom_escuela)
+                            {
+                                output = true;
+                            }
                         }
                     }
                     command.Parameters.Clear();
@@ -86,25 +88,19 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         /**
-         * Esta funcion añade un codigo de grupo si y solo no esta registrado este codigo antes, cuando
-         * la adicion es exitosa regresa un valor verdadero, pero si el codigo ya existe no se añadira el
-         * mismo codigo dos veces y regresara un valor falso.
-         * Sintaxis: ctl_grupo.add([Grupo])
-         * Variables: [Grupo] -> Grupo()
-         * {
-         *      codigo_grupo = [int],
-         *      anio,periodo = [int],
-         *      id_materia_grupo = [int],
-         *      id_profesor_grupo = [int]
-         * }
+         * Esta funcion añade una escuela si y solo no esta registrada antes, cuando
+         * la adicion es exitosa regresa un valor verdadero, pero si la materia ya existe no se añadira 
+         * la misma dos veces y regresara un valor falso.
+         * Sintaxis: Ctl_Escuela.add([escuelaInput])
+         * Variables: [escuelaInput] -> Escuela(){nom_escuela=[string]}
          * Return type: bool
          **/
-        public static bool Add(Grupo grupoInput)
+        public static bool Add(Escuela escuelaInput)
         {
             bool output = false;
-            if (!Contain(grupoInput))
+            if (!Contain(escuelaInput))
             {
-                output = ForceAdd(grupoInput);
+                output = ForceAdd(escuelaInput);
             }
             return output;
         }
@@ -114,22 +110,22 @@ namespace RegistroDeAsistencia.DataBase.Control
         //=============================================================================================================
 
         /**
-         * Esta funcion retorna una lista de CodigoGrupo que cumple con la clausula where establecida
+         * Esta funcion retorna una lista de Escuela que cumple con la clausula where establecida
          * en los parametros.
-         * Sintaxis: ctl_grupo.getListWhere([parameter],[value])
+         * Sintaxis: Ctl_Escuela.getListWhere([parameter],[value])
          * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<Grupo>
+         * Return type: List<Escuela>
          **/
-        public static List<Grupo> GetListWhere(string parameter,string logic, string value)
+        public static List<Escuela> GetListWhere(string parameter,string logic, string value)
         {
-            List<Grupo> output = new List<Grupo>();
+            List<Escuela> output = new List<Escuela>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_grupo where @parameter @logic @value";
+                        "select * from ctl_escuela where @parameter @logic @value";
                     command.Parameters.AddWithValue("@parameter", parameter);
                     command.Parameters.AddWithValue("@logic", logic);
                     command.Parameters.AddWithValue("@value", value);
@@ -137,14 +133,10 @@ namespace RegistroDeAsistencia.DataBase.Control
                     {
                         while (reader.Read())
                         {
-                            output.Add(new Grupo()
+                            output.Add(new Escuela()
                             {
-                                id_grupo = int.Parse(reader["id_grupo"].ToString()),
-                                codigo_grupo = int.Parse(reader["codigo_grupo"].ToString()),
-                                anio = int.Parse(reader["anio"].ToString()),
-                                periodo = int.Parse(reader["periodo"].ToString()),
-                                id_materia_grupo = int.Parse(reader["id_materia_grupo"].ToString()),
-                                id_profesor_grupo = int.Parse(reader["id_profesor_grupo"].ToString())
+                                id_escuela = int.Parse(reader["id_escuela"].ToString()),
+                                nom_escuela = reader["nom_escuela"].ToString()
                             });
                         }
                     }
@@ -160,7 +152,7 @@ namespace RegistroDeAsistencia.DataBase.Control
         /**
          * Funcion interna, neta si no sabes que hace no lo toques
          **/
-        private static bool ForceAdd(Grupo grupoInput)
+        private static bool ForceAdd(Escuela escuelaInput)
         {
             bool output = false;
             using (var connection = new SQLiteConnection(connectionString))
@@ -169,15 +161,8 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        @"INSERT INTO ctl_codigoGrupo 
-                        (codigo_grupo,anio,periodo,id_materia_grupo,id_profesor_grupo) 
-                        values 
-                        (@codigo_grupo,@anio,@periodo,@id_materia_grupo,@id_profesor_grupo)";
-                    command.Parameters.AddWithValue("@codigo_grupo", grupoInput.codigo_grupo);
-                    command.Parameters.AddWithValue("@anio", grupoInput.anio);
-                    command.Parameters.AddWithValue("@periodo", grupoInput.periodo);
-                    command.Parameters.AddWithValue("@id_materia_grupo", grupoInput.id_materia_grupo);
-                    command.Parameters.AddWithValue("@id_profesor_grupo", grupoInput.id_profesor_grupo);
+                        @"INSERT INTO ctl_escuela (nom_escuela) values (@nom_escuela)";
+                    command.Parameters.AddWithValue("@nom_escuela", escuelaInput.nom_escuela);
                     if (command.ExecuteNonQuery() > 0)
                     {
                         output = true;

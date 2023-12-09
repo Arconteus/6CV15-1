@@ -121,7 +121,7 @@ namespace RegistroDeAsistencia.DataBase.Control
          * Variables: [parameter] -> string, [value] -> string
          * Return type: List<Profesor>
          **/
-        public static List<Profesor> GetListWhere(string parameter, string value)
+        public static List<Profesor> GetListWhere(string parameter, string logic, string value)
         {
             List<Profesor> output = new List<Profesor>();
             using (var connection = new SQLiteConnection(connectionString))
@@ -130,8 +130,9 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_profesor where @parameter = @value";
+                        "select * from ctl_profesor where @parameter @logic @value";
                     command.Parameters.AddWithValue("@parameter", parameter);
+                    command.Parameters.AddWithValue("@logic", logic);
                     command.Parameters.AddWithValue("@value", value);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
