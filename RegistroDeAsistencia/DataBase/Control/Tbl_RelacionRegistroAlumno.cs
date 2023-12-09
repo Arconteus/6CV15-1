@@ -1,10 +1,15 @@
 ﻿using RegistroDeAsistencia.DataBase.Modelo;
+using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RegistroDeAsistencia.DataBase.Control
 {
-    public class Ctl_Grupo
+    public class Tbl_RelacionRegistroAlumno
     {
         //=============================================================================================================
         // Variables de control de la base de datos
@@ -17,33 +22,30 @@ namespace RegistroDeAsistencia.DataBase.Control
         //=============================================================================================================
 
         /**
-         * Esta funcion regresa una lista de la clase Grupo, que contiene toda la lista de
-         * grupos dados de alta.
-         * Sintaxis: Ctl_Grupo.GetList()
-         * Return Type: List<Grupo>
+         * Esta funcion regresa una lista de la clase CodigoGrupo, que contiene toda la lista de
+         * la relacion entre el registro y los alumnos.
+         * Sintaxis: Tbl_RelacionRegistroAlumno.GetList()
+         * Return Type: List<RelacionRegistroAlumno>
          **/
-        public static List<Grupo> GetList()
+        public static List<RelacionRegistroAlumno> GetList()
         {
-            List<Grupo> output = new List<Grupo>();
+            List<RelacionRegistroAlumno> output = new List<RelacionRegistroAlumno>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_grupo";
+                        "select * from tbl_relacionRegistroAlumno";
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            output.Add(new Grupo()
+                            output.Add(new RelacionRegistroAlumno()
                             {
-                                id_grupo = int.Parse(reader["id_codigo"].ToString()),
-                                codigo_grupo = int.Parse(reader["codigo_grupo"].ToString()),
-                                anio = int.Parse(reader["anio"].ToString()),
-                                periodo = int.Parse(reader["periodo"].ToString()),
-                                id_materia_grupo = int.Parse(reader["id_materia_grupo"].ToString()),
-                                id_profesor_grupo = int.Parse(reader["id_profesor_grupo"].ToString())
+                                id_relacion = int.Parse(reader["id_relacion"].ToString()),
+                                id_registro_relacion = int.Parse(reader["id_registro_relacion"].ToString()),
+                                id_alumno_registro = int.Parse(reader["id_alumno_registro"].ToString())
                             });
                         }
                     }
@@ -53,13 +55,17 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         /**
-         * Esta funcion regresa un valor verdadero si es que existe el grupo,
-         * en caso contrario, regresara false.
-         * Sintaxis: Ctl_Grupo.Contain([grupoInput])
-         * Variables: [grupoInput] -> Grupo{codigo_grupo=[int],anio=[int],periodo=[int]}
+         * Esta funcion regresa un valor verdadero si es que existe una relacion entre el alumno dado
+         * y el registro en caso contrario, regresara false.
+         * Sintaxis: Tbl_RelacionRegistroAlumno.Contain([relacionRegistroAlumnoInput])
+         * Variables: [relacionRegistroAlumnoInput] -> RelacionRegistroAlumno()
+         *  {
+         *      id_registro_relacion = [int],
+         *      id_alumno_registro = [int]
+         *  }
          * Return type: bool
          **/
-        public static bool Contain(Grupo grupoInput)
+        public static bool Contain(RelacionRegistroAlumno relacionRegistroAlumnoInput)
         {
             bool output = false;
             using (var connection = new SQLiteConnection(connectionString))
@@ -68,10 +74,11 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from Ctl_Grupo where desc_grupo = @desc_grupo";
-                    command.Parameters.AddWithValue("@codigo_grupo", grupoInput.codigo_grupo);
-                    command.Parameters.AddWithValue("@anio", grupoInput.anio);
-                    command.Parameters.AddWithValue("@periodo", grupoInput.periodo);
+                        "select * from tbl_relacionRegistroAlumno " +
+                        "where id_registro_relacion = @id_registro_relacion " +
+                        "and id_alumno_registro = @id_alumno_registro";
+                    command.Parameters.AddWithValue("@id_registro_relacion", relacionRegistroAlumnoInput.id_registro_relacion);
+                    command.Parameters.AddWithValue("@id_alumno_registro", relacionRegistroAlumnoInput.id_alumno_registro);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -86,50 +93,49 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         /**
-         * Esta funcion añade un codigo de grupo si y solo no esta registrado este codigo antes, cuando
-         * la adicion es exitosa regresa un valor verdadero, pero si el codigo ya existe no se añadira el
-         * mismo codigo dos veces y regresara un valor falso.
-         * Sintaxis: ctl_grupo.add([Grupo])
-         * Variables: [Grupo] -> Grupo()
-         * {
-         *      codigo_grupo = [int],
-         *      anio,periodo = [int],
-         *      id_materia_grupo = [int],
-         *      id_profesor_grupo = [int]
-         * }
+         * Esta funcion añade una relacion entre un alumno y un registro de asistencia si y solo no esta 
+         * registrado este codigo antes, cuando la adicion es exitosa regresa un valor verdadero, pero 
+         * si el codigo ya existe no se añadira el  mismo codigo dos veces y regresara un valor falso.
+         * Sintaxis: Ctl_CodigoGrupo.add([relacionRegistroAlumnoInput])
+         * Variables: [relacionRegistroAlumnoInput] -> RelacionRegistroAlumno()
+         *  {
+         *      id_registro_relacion = [int],
+         *      id_alumno_registro = [int]
+         *  }
          * Return type: bool
          **/
-        public static bool Add(Grupo grupoInput)
+        public static bool Add(RelacionRegistroAlumno relacionRegistroAlumnoInput)
         {
             bool output = false;
-            if (!Contain(grupoInput))
+            if (!Contain(relacionRegistroAlumnoInput))
             {
-                output = ForceAdd(grupoInput);
+                output = ForceAdd(relacionRegistroAlumnoInput);
             }
             return output;
         }
+
 
         //=============================================================================================================
         // Metodos de busqueda con parametros
         //=============================================================================================================
 
         /**
-         * Esta funcion retorna una lista de CodigoGrupo que cumple con la clausula where establecida
-         * en los parametros.
-         * Sintaxis: ctl_grupo.getListWhere([parameter],[value])
+         * Esta funcion retorna una lista de RelacionRegistroAlumno que cumple con la clausula where 
+         * establecida en los parametros.
+         * Sintaxis: Tbl_RelacionRegistroAlumno.getListWhere([parameter],[value])
          * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<Grupo>
+         * Return type: List<RelacionRegistroAlumno>
          **/
-        public static List<Grupo> GetListWhere(string parameter, string logic, string value)
+        public static List<RelacionRegistroAlumno> GetListWhere(string parameter, string logic, string value)
         {
-            List<Grupo> output = new List<Grupo>();
+            List<RelacionRegistroAlumno> output = new List<RelacionRegistroAlumno>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_grupo where @parameter @logic @value";
+                        "select * from tbl_relacionRegistroAlumno where @parameter @logic @value";
                     command.Parameters.AddWithValue("@parameter", parameter);
                     command.Parameters.AddWithValue("@logic", logic);
                     command.Parameters.AddWithValue("@value", value);
@@ -137,14 +143,11 @@ namespace RegistroDeAsistencia.DataBase.Control
                     {
                         while (reader.Read())
                         {
-                            output.Add(new Grupo()
+                            output.Add(new RelacionRegistroAlumno()
                             {
-                                id_grupo = int.Parse(reader["id_grupo"].ToString()),
-                                codigo_grupo = int.Parse(reader["codigo_grupo"].ToString()),
-                                anio = int.Parse(reader["anio"].ToString()),
-                                periodo = int.Parse(reader["periodo"].ToString()),
-                                id_materia_grupo = int.Parse(reader["id_materia_grupo"].ToString()),
-                                id_profesor_grupo = int.Parse(reader["id_profesor_grupo"].ToString())
+                                id_relacion = int.Parse(reader["id_relacion"].ToString()),
+                                id_registro_relacion = int.Parse(reader["id_registro_relacion"].ToString()),
+                                id_alumno_registro = int.Parse(reader["id_alumno_registro"].ToString())
                             });
                         }
                     }
@@ -160,7 +163,7 @@ namespace RegistroDeAsistencia.DataBase.Control
         /**
          * Funcion interna, neta si no sabes que hace no lo toques
          **/
-        private static bool ForceAdd(Grupo grupoInput)
+        private static bool ForceAdd(RelacionRegistroAlumno relacionRegistroAlumnoInput)
         {
             bool output = false;
             using (var connection = new SQLiteConnection(connectionString))
@@ -169,15 +172,10 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        @"INSERT INTO ctl_grupo 
-                        (codigo_grupo,anio,periodo,id_materia_grupo,id_profesor_grupo) 
-                        values 
-                        (@codigo_grupo,@anio,@periodo,@id_materia_grupo,@id_profesor_grupo)";
-                    command.Parameters.AddWithValue("@codigo_grupo", grupoInput.codigo_grupo);
-                    command.Parameters.AddWithValue("@anio", grupoInput.anio);
-                    command.Parameters.AddWithValue("@periodo", grupoInput.periodo);
-                    command.Parameters.AddWithValue("@id_materia_grupo", grupoInput.id_materia_grupo);
-                    command.Parameters.AddWithValue("@id_profesor_grupo", grupoInput.id_profesor_grupo);
+                        @"INSERT INTO tbl_relacionRegistroAlumno (id_registro_relacion,id_alumno_registro) 
+                        values (@id_registro_relacion,@id_alumno_registro)";
+                    command.Parameters.AddWithValue("@id_registro_relacion", relacionRegistroAlumnoInput.id_registro_relacion);
+                    command.Parameters.AddWithValue("@id_alumno_registro", relacionRegistroAlumnoInput.id_alumno_registro);
                     if (command.ExecuteNonQuery() > 0)
                     {
                         output = true;

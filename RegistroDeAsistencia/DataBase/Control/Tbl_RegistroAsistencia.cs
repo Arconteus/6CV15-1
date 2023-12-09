@@ -4,7 +4,7 @@ using System.Data.SQLite;
 
 namespace RegistroDeAsistencia.DataBase.Control
 {
-    internal class Tbl_RegistroAsistencia
+    public class Tbl_RegistroAsistencia
     {
         //=============================================================================================================
         // Variables de control de la base de datos

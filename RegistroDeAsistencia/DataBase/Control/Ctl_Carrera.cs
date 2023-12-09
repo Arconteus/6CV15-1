@@ -4,7 +4,7 @@ using System.Data.SQLite;
 
 namespace RegistroDeAsistencia.DataBase.Control
 {
-    internal class Ctl_Carrera
+    public class Ctl_Carrera
     {
         //=============================================================================================================
         // Variables de control de la base de datos

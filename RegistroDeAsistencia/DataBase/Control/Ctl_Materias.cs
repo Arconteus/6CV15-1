@@ -4,7 +4,7 @@ using System.Data.SQLite;
 
 namespace RegistroDeAsistencia.DataBase.Control
 {
-    internal class Ctl_Materias
+    public class Ctl_Materias
     {
         //=============================================================================================================
         // Variables de control de la base de datos
