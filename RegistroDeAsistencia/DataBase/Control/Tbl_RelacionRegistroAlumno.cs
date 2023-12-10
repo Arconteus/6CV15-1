@@ -126,7 +126,7 @@ namespace RegistroDeAsistencia.DataBase.Control
          * Variables: [parameter] -> string, [value] -> string
          * Return type: List<RelacionRegistroAlumno>
          **/
-        public static List<RelacionRegistroAlumno> GetListWhere(string parameter, string logic, string value)
+        public static List<RelacionRegistroAlumno> GetListWhere(string whereClause)
         {
             List<RelacionRegistroAlumno> output = new List<RelacionRegistroAlumno>();
             using (var connection = new SQLiteConnection(connectionString))
@@ -135,10 +135,8 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from tbl_relacionRegistroAlumno where @parameter @logic @value";
-                    command.Parameters.AddWithValue("@parameter", parameter);
-                    command.Parameters.AddWithValue("@logic", logic);
-                    command.Parameters.AddWithValue("@value", value);
+                        "select * from tbl_relacionRegistroAlumno where @whereClause";
+                    command.Parameters.AddWithValue("@whereClause", whereClause);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())

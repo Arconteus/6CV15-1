@@ -111,7 +111,7 @@ namespace RegistroDeAsistencia.DataBase.Control
          * Variables: [parameter] -> string, [value] -> string
          * Return type: List<Escuela>
          **/
-        public static List<Escuela> GetListWhere(string parameter, string logic, string value)
+        public static List<Escuela> GetListWhere(string whereClause)
         {
             List<Escuela> output = new List<Escuela>();
             using (var connection = new SQLiteConnection(connectionString))
@@ -120,10 +120,8 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_escuela where @parameter @logic @value";
-                    command.Parameters.AddWithValue("@parameter", parameter);
-                    command.Parameters.AddWithValue("@logic", logic);
-                    command.Parameters.AddWithValue("@value", value);
+                        "select * from ctl_escuela where @whereClause";
+                    command.Parameters.AddWithValue("@whereClause", whereClause);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -135,6 +133,7 @@ namespace RegistroDeAsistencia.DataBase.Control
                             });
                         }
                     }
+                    command.Parameters.Clear();
                 }
             }
             return output;
