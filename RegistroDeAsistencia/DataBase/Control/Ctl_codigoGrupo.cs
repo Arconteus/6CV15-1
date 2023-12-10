@@ -111,7 +111,7 @@ namespace RegistroDeAsistencia.DataBase.Control
          * Variables: [parameter] -> string, [value] -> string
          * Return type: List<CodigoGrupo>
          **/
-        public static List<CodigoGrupo> GetListWhere(string parameter, string logic, string value)
+        public static List<CodigoGrupo> GetListWhere(string whereClause)
         {
             List<CodigoGrupo> output = new List<CodigoGrupo>();
             using (var connection = new SQLiteConnection(connectionString))
@@ -120,10 +120,8 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_codigoGrupo where @parameter @logic @value";
-                    command.Parameters.AddWithValue("@parameter", parameter);
-                    command.Parameters.AddWithValue("@logic", logic);
-                    command.Parameters.AddWithValue("@value", value);
+                        "select * from ctl_codigoGrupo where @whereClausee";
+                    command.Parameters.AddWithValue("@whereClause", whereClause);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
