@@ -24,27 +24,12 @@ namespace RegistroDeAsistencia.DataBase.Control
          **/
         public static List<Materia> GetList()
         {
-            List<Materia> output = new List<Materia>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_materias";
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new Materia()
-                            {
-                                id_materia = int.Parse(reader["id_materia"].ToString()),
-                                nom_materia = reader["nom_materia"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
+            List<Materia> output = GetListWhere("");
+            return output;
+        }
+        public static List<Materia> GetList(string extraParameters)
+        {
+            List<Materia> output = GetListWhere(extraParameters);
             return output;
         }
 
@@ -101,45 +86,6 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         //=============================================================================================================
-        // Metodos de busqueda con parametros
-        //=============================================================================================================
-
-        /**
-         * Esta funcion retorna una lista de Carreas que cumple con la clausula where establecida
-         * en los parametros.
-         * Sintaxis: Ctl_Materias.getListWhere([parameter],[value])
-         * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<Carrera>
-         **/
-        public static List<Materia> GetListWhere(string whereClause)
-        {
-            List<Materia> output = new List<Materia>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_materias where @whereClause";
-                    command.Parameters.AddWithValue("@whereClause", whereClause);
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new Materia()
-                            {
-                                id_materia = int.Parse(reader["id_materia"].ToString()),
-                                nom_materia = reader["nom_materia"].ToString()
-                            });
-                        }
-                    }
-                    command.Parameters.Clear();
-                }
-            }
-            return output;
-        }
-
-        //=============================================================================================================
         // Metodos privados
         //=============================================================================================================
 
@@ -160,6 +106,36 @@ namespace RegistroDeAsistencia.DataBase.Control
                     if (command.ExecuteNonQuery() > 0)
                     {
                         output = true;
+                    }
+                    command.Parameters.Clear();
+                }
+            }
+            return output;
+        }
+
+        /**
+         * Funcion interna, neta si no sabes que hace no lo toques
+         **/
+        private static List<Materia> GetListWhere(string extraParameters)
+        {
+            List<Materia> output = new List<Materia>();
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText =
+                        "select * from ctl_materias "+ extraParameters;
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            output.Add(new Materia()
+                            {
+                                id_materia = int.Parse(reader["id_materia"].ToString()),
+                                nom_materia = reader["nom_materia"].ToString()
+                            });
+                        }
                     }
                     command.Parameters.Clear();
                 }

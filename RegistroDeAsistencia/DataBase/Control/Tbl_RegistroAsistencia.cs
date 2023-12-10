@@ -24,29 +24,12 @@ namespace RegistroDeAsistencia.DataBase.Control
          **/
         public static List<RegistroAsistencia> GetList()
         {
-            List<RegistroAsistencia> output = new List<RegistroAsistencia>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from tbl_registroAsistencia";
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new RegistroAsistencia()
-                            {
-                                id_registro = int.Parse(reader["id_registro"].ToString()),
-                                id_grupo_registro = int.Parse(reader["id_grupo_registro"].ToString()),
-                                fecha_registro = reader["fecha_registro"].ToString(),
-                                hora_registro = reader["hora_registro"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
+            List<RegistroAsistencia> output = GetListWhere("");
+            return output;
+        }
+        public static List<RegistroAsistencia> GetList(string extraParameters)
+        {
+            List<RegistroAsistencia> output = GetListWhere(extraParameters);
             return output;
         }
 
@@ -108,47 +91,6 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         //=============================================================================================================
-        // Metodos de busqueda con parametros
-        //=============================================================================================================
-
-        /**
-         * Esta funcion retorna una lista de RegistroAsistencia que cumple con la clausula where establecida
-         * en los parametros.
-         * Sintaxis: tbl_registroAsistencia.getListWhere([parameter],[value])
-         * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<RegistroAsistencia>
-         **/
-        public static List<RegistroAsistencia> GetListWhere(string whereClause)
-        {
-            List<RegistroAsistencia> output = new List<RegistroAsistencia>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from tbl_registroAsistencia where @whereClause";
-                    command.Parameters.AddWithValue("@parameter", whereClause);
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new RegistroAsistencia()
-                            {
-                                id_registro = int.Parse(reader["id_registro"].ToString()),
-                                id_grupo_registro = int.Parse(reader["id_grupo_registro"].ToString()),
-                                fecha_registro = reader["fecha_registro"].ToString(),
-                                hora_registro = reader["hora_registro"].ToString()
-                            });
-                        }
-                    }
-                    command.Parameters.Clear();
-                }
-            }
-            return output;
-        }
-
-        //=============================================================================================================
         // Metodos privados
         //=============================================================================================================
 
@@ -174,6 +116,38 @@ namespace RegistroDeAsistencia.DataBase.Control
                     if (command.ExecuteNonQuery() > 0)
                     {
                         output = true;
+                    }
+                    command.Parameters.Clear();
+                }
+            }
+            return output;
+        }
+
+        /**
+         * Funcion interna, neta si no sabes que hace no lo toques
+         **/
+        private static List<RegistroAsistencia> GetListWhere(string extraParameters)
+        {
+            List<RegistroAsistencia> output = new List<RegistroAsistencia>();
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText =
+                        "select * from tbl_registroAsistencia "+ extraParameters;
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            output.Add(new RegistroAsistencia()
+                            {
+                                id_registro = int.Parse(reader["id_registro"].ToString()),
+                                id_grupo_registro = int.Parse(reader["id_grupo_registro"].ToString()),
+                                fecha_registro = reader["fecha_registro"].ToString(),
+                                hora_registro = reader["hora_registro"].ToString()
+                            });
+                        }
                     }
                     command.Parameters.Clear();
                 }

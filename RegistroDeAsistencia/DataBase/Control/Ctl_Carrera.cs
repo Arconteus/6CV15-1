@@ -24,27 +24,12 @@ namespace RegistroDeAsistencia.DataBase.Control
          **/
         public static List<Carrera> GetList()
         {
-            List<Carrera> output = new List<Carrera>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_carrera";
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new Carrera()
-                            {
-                                id_carrera = int.Parse(reader["id_carrera"].ToString()),
-                                nom_carrera = reader["nom_carrera"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
+            List<Carrera> output = GetListWhere("");
+            return output;
+        }
+        public static List<Carrera> GetList(string extraParameters)
+        {
+            List<Carrera> output = GetListWhere(extraParameters);
             return output;
         }
 
@@ -100,44 +85,6 @@ namespace RegistroDeAsistencia.DataBase.Control
             return output;
         }
 
-        //=============================================================================================================
-        // Metodos de busqueda con parametros
-        //=============================================================================================================
-
-        /**
-         * Esta funcion retorna una lista de Carrera que cumple con la clausula where establecida
-         * en los parametros.
-         * Sintaxis: Ctl_Carrera.getListWhere([parameter],[value])
-         * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<Carrera>
-         **/
-        public static List<Carrera> GetListWhere(string whereClause)
-        {
-            List<Carrera> output = new List<Carrera>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_carrera where @whereClause";
-                    command.Parameters.AddWithValue("@whereClause", whereClause);
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new Carrera()
-                            {
-                                id_carrera = int.Parse(reader["id_carrera"].ToString()),
-                                nom_carrera = reader["nom_carrera"].ToString()
-                            });
-                        }
-                    }
-                    command.Parameters.Clear();
-                }
-            }
-            return output;
-        }
 
         //=============================================================================================================
         // Metodos privados
@@ -166,6 +113,37 @@ namespace RegistroDeAsistencia.DataBase.Control
             }
             return output;
         }
+
+        /**
+         * Funcion interna, neta si no sabes que hace no lo toques
+         **/
+        private static List<Carrera> GetListWhere(string extraParameters)
+        {
+            List<Carrera> output = new List<Carrera>();
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText =
+                        "select * from ctl_carrera "+ extraParameters;
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            output.Add(new Carrera()
+                            {
+                                id_carrera = int.Parse(reader["id_carrera"].ToString()),
+                                nom_carrera = reader["nom_carrera"].ToString()
+                            });
+                        }
+                    }
+                    command.Parameters.Clear();
+                }
+            }
+            return output;
+        }
+
 
     }
 }

@@ -29,28 +29,12 @@ namespace RegistroDeAsistencia.DataBase.Control
          **/
         public static List<RelacionRegistroAlumno> GetList()
         {
-            List<RelacionRegistroAlumno> output = new List<RelacionRegistroAlumno>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from tbl_relacionRegistroAlumno";
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new RelacionRegistroAlumno()
-                            {
-                                id_relacion = int.Parse(reader["id_relacion"].ToString()),
-                                id_registro_relacion = int.Parse(reader["id_registro_relacion"].ToString()),
-                                id_alumno_registro = int.Parse(reader["id_alumno_registro"].ToString())
-                            });
-                        }
-                    }
-                }
-            }
+            List<RelacionRegistroAlumno> output = GetListWhere("");
+            return output;
+        }
+        public static List<RelacionRegistroAlumno> GetList(string extraParameters)
+        {
+            List<RelacionRegistroAlumno> output = GetListWhere(extraParameters);
             return output;
         }
 
@@ -115,44 +99,7 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
 
-        //=============================================================================================================
-        // Metodos de busqueda con parametros
-        //=============================================================================================================
-
-        /**
-         * Esta funcion retorna una lista de RelacionRegistroAlumno que cumple con la clausula where 
-         * establecida en los parametros.
-         * Sintaxis: Tbl_RelacionRegistroAlumno.getListWhere([parameter],[value])
-         * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<RelacionRegistroAlumno>
-         **/
-        public static List<RelacionRegistroAlumno> GetListWhere(string whereClause)
-        {
-            List<RelacionRegistroAlumno> output = new List<RelacionRegistroAlumno>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from tbl_relacionRegistroAlumno where @whereClause";
-                    command.Parameters.AddWithValue("@whereClause", whereClause);
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new RelacionRegistroAlumno()
-                            {
-                                id_relacion = int.Parse(reader["id_relacion"].ToString()),
-                                id_registro_relacion = int.Parse(reader["id_registro_relacion"].ToString()),
-                                id_alumno_registro = int.Parse(reader["id_alumno_registro"].ToString())
-                            });
-                        }
-                    }
-                }
-            }
-            return output;
-        }
+        
 
         //=============================================================================================================
         // Metodos privados
@@ -184,5 +131,34 @@ namespace RegistroDeAsistencia.DataBase.Control
             return output;
         }
 
+        /**
+         * Funcion interna, neta si no sabes que hace no lo toques
+         **/
+        private static List<RelacionRegistroAlumno> GetListWhere(string extraParameters)
+        {
+            List<RelacionRegistroAlumno> output = new List<RelacionRegistroAlumno>();
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText =
+                        "select * from tbl_relacionRegistroAlumno " + extraParameters;
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            output.Add(new RelacionRegistroAlumno()
+                            {
+                                id_relacion = int.Parse(reader["id_relacion"].ToString()),
+                                id_registro_relacion = int.Parse(reader["id_registro_relacion"].ToString()),
+                                id_alumno_registro = int.Parse(reader["id_alumno_registro"].ToString())
+                            });
+                        }
+                    }
+                }
+            }
+            return output;
+        }
     }
 }
