@@ -24,31 +24,12 @@ namespace RegistroDeAsistencia.DataBase.Control
          **/
         public static List<Grupo> GetList()
         {
-            List<Grupo> output = new List<Grupo>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_grupo";
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new Grupo()
-                            {
-                                id_grupo = int.Parse(reader["id_codigo"].ToString()),
-                                codigo_grupo = int.Parse(reader["codigo_grupo"].ToString()),
-                                anio = int.Parse(reader["anio"].ToString()),
-                                periodo = int.Parse(reader["periodo"].ToString()),
-                                id_materia_grupo = int.Parse(reader["id_materia_grupo"].ToString()),
-                                id_profesor_grupo = int.Parse(reader["id_profesor_grupo"].ToString())
-                            });
-                        }
-                    }
-                }
-            }
+            List<Grupo> output = GetListWhere("");
+            return output;
+        }
+        public static List<Grupo> GetList(string extraParameters)
+        {
+            List<Grupo> output = GetListWhere(extraParameters);
             return output;
         }
 
@@ -110,49 +91,6 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         //=============================================================================================================
-        // Metodos de busqueda con parametros
-        //=============================================================================================================
-
-        /**
-         * Esta funcion retorna una lista de CodigoGrupo que cumple con la clausula where establecida
-         * en los parametros.
-         * Sintaxis: ctl_grupo.getListWhere([parameter],[value])
-         * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<Grupo>
-         **/
-        public static List<Grupo> GetListWhere(string whereClause)
-        {
-            List<Grupo> output = new List<Grupo>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_grupo where @whereClause";
-                    command.Parameters.AddWithValue("@whereClause", whereClause);
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new Grupo()
-                            {
-                                id_grupo = int.Parse(reader["id_grupo"].ToString()),
-                                codigo_grupo = int.Parse(reader["codigo_grupo"].ToString()),
-                                anio = int.Parse(reader["anio"].ToString()),
-                                periodo = int.Parse(reader["periodo"].ToString()),
-                                id_materia_grupo = int.Parse(reader["id_materia_grupo"].ToString()),
-                                id_profesor_grupo = int.Parse(reader["id_profesor_grupo"].ToString())
-                            });
-                        }
-                    }
-                    command.Parameters.Clear();
-                }
-            }
-            return output;
-        }
-
-        //=============================================================================================================
         // Metodos privados
         //=============================================================================================================
 
@@ -180,6 +118,40 @@ namespace RegistroDeAsistencia.DataBase.Control
                     if (command.ExecuteNonQuery() > 0)
                     {
                         output = true;
+                    }
+                    command.Parameters.Clear();
+                }
+            }
+            return output;
+        }
+
+        /**
+         * Funcion interna, neta si no sabes que hace no lo toques
+         **/
+        private static List<Grupo> GetListWhere(string extraParameters)
+        {
+            List<Grupo> output = new List<Grupo>();
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText =
+                        "select * from ctl_grupo "+ extraParameters;
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            output.Add(new Grupo()
+                            {
+                                id_grupo = int.Parse(reader["id_grupo"].ToString()),
+                                codigo_grupo = int.Parse(reader["codigo_grupo"].ToString()),
+                                anio = int.Parse(reader["anio"].ToString()),
+                                periodo = int.Parse(reader["periodo"].ToString()),
+                                id_materia_grupo = int.Parse(reader["id_materia_grupo"].ToString()),
+                                id_profesor_grupo = int.Parse(reader["id_profesor_grupo"].ToString())
+                            });
+                        }
                     }
                     command.Parameters.Clear();
                 }

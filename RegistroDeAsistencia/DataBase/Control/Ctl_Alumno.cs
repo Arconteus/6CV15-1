@@ -24,32 +24,14 @@ namespace RegistroDeAsistencia.DataBase.Control
          **/
         public static List<Alumno> GetList()
         {
-            List<Alumno> output = new List<Alumno>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_alumno";
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new Alumno()
-                            {
-                                id_alumno = int.Parse(reader["id_alumno"].ToString()),
-                                boleta = reader["boleta"].ToString(),
-                                nom_alumno = reader["nom_alumno"].ToString(),
-                                apa_alumno = reader["apa_alumno"].ToString(),
-                                ama_alumno = reader["ama_alumno"].ToString(),
-                                carrera_alumno = int.Parse(reader["carrera_alumno"].ToString()),
-                                escuela_alumno = int.Parse(reader["escuela_alumno"].ToString()),
-                            });
-                        }
-                    }
-                }
-            }
+            List<Alumno> output = GetListWhere("");
+            return output;
+        }
+
+
+        public static List<Alumno> GetList(string extraParameters)
+        {
+            List<Alumno> output = GetListWhere(extraParameters);
             return output;
         }
 
@@ -113,52 +95,7 @@ namespace RegistroDeAsistencia.DataBase.Control
             return output;
         }
 
-
-
-        //=============================================================================================================
-        // Metodos de busqueda con parametros
-        //=============================================================================================================
-
-        /**
-         * Esta funcion retorna una lista de CodigoGrupo que cumple con la clausula where establecida
-         * en los parametros.
-         * Sintaxis: Ctl_Alumno.getListWhere([parameter],[value])
-         * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<Alumno>
-         **/
-        public static List<Alumno> GetListWhere(string whereClause)
-        {
-            List<Alumno> output = new List<Alumno>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_alumno where @whereClause";
-                    command.Parameters.AddWithValue("@whereClause", whereClause);
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new Alumno()
-                            {
-                                id_alumno = int.Parse(reader["id_alumno"].ToString()),
-                                boleta = reader["boleta"].ToString(),
-                                nom_alumno = reader["nom_alumno"].ToString(),
-                                apa_alumno = reader["apa_alumno"].ToString(),
-                                ama_alumno = reader["ama_alumno"].ToString(),
-                                carrera_alumno = int.Parse(reader["carrera_alumno"].ToString()),
-                                escuela_alumno = int.Parse(reader["escuela_alumno"].ToString())
-                            });
-                        }
-                    }
-                    command.Parameters.Clear();
-
-                }
-            }
-            return output;
-        }
+        
 
         //=============================================================================================================
         // Metodos privados
@@ -191,6 +128,42 @@ namespace RegistroDeAsistencia.DataBase.Control
                         output = true;
                     }
                     command.Parameters.Clear();
+                }
+            }
+            return output;
+        }
+
+        /**
+         * Funcion interna, neta si no sabes que hace no lo toques
+         **/
+        private static List<Alumno> GetListWhere(string extraParameters)
+        {
+            List<Alumno> output = new List<Alumno>();
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText =
+                        "select * from ctl_alumno "+ extraParameters;
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            output.Add(new Alumno()
+                            {
+                                id_alumno = int.Parse(reader["id_alumno"].ToString()),
+                                boleta = reader["boleta"].ToString(),
+                                nom_alumno = reader["nom_alumno"].ToString(),
+                                apa_alumno = reader["apa_alumno"].ToString(),
+                                ama_alumno = reader["ama_alumno"].ToString(),
+                                carrera_alumno = int.Parse(reader["carrera_alumno"].ToString()),
+                                escuela_alumno = int.Parse(reader["escuela_alumno"].ToString())
+                            });
+                        }
+                    }
+                    command.Parameters.Clear();
+
                 }
             }
             return output;

@@ -24,32 +24,15 @@ namespace RegistroDeAsistencia.DataBase.Control
          **/
         public static List<Profesor> GetList()
         {
-            List<Profesor> output = new List<Profesor>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_profesor";
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new Profesor()
-                            {
-                                id_profesor = int.Parse(reader["id_profesor"].ToString()),
-                                num_trabajador = reader["num_trabajador"].ToString(),
-                                nom_profesor = reader["nom_trabajador"].ToString(),
-                                apa_profesor = reader["apa_trabajador"].ToString(),
-                                ama_profesor = reader["ama_trabajador"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
+            List<Profesor> output = GetListWhere("");
             return output;
         }
+        public static List<Profesor> GetList(string extraParameters)
+        {
+            List<Profesor> output = GetListWhere(extraParameters);
+            return output;
+        }
+
 
         /**
          * Esta funcion regresa un valor verdadero si es que existe el profesor, Para verificar
@@ -110,47 +93,7 @@ namespace RegistroDeAsistencia.DataBase.Control
             return output;
         }
 
-        //=============================================================================================================
-        // Metodos de busqueda con parametros
-        //=============================================================================================================
-
-        /**
-         * Esta funcion retorna una lista de Carreas que cumple con la clausula where establecida
-         * en los parametros.
-         * Sintaxis: Ctl_Profesor.getListWhere([parameter],[value])
-         * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<Profesor>
-         **/
-        public static List<Profesor> GetListWhere(string whereClause)
-        {
-            List<Profesor> output = new List<Profesor>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_profesor where @whereClause";
-                    command.Parameters.AddWithValue("@whereClause", whereClause);
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new Profesor()
-                            {
-                                id_profesor = int.Parse(reader["id_profesor"].ToString()),
-                                num_trabajador = reader["num_trabajador"].ToString(),
-                                nom_profesor = reader["nom_profesor"].ToString(),
-                                apa_profesor = reader["apa_profesor"].ToString(),
-                                ama_profesor = reader["ama_profesor"].ToString()
-                            });
-                        }
-                    }
-                    command.Parameters.Clear();
-                }
-            }
-            return output;
-        }
+        
         //=============================================================================================================
         // Metodos privados
         //=============================================================================================================
@@ -176,6 +119,39 @@ namespace RegistroDeAsistencia.DataBase.Control
                     if (command.ExecuteNonQuery() > 0)
                     {
                         output = true;
+                    }
+                    command.Parameters.Clear();
+                }
+            }
+            return output;
+        }
+
+        /**
+         * Funcion interna, neta si no sabes que hace no lo toques
+         **/
+        private static List<Profesor> GetListWhere(string extraParameters)
+        {
+            List<Profesor> output = new List<Profesor>();
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText =
+                        "select * from ctl_profesor "+ extraParameters;
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            output.Add(new Profesor()
+                            {
+                                id_profesor = int.Parse(reader["id_profesor"].ToString()),
+                                num_trabajador = reader["num_trabajador"].ToString(),
+                                nom_profesor = reader["nom_profesor"].ToString(),
+                                apa_profesor = reader["apa_profesor"].ToString(),
+                                ama_profesor = reader["ama_profesor"].ToString()
+                            });
+                        }
                     }
                     command.Parameters.Clear();
                 }

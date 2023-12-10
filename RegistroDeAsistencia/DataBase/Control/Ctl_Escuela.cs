@@ -24,27 +24,12 @@ namespace RegistroDeAsistencia.DataBase.Control
          **/
         public static List<Escuela> GetList()
         {
-            List<Escuela> output = new List<Escuela>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_escuela";
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new Escuela()
-                            {
-                                id_escuela = int.Parse(reader["id_escuela"].ToString()),
-                                nom_escuela = reader["nom_escuela"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
+            List<Escuela> output = GetListWhere("");
+            return output;
+        }
+        public static List<Escuela> GetList(string extraParameters)
+        {
+            List<Escuela> output = GetListWhere(extraParameters);
             return output;
         }
 
@@ -111,33 +96,6 @@ namespace RegistroDeAsistencia.DataBase.Control
          * Variables: [parameter] -> string, [value] -> string
          * Return type: List<Escuela>
          **/
-        public static List<Escuela> GetListWhere(string whereClause)
-        {
-            List<Escuela> output = new List<Escuela>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_escuela where @whereClause";
-                    command.Parameters.AddWithValue("@whereClause", whereClause);
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new Escuela()
-                            {
-                                id_escuela = int.Parse(reader["id_escuela"].ToString()),
-                                nom_escuela = reader["nom_escuela"].ToString()
-                            });
-                        }
-                    }
-                    command.Parameters.Clear();
-                }
-            }
-            return output;
-        }
 
         //=============================================================================================================
         // Metodos privados
@@ -167,5 +125,34 @@ namespace RegistroDeAsistencia.DataBase.Control
             return output;
         }
 
+        /**
+         * Funcion interna, neta si no sabes que hace no lo toques
+         **/
+        private static List<Escuela> GetListWhere(string extraParameters)
+        {
+            List<Escuela> output = new List<Escuela>();
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText =
+                        "select * from ctl_escuela "+extraParameters;
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            output.Add(new Escuela()
+                            {
+                                id_escuela = int.Parse(reader["id_escuela"].ToString()),
+                                nom_escuela = reader["nom_escuela"].ToString()
+                            });
+                        }
+                    }
+                    command.Parameters.Clear();
+                }
+            }
+            return output;
+        }
     }
 }

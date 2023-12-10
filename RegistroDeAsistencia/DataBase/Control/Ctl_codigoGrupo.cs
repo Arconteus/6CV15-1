@@ -24,27 +24,12 @@ namespace RegistroDeAsistencia.DataBase.Control
          **/
         public static List<CodigoGrupo> GetList()
         {
-            List<CodigoGrupo> output = new List<CodigoGrupo>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_codigoGrupo";
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new CodigoGrupo()
-                            {
-                                id_codigo = int.Parse(reader["id_codigo"].ToString()),
-                                desc_grupo = reader["desc_grupo"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
+            List<CodigoGrupo> output = GetListWhere("");
+            return output;
+        }
+        public static List<CodigoGrupo> GetList(string extraParameters)
+        {
+            List<CodigoGrupo> output = GetListWhere(extraParameters);
             return output;
         }
 
@@ -101,44 +86,6 @@ namespace RegistroDeAsistencia.DataBase.Control
         }
 
         //=============================================================================================================
-        // Metodos de busqueda con parametros
-        //=============================================================================================================
-
-        /**
-         * Esta funcion retorna una lista de CodigoGrupo que cumple con la clausula where establecida
-         * en los parametros.
-         * Sintaxis: Ctl_CodigoGrupo.getListWhere([parameter],[value])
-         * Variables: [parameter] -> string, [value] -> string
-         * Return type: List<CodigoGrupo>
-         **/
-        public static List<CodigoGrupo> GetListWhere(string whereClause)
-        {
-            List<CodigoGrupo> output = new List<CodigoGrupo>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from ctl_codigoGrupo where @whereClausee";
-                    command.Parameters.AddWithValue("@whereClause", whereClause);
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new CodigoGrupo()
-                            {
-                                id_codigo = int.Parse(reader["id_codigo"].ToString()),
-                                desc_grupo = reader["desc_grupo"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
-            return output;
-        }
-
-        //=============================================================================================================
         // Metodos privados
         //=============================================================================================================
 
@@ -161,6 +108,35 @@ namespace RegistroDeAsistencia.DataBase.Control
                         output = true;
                     }
                     command.Parameters.Clear();
+                }
+            }
+            return output;
+        }
+
+        /**
+         * Funcion interna, neta si no sabes que hace no lo toques
+         **/
+        private static List<CodigoGrupo> GetListWhere(string extraParameters)
+        {
+            List<CodigoGrupo> output = new List<CodigoGrupo>();
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText =
+                        "select * from ctl_codigoGrupo "+ extraParameters;
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            output.Add(new CodigoGrupo()
+                            {
+                                id_codigo = int.Parse(reader["id_codigo"].ToString()),
+                                desc_grupo = reader["desc_grupo"].ToString()
+                            });
+                        }
+                    }
                 }
             }
             return output;

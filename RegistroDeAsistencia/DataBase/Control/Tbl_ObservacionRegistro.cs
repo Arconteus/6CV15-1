@@ -24,28 +24,12 @@ namespace RegistroDeAsistencia.DataBase.Control
          **/
         public static List<ObservacionRegistro> GetList()
         {
-            List<ObservacionRegistro> output = new List<ObservacionRegistro>();
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(connection))
-                {
-                    command.CommandText =
-                        "select * from tbl_observacionRegistro";
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            output.Add(new ObservacionRegistro()
-                            {
-                                id_observacionRegistro = int.Parse(reader["id_observacionRegistro"].ToString()),
-                                id_registro_observacion = int.Parse(reader["id_registro_observacion"].ToString()),
-                                observacion = reader["observacion"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
+            List<ObservacionRegistro> output = GetListWhere("");
+            return output;
+        }
+        public static List<ObservacionRegistro> GetList(string extraParameters)
+        {
+            List<ObservacionRegistro> output = GetListWhere(extraParameters);
             return output;
         }
 
@@ -96,7 +80,7 @@ namespace RegistroDeAsistencia.DataBase.Control
          * Variables: [parameter] -> string, [value] -> string
          * Return type: List<RegistroAsistencia>
          **/
-        public static List<ObservacionRegistro> GetListWhere(string whereClause)
+        private static List<ObservacionRegistro> GetListWhere(string extraParameters)
         {
             List<ObservacionRegistro> output = new List<ObservacionRegistro>();
             using (var connection = new SQLiteConnection(connectionString))
@@ -105,8 +89,7 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from tbl_observacionRegistro where @whereClause";
-                    command.Parameters.AddWithValue("@whereClause", whereClause);
+                        "select * from tbl_observacionRegistro "+ extraParameters;
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
