@@ -1,31 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿using RegistroDeAsistencia.DataBase.Control;
+using RegistroDeAsistencia.DataBase.Modelo;
 namespace RegistroDeAsistencia
 {
+
+
     public partial class Pantalla_admin : Form
     {
+        private string nom_materia;
+
         public Pantalla_admin()
         {
             InitializeComponent();
-        }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+
+
+        }
+        private void Agregargrupobutton1_Click(object sender, EventArgs e)
         {
-
-
+            Grupo grupo = new Grupo()
+            {
+                id_grupo=int.Parse(GrupotextBox3.Text)
+            };
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = Ctl_Grupo.GetList();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
+
 }

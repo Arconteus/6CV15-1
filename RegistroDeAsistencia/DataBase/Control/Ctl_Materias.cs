@@ -101,8 +101,8 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        @"INSERT INTO ctl_materias (nom_carrera) values (@nom_carrera)";
-                    command.Parameters.AddWithValue("@nom_carrera", materiaInput.nom_materia);
+                        @"INSERT INTO ctl_materias (nom_materia) values (@nom_materia)";
+                    command.Parameters.AddWithValue("@nom_materia", materiaInput.nom_materia);
                     if (command.ExecuteNonQuery() > 0)
                     {
                         output = true;

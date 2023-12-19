@@ -75,6 +75,7 @@
             IdTextBox.Name = "IdTextBox";
             IdTextBox.Size = new Size(100, 23);
             IdTextBox.TabIndex = 3;
+            IdTextBox.TextChanged += IdTextBox_TextChanged;
             // 
             // GrupoTextBox
             // 
@@ -82,6 +83,7 @@
             GrupoTextBox.Name = "GrupoTextBox";
             GrupoTextBox.Size = new Size(100, 23);
             GrupoTextBox.TabIndex = 5;
+            GrupoTextBox.TextChanged += GrupoTextBox_TextChanged;
             // 
             // label2
             // 
@@ -110,6 +112,7 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(396, 150);
             dataGridView1.TabIndex = 7;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // UpdateButton
             // 
@@ -137,6 +140,7 @@
             Controls.Add(ContainCheckBox);
             Name = "Test";
             Text = "Test";
+            Load += Test_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

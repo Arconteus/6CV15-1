@@ -1,4 +1,5 @@
-﻿namespace RegistroDeAsistencia
+﻿
+namespace RegistroDeAsistencia
 {
     partial class Pantalla_admin
     {
@@ -31,7 +32,6 @@
             Semestrelabel1 = new Label();
             Profesorlabel2 = new Label();
             Materialabel3 = new Label();
-            ProfesortextBox1 = new TextBox();
             SemestrecomboBox1 = new ComboBox();
             MateriacomboBox2 = new ComboBox();
             label4 = new Label();
@@ -45,12 +45,8 @@
             ProfesortextBox5 = new TextBox();
             Agregargrupobutton1 = new Button();
             dataGridView1 = new DataGridView();
-            Column2 = new DataGridViewCheckBoxColumn();
-            Semestre = new DataGridViewTextBoxColumn();
-            Grupo = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
-            Profesor = new DataGridViewTextBoxColumn();
             BusquedatextBox6 = new TextBox();
+            profesorcomboBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -80,13 +76,6 @@
             Materialabel3.Size = new Size(47, 15);
             Materialabel3.TabIndex = 2;
             Materialabel3.Text = "Materia";
-            // 
-            // ProfesortextBox1
-            // 
-            ProfesortextBox1.Location = new Point(108, 106);
-            ProfesortextBox1.Name = "ProfesortextBox1";
-            ProfesortextBox1.Size = new Size(407, 23);
-            ProfesortextBox1.TabIndex = 3;
             // 
             // SemestrecomboBox1
             // 
@@ -159,7 +148,7 @@
             // 
             // GrupotextBox3
             // 
-            GrupotextBox3.Location = new Point(752, 217);
+            GrupotextBox3.Location = new Point(752, 222);
             GrupotextBox3.Name = "GrupotextBox3";
             GrupotextBox3.Size = new Size(100, 23);
             GrupotextBox3.TabIndex = 13;
@@ -180,47 +169,23 @@
             // 
             // Agregargrupobutton1
             // 
-            Agregargrupobutton1.Location = new Point(819, 354);
+            Agregargrupobutton1.Location = new Point(721, 368);
             Agregargrupobutton1.Name = "Agregargrupobutton1";
             Agregargrupobutton1.Size = new Size(96, 23);
             Agregargrupobutton1.TabIndex = 16;
             Agregargrupobutton1.Text = "Agregar Grupo";
             Agregargrupobutton1.UseVisualStyleBackColor = true;
+            Agregargrupobutton1.Click += Agregargrupobutton1_Click;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column2, Semestre, Grupo, Column1, Profesor });
             dataGridView1.Location = new Point(70, 224);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(548, 214);
             dataGridView1.TabIndex = 17;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "X";
-            Column2.Name = "Column2";
-            // 
-            // Semestre
-            // 
-            Semestre.HeaderText = "Semestre";
-            Semestre.Name = "Semestre";
-            // 
-            // Grupo
-            // 
-            Grupo.HeaderText = "Grupo";
-            Grupo.Name = "Grupo";
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Materia";
-            Column1.Name = "Column1";
-            // 
-            // Profesor
-            // 
-            Profesor.HeaderText = "Profesor";
-            Profesor.Name = "Profesor";
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
             // 
             // BusquedatextBox6
             // 
@@ -229,11 +194,20 @@
             BusquedatextBox6.Size = new Size(445, 23);
             BusquedatextBox6.TabIndex = 18;
             // 
+            // profesorcomboBox
+            // 
+            profesorcomboBox.FormattingEnabled = true;
+            profesorcomboBox.Location = new Point(108, 106);
+            profesorcomboBox.Name = "profesorcomboBox";
+            profesorcomboBox.Size = new Size(407, 23);
+            profesorcomboBox.TabIndex = 19;
+            // 
             // Pantalla_admin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(922, 450);
+            Controls.Add(profesorcomboBox);
             Controls.Add(BusquedatextBox6);
             Controls.Add(dataGridView1);
             Controls.Add(Agregargrupobutton1);
@@ -248,15 +222,23 @@
             Controls.Add(label4);
             Controls.Add(MateriacomboBox2);
             Controls.Add(SemestrecomboBox1);
-            Controls.Add(ProfesortextBox1);
             Controls.Add(Materialabel3);
             Controls.Add(Profesorlabel2);
             Controls.Add(Semestrelabel1);
             Name = "Pantalla_admin";
             Text = "Pantalla_admin";
+           
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
         }
 
         #endregion
@@ -264,7 +246,6 @@
         private Label Semestrelabel1;
         private Label Profesorlabel2;
         private Label Materialabel3;
-        private TextBox ProfesortextBox1;
         private ComboBox SemestrecomboBox1;
         private ComboBox MateriacomboBox2;
         private Label label4;
@@ -279,10 +260,6 @@
         private Button Agregargrupobutton1;
         private DataGridView dataGridView1;
         private TextBox BusquedatextBox6;
-        private DataGridViewCheckBoxColumn Column2;
-        private DataGridViewTextBoxColumn Semestre;
-        private DataGridViewTextBoxColumn Grupo;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Profesor;
+        private ComboBox profesorcomboBox;
     }
 }
