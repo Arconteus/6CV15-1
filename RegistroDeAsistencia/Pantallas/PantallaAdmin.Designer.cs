@@ -107,7 +107,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(708, 148);
+            label4.Location = new Point(638, 147);
             label4.Name = "label4";
             label4.Size = new Size(88, 15);
             label4.TabIndex = 7;
@@ -116,7 +116,7 @@
             // Semestrelabel5
             // 
             Semestrelabel5.AutoSize = true;
-            Semestrelabel5.Location = new Point(672, 187);
+            Semestrelabel5.Location = new Point(602, 186);
             Semestrelabel5.Name = "Semestrelabel5";
             Semestrelabel5.Size = new Size(55, 15);
             Semestrelabel5.TabIndex = 8;
@@ -125,7 +125,7 @@
             // Profesorlabel6
             // 
             Profesorlabel6.AutoSize = true;
-            Profesorlabel6.Location = new Point(672, 315);
+            Profesorlabel6.Location = new Point(602, 314);
             Profesorlabel6.Name = "Profesorlabel6";
             Profesorlabel6.Size = new Size(51, 15);
             Profesorlabel6.TabIndex = 9;
@@ -134,7 +134,7 @@
             // Materialabel7
             // 
             Materialabel7.AutoSize = true;
-            Materialabel7.Location = new Point(672, 270);
+            Materialabel7.Location = new Point(602, 269);
             Materialabel7.Name = "Materialabel7";
             Materialabel7.Size = new Size(47, 15);
             Materialabel7.TabIndex = 10;
@@ -143,7 +143,7 @@
             // Grupolabel8
             // 
             Grupolabel8.AutoSize = true;
-            Grupolabel8.Location = new Point(672, 225);
+            Grupolabel8.Location = new Point(602, 224);
             Grupolabel8.Name = "Grupolabel8";
             Grupolabel8.Size = new Size(40, 15);
             Grupolabel8.TabIndex = 11;
@@ -151,7 +151,7 @@
             // 
             // SemestretextBox2
             // 
-            SemestretextBox2.Location = new Point(752, 179);
+            SemestretextBox2.Location = new Point(682, 178);
             SemestretextBox2.Name = "SemestretextBox2";
             SemestretextBox2.Size = new Size(100, 23);
             SemestretextBox2.TabIndex = 12;
@@ -159,30 +159,30 @@
             // 
             // GrupotextBox3
             // 
-            GrupotextBox3.Location = new Point(752, 217);
+            GrupotextBox3.Location = new Point(682, 216);
             GrupotextBox3.Name = "GrupotextBox3";
             GrupotextBox3.Size = new Size(100, 23);
             GrupotextBox3.TabIndex = 13;
             // 
             // MateriatextBox4
             // 
-            MateriatextBox4.Location = new Point(752, 262);
+            MateriatextBox4.Location = new Point(682, 261);
             MateriatextBox4.Name = "MateriatextBox4";
             MateriatextBox4.Size = new Size(100, 23);
             MateriatextBox4.TabIndex = 14;
             // 
             // ProfesortextBox5
             // 
-            ProfesortextBox5.Location = new Point(752, 307);
+            ProfesortextBox5.Location = new Point(682, 306);
             ProfesortextBox5.Name = "ProfesortextBox5";
             ProfesortextBox5.Size = new Size(100, 23);
             ProfesortextBox5.TabIndex = 15;
             // 
             // Agregargrupobutton1
             // 
-            Agregargrupobutton1.Location = new Point(819, 354);
+            Agregargrupobutton1.Location = new Point(602, 350);
             Agregargrupobutton1.Name = "Agregargrupobutton1";
-            Agregargrupobutton1.Size = new Size(96, 23);
+            Agregargrupobutton1.Size = new Size(180, 23);
             Agregargrupobutton1.TabIndex = 16;
             Agregargrupobutton1.Text = "Agregar Grupo";
             Agregargrupobutton1.UseVisualStyleBackColor = true;
@@ -191,7 +191,7 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column2, Semestre, Grupo, Column1, Profesor });
-            dataGridView1.Location = new Point(70, 224);
+            dataGridView1.Location = new Point(23, 224);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(548, 214);
@@ -233,7 +233,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(922, 450);
+            ClientSize = new Size(852, 450);
             Controls.Add(BusquedatextBox6);
             Controls.Add(dataGridView1);
             Controls.Add(Agregargrupobutton1);
@@ -252,6 +252,7 @@
             Controls.Add(Materialabel3);
             Controls.Add(Profesorlabel2);
             Controls.Add(Semestrelabel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Pantalla_admin";
             Text = "Pantalla_admin";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

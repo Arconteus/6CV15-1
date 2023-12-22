@@ -111,7 +111,7 @@
             // Semestrelabel4
             // 
             Semestrelabel4.AutoSize = true;
-            Semestrelabel4.Location = new Point(605, 75);
+            Semestrelabel4.Location = new Point(551, 73);
             Semestrelabel4.Name = "Semestrelabel4";
             Semestrelabel4.Size = new Size(55, 15);
             Semestrelabel4.TabIndex = 12;
@@ -120,7 +120,7 @@
             // Fechainferiorlabel5
             // 
             Fechainferiorlabel5.AutoSize = true;
-            Fechainferiorlabel5.Location = new Point(605, 116);
+            Fechainferiorlabel5.Location = new Point(551, 114);
             Fechainferiorlabel5.Name = "Fechainferiorlabel5";
             Fechainferiorlabel5.Size = new Size(79, 15);
             Fechainferiorlabel5.TabIndex = 13;
@@ -129,7 +129,7 @@
             // Fechasuperiorlabel6
             // 
             Fechasuperiorlabel6.AutoSize = true;
-            Fechasuperiorlabel6.Location = new Point(605, 156);
+            Fechasuperiorlabel6.Location = new Point(551, 154);
             Fechasuperiorlabel6.Name = "Fechasuperiorlabel6";
             Fechasuperiorlabel6.Size = new Size(85, 15);
             Fechasuperiorlabel6.TabIndex = 14;
@@ -138,7 +138,7 @@
             // SemestrecomboBox3
             // 
             SemestrecomboBox3.FormattingEnabled = true;
-            SemestrecomboBox3.Location = new Point(694, 67);
+            SemestrecomboBox3.Location = new Point(640, 65);
             SemestrecomboBox3.Name = "SemestrecomboBox3";
             SemestrecomboBox3.Size = new Size(121, 23);
             SemestrecomboBox3.TabIndex = 15;
@@ -147,17 +147,17 @@
             // 
             busquedatextBox6.Location = new Point(105, 189);
             busquedatextBox6.Name = "busquedatextBox6";
-            busquedatextBox6.Size = new Size(445, 23);
+            busquedatextBox6.Size = new Size(407, 23);
             busquedatextBox6.TabIndex = 20;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column2, Folio, Fecha, Column1, Profesor });
-            dataGridView1.Location = new Point(105, 224);
+            dataGridView1.Location = new Point(12, 224);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(546, 214);
+            dataGridView1.Size = new Size(500, 214);
             dataGridView1.TabIndex = 19;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -197,14 +197,14 @@
             // 
             // FechainferiordateTimePicker1
             // 
-            FechainferiordateTimePicker1.Location = new Point(694, 110);
+            FechainferiordateTimePicker1.Location = new Point(640, 108);
             FechainferiordateTimePicker1.Name = "FechainferiordateTimePicker1";
             FechainferiordateTimePicker1.Size = new Size(200, 23);
             FechainferiordateTimePicker1.TabIndex = 22;
             // 
             // FechasuperiordateTimePicker2
             // 
-            FechasuperiordateTimePicker2.Location = new Point(694, 148);
+            FechasuperiordateTimePicker2.Location = new Point(640, 146);
             FechasuperiordateTimePicker2.Name = "FechasuperiordateTimePicker2";
             FechasuperiordateTimePicker2.Size = new Size(200, 23);
             FechasuperiordateTimePicker2.TabIndex = 23;
@@ -213,7 +213,7 @@
             // FormatodereportecheckBox1
             // 
             FormatodereportecheckBox1.AutoSize = true;
-            FormatodereportecheckBox1.Location = new Point(718, 267);
+            FormatodereportecheckBox1.Location = new Point(605, 254);
             FormatodereportecheckBox1.Name = "FormatodereportecheckBox1";
             FormatodereportecheckBox1.Size = new Size(173, 19);
             FormatodereportecheckBox1.TabIndex = 25;
@@ -223,7 +223,7 @@
             // excelxmlcheckBox2
             // 
             excelxmlcheckBox2.AutoSize = true;
-            excelxmlcheckBox2.Location = new Point(718, 292);
+            excelxmlcheckBox2.Location = new Point(605, 279);
             excelxmlcheckBox2.Name = "excelxmlcheckBox2";
             excelxmlcheckBox2.Size = new Size(148, 19);
             excelxmlcheckBox2.TabIndex = 26;
@@ -233,7 +233,7 @@
             // excelxlsxcheckBox3
             // 
             excelxlsxcheckBox3.AutoSize = true;
-            excelxlsxcheckBox3.Location = new Point(718, 317);
+            excelxlsxcheckBox3.Location = new Point(605, 304);
             excelxlsxcheckBox3.Name = "excelxlsxcheckBox3";
             excelxlsxcheckBox3.Size = new Size(150, 19);
             excelxlsxcheckBox3.TabIndex = 27;
@@ -242,7 +242,7 @@
             // 
             // exportarbutton2
             // 
-            exportarbutton2.Location = new Point(718, 363);
+            exportarbutton2.Location = new Point(605, 350);
             exportarbutton2.Name = "exportarbutton2";
             exportarbutton2.Size = new Size(173, 29);
             exportarbutton2.TabIndex = 28;
@@ -251,7 +251,7 @@
             // 
             // exportarenbutton3
             // 
-            exportarenbutton3.Location = new Point(718, 409);
+            exportarenbutton3.Location = new Point(605, 396);
             exportarenbutton3.Name = "exportarenbutton3";
             exportarenbutton3.Size = new Size(173, 29);
             exportarenbutton3.TabIndex = 29;
@@ -261,17 +261,17 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(716, 235);
+            label7.Location = new Point(603, 222);
             label7.Name = "label7";
             label7.Size = new Size(67, 15);
             label7.TabIndex = 30;
             label7.Text = "Exportar en";
             // 
-            // Pantalla_reportes
+            // PantallaReportes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(924, 524);
+            ClientSize = new Size(852, 450);
             Controls.Add(label7);
             Controls.Add(exportarenbutton3);
             Controls.Add(exportarbutton2);
@@ -293,7 +293,8 @@
             Controls.Add(Materialabel3);
             Controls.Add(Profesorlabel2);
             Controls.Add(Grupolabel1);
-            Name = "Pantalla_reportes";
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "PantallaReportes";
             Text = "Pantalla_reportes";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

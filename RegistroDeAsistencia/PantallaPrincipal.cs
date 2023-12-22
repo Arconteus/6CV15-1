@@ -4,11 +4,17 @@ namespace RegistroDeAsistencia
 {
     public partial class PantallaPrincipal : Form
     {
+        //==============================================================================================
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int sParam, int lParam);
+        //==============================================================================================
         public PantallaPrincipal()
         {
             InitializeComponent();
         }
-
+        //==============================================================================================
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -33,27 +39,25 @@ namespace RegistroDeAsistencia
             this.RestoreButton.Visible = false;
         }
 
-        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.dll", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int sParam, int lParam);
-
         private void Header_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0x0f012, 0);
         }
 
-        private void AdministrarButton_Click(object sender, EventArgs e)
+        //==============================================================================================
+        // Funciones Custom
+        //==============================================================================================
+        private void OpenFormInPanel(object FormToOpen)
         {
-
+            if (this.PanelPrime.Controls.Count > 0) this.PanelPrime.Controls.RemoveAt(0);
+            Form ToOpen = FormToOpen as Form;
+            ToOpen.TopLevel = false;
+            ToOpen.Dock = DockStyle.Fill;
+            this.PanelPrime.Controls.Add(ToOpen);
+            this.PanelPrime.Tag = ToOpen;
+            ToOpen.Show();
         }
 
-        private void InicioButton_Click(object sender, EventArgs e)
-        {
-            Pantalla_admin pantalla_Admin = new Pantalla_admin();
-            pantalla_Admin.Show();
-            this.Hide();
-        }
     }
 }

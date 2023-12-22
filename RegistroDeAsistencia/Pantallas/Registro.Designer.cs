@@ -31,7 +31,6 @@
             components = new System.ComponentModel.Container();
             FinalizarButton = new Button();
             ObservacionesTextBox = new TextBox();
-            vScrollBar1 = new VScrollBar();
             MateriaTextBox = new TextBox();
             ProfesorTextBox = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
@@ -78,13 +77,6 @@
             ObservacionesTextBox.Name = "ObservacionesTextBox";
             ObservacionesTextBox.Size = new Size(567, 23);
             ObservacionesTextBox.TabIndex = 2;
-            // 
-            // vScrollBar1
-            // 
-            vScrollBar1.Location = new Point(0, 0);
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(17, 20);
-            vScrollBar1.TabIndex = 3;
             // 
             // MateriaTextBox
             // 
@@ -315,7 +307,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(852, 450);
             Controls.Add(Search);
             Controls.Add(label9);
             Controls.Add(AyudaButton);
@@ -334,9 +326,9 @@
             Controls.Add(label1);
             Controls.Add(ProfesorTextBox);
             Controls.Add(MateriaTextBox);
-            Controls.Add(vScrollBar1);
             Controls.Add(ObservacionesTextBox);
             Controls.Add(FinalizarButton);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Registro";
             Text = "Registro de Asistencia";
             ((System.ComponentModel.ISupportInitialize)DataGridView).EndInit();
@@ -350,7 +342,6 @@
 
         private Button FinalizarButton;
         private TextBox ObservacionesTextBox;
-        private VScrollBar vScrollBar1;
         private TextBox MateriaTextBox;
         private TextBox ProfesorTextBox;
         private ContextMenuStrip contextMenuStrip1;

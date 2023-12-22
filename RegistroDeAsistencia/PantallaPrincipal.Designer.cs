@@ -41,6 +41,7 @@
             AdministrarButton = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ButtonsPanel = new Panel();
+            PanelPrime = new Panel();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RestoreButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MaximixeButton).BeginInit();
@@ -149,7 +150,6 @@
             InicioButton.TabIndex = 1;
             InicioButton.Text = "Inicio";
             InicioButton.UseVisualStyleBackColor = false;
-            InicioButton.Click += InicioButton_Click;
             // 
             // AsistenciaButton
             // 
@@ -204,7 +204,6 @@
             AdministrarButton.TabIndex = 4;
             AdministrarButton.Text = "Administrar";
             AdministrarButton.UseVisualStyleBackColor = false;
-            AdministrarButton.Click += AdministrarButton_Click;
             // 
             // ButtonsPanel
             // 
@@ -219,16 +218,25 @@
             ButtonsPanel.Size = new Size(852, 25);
             ButtonsPanel.TabIndex = 6;
             // 
-            // PantallaPreset
+            // PanelPrime
+            // 
+            PanelPrime.Dock = DockStyle.Fill;
+            PanelPrime.Location = new Point(0, 50);
+            PanelPrime.Name = "PanelPrime";
+            PanelPrime.Size = new Size(852, 450);
+            PanelPrime.TabIndex = 7;
+            // 
+            // PantallaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(54, 57, 62);
             ClientSize = new Size(852, 500);
+            Controls.Add(PanelPrime);
             Controls.Add(ButtonsPanel);
             Controls.Add(Header);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "PantallaPreset";
+            Name = "PantallaPrincipal";
             Text = "Registro de asistencia";
             Header.ResumeLayout(false);
             Header.PerformLayout();
@@ -255,5 +263,6 @@
         private Label TittleLabel;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Panel ButtonsPanel;
+        private Panel PanelPrime;
     }
 }
