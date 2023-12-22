@@ -1,6 +1,6 @@
 ﻿namespace RegistroDeAsistencia
 {
-    partial class Pantalla_reportes
+    partial class PantallaReportes
     {
         /// <summary>
         /// Required designer variable.
@@ -242,7 +242,7 @@
             // 
             // exportarbutton2
             // 
-            exportarbutton2.Location = new Point(718, 362);
+            exportarbutton2.Location = new Point(718, 363);
             exportarbutton2.Name = "exportarbutton2";
             exportarbutton2.Size = new Size(173, 29);
             exportarbutton2.TabIndex = 28;

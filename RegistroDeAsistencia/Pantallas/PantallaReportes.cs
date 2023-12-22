@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RegistroDeAsistencia
 {
-    public partial class Pantalla_reportes : Form
+    public partial class PantallaReportes : Form
     {
-        public Pantalla_reportes()
+        public PantallaReportes()
         {
             InitializeComponent();
         }

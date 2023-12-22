@@ -49,6 +49,11 @@ namespace RegistroDeAsistencia
 
         }
 
-
+        private void InicioButton_Click(object sender, EventArgs e)
+        {
+            Pantalla_admin pantalla_Admin = new Pantalla_admin();
+            pantalla_Admin.Show();
+            this.Hide();
+        }
     }
 }
