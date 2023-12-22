@@ -40,13 +40,13 @@
             ReportesButton = new Button();
             AdministrarButton = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            panel1 = new Panel();
+            ButtonsPanel = new Panel();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RestoreButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MaximixeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinimizeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).BeginInit();
-            panel1.SuspendLayout();
+            ButtonsPanel.SuspendLayout();
             SuspendLayout();
             // 
             // Header
@@ -149,6 +149,7 @@
             InicioButton.TabIndex = 1;
             InicioButton.Text = "Inicio";
             InicioButton.UseVisualStyleBackColor = false;
+            InicioButton.Click += InicioButton_Click;
             // 
             // AsistenciaButton
             // 
@@ -205,29 +206,29 @@
             AdministrarButton.UseVisualStyleBackColor = false;
             AdministrarButton.Click += AdministrarButton_Click;
             // 
-            // panel1
+            // ButtonsPanel
             // 
-            panel1.BackColor = Color.FromArgb(40, 43, 48);
-            panel1.Controls.Add(AdministrarButton);
-            panel1.Controls.Add(InicioButton);
-            panel1.Controls.Add(ReportesButton);
-            panel1.Controls.Add(AsistenciaButton);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 25);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(852, 25);
-            panel1.TabIndex = 6;
+            ButtonsPanel.BackColor = Color.FromArgb(40, 43, 48);
+            ButtonsPanel.Controls.Add(AdministrarButton);
+            ButtonsPanel.Controls.Add(InicioButton);
+            ButtonsPanel.Controls.Add(ReportesButton);
+            ButtonsPanel.Controls.Add(AsistenciaButton);
+            ButtonsPanel.Dock = DockStyle.Top;
+            ButtonsPanel.Location = new Point(0, 25);
+            ButtonsPanel.Name = "ButtonsPanel";
+            ButtonsPanel.Size = new Size(852, 25);
+            ButtonsPanel.TabIndex = 6;
             // 
-            // PantallaInicio
+            // PantallaPreset
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(63, 69, 73);
+            BackColor = Color.FromArgb(54, 57, 62);
             ClientSize = new Size(852, 500);
-            Controls.Add(panel1);
+            Controls.Add(ButtonsPanel);
             Controls.Add(Header);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "PantallaInicio";
+            Name = "PantallaPreset";
             Text = "Registro de asistencia";
             Header.ResumeLayout(false);
             Header.PerformLayout();
@@ -235,8 +236,8 @@
             ((System.ComponentModel.ISupportInitialize)MaximixeButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)MinimizeButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            ButtonsPanel.ResumeLayout(false);
+            ButtonsPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -253,6 +254,6 @@
         private Button AdministrarButton;
         private Label TittleLabel;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private Panel panel1;
+        private Panel ButtonsPanel;
     }
 }
