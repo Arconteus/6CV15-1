@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using RegistroDeAsistencia.Pantallas;
+using System.Runtime.InteropServices;
 
 namespace RegistroDeAsistencia
 {
@@ -13,6 +14,7 @@ namespace RegistroDeAsistencia
         public PantallaPrincipal()
         {
             InitializeComponent();
+            this.OpenFormInPanel(new PantallaInicio());
         }
         //==============================================================================================
         private void CloseButton_Click(object sender, EventArgs e)
