@@ -127,12 +127,16 @@
             // 
             // profesorbutton
             // 
+            profesorbutton.BackColor = Color.FromArgb(30, 33, 36);
+            profesorbutton.FlatAppearance.BorderSize = 0;
+            profesorbutton.FlatStyle = FlatStyle.Flat;
+            profesorbutton.ForeColor = SystemColors.ActiveCaption;
             profesorbutton.Location = new Point(263, 192);
             profesorbutton.Name = "profesorbutton";
             profesorbutton.Size = new Size(81, 29);
             profesorbutton.TabIndex = 10;
             profesorbutton.Text = "Agregar";
-            profesorbutton.UseVisualStyleBackColor = true;
+            profesorbutton.UseVisualStyleBackColor = false;
             profesorbutton.Click += profesorbutton_Click;
             // 
             // dataGridView1
@@ -147,19 +151,24 @@
             // 
             // Eliminarbutton
             // 
+            Eliminarbutton.BackColor = Color.FromArgb(30, 33, 36);
+            Eliminarbutton.FlatAppearance.BorderSize = 0;
+            Eliminarbutton.FlatStyle = FlatStyle.Flat;
+            Eliminarbutton.ForeColor = SystemColors.ActiveCaption;
             Eliminarbutton.Location = new Point(385, 192);
             Eliminarbutton.Name = "Eliminarbutton";
             Eliminarbutton.Size = new Size(81, 29);
             Eliminarbutton.TabIndex = 12;
             Eliminarbutton.Text = "Eliminar";
-            Eliminarbutton.UseVisualStyleBackColor = true;
+            Eliminarbutton.UseVisualStyleBackColor = false;
             Eliminarbutton.Click += Eliminarbutton_Click;
             // 
             // admin_profesores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(760, 450);
+            BackColor = Color.FromArgb(54, 57, 62);
+            ClientSize = new Size(852, 450);
             Controls.Add(Eliminarbutton);
             Controls.Add(dataGridView1);
             Controls.Add(profesorbutton);
@@ -173,6 +182,7 @@
             Controls.Add(label1);
             Controls.Add(PaternotextBox2);
             Controls.Add(NombretextBox1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "admin_profesores";
             Text = " admin_profesores";
             Load += admin_profesores_Load;

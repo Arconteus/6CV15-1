@@ -169,12 +169,16 @@ namespace RegistroDeAsistencia
             // 
             // Agregargrupobutton1
             // 
+            Agregargrupobutton1.BackColor = Color.FromArgb(30, 33, 36);
+            Agregargrupobutton1.FlatAppearance.BorderSize = 0;
+            Agregargrupobutton1.FlatStyle = FlatStyle.Flat;
+            Agregargrupobutton1.ForeColor = SystemColors.ActiveCaption;
             Agregargrupobutton1.Location = new Point(721, 368);
             Agregargrupobutton1.Name = "Agregargrupobutton1";
             Agregargrupobutton1.Size = new Size(96, 23);
             Agregargrupobutton1.TabIndex = 16;
             Agregargrupobutton1.Text = "Agregar Grupo";
-            Agregargrupobutton1.UseVisualStyleBackColor = true;
+            Agregargrupobutton1.UseVisualStyleBackColor = false;
             Agregargrupobutton1.Click += Agregargrupobutton1_Click;
             // 
             // dataGridView1
@@ -206,7 +210,8 @@ namespace RegistroDeAsistencia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(922, 450);
+            BackColor = Color.FromArgb(54, 57, 62);
+            ClientSize = new Size(852, 450);
             Controls.Add(profesorcomboBox);
             Controls.Add(BusquedatextBox6);
             Controls.Add(dataGridView1);
@@ -225,9 +230,9 @@ namespace RegistroDeAsistencia
             Controls.Add(Materialabel3);
             Controls.Add(Profesorlabel2);
             Controls.Add(Semestrelabel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Pantalla_admin";
             Text = "Pantalla_admin";
-           
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

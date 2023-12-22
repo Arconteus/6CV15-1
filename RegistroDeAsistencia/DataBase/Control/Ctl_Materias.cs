@@ -125,7 +125,7 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_materias "+ extraParameters;
+                        "select * from ctl_materias " + extraParameters;
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())

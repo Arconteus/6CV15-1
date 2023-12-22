@@ -242,21 +242,30 @@
             // 
             // exportarbutton2
             // 
+            exportarbutton2.BackColor = Color.FromArgb(30, 33, 36);
+            exportarbutton2.FlatAppearance.BorderColor = Color.FromArgb(30, 33, 36);
+            exportarbutton2.FlatAppearance.BorderSize = 0;
+            exportarbutton2.FlatStyle = FlatStyle.Flat;
+            exportarbutton2.ForeColor = SystemColors.ButtonFace;
             exportarbutton2.Location = new Point(718, 362);
             exportarbutton2.Name = "exportarbutton2";
             exportarbutton2.Size = new Size(173, 29);
             exportarbutton2.TabIndex = 28;
             exportarbutton2.Text = "Exportar";
-            exportarbutton2.UseVisualStyleBackColor = true;
+            exportarbutton2.UseVisualStyleBackColor = false;
             // 
             // exportarenbutton3
             // 
+            exportarenbutton3.BackColor = Color.FromArgb(30, 33, 36);
+            exportarenbutton3.FlatAppearance.BorderSize = 0;
+            exportarenbutton3.FlatStyle = FlatStyle.Flat;
+            exportarenbutton3.ForeColor = Color.Beige;
             exportarenbutton3.Location = new Point(718, 409);
             exportarenbutton3.Name = "exportarenbutton3";
             exportarenbutton3.Size = new Size(173, 29);
             exportarenbutton3.TabIndex = 29;
             exportarenbutton3.Text = "Exportar en";
-            exportarenbutton3.UseVisualStyleBackColor = true;
+            exportarenbutton3.UseVisualStyleBackColor = false;
             // 
             // label7
             // 
@@ -271,7 +280,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(924, 524);
+            BackColor = Color.FromArgb(54, 57, 62);
+            ClientSize = new Size(852, 450);
             Controls.Add(label7);
             Controls.Add(exportarenbutton3);
             Controls.Add(exportarbutton2);
@@ -293,6 +303,7 @@
             Controls.Add(Materialabel3);
             Controls.Add(Profesorlabel2);
             Controls.Add(Grupolabel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Pantalla_reportes";
             Text = "Pantalla_reportes";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

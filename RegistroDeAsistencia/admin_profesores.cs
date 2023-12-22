@@ -1,31 +1,21 @@
 ﻿using RegistroDeAsistencia.DataBase.Control;
 using RegistroDeAsistencia.DataBase.Modelo;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 
 namespace RegistroDeAsistencia
-{   
+{
     public partial class admin_profesores : Form
-    {   
+    {
 
         public admin_profesores()
         {
-           
+
             InitializeComponent();
 
-            
+
 
             // Agregar el evento Click al botón
-  
+
         }
 
         private void admin_profesores_Load(object sender, EventArgs e)
@@ -73,7 +63,7 @@ namespace RegistroDeAsistencia
             };
 
             Ctl_Profesor.Add(profesor);// Agregar el profesor a la base de datos
-            
+
             {
                 // Actualizar el DataGridView con la lista actualizada desde la base de datos
                 dataGridView1.DataSource = null;
@@ -123,5 +113,5 @@ namespace RegistroDeAsistencia
 
 
 }
-    
+
 

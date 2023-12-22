@@ -1,5 +1,3 @@
-using RegistroDeAsistencia.DataBase.Control;
-
 namespace RegistroDeAsistencia
 {
     internal static class Program

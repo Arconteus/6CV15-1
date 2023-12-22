@@ -37,7 +37,7 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             dataGridView1 = new DataGridView();
-            button1 = new Button();
+            agregarbutton1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -114,21 +114,27 @@
             dataGridView1.Size = new Size(384, 150);
             dataGridView1.TabIndex = 8;
             // 
-            // button1
+            // agregarbutton1
             // 
-            button1.Location = new Point(539, 112);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 9;
-            button1.Text = "Agregar";
-            button1.UseVisualStyleBackColor = true;
+            agregarbutton1.BackColor = Color.FromArgb(30, 33, 36);
+            agregarbutton1.FlatAppearance.BorderColor = Color.FromArgb(30, 33, 36);
+            agregarbutton1.FlatAppearance.BorderSize = 0;
+            agregarbutton1.FlatStyle = FlatStyle.Flat;
+            agregarbutton1.ForeColor = Color.Silver;
+            agregarbutton1.Location = new Point(539, 112);
+            agregarbutton1.Name = "agregarbutton1";
+            agregarbutton1.Size = new Size(75, 23);
+            agregarbutton1.TabIndex = 9;
+            agregarbutton1.Text = "Agregar\r\n";
+            agregarbutton1.UseVisualStyleBackColor = false;
             // 
             // administrar_horario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            BackColor = Color.FromArgb(54, 57, 62);
+            ClientSize = new Size(852, 450);
+            Controls.Add(agregarbutton1);
             Controls.Add(dataGridView1);
             Controls.Add(textBox4);
             Controls.Add(textBox3);
@@ -138,6 +144,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "administrar_horario";
             Text = "administrar_horario";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -156,6 +163,6 @@
         private TextBox textBox3;
         private TextBox textBox4;
         private DataGridView dataGridView1;
-        private Button button1;
+        private Button agregarbutton1;
     }
 }

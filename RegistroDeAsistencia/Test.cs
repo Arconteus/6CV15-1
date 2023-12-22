@@ -26,7 +26,7 @@ namespace RegistroDeAsistencia
                 desc_grupo = GrupoTextBox.Text.ToString()
             };
             ContainCheckBox.Checked = Ctl_CodigoGrupo.Contain(codigo);
-           
+
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
