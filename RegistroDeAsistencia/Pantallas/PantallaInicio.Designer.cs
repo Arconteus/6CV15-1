@@ -40,10 +40,10 @@
             // 
             HorariodataGridView1.BackgroundColor = Color.FromArgb(54, 57, 62);
             HorariodataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            HorariodataGridView1.Location = new Point(258, 163);
+            HorariodataGridView1.Location = new Point(201, 163);
             HorariodataGridView1.Name = "HorariodataGridView1";
             HorariodataGridView1.RowTemplate.Height = 25;
-            HorariodataGridView1.Size = new Size(544, 275);
+            HorariodataGridView1.Size = new Size(502, 275);
             HorariodataGridView1.TabIndex = 0;
             HorariodataGridView1.CellContentClick += HorariodataGridView1_CellContentClick;
             // 
@@ -54,7 +54,7 @@
             DíaDataGridView2.Location = new Point(50, 163);
             DíaDataGridView2.Name = "DíaDataGridView2";
             DíaDataGridView2.RowTemplate.Height = 25;
-            DíaDataGridView2.Size = new Size(143, 275);
+            DíaDataGridView2.Size = new Size(108, 275);
             DíaDataGridView2.TabIndex = 1;
             DíaDataGridView2.CellContentClick += DíaDataGridView2_CellContentClick;
             // 

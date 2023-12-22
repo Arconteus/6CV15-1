@@ -30,6 +30,9 @@ namespace RegistroDeAsistencia.Pantallas
             dt.Columns.Add("Día");
 
             DíaDataGridView2.DataSource = dt;
+
+            HorariodataGridView1.RowHeadersVisible = false;
+            DíaDataGridView2.RowHeadersVisible = false;
         }
 
         private void HorariodataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
