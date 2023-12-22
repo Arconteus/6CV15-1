@@ -14,7 +14,7 @@ namespace RegistroDeAsistencia
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             DataBaseHelper.InitializeDatabase();
-            Application.Run(new Pantalla_admin());
+            Application.Run(new admin_profesores());
         }
     }
 }

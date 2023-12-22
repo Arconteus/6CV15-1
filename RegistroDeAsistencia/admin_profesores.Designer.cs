@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            NombretextBox1 = new TextBox();
+            PaternotextBox2 = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            MaternotextBox3 = new TextBox();
+            BoletatextBox4 = new TextBox();
             label4 = new Label();
             label5 = new Label();
             textBox5 = new TextBox();
@@ -44,19 +44,19 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // NombretextBox1
             // 
-            textBox1.Location = new Point(210, 37);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 0;
+            NombretextBox1.Location = new Point(210, 37);
+            NombretextBox1.Name = "NombretextBox1";
+            NombretextBox1.Size = new Size(100, 23);
+            NombretextBox1.TabIndex = 0;
             // 
-            // textBox2
+            // PaternotextBox2
             // 
-            textBox2.Location = new Point(210, 90);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 1;
+            PaternotextBox2.Location = new Point(210, 90);
+            PaternotextBox2.Name = "PaternotextBox2";
+            PaternotextBox2.Size = new Size(100, 23);
+            PaternotextBox2.TabIndex = 1;
             // 
             // label1
             // 
@@ -85,19 +85,19 @@
             label3.TabIndex = 4;
             label3.Text = "Apellido materno ";
             // 
-            // textBox3
+            // MaternotextBox3
             // 
-            textBox3.Location = new Point(210, 142);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 5;
+            MaternotextBox3.Location = new Point(210, 142);
+            MaternotextBox3.Name = "MaternotextBox3";
+            MaternotextBox3.Size = new Size(100, 23);
+            MaternotextBox3.TabIndex = 5;
             // 
-            // textBox4
+            // BoletatextBox4
             // 
-            textBox4.Location = new Point(513, 63);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 6;
+            BoletatextBox4.Location = new Point(513, 63);
+            BoletatextBox4.Name = "BoletatextBox4";
+            BoletatextBox4.Size = new Size(100, 23);
+            BoletatextBox4.TabIndex = 6;
             // 
             // label4
             // 
@@ -133,6 +133,7 @@
             profesorbutton.TabIndex = 10;
             profesorbutton.Text = "Agregar";
             profesorbutton.UseVisualStyleBackColor = true;
+            profesorbutton.Click += profesorbutton_Click;
             // 
             // dataGridView1
             // 
@@ -152,6 +153,7 @@
             Eliminarbutton.TabIndex = 12;
             Eliminarbutton.Text = "Eliminar";
             Eliminarbutton.UseVisualStyleBackColor = true;
+            Eliminarbutton.Click += Eliminarbutton_Click;
             // 
             // admin_profesores
             // 
@@ -164,13 +166,13 @@
             Controls.Add(textBox5);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
+            Controls.Add(BoletatextBox4);
+            Controls.Add(MaternotextBox3);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(PaternotextBox2);
+            Controls.Add(NombretextBox1);
             Name = "admin_profesores";
             Text = " admin_profesores";
             Load += admin_profesores_Load;
@@ -181,13 +183,13 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox NombretextBox1;
+        private TextBox PaternotextBox2;
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox MaternotextBox3;
+        private TextBox BoletatextBox4;
         private Label label4;
         private Label label5;
         private TextBox textBox5;

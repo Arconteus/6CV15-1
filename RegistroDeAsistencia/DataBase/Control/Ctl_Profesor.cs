@@ -93,7 +93,7 @@ namespace RegistroDeAsistencia.DataBase.Control
             return output;
         }
 
-        
+
         //=============================================================================================================
         // Metodos privados
         //=============================================================================================================
@@ -109,22 +109,70 @@ namespace RegistroDeAsistencia.DataBase.Control
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
-                    command.CommandText =
-                        @"INSERT INTO ctl_profesor (num_trabajador,nom_profesor,apa_profesor,ama_profesor) 
-                        values (@num_trabajador,@nom_profesor,@apa_profesor,@ama_profesor)";
-                    command.Parameters.AddWithValue("@num_trabajador", profesorInput.num_trabajador);
-                    command.Parameters.AddWithValue("@nom_profesor", profesorInput.nom_profesor);
-                    command.Parameters.AddWithValue("@apa_profesor", profesorInput.apa_profesor);
-                    command.Parameters.AddWithValue("@ama_profesor", profesorInput.ama_profesor);
-                    if (command.ExecuteNonQuery() > 0)
+                    try
                     {
-                        output = true;
+                        command.CommandText =
+                            @"INSERT INTO ctl_profesor (num_trabajador, nom_profesor, apa_profesor, ama_profesor) 
+                    VALUES (@num_trabajador, @nom_profesor, @apa_profesor, @ama_profesor)";
+                        command.Parameters.AddWithValue("@num_trabajador", profesorInput.num_trabajador);
+                        command.Parameters.AddWithValue("@nom_profesor", profesorInput.nom_profesor);
+                        command.Parameters.AddWithValue("@apa_profesor", profesorInput.apa_profesor);
+                        command.Parameters.AddWithValue("@ama_profesor", profesorInput.ama_profesor);
+
+                        if (command.ExecuteNonQuery() > 0)
+                        {
+                            output = true;
+                        }
+
+                        command.Parameters.Clear();
                     }
-                    command.Parameters.Clear();
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
                 }
             }
             return output;
         }
+
+        public static bool ForceDelete(int idProfesor)
+        {
+            bool success = false;
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    try
+                    {
+                        command.CommandText = "DELETE FROM ctl_profesor WHERE id_profesor = @idProfesor";
+                        command.Parameters.AddWithValue("@idProfesor", idProfesor);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        success = rowsAffected > 0;
+
+                        if (!success)
+                        {
+                            Console.WriteLine($"No se encontró ningún profesor con ID {idProfesor}.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al intentar eliminar al profesor: " + ex.Message);
+                    }
+                }
+            }
+
+            return success;
+        }
+
+
+
+
+
 
         /**
          * Funcion interna, neta si no sabes que hace no lo toques
