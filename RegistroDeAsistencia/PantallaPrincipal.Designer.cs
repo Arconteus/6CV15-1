@@ -1,6 +1,6 @@
 ﻿namespace RegistroDeAsistencia
 {
-    partial class PantallaPreset
+    partial class PantallaPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaPreset));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaPrincipal));
             Header = new Panel();
             TittleLabel = new Label();
             RestoreButton = new PictureBox();

@@ -2,9 +2,9 @@
 
 namespace RegistroDeAsistencia
 {
-    public partial class PantallaPreset : Form
+    public partial class PantallaPrincipal : Form
     {
-        public PantallaPreset()
+        public PantallaPrincipal()
         {
             InitializeComponent();
         }
