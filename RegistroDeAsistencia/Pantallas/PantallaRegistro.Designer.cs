@@ -1,6 +1,6 @@
 ﻿namespace RegistroDeAsistencia
 {
-    partial class Registro
+    partial class PantallaRegistro
     {
         /// <summary>
         /// Required designer variable.

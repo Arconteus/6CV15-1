@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace RegistroDeAsistencia
 {
-    public partial class RegistroQR : Form
+    public partial class PantalllaQR : Form
     {
         FilterInfoCollection _filterInfoCollection;
         VideoCaptureDevice _videoCaptureDevice;
 
-        public RegistroQR()
+        public PantalllaQR()
         {
             InitializeComponent();
 

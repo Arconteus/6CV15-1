@@ -20,6 +20,7 @@ namespace RegistroDeAsistencia
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+            this.OpenFormInPanel(new PantallaInicio());
         }
 
         private void MaximizeButton_Click(object sender, EventArgs e)
@@ -61,5 +62,24 @@ namespace RegistroDeAsistencia
             ToOpen.Show();
         }
 
+        private void AsistenciaButton_Click(object sender, EventArgs e)
+        {
+            this.OpenFormInPanel(new PantallaRegistro());
+        }
+
+        private void AdministrarButton_Click(object sender, EventArgs e)
+        {
+            this.OpenFormInPanel(new Pantalla_admin());
+        }
+
+        private void ReportesButton_Click(object sender, EventArgs e)
+        {
+            this.OpenFormInPanel(new PantallaReportes());
+        }
+
+        private void InicioButton_Click(object sender, EventArgs e)
+        {
+            this.OpenFormInPanel(new PantallaInicio());
+        }
     }
 }

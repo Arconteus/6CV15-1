@@ -1,6 +1,6 @@
 ﻿namespace RegistroDeAsistencia
 {
-    partial class RegistroQR
+    partial class PantalllaQR
     {
         /// <summary>
         /// Required designer variable.

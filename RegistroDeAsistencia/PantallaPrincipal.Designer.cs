@@ -52,9 +52,9 @@
             // 
             // Header
             // 
-            Header.BackColor = Color.FromArgb(30, 33, 36);
-            Header.Controls.Add(TittleLabel);
+            Header.BackColor = Color.FromArgb(74, 97, 178);
             Header.Controls.Add(RestoreButton);
+            Header.Controls.Add(TittleLabel);
             Header.Controls.Add(MaximixeButton);
             Header.Controls.Add(MinimizeButton);
             Header.Controls.Add(CloseButton);
@@ -79,7 +79,7 @@
             // RestoreButton
             // 
             RestoreButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            RestoreButton.BackColor = Color.FromArgb(30, 33, 36);
+            RestoreButton.BackColor = Color.FromArgb(74, 97, 178);
             RestoreButton.Cursor = Cursors.Hand;
             RestoreButton.Image = (Image)resources.GetObject("RestoreButton.Image");
             RestoreButton.Location = new Point(796, 0);
@@ -94,7 +94,7 @@
             // MaximixeButton
             // 
             MaximixeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            MaximixeButton.BackColor = Color.FromArgb(30, 33, 36);
+            MaximixeButton.BackColor = Color.FromArgb(74, 97, 178);
             MaximixeButton.Cursor = Cursors.Hand;
             MaximixeButton.Image = (Image)resources.GetObject("MaximixeButton.Image");
             MaximixeButton.Location = new Point(796, 0);
@@ -108,7 +108,7 @@
             // MinimizeButton
             // 
             MinimizeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            MinimizeButton.BackColor = Color.FromArgb(30, 33, 36);
+            MinimizeButton.BackColor = Color.FromArgb(74, 97, 178);
             MinimizeButton.Cursor = Cursors.Hand;
             MinimizeButton.Image = (Image)resources.GetObject("MinimizeButton.Image");
             MinimizeButton.Location = new Point(765, 0);
@@ -122,7 +122,7 @@
             // CloseButton
             // 
             CloseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            CloseButton.BackColor = Color.FromArgb(30, 33, 36);
+            CloseButton.BackColor = Color.FromArgb(74, 97, 178);
             CloseButton.Cursor = Cursors.Hand;
             CloseButton.Image = (Image)resources.GetObject("CloseButton.Image");
             CloseButton.Location = new Point(827, 0);
@@ -137,7 +137,7 @@
             // 
             InicioButton.Anchor = AnchorStyles.Top;
             InicioButton.AutoSize = true;
-            InicioButton.BackColor = Color.FromArgb(40, 43, 48);
+            InicioButton.BackColor = Color.FromArgb(30, 33, 36);
             InicioButton.FlatAppearance.BorderSize = 0;
             InicioButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 97, 178);
             InicioButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(114, 137, 218);
@@ -150,12 +150,13 @@
             InicioButton.TabIndex = 1;
             InicioButton.Text = "Inicio";
             InicioButton.UseVisualStyleBackColor = false;
+            InicioButton.Click += InicioButton_Click;
             // 
             // AsistenciaButton
             // 
             AsistenciaButton.Anchor = AnchorStyles.Top;
             AsistenciaButton.AutoSize = true;
-            AsistenciaButton.BackColor = Color.FromArgb(40, 43, 48);
+            AsistenciaButton.BackColor = Color.FromArgb(30, 33, 36);
             AsistenciaButton.FlatAppearance.BorderSize = 0;
             AsistenciaButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 97, 178);
             AsistenciaButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(114, 137, 218);
@@ -168,12 +169,13 @@
             AsistenciaButton.TabIndex = 2;
             AsistenciaButton.Text = "Asistencia";
             AsistenciaButton.UseVisualStyleBackColor = false;
+            AsistenciaButton.Click += AsistenciaButton_Click;
             // 
             // ReportesButton
             // 
             ReportesButton.Anchor = AnchorStyles.Top;
             ReportesButton.AutoSize = true;
-            ReportesButton.BackColor = Color.FromArgb(40, 43, 48);
+            ReportesButton.BackColor = Color.FromArgb(30, 33, 36);
             ReportesButton.FlatAppearance.BorderSize = 0;
             ReportesButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 97, 178);
             ReportesButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(114, 137, 218);
@@ -186,12 +188,13 @@
             ReportesButton.TabIndex = 3;
             ReportesButton.Text = "Reportes";
             ReportesButton.UseVisualStyleBackColor = false;
+            ReportesButton.Click += ReportesButton_Click;
             // 
             // AdministrarButton
             // 
             AdministrarButton.Anchor = AnchorStyles.Top;
             AdministrarButton.AutoSize = true;
-            AdministrarButton.BackColor = Color.FromArgb(40, 43, 48);
+            AdministrarButton.BackColor = Color.FromArgb(30, 33, 36);
             AdministrarButton.FlatAppearance.BorderSize = 0;
             AdministrarButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 97, 178);
             AdministrarButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(114, 137, 218);
@@ -204,10 +207,11 @@
             AdministrarButton.TabIndex = 4;
             AdministrarButton.Text = "Administrar";
             AdministrarButton.UseVisualStyleBackColor = false;
+            AdministrarButton.Click += AdministrarButton_Click;
             // 
             // ButtonsPanel
             // 
-            ButtonsPanel.BackColor = Color.FromArgb(40, 43, 48);
+            ButtonsPanel.BackColor = Color.FromArgb(30, 33, 36);
             ButtonsPanel.Controls.Add(AdministrarButton);
             ButtonsPanel.Controls.Add(InicioButton);
             ButtonsPanel.Controls.Add(ReportesButton);
@@ -220,6 +224,7 @@
             // 
             // PanelPrime
             // 
+            PanelPrime.BackColor = Color.FromArgb(40, 43, 48);
             PanelPrime.Dock = DockStyle.Fill;
             PanelPrime.Location = new Point(0, 50);
             PanelPrime.Name = "PanelPrime";
