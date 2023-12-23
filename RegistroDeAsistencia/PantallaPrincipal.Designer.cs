@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaPrincipal));
             Header = new Panel();
-            TittleLabel = new Label();
             RestoreButton = new PictureBox();
+            TittleLabel = new Label();
             MaximixeButton = new PictureBox();
             MinimizeButton = new PictureBox();
             CloseButton = new PictureBox();
@@ -66,16 +66,6 @@
             Header.TabIndex = 0;
             Header.MouseDown += Header_MouseDown;
             // 
-            // TittleLabel
-            // 
-            TittleLabel.AutoSize = true;
-            TittleLabel.ForeColor = SystemColors.ControlLightLight;
-            TittleLabel.Location = new Point(25, 5);
-            TittleLabel.Name = "TittleLabel";
-            TittleLabel.Size = new Size(120, 15);
-            TittleLabel.TabIndex = 5;
-            TittleLabel.Text = "Registro de asistencia";
-            // 
             // RestoreButton
             // 
             RestoreButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -90,6 +80,16 @@
             RestoreButton.TabStop = false;
             RestoreButton.Visible = false;
             RestoreButton.Click += RestoreButton_Click;
+            // 
+            // TittleLabel
+            // 
+            TittleLabel.AutoSize = true;
+            TittleLabel.ForeColor = SystemColors.ControlLightLight;
+            TittleLabel.Location = new Point(25, 5);
+            TittleLabel.Name = "TittleLabel";
+            TittleLabel.Size = new Size(120, 15);
+            TittleLabel.TabIndex = 5;
+            TittleLabel.Text = "Registro de asistencia";
             // 
             // MaximixeButton
             // 

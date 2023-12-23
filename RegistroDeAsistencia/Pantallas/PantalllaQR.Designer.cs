@@ -99,10 +99,11 @@
             cmbCameras.TabIndex = 5;
             cmbCameras.SelectedIndexChanged += cmbCameras_SelectedIndexChanged;
             // 
-            // RegistroQR
+            // PantalllaQR
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(54, 57, 62);
             ClientSize = new Size(534, 450);
             Controls.Add(cmbCameras);
             Controls.Add(pictCamImagem);
@@ -110,7 +111,7 @@
             Controls.Add(WebcamButton);
             Controls.Add(RegistroManualButton);
             Controls.Add(IniciarButton);
-            Name = "RegistroQR";
+            Name = "PantalllaQR";
             Text = "RegistroQR";
             ((System.ComponentModel.ISupportInitialize)pictCamImagem).EndInit();
             ResumeLayout(false);

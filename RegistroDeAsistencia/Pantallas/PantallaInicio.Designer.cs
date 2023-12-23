@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaInicio));
             HorariodataGridView1 = new DataGridView();
             DíaDataGridView2 = new DataGridView();
-            button1 = new Button();
             ActualgroupBox1 = new GroupBox();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)HorariodataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DíaDataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // HorariodataGridView1
@@ -43,7 +46,7 @@
             HorariodataGridView1.Location = new Point(201, 163);
             HorariodataGridView1.Name = "HorariodataGridView1";
             HorariodataGridView1.RowTemplate.Height = 25;
-            HorariodataGridView1.Size = new Size(502, 275);
+            HorariodataGridView1.Size = new Size(513, 275);
             HorariodataGridView1.TabIndex = 0;
             HorariodataGridView1.CellContentClick += HorariodataGridView1_CellContentClick;
             // 
@@ -58,19 +61,6 @@
             DíaDataGridView2.TabIndex = 1;
             DíaDataGridView2.CellContentClick += DíaDataGridView2_CellContentClick;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(30, 33, 36);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(584, 31);
-            button1.Name = "button1";
-            button1.Size = new Size(195, 114);
-            button1.TabIndex = 2;
-            button1.Text = "COMENZAR REGISTRO DE ASISTENCIA";
-            button1.TextAlign = ContentAlignment.BottomCenter;
-            button1.UseVisualStyleBackColor = false;
-            // 
             // ActualgroupBox1
             // 
             ActualgroupBox1.ForeColor = Color.White;
@@ -81,13 +71,34 @@
             ActualgroupBox1.TabStop = false;
             ActualgroupBox1.Text = "Hora Actual";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(588, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(135, 124);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 22;
+            pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(548, 130);
+            label1.Name = "label1";
+            label1.Size = new Size(210, 15);
+            label1.TabIndex = 23;
+            label1.Text = "COMENZAR REGISTRO DE ASISTENCIA";
+            // 
             // PantallaInicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(54, 57, 62);
             ClientSize = new Size(852, 450);
-            Controls.Add(button1);
+            Controls.Add(label1);
+            Controls.Add(pictureBox1);
             Controls.Add(ActualgroupBox1);
             Controls.Add(DíaDataGridView2);
             Controls.Add(HorariodataGridView1);
@@ -97,14 +108,17 @@
             Text = "PantallaInicio";
             ((System.ComponentModel.ISupportInitialize)HorariodataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)DíaDataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView HorariodataGridView1;
         private DataGridView DíaDataGridView2;
-        private Button button1;
         private GroupBox ActualgroupBox1;
+        private PictureBox pictureBox1;
+        private Label label1;
     }
 }
