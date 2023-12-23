@@ -78,5 +78,11 @@ namespace RegistroDeAsistencia
         {
 
         }
+
+        private void QrBox_Click(object sender, EventArgs e)
+        {
+            PantalllaQR temp = new PantalllaQR();
+            temp.Show();
+        }
     }
 }

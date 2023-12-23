@@ -51,13 +51,13 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             ObservacionesLabel = new Label();
-            pictureBox3 = new PictureBox();
+            QrBox = new PictureBox();
             label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)RegistroDataGridView).BeginInit();
             GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)QrBox).BeginInit();
             SuspendLayout();
             // 
             // FinalizarButton
@@ -76,7 +76,7 @@
             // 
             // ObservacionesTextBox
             // 
-            ObservacionesTextBox.BackColor = Color.FromArgb(30, 33, 36);
+            ObservacionesTextBox.BackColor = Color.FromArgb(66, 69, 73);
             ObservacionesTextBox.BorderStyle = BorderStyle.None;
             ObservacionesTextBox.Location = new Point(115, 412);
             ObservacionesTextBox.Name = "ObservacionesTextBox";
@@ -85,7 +85,7 @@
             // 
             // MateriaTextBox
             // 
-            MateriaTextBox.BackColor = Color.FromArgb(30, 33, 36);
+            MateriaTextBox.BackColor = Color.FromArgb(66, 69, 73);
             MateriaTextBox.BorderStyle = BorderStyle.None;
             MateriaTextBox.Location = new Point(172, 86);
             MateriaTextBox.Name = "MateriaTextBox";
@@ -94,7 +94,7 @@
             // 
             // ProfesorTextBox
             // 
-            ProfesorTextBox.BackColor = Color.FromArgb(30, 33, 36);
+            ProfesorTextBox.BackColor = Color.FromArgb(66, 69, 73);
             ProfesorTextBox.BorderStyle = BorderStyle.None;
             ProfesorTextBox.Location = new Point(172, 57);
             ProfesorTextBox.Name = "ProfesorTextBox";
@@ -249,7 +249,7 @@
             // 
             // Search
             // 
-            Search.BackColor = Color.FromArgb(30, 33, 36);
+            Search.BackColor = Color.FromArgb(66, 69, 73);
             Search.BorderStyle = BorderStyle.None;
             Search.ForeColor = SystemColors.Window;
             Search.Location = new Point(22, 120);
@@ -289,15 +289,18 @@
             ObservacionesLabel.TabIndex = 27;
             ObservacionesLabel.Text = "Observaciones:";
             // 
-            // pictureBox3
+            // QrBox
             // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(14, 23);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(97, 79);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 28;
-            pictureBox3.TabStop = false;
+            QrBox.BackColor = Color.FromArgb(30, 33, 36);
+            QrBox.Cursor = Cursors.Hand;
+            QrBox.Image = (Image)resources.GetObject("QrBox.Image");
+            QrBox.Location = new Point(19, 19);
+            QrBox.Name = "QrBox";
+            QrBox.Size = new Size(80, 80);
+            QrBox.SizeMode = PictureBoxSizeMode.Zoom;
+            QrBox.TabIndex = 28;
+            QrBox.TabStop = false;
+            QrBox.Click += QrBox_Click;
             // 
             // label2
             // 
@@ -313,10 +316,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(54, 57, 62);
+            BackColor = Color.FromArgb(40, 43, 48);
             ClientSize = new Size(852, 450);
             Controls.Add(label2);
-            Controls.Add(pictureBox3);
+            Controls.Add(QrBox);
             Controls.Add(ObservacionesLabel);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
@@ -344,7 +347,7 @@
             GroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)QrBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -372,7 +375,7 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private Label ObservacionesLabel;
-        private PictureBox pictureBox3;
+        private PictureBox QrBox;
         private Label label2;
     }
 }
