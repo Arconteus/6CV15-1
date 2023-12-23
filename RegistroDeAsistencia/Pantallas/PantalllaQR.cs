@@ -9,11 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace RegistroDeAsistencia
 {
     public partial class PantalllaQR : Form
     {
+        //==============================================================================================
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int sParam, int lParam);
+        //==============================================================================================
         FilterInfoCollection _filterInfoCollection;
         VideoCaptureDevice _videoCaptureDevice;
 
@@ -56,6 +63,16 @@ namespace RegistroDeAsistencia
         private void _videoCaptureDevice_NewFrame(object sender, NewFrameEventArgs e)
         {
             pictCamImagem.Image = (System.Drawing.Image)e.Frame.Clone();
+        }
+
+        private void CloseButtonQR_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void Header_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0x0f012, 0);
         }
     }
 }

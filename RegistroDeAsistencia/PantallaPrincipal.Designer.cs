@@ -30,9 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaPrincipal));
             Header = new Panel();
-            TittleLabel = new Label();
             RestoreButton = new PictureBox();
-            MaximixeButton = new PictureBox();
+            TittleLabel = new Label();
             MinimizeButton = new PictureBox();
             CloseButton = new PictureBox();
             InicioButton = new Button();
@@ -42,12 +41,13 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ButtonsPanel = new Panel();
             PanelPrime = new Panel();
+            MaximixeButton = new PictureBox();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RestoreButton).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)MaximixeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinimizeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).BeginInit();
             ButtonsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)MaximixeButton).BeginInit();
             SuspendLayout();
             // 
             // Header
@@ -66,16 +66,6 @@
             Header.TabIndex = 0;
             Header.MouseDown += Header_MouseDown;
             // 
-            // TittleLabel
-            // 
-            TittleLabel.AutoSize = true;
-            TittleLabel.ForeColor = SystemColors.ControlLightLight;
-            TittleLabel.Location = new Point(25, 5);
-            TittleLabel.Name = "TittleLabel";
-            TittleLabel.Size = new Size(120, 15);
-            TittleLabel.TabIndex = 5;
-            TittleLabel.Text = "Registro de asistencia";
-            // 
             // RestoreButton
             // 
             RestoreButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -91,19 +81,15 @@
             RestoreButton.Visible = false;
             RestoreButton.Click += RestoreButton_Click;
             // 
-            // MaximixeButton
+            // TittleLabel
             // 
-            MaximixeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            MaximixeButton.BackColor = Color.FromArgb(74, 97, 178);
-            MaximixeButton.Cursor = Cursors.Hand;
-            MaximixeButton.Image = (Image)resources.GetObject("MaximixeButton.Image");
-            MaximixeButton.Location = new Point(796, 0);
-            MaximixeButton.Name = "MaximixeButton";
-            MaximixeButton.Size = new Size(25, 25);
-            MaximixeButton.SizeMode = PictureBoxSizeMode.Zoom;
-            MaximixeButton.TabIndex = 3;
-            MaximixeButton.TabStop = false;
-            MaximixeButton.Click += MaximizeButton_Click;
+            TittleLabel.AutoSize = true;
+            TittleLabel.ForeColor = SystemColors.ControlLightLight;
+            TittleLabel.Location = new Point(25, 5);
+            TittleLabel.Name = "TittleLabel";
+            TittleLabel.Size = new Size(120, 15);
+            TittleLabel.TabIndex = 5;
+            TittleLabel.Text = "Registro de asistencia";
             // 
             // MinimizeButton
             // 
@@ -231,6 +217,20 @@
             PanelPrime.Size = new Size(852, 450);
             PanelPrime.TabIndex = 7;
             // 
+            // MaximixeButton
+            // 
+            MaximixeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            MaximixeButton.BackColor = Color.FromArgb(74, 97, 178);
+            MaximixeButton.Cursor = Cursors.Hand;
+            MaximixeButton.Image = (Image)resources.GetObject("MaximixeButton.Image");
+            MaximixeButton.Location = new Point(796, 0);
+            MaximixeButton.Name = "MaximixeButton";
+            MaximixeButton.Size = new Size(25, 25);
+            MaximixeButton.SizeMode = PictureBoxSizeMode.Zoom;
+            MaximixeButton.TabIndex = 3;
+            MaximixeButton.TabStop = false;
+            MaximixeButton.Click += MaximizeButton_Click;
+            // 
             // PantallaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -246,18 +246,17 @@
             Header.ResumeLayout(false);
             Header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)RestoreButton).EndInit();
-            ((System.ComponentModel.ISupportInitialize)MaximixeButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)MinimizeButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).EndInit();
             ButtonsPanel.ResumeLayout(false);
             ButtonsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)MaximixeButton).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel Header;
-        private PictureBox MaximixeButton;
         private PictureBox MinimizeButton;
         private PictureBox CloseButton;
         private PictureBox RestoreButton;
@@ -269,5 +268,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Panel ButtonsPanel;
         private Panel PanelPrime;
+        private PictureBox MaximixeButton;
     }
 }
