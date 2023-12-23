@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaRegistro));
             FinalizarButton = new Button();
             ObservacionesTextBox = new TextBox();
             MateriaTextBox = new TextBox();
@@ -36,7 +37,6 @@
             contextMenuStrip1 = new ContextMenuStrip(components);
             label1 = new Label();
             GrupoComboBox = new ComboBox();
-            ObservacionesLabel = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
@@ -44,52 +44,61 @@
             SemestreComboBox = new ComboBox();
             label7 = new Label();
             FechaComboBox = new ComboBox();
-            DataGridView = new DataGridView();
-            Validación = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Apellido = new DataGridViewTextBoxColumn();
-            Boleta = new DataGridViewTextBoxColumn();
+            RegistroDataGridView = new DataGridView();
             GroupBox = new GroupBox();
             FolioLabel = new Label();
-            QRButton = new Button();
-            AyudaButton = new Button();
-            label9 = new Label();
             Search = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)DataGridView).BeginInit();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            ObservacionesLabel = new Label();
+            pictureBox3 = new PictureBox();
+            label2 = new Label();
+            ((System.ComponentModel.ISupportInitialize)RegistroDataGridView).BeginInit();
             GroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // FinalizarButton
             // 
-            FinalizarButton.Location = new Point(691, 406);
+            FinalizarButton.BackColor = Color.FromArgb(30, 33, 36);
+            FinalizarButton.FlatAppearance.BorderSize = 0;
+            FinalizarButton.FlatStyle = FlatStyle.Flat;
+            FinalizarButton.ForeColor = SystemColors.Control;
+            FinalizarButton.Location = new Point(721, 393);
             FinalizarButton.Name = "FinalizarButton";
             FinalizarButton.Size = new Size(97, 35);
             FinalizarButton.TabIndex = 0;
             FinalizarButton.Text = "Finalizar";
-            FinalizarButton.UseVisualStyleBackColor = true;
+            FinalizarButton.UseVisualStyleBackColor = false;
             FinalizarButton.Click += button1_Click;
             // 
             // ObservacionesTextBox
             // 
-            ObservacionesTextBox.Location = new Point(118, 413);
+            ObservacionesTextBox.BackColor = Color.FromArgb(30, 33, 36);
+            ObservacionesTextBox.BorderStyle = BorderStyle.None;
+            ObservacionesTextBox.Location = new Point(115, 412);
             ObservacionesTextBox.Name = "ObservacionesTextBox";
-            ObservacionesTextBox.Size = new Size(567, 23);
+            ObservacionesTextBox.Size = new Size(567, 16);
             ObservacionesTextBox.TabIndex = 2;
             // 
             // MateriaTextBox
             // 
-            MateriaTextBox.Location = new Point(175, 128);
+            MateriaTextBox.BackColor = Color.FromArgb(30, 33, 36);
+            MateriaTextBox.BorderStyle = BorderStyle.None;
+            MateriaTextBox.Location = new Point(172, 86);
             MateriaTextBox.Name = "MateriaTextBox";
-            MateriaTextBox.Size = new Size(368, 23);
+            MateriaTextBox.Size = new Size(368, 16);
             MateriaTextBox.TabIndex = 5;
             // 
             // ProfesorTextBox
             // 
-            ProfesorTextBox.Location = new Point(175, 99);
+            ProfesorTextBox.BackColor = Color.FromArgb(30, 33, 36);
+            ProfesorTextBox.BorderStyle = BorderStyle.None;
+            ProfesorTextBox.Location = new Point(172, 57);
             ProfesorTextBox.Name = "ProfesorTextBox";
-            ProfesorTextBox.Size = new Size(368, 23);
+            ProfesorTextBox.Size = new Size(368, 16);
             ProfesorTextBox.TabIndex = 6;
             // 
             // contextMenuStrip1
@@ -100,7 +109,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(25, 426);
+            label1.Location = new Point(22, 384);
             label1.Name = "label1";
             label1.Size = new Size(10, 15);
             label1.TabIndex = 8;
@@ -108,9 +117,12 @@
             // 
             // GrupoComboBox
             // 
+            GrupoComboBox.BackColor = Color.FromArgb(30, 33, 36);
+            GrupoComboBox.FlatStyle = FlatStyle.Flat;
+            GrupoComboBox.ForeColor = SystemColors.Window;
             GrupoComboBox.FormattingEnabled = true;
             GrupoComboBox.Items.AddRange(new object[] { "6CM11", "6CM12", "6CM13", "6CM14", "6CM15", "6CM16", "6CV11", "6CV12", "6CV13", "6CV14", "6CV15", "6CV16" });
-            GrupoComboBox.Location = new Point(175, 70);
+            GrupoComboBox.Location = new Point(172, 28);
             GrupoComboBox.Name = "GrupoComboBox";
             GrupoComboBox.RightToLeft = RightToLeft.No;
             GrupoComboBox.Size = new Size(68, 23);
@@ -118,19 +130,11 @@
             GrupoComboBox.Text = "6CM11";
             GrupoComboBox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
             // 
-            // ObservacionesLabel
-            // 
-            ObservacionesLabel.AutoSize = true;
-            ObservacionesLabel.Location = new Point(25, 416);
-            ObservacionesLabel.Name = "ObservacionesLabel";
-            ObservacionesLabel.Size = new Size(87, 15);
-            ObservacionesLabel.TabIndex = 10;
-            ObservacionesLabel.Text = "Observaciones:";
-            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(119, 131);
+            label3.ForeColor = SystemColors.Control;
+            label3.Location = new Point(116, 89);
             label3.Name = "label3";
             label3.Size = new Size(50, 15);
             label3.TabIndex = 11;
@@ -139,7 +143,8 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(120, 103);
+            label4.ForeColor = SystemColors.Control;
+            label4.Location = new Point(117, 61);
             label4.Name = "label4";
             label4.Size = new Size(54, 15);
             label4.TabIndex = 12;
@@ -148,7 +153,8 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(120, 73);
+            label5.ForeColor = SystemColors.Control;
+            label5.Location = new Point(117, 31);
             label5.Name = "label5";
             label5.Size = new Size(55, 15);
             label5.TabIndex = 13;
@@ -157,7 +163,8 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(249, 73);
+            label6.ForeColor = SystemColors.Control;
+            label6.Location = new Point(246, 31);
             label6.Name = "label6";
             label6.Size = new Size(58, 15);
             label6.TabIndex = 15;
@@ -166,9 +173,12 @@
             // 
             // SemestreComboBox
             // 
+            SemestreComboBox.BackColor = Color.FromArgb(30, 33, 36);
+            SemestreComboBox.FlatStyle = FlatStyle.Flat;
+            SemestreComboBox.ForeColor = SystemColors.Window;
             SemestreComboBox.FormattingEnabled = true;
             SemestreComboBox.Items.AddRange(new object[] { "2020-1", "2020-2", "2021-1", "2021-2", "2022-1", "2022-2", "2023-1", "2023-2" });
-            SemestreComboBox.Location = new Point(313, 70);
+            SemestreComboBox.Location = new Point(310, 28);
             SemestreComboBox.Name = "SemestreComboBox";
             SemestreComboBox.Size = new Size(58, 23);
             SemestreComboBox.TabIndex = 14;
@@ -177,7 +187,8 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(381, 72);
+            label7.ForeColor = SystemColors.Control;
+            label7.Location = new Point(378, 30);
             label7.Name = "label7";
             label7.Size = new Size(41, 15);
             label7.TabIndex = 17;
@@ -187,75 +198,41 @@
             // 
             FechaComboBox.AccessibleDescription = "DD/MM/YY";
             FechaComboBox.AccessibleName = "DD/MM/YY";
+            FechaComboBox.BackColor = Color.FromArgb(30, 33, 36);
+            FechaComboBox.FlatStyle = FlatStyle.Flat;
+            FechaComboBox.ForeColor = SystemColors.Window;
             FechaComboBox.FormattingEnabled = true;
             FechaComboBox.Items.AddRange(new object[] { "DD/MM/YY", "DD/MM/YY" });
-            FechaComboBox.Location = new Point(428, 69);
+            FechaComboBox.Location = new Point(425, 27);
             FechaComboBox.Name = "FechaComboBox";
             FechaComboBox.Size = new Size(88, 23);
             FechaComboBox.TabIndex = 16;
             FechaComboBox.Text = "DD/MM/YY";
             // 
-            // DataGridView
+            // RegistroDataGridView
             // 
-            DataGridView.AllowUserToOrderColumns = true;
-            DataGridView.BackgroundColor = SystemColors.Control;
-            DataGridView.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
-            DataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            DataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DataGridView.Columns.AddRange(new DataGridViewColumn[] { Validación, Column2, Column3, Column4, Apellido, Boleta });
-            DataGridView.GridColor = Color.BlueViolet;
-            DataGridView.Location = new Point(25, 204);
-            DataGridView.Name = "DataGridView";
-            DataGridView.RightToLeft = RightToLeft.Yes;
-            DataGridView.RowTemplate.Height = 25;
-            DataGridView.Size = new Size(763, 196);
-            DataGridView.StandardTab = true;
-            DataGridView.TabIndex = 20;
-            // 
-            // Validación
-            // 
-            Validación.Frozen = true;
-            Validación.HeaderText = "Validación";
-            Validación.MaxInputLength = 330000;
-            Validación.Name = "Validación";
-            Validación.Width = 115;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Escuela";
-            Column2.Name = "Column2";
-            Column2.Width = 115;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Nombre(s)";
-            Column3.Name = "Column3";
-            Column3.Width = 115;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Apellido M";
-            Column4.Name = "Column4";
-            Column4.Width = 115;
-            // 
-            // Apellido
-            // 
-            Apellido.HeaderText = "Apellido P";
-            Apellido.Name = "Apellido";
-            Apellido.Width = 115;
-            // 
-            // Boleta
-            // 
-            Boleta.HeaderText = "Boleta";
-            Boleta.Name = "Boleta";
-            Boleta.Width = 115;
+            RegistroDataGridView.AllowUserToOrderColumns = true;
+            RegistroDataGridView.BackgroundColor = Color.FromArgb(54, 57, 62);
+            RegistroDataGridView.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
+            RegistroDataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            RegistroDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            RegistroDataGridView.GridColor = Color.BlueViolet;
+            RegistroDataGridView.Location = new Point(22, 152);
+            RegistroDataGridView.Name = "RegistroDataGridView";
+            RegistroDataGridView.RightToLeft = RightToLeft.Yes;
+            RegistroDataGridView.RowTemplate.Height = 25;
+            RegistroDataGridView.Size = new Size(796, 229);
+            RegistroDataGridView.StandardTab = true;
+            RegistroDataGridView.TabIndex = 20;
+            RegistroDataGridView.CellContentClick += DataGridView_CellContentClick;
             // 
             // GroupBox
             // 
             GroupBox.Controls.Add(FolioLabel);
-            GroupBox.Location = new Point(549, 66);
+            GroupBox.ForeColor = SystemColors.Control;
+            GroupBox.Location = new Point(556, 12);
             GroupBox.Name = "GroupBox";
-            GroupBox.Size = new Size(91, 85);
+            GroupBox.Size = new Size(205, 92);
             GroupBox.TabIndex = 21;
             GroupBox.TabStop = false;
             GroupBox.Text = "        Folio";
@@ -263,57 +240,89 @@
             // FolioLabel
             // 
             FolioLabel.AutoSize = true;
-            FolioLabel.Location = new Point(24, 62);
+            FolioLabel.Location = new Point(83, 63);
             FolioLabel.Name = "FolioLabel";
             FolioLabel.Size = new Size(43, 15);
             FolioLabel.TabIndex = 22;
             FolioLabel.Text = "000001";
             FolioLabel.Click += label8_Click;
             // 
-            // QRButton
-            // 
-            QRButton.Location = new Point(24, 66);
-            QRButton.Name = "QRButton";
-            QRButton.Size = new Size(88, 77);
-            QRButton.TabIndex = 22;
-            QRButton.Text = "Asistencia QR";
-            QRButton.UseVisualStyleBackColor = true;
-            // 
-            // AyudaButton
-            // 
-            AyudaButton.Location = new Point(646, 69);
-            AyudaButton.Name = "AyudaButton";
-            AyudaButton.Size = new Size(128, 82);
-            AyudaButton.TabIndex = 23;
-            AyudaButton.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(691, 128);
-            label9.Name = "label9";
-            label9.Size = new Size(41, 15);
-            label9.TabIndex = 23;
-            label9.Text = "Ayuda";
-            // 
             // Search
             // 
-            Search.Location = new Point(25, 175);
+            Search.BackColor = Color.FromArgb(30, 33, 36);
+            Search.BorderStyle = BorderStyle.None;
+            Search.ForeColor = SystemColors.Window;
+            Search.Location = new Point(22, 120);
             Search.Name = "Search";
-            Search.Size = new Size(763, 23);
+            Search.Size = new Size(739, 16);
             Search.TabIndex = 24;
+            Search.Tag = "sdvsdvsd";
             // 
-            // Registro
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(781, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(59, 49);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 25;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(12, 387);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(97, 57);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 26;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click_1;
+            // 
+            // ObservacionesLabel
+            // 
+            ObservacionesLabel.AutoSize = true;
+            ObservacionesLabel.ForeColor = SystemColors.Control;
+            ObservacionesLabel.Location = new Point(12, 426);
+            ObservacionesLabel.Name = "ObservacionesLabel";
+            ObservacionesLabel.Size = new Size(87, 15);
+            ObservacionesLabel.TabIndex = 27;
+            ObservacionesLabel.Text = "Observaciones:";
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(14, 23);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(97, 79);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 28;
+            pictureBox3.TabStop = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = SystemColors.Control;
+            label2.Location = new Point(22, 102);
+            label2.Name = "label2";
+            label2.Size = new Size(79, 15);
+            label2.TabIndex = 29;
+            label2.Text = "Asistencia QR";
+            // 
+            // PantallaRegistro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(54, 57, 62);
             ClientSize = new Size(852, 450);
+            Controls.Add(label2);
+            Controls.Add(pictureBox3);
+            Controls.Add(ObservacionesLabel);
+            Controls.Add(pictureBox2);
+            Controls.Add(pictureBox1);
             Controls.Add(Search);
-            Controls.Add(label9);
-            Controls.Add(AyudaButton);
-            Controls.Add(QRButton);
             Controls.Add(GroupBox);
-            Controls.Add(DataGridView);
+            Controls.Add(RegistroDataGridView);
             Controls.Add(label7);
             Controls.Add(FechaComboBox);
             Controls.Add(label6);
@@ -321,7 +330,6 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(ObservacionesLabel);
             Controls.Add(GrupoComboBox);
             Controls.Add(label1);
             Controls.Add(ProfesorTextBox);
@@ -329,11 +337,14 @@
             Controls.Add(ObservacionesTextBox);
             Controls.Add(FinalizarButton);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Registro";
+            Name = "PantallaRegistro";
             Text = "Registro de Asistencia";
-            ((System.ComponentModel.ISupportInitialize)DataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)RegistroDataGridView).EndInit();
             GroupBox.ResumeLayout(false);
             GroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -347,7 +358,6 @@
         private ContextMenuStrip contextMenuStrip1;
         private Label label1;
         private ComboBox GrupoComboBox;
-        private Label ObservacionesLabel;
         private Label label3;
         private Label label4;
         private Label label5;
@@ -355,18 +365,14 @@
         private ComboBox SemestreComboBox;
         private Label label7;
         private ComboBox FechaComboBox;
-        private DataGridView DataGridView;
+        private DataGridView RegistroDataGridView;
         private GroupBox GroupBox;
         private Label FolioLabel;
-        private Button QRButton;
-        private Button AyudaButton;
-        private Label label9;
-        private DataGridViewTextBoxColumn Validación;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Apellido;
-        private DataGridViewTextBoxColumn Boleta;
         private TextBox Search;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private Label ObservacionesLabel;
+        private PictureBox pictureBox3;
+        private Label label2;
     }
 }
