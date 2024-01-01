@@ -1,6 +1,6 @@
 ﻿namespace RegistroDeAsistencia
 {
-    partial class PantalllaQR
+    partial class PantallaQR
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantalllaQR));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaQR));
             IniciarButton = new Button();
             RegistroManualButton = new Button();
             WebcamButton = new Button();
@@ -54,9 +54,11 @@
             // 
             // IniciarButton
             // 
-            IniciarButton.BackColor = Color.FromArgb(114, 137, 218);
+            IniciarButton.BackColor = Color.FromArgb(86, 76, 149);
+            IniciarButton.Cursor = Cursors.Hand;
             IniciarButton.FlatAppearance.BorderSize = 0;
-            IniciarButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 97, 178);
+            IniciarButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            IniciarButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
             IniciarButton.FlatStyle = FlatStyle.Flat;
             IniciarButton.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             IniciarButton.ForeColor = SystemColors.ControlLightLight;
@@ -71,10 +73,11 @@
             // 
             // RegistroManualButton
             // 
-            RegistroManualButton.BackColor = Color.FromArgb(30, 33, 36);
+            RegistroManualButton.BackColor = Color.FromArgb(17, 16, 19);
+            RegistroManualButton.Cursor = Cursors.Hand;
             RegistroManualButton.FlatAppearance.BorderSize = 0;
-            RegistroManualButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 97, 178);
-            RegistroManualButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(114, 137, 218);
+            RegistroManualButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            RegistroManualButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
             RegistroManualButton.FlatStyle = FlatStyle.Flat;
             RegistroManualButton.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             RegistroManualButton.ForeColor = SystemColors.ControlLightLight;
@@ -88,11 +91,12 @@
             // 
             // WebcamButton
             // 
-            WebcamButton.BackColor = Color.FromArgb(30, 33, 36);
+            WebcamButton.BackColor = Color.FromArgb(17, 16, 19);
+            WebcamButton.Cursor = Cursors.Hand;
             WebcamButton.FlatAppearance.BorderColor = Color.FromArgb(30, 33, 36);
             WebcamButton.FlatAppearance.BorderSize = 0;
-            WebcamButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 97, 178);
-            WebcamButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(114, 137, 218);
+            WebcamButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            WebcamButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
             WebcamButton.FlatStyle = FlatStyle.Flat;
             WebcamButton.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             WebcamButton.ForeColor = SystemColors.ControlLightLight;
@@ -106,10 +110,11 @@
             // 
             // LectorQRButton
             // 
-            LectorQRButton.BackColor = Color.FromArgb(30, 33, 36);
+            LectorQRButton.BackColor = Color.FromArgb(17, 16, 19);
+            LectorQRButton.Cursor = Cursors.Hand;
             LectorQRButton.FlatAppearance.BorderSize = 0;
-            LectorQRButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 97, 178);
-            LectorQRButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(114, 137, 218);
+            LectorQRButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            LectorQRButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
             LectorQRButton.FlatStyle = FlatStyle.Flat;
             LectorQRButton.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             LectorQRButton.ForeColor = SystemColors.ControlLightLight;
@@ -132,8 +137,9 @@
             // 
             // cmbCameras
             // 
-            cmbCameras.BackColor = Color.FromArgb(66, 69, 73);
-            cmbCameras.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbCameras.BackColor = Color.FromArgb(63, 62, 70);
+            cmbCameras.FlatStyle = FlatStyle.Flat;
+            cmbCameras.ForeColor = SystemColors.Window;
             cmbCameras.FormattingEnabled = true;
             cmbCameras.Items.AddRange(new object[] { "Selecciona la Cámara" });
             cmbCameras.Location = new Point(58, 319);
@@ -144,7 +150,7 @@
             // 
             // Header
             // 
-            Header.BackColor = Color.FromArgb(74, 97, 178);
+            Header.BackColor = Color.FromArgb(86, 76, 149);
             Header.Controls.Add(RestoreButton);
             Header.Controls.Add(CloseButtonQR);
             Header.Controls.Add(TittleLabel);
@@ -177,9 +183,8 @@
             // CloseButtonQR
             // 
             CloseButtonQR.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            CloseButtonQR.BackColor = Color.FromArgb(74, 97, 178);
             CloseButtonQR.Cursor = Cursors.Hand;
-            CloseButtonQR.Image = (Image)resources.GetObject("CloseButtonQR.Image");
+            CloseButtonQR.Image = Properties.Resources.Close_Icon;
             CloseButtonQR.Location = new Point(422, 0);
             CloseButtonQR.Name = "CloseButtonQR";
             CloseButtonQR.Size = new Size(25, 25);
@@ -237,11 +242,11 @@
             CloseButton.TabIndex = 1;
             CloseButton.TabStop = false;
             // 
-            // PantalllaQR
+            // PantallaQR
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(40, 43, 48);
+            BackColor = Color.FromArgb(31, 30, 36);
             ClientSize = new Size(450, 450);
             Controls.Add(Header);
             Controls.Add(cmbCameras);
@@ -251,7 +256,7 @@
             Controls.Add(RegistroManualButton);
             Controls.Add(IniciarButton);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "PantalllaQR";
+            Name = "PantallaQR";
             Text = "RegistroQR";
             ((System.ComponentModel.ISupportInitialize)pictCamImagem).EndInit();
             Header.ResumeLayout(false);

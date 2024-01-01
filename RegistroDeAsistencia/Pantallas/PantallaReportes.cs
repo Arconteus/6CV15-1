@@ -17,30 +17,6 @@ namespace RegistroDeAsistencia
         {
             InitializeComponent();
             dt = new DataTable();
-            dt.Columns.Add("X");
-            dt.Columns.Add("Folio");
-            dt.Columns.Add("Fecha");
-            dt.Columns.Add("Materia");
-            dt.Columns.Add("Profesor");
-
-            ReportesdataGridView.DataSource = dt;
-
-            ReportesdataGridView.RowHeadersVisible = false;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

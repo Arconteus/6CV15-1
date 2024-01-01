@@ -17,32 +17,6 @@ namespace RegistroDeAsistencia.Pantallas
         {
             InitializeComponent();
 
-            dt = new DataTable();
-            dt.Columns.Add("Lunes");
-            dt.Columns.Add("Martes");
-            dt.Columns.Add("Miercoles");
-            dt.Columns.Add("Jueves");
-            dt.Columns.Add("Viernes");
-
-            HorariodataGridView1.DataSource = dt;
-
-            dt = new DataTable();
-            dt.Columns.Add("Día");
-
-            DíaDataGridView2.DataSource = dt;
-
-            HorariodataGridView1.RowHeadersVisible = false;
-            DíaDataGridView2.RowHeadersVisible = false;
-        }
-
-        private void HorariodataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void DíaDataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

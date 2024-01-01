@@ -28,54 +28,69 @@
         /// </summary>
         private void InitializeComponent()
         {
-            GrupocomboBox1 = new ComboBox();
-            ProfesortextBox1 = new TextBox();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            FiltroGrupocomboBox = new ComboBox();
             Materialabel3 = new Label();
             Profesorlabel2 = new Label();
             Grupolabel1 = new Label();
             Semestrelabel4 = new Label();
             Fechainferiorlabel5 = new Label();
             Fechasuperiorlabel6 = new Label();
-            SemestrecomboBox3 = new ComboBox();
-            busquedatextBox6 = new TextBox();
-            ReportesdataGridView = new DataGridView();
+            FiltroPeriodoComboBox = new ComboBox();
             backupbutton1 = new Button();
-            FechainferiordateTimePicker1 = new DateTimePicker();
-            FechasuperiordateTimePicker2 = new DateTimePicker();
+            FechaInferiorDTP = new DateTimePicker();
+            FechaSuperiorDTP = new DateTimePicker();
             FormatodereportecheckBox1 = new CheckBox();
             excelxmlcheckBox2 = new CheckBox();
             excelxlsxcheckBox3 = new CheckBox();
-            exportarbutton2 = new Button();
-            exportarenbutton3 = new Button();
-            label7 = new Label();
-            MateriaTextBox = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)ReportesdataGridView).BeginInit();
+            groupBox1 = new GroupBox();
+            BuscarButton = new Button();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            FiltroMateriaComboBox = new ComboBox();
+            FiltroProfesorComboBox = new ComboBox();
+            groupBox2 = new GroupBox();
+            ReporteExportButton = new Button();
+            ReporteExportInButton = new Button();
+            RegistroDGV = new DataGridView();
+            Select = new DataGridViewCheckBoxColumn();
+            Semestre = new DataGridViewTextBoxColumn();
+            Grupo = new DataGridViewTextBoxColumn();
+            Profesor = new DataGridViewTextBoxColumn();
+            Materia = new DataGridViewTextBoxColumn();
+            Horario = new DataGridViewButtonColumn();
+            Eliminar = new DataGridViewButtonColumn();
+            pictureBox2 = new PictureBox();
+            pictureBox1 = new PictureBox();
+            groupBox3 = new GroupBox();
+            DBExport = new Button();
+            DBExportButton = new Button();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)RegistroDGV).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
-            // GrupocomboBox1
+            // FiltroGrupocomboBox
             // 
-            GrupocomboBox1.BackColor = Color.FromArgb(30, 33, 36);
-            GrupocomboBox1.FlatStyle = FlatStyle.Flat;
-            GrupocomboBox1.FormattingEnabled = true;
-            GrupocomboBox1.Location = new Point(105, 65);
-            GrupocomboBox1.Name = "GrupocomboBox1";
-            GrupocomboBox1.Size = new Size(121, 23);
-            GrupocomboBox1.TabIndex = 10;
-            // 
-            // ProfesortextBox1
-            // 
-            ProfesortextBox1.BackColor = Color.FromArgb(30, 33, 36);
-            ProfesortextBox1.BorderStyle = BorderStyle.None;
-            ProfesortextBox1.Location = new Point(105, 108);
-            ProfesortextBox1.Name = "ProfesortextBox1";
-            ProfesortextBox1.Size = new Size(449, 16);
-            ProfesortextBox1.TabIndex = 9;
+            FiltroGrupocomboBox.BackColor = Color.FromArgb(63, 62, 70);
+            FiltroGrupocomboBox.FlatStyle = FlatStyle.Flat;
+            FiltroGrupocomboBox.ForeColor = SystemColors.ControlLightLight;
+            FiltroGrupocomboBox.FormattingEnabled = true;
+            FiltroGrupocomboBox.Location = new Point(93, 22);
+            FiltroGrupocomboBox.Name = "FiltroGrupocomboBox";
+            FiltroGrupocomboBox.Size = new Size(121, 23);
+            FiltroGrupocomboBox.TabIndex = 10;
             // 
             // Materialabel3
             // 
             Materialabel3.AutoSize = true;
             Materialabel3.ForeColor = SystemColors.Control;
-            Materialabel3.Location = new Point(20, 151);
+            Materialabel3.Location = new Point(15, 83);
             Materialabel3.Name = "Materialabel3";
             Materialabel3.Size = new Size(47, 15);
             Materialabel3.TabIndex = 8;
@@ -85,7 +100,7 @@
             // 
             Profesorlabel2.AutoSize = true;
             Profesorlabel2.ForeColor = SystemColors.Control;
-            Profesorlabel2.Location = new Point(20, 111);
+            Profesorlabel2.Location = new Point(15, 54);
             Profesorlabel2.Name = "Profesorlabel2";
             Profesorlabel2.Size = new Size(51, 15);
             Profesorlabel2.TabIndex = 7;
@@ -95,28 +110,27 @@
             // 
             Grupolabel1.AutoSize = true;
             Grupolabel1.ForeColor = SystemColors.Control;
-            Grupolabel1.Location = new Point(27, 73);
+            Grupolabel1.Location = new Point(15, 25);
             Grupolabel1.Name = "Grupolabel1";
             Grupolabel1.Size = new Size(40, 15);
             Grupolabel1.TabIndex = 6;
             Grupolabel1.Text = "Grupo";
-            Grupolabel1.Click += label1_Click;
             // 
             // Semestrelabel4
             // 
             Semestrelabel4.AutoSize = true;
             Semestrelabel4.ForeColor = SystemColors.Control;
-            Semestrelabel4.Location = new Point(573, 73);
+            Semestrelabel4.Location = new Point(220, 25);
             Semestrelabel4.Name = "Semestrelabel4";
-            Semestrelabel4.Size = new Size(55, 15);
+            Semestrelabel4.Size = new Size(29, 15);
             Semestrelabel4.TabIndex = 12;
-            Semestrelabel4.Text = "Semestre";
+            Semestrelabel4.Text = "Año";
             // 
             // Fechainferiorlabel5
             // 
             Fechainferiorlabel5.AutoSize = true;
             Fechainferiorlabel5.ForeColor = SystemColors.Control;
-            Fechainferiorlabel5.Location = new Point(573, 114);
+            Fechainferiorlabel5.Location = new Point(412, 54);
             Fechainferiorlabel5.Name = "Fechainferiorlabel5";
             Fechainferiorlabel5.Size = new Size(79, 15);
             Fechainferiorlabel5.TabIndex = 13;
@@ -126,42 +140,23 @@
             // 
             Fechasuperiorlabel6.AutoSize = true;
             Fechasuperiorlabel6.ForeColor = SystemColors.Control;
-            Fechasuperiorlabel6.Location = new Point(573, 154);
+            Fechasuperiorlabel6.Location = new Point(412, 25);
             Fechasuperiorlabel6.Name = "Fechasuperiorlabel6";
             Fechasuperiorlabel6.Size = new Size(85, 15);
             Fechasuperiorlabel6.TabIndex = 14;
             Fechasuperiorlabel6.Text = "Fecha Superior";
             // 
-            // SemestrecomboBox3
+            // FiltroPeriodoComboBox
             // 
-            SemestrecomboBox3.BackColor = Color.FromArgb(30, 33, 36);
-            SemestrecomboBox3.FlatStyle = FlatStyle.Flat;
-            SemestrecomboBox3.ForeColor = SystemColors.WindowText;
-            SemestrecomboBox3.FormattingEnabled = true;
-            SemestrecomboBox3.Location = new Point(664, 65);
-            SemestrecomboBox3.Name = "SemestrecomboBox3";
-            SemestrecomboBox3.Size = new Size(121, 23);
-            SemestrecomboBox3.TabIndex = 15;
-            // 
-            // busquedatextBox6
-            // 
-            busquedatextBox6.BackColor = Color.FromArgb(30, 33, 36);
-            busquedatextBox6.BorderStyle = BorderStyle.None;
-            busquedatextBox6.Location = new Point(12, 189);
-            busquedatextBox6.Name = "busquedatextBox6";
-            busquedatextBox6.Size = new Size(542, 16);
-            busquedatextBox6.TabIndex = 20;
-            // 
-            // ReportesdataGridView
-            // 
-            ReportesdataGridView.BackgroundColor = Color.FromArgb(54, 57, 62);
-            ReportesdataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ReportesdataGridView.Location = new Point(12, 224);
-            ReportesdataGridView.Name = "ReportesdataGridView";
-            ReportesdataGridView.RowTemplate.Height = 25;
-            ReportesdataGridView.Size = new Size(542, 214);
-            ReportesdataGridView.TabIndex = 19;
-            ReportesdataGridView.CellContentClick += dataGridView1_CellContentClick;
+            FiltroPeriodoComboBox.BackColor = Color.FromArgb(63, 62, 70);
+            FiltroPeriodoComboBox.FlatStyle = FlatStyle.Flat;
+            FiltroPeriodoComboBox.ForeColor = SystemColors.ControlLightLight;
+            FiltroPeriodoComboBox.FormattingEnabled = true;
+            FiltroPeriodoComboBox.Items.AddRange(new object[] { "1", "2" });
+            FiltroPeriodoComboBox.Location = new Point(364, 22);
+            FiltroPeriodoComboBox.Name = "FiltroPeriodoComboBox";
+            FiltroPeriodoComboBox.Size = new Size(42, 23);
+            FiltroPeriodoComboBox.TabIndex = 15;
             // 
             // backupbutton1
             // 
@@ -172,32 +167,33 @@
             backupbutton1.Text = "HACER BACKUP EN LA BASE DE DATOS";
             backupbutton1.UseVisualStyleBackColor = true;
             // 
-            // FechainferiordateTimePicker1
+            // FechaInferiorDTP
             // 
-            FechainferiordateTimePicker1.CalendarForeColor = Color.FromArgb(30, 33, 36);
-            FechainferiordateTimePicker1.CalendarMonthBackground = Color.FromArgb(30, 33, 36);
-            FechainferiordateTimePicker1.CalendarTitleBackColor = Color.FromArgb(30, 33, 36);
-            FechainferiordateTimePicker1.CalendarTitleForeColor = Color.FromArgb(30, 33, 36);
-            FechainferiordateTimePicker1.CalendarTrailingForeColor = Color.FromArgb(30, 33, 36);
-            FechainferiordateTimePicker1.Location = new Point(664, 108);
-            FechainferiordateTimePicker1.Name = "FechainferiordateTimePicker1";
-            FechainferiordateTimePicker1.Size = new Size(176, 23);
-            FechainferiordateTimePicker1.TabIndex = 22;
+            FechaInferiorDTP.CalendarForeColor = Color.FromArgb(30, 33, 36);
+            FechaInferiorDTP.CalendarMonthBackground = Color.FromArgb(30, 33, 36);
+            FechaInferiorDTP.CalendarTitleBackColor = Color.FromArgb(30, 33, 36);
+            FechaInferiorDTP.CalendarTitleForeColor = Color.FromArgb(30, 33, 36);
+            FechaInferiorDTP.CalendarTrailingForeColor = Color.FromArgb(30, 33, 36);
+            FechaInferiorDTP.Format = DateTimePickerFormat.Short;
+            FechaInferiorDTP.Location = new Point(503, 22);
+            FechaInferiorDTP.Name = "FechaInferiorDTP";
+            FechaInferiorDTP.Size = new Size(96, 23);
+            FechaInferiorDTP.TabIndex = 22;
             // 
-            // FechasuperiordateTimePicker2
+            // FechaSuperiorDTP
             // 
-            FechasuperiordateTimePicker2.Location = new Point(664, 146);
-            FechasuperiordateTimePicker2.Name = "FechasuperiordateTimePicker2";
-            FechasuperiordateTimePicker2.Size = new Size(176, 23);
-            FechasuperiordateTimePicker2.TabIndex = 23;
-            FechasuperiordateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
+            FechaSuperiorDTP.Format = DateTimePickerFormat.Short;
+            FechaSuperiorDTP.Location = new Point(503, 51);
+            FechaSuperiorDTP.Name = "FechaSuperiorDTP";
+            FechaSuperiorDTP.Size = new Size(96, 23);
+            FechaSuperiorDTP.TabIndex = 23;
             // 
             // FormatodereportecheckBox1
             // 
             FormatodereportecheckBox1.AutoSize = true;
             FormatodereportecheckBox1.FlatStyle = FlatStyle.Flat;
             FormatodereportecheckBox1.ForeColor = SystemColors.Control;
-            FormatodereportecheckBox1.Location = new Point(605, 254);
+            FormatodereportecheckBox1.Location = new Point(6, 22);
             FormatodereportecheckBox1.Name = "FormatodereportecheckBox1";
             FormatodereportecheckBox1.Size = new Size(170, 19);
             FormatodereportecheckBox1.TabIndex = 25;
@@ -209,7 +205,7 @@
             excelxmlcheckBox2.AutoSize = true;
             excelxmlcheckBox2.FlatStyle = FlatStyle.Flat;
             excelxmlcheckBox2.ForeColor = SystemColors.Control;
-            excelxmlcheckBox2.Location = new Point(605, 279);
+            excelxmlcheckBox2.Location = new Point(6, 47);
             excelxmlcheckBox2.Name = "excelxmlcheckBox2";
             excelxmlcheckBox2.Size = new Size(145, 19);
             excelxmlcheckBox2.TabIndex = 26;
@@ -221,113 +217,381 @@
             excelxlsxcheckBox3.AutoSize = true;
             excelxlsxcheckBox3.FlatStyle = FlatStyle.Flat;
             excelxlsxcheckBox3.ForeColor = SystemColors.Control;
-            excelxlsxcheckBox3.Location = new Point(605, 304);
+            excelxlsxcheckBox3.Location = new Point(6, 72);
             excelxlsxcheckBox3.Name = "excelxlsxcheckBox3";
             excelxlsxcheckBox3.Size = new Size(147, 19);
             excelxlsxcheckBox3.TabIndex = 27;
             excelxlsxcheckBox3.Text = "Archivo de Excel (XLSX)";
             excelxlsxcheckBox3.UseVisualStyleBackColor = true;
             // 
-            // exportarbutton2
+            // groupBox1
             // 
-            exportarbutton2.BackColor = Color.FromArgb(30, 33, 36);
-            exportarbutton2.FlatAppearance.BorderSize = 0;
-            exportarbutton2.FlatStyle = FlatStyle.Flat;
-            exportarbutton2.ForeColor = SystemColors.Control;
-            exportarbutton2.Location = new Point(605, 350);
-            exportarbutton2.Name = "exportarbutton2";
-            exportarbutton2.Size = new Size(173, 29);
-            exportarbutton2.TabIndex = 28;
-            exportarbutton2.Text = "Exportar";
-            exportarbutton2.UseVisualStyleBackColor = false;
+            groupBox1.Controls.Add(BuscarButton);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(FiltroMateriaComboBox);
+            groupBox1.Controls.Add(FiltroProfesorComboBox);
+            groupBox1.Controls.Add(FiltroGrupocomboBox);
+            groupBox1.Controls.Add(Grupolabel1);
+            groupBox1.Controls.Add(Profesorlabel2);
+            groupBox1.Controls.Add(FechaSuperiorDTP);
+            groupBox1.Controls.Add(Materialabel3);
+            groupBox1.Controls.Add(FechaInferiorDTP);
+            groupBox1.Controls.Add(Semestrelabel4);
+            groupBox1.Controls.Add(FiltroPeriodoComboBox);
+            groupBox1.Controls.Add(Fechasuperiorlabel6);
+            groupBox1.Controls.Add(Fechainferiorlabel5);
+            groupBox1.ForeColor = SystemColors.ControlLightLight;
+            groupBox1.Location = new Point(12, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(610, 121);
+            groupBox1.TabIndex = 32;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Filtros";
             // 
-            // exportarenbutton3
+            // BuscarButton
             // 
-            exportarenbutton3.BackColor = Color.FromArgb(30, 33, 36);
-            exportarenbutton3.FlatAppearance.BorderSize = 0;
-            exportarenbutton3.FlatStyle = FlatStyle.Flat;
-            exportarenbutton3.ForeColor = SystemColors.Control;
-            exportarenbutton3.Location = new Point(605, 396);
-            exportarenbutton3.Name = "exportarenbutton3";
-            exportarenbutton3.Size = new Size(173, 29);
-            exportarenbutton3.TabIndex = 29;
-            exportarenbutton3.Text = "Exportar en";
-            exportarenbutton3.UseVisualStyleBackColor = false;
+            BuscarButton.BackColor = Color.FromArgb(86, 76, 149);
+            BuscarButton.Cursor = Cursors.Hand;
+            BuscarButton.FlatAppearance.BorderSize = 0;
+            BuscarButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            BuscarButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            BuscarButton.FlatStyle = FlatStyle.Flat;
+            BuscarButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            BuscarButton.ForeColor = SystemColors.Control;
+            BuscarButton.Location = new Point(412, 80);
+            BuscarButton.Margin = new Padding(0);
+            BuscarButton.Name = "BuscarButton";
+            BuscarButton.Size = new Size(187, 23);
+            BuscarButton.TabIndex = 36;
+            BuscarButton.Text = "Buscar";
+            BuscarButton.UseVisualStyleBackColor = false;
             // 
-            // label7
+            // label1
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(603, 222);
-            label7.Name = "label7";
-            label7.Size = new Size(67, 15);
-            label7.TabIndex = 30;
-            label7.Text = "Exportar en";
+            label1.AutoSize = true;
+            label1.ForeColor = SystemColors.Control;
+            label1.Location = new Point(310, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(48, 15);
+            label1.TabIndex = 34;
+            label1.Text = "Periodo";
             // 
-            // MateriaTextBox
+            // textBox1
             // 
-            MateriaTextBox.BackColor = Color.FromArgb(30, 33, 36);
-            MateriaTextBox.BorderStyle = BorderStyle.None;
-            MateriaTextBox.Location = new Point(105, 148);
-            MateriaTextBox.Name = "MateriaTextBox";
-            MateriaTextBox.Size = new Size(449, 16);
-            MateriaTextBox.TabIndex = 31;
+            textBox1.BackColor = Color.FromArgb(63, 62, 70);
+            textBox1.ForeColor = SystemColors.ControlLightLight;
+            textBox1.Location = new Point(255, 22);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(49, 23);
+            textBox1.TabIndex = 33;
+            // 
+            // FiltroMateriaComboBox
+            // 
+            FiltroMateriaComboBox.BackColor = Color.FromArgb(63, 62, 70);
+            FiltroMateriaComboBox.FlatStyle = FlatStyle.Flat;
+            FiltroMateriaComboBox.ForeColor = SystemColors.ControlLightLight;
+            FiltroMateriaComboBox.FormattingEnabled = true;
+            FiltroMateriaComboBox.Location = new Point(93, 80);
+            FiltroMateriaComboBox.Name = "FiltroMateriaComboBox";
+            FiltroMateriaComboBox.Size = new Size(313, 23);
+            FiltroMateriaComboBox.TabIndex = 33;
+            // 
+            // FiltroProfesorComboBox
+            // 
+            FiltroProfesorComboBox.BackColor = Color.FromArgb(63, 62, 70);
+            FiltroProfesorComboBox.FlatStyle = FlatStyle.Flat;
+            FiltroProfesorComboBox.ForeColor = SystemColors.ControlLightLight;
+            FiltroProfesorComboBox.FormattingEnabled = true;
+            FiltroProfesorComboBox.Location = new Point(93, 51);
+            FiltroProfesorComboBox.Name = "FiltroProfesorComboBox";
+            FiltroProfesorComboBox.Size = new Size(313, 23);
+            FiltroProfesorComboBox.TabIndex = 33;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(ReporteExportButton);
+            groupBox2.Controls.Add(ReporteExportInButton);
+            groupBox2.Controls.Add(FormatodereportecheckBox1);
+            groupBox2.Controls.Add(excelxmlcheckBox2);
+            groupBox2.Controls.Add(excelxlsxcheckBox3);
+            groupBox2.ForeColor = SystemColors.ControlLightLight;
+            groupBox2.Location = new Point(628, 149);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(212, 162);
+            groupBox2.TabIndex = 33;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Exportar en";
+            // 
+            // ReporteExportButton
+            // 
+            ReporteExportButton.BackColor = Color.FromArgb(86, 76, 149);
+            ReporteExportButton.Cursor = Cursors.Hand;
+            ReporteExportButton.Dock = DockStyle.Bottom;
+            ReporteExportButton.FlatAppearance.BorderSize = 0;
+            ReporteExportButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            ReporteExportButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            ReporteExportButton.FlatStyle = FlatStyle.Flat;
+            ReporteExportButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            ReporteExportButton.ForeColor = SystemColors.Control;
+            ReporteExportButton.Location = new Point(3, 102);
+            ReporteExportButton.Margin = new Padding(0);
+            ReporteExportButton.Name = "ReporteExportButton";
+            ReporteExportButton.Size = new Size(206, 33);
+            ReporteExportButton.TabIndex = 36;
+            ReporteExportButton.Text = "Exportar";
+            ReporteExportButton.UseVisualStyleBackColor = false;
+            // 
+            // ReporteExportInButton
+            // 
+            ReporteExportInButton.BackColor = Color.FromArgb(17, 16, 19);
+            ReporteExportInButton.Cursor = Cursors.Hand;
+            ReporteExportInButton.Dock = DockStyle.Bottom;
+            ReporteExportInButton.FlatAppearance.BorderSize = 0;
+            ReporteExportInButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            ReporteExportInButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            ReporteExportInButton.FlatStyle = FlatStyle.Flat;
+            ReporteExportInButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            ReporteExportInButton.ForeColor = SystemColors.Control;
+            ReporteExportInButton.Location = new Point(3, 135);
+            ReporteExportInButton.Margin = new Padding(0);
+            ReporteExportInButton.Name = "ReporteExportInButton";
+            ReporteExportInButton.Size = new Size(206, 24);
+            ReporteExportInButton.TabIndex = 35;
+            ReporteExportInButton.Text = "Exportar en";
+            ReporteExportInButton.UseVisualStyleBackColor = false;
+            // 
+            // RegistroDGV
+            // 
+            RegistroDGV.AllowUserToDeleteRows = false;
+            RegistroDGV.AllowUserToOrderColumns = true;
+            RegistroDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
+            RegistroDGV.BorderStyle = BorderStyle.None;
+            RegistroDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            RegistroDGV.ColumnHeadersHeight = 30;
+            RegistroDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { Select, Semestre, Grupo, Profesor, Materia, Horario, Eliminar });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            RegistroDGV.EnableHeadersVisualStyles = false;
+            RegistroDGV.GridColor = Color.White;
+            RegistroDGV.Location = new Point(12, 149);
+            RegistroDGV.Name = "RegistroDGV";
+            RegistroDGV.ReadOnly = true;
+            RegistroDGV.RightToLeft = RightToLeft.No;
+            RegistroDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            RegistroDGV.RowHeadersVisible = false;
+            RegistroDGV.RowTemplate.Height = 25;
+            RegistroDGV.Size = new Size(610, 289);
+            RegistroDGV.TabIndex = 34;
+            // 
+            // Select
+            // 
+            Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Select.HeaderText = "S";
+            Select.Name = "Select";
+            Select.ReadOnly = true;
+            Select.Width = 18;
+            // 
+            // Semestre
+            // 
+            Semestre.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Semestre.HeaderText = "Semestre";
+            Semestre.Name = "Semestre";
+            Semestre.ReadOnly = true;
+            Semestre.Width = 79;
+            // 
+            // Grupo
+            // 
+            Grupo.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Grupo.HeaderText = "Grupo";
+            Grupo.Name = "Grupo";
+            Grupo.ReadOnly = true;
+            Grupo.Width = 64;
+            // 
+            // Profesor
+            // 
+            Profesor.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Profesor.HeaderText = "Profesor";
+            Profesor.Name = "Profesor";
+            Profesor.ReadOnly = true;
+            // 
+            // Materia
+            // 
+            Materia.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Materia.HeaderText = "Materia";
+            Materia.Name = "Materia";
+            Materia.ReadOnly = true;
+            // 
+            // Horario
+            // 
+            Horario.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Horario.HeaderText = "Horario";
+            Horario.Name = "Horario";
+            Horario.ReadOnly = true;
+            Horario.Width = 52;
+            // 
+            // Eliminar
+            // 
+            Eliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.Name = "Eliminar";
+            Eliminar.ReadOnly = true;
+            Eliminar.Width = 55;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Cursor = Cursors.Hand;
+            pictureBox2.Image = Properties.Resources.Help_Icon;
+            pictureBox2.Location = new Point(795, 12);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(45, 45);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 36;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Cursor = Cursors.Hand;
+            pictureBox1.Image = Properties.Resources.Report_Icon;
+            pictureBox1.Location = new Point(634, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(155, 121);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 37;
+            pictureBox1.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(DBExport);
+            groupBox3.Controls.Add(DBExportButton);
+            groupBox3.ForeColor = SystemColors.ControlLightLight;
+            groupBox3.Location = new Point(628, 317);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(212, 121);
+            groupBox3.TabIndex = 38;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Base de datos";
+            // 
+            // DBExport
+            // 
+            DBExport.BackColor = Color.FromArgb(17, 16, 19);
+            DBExport.Cursor = Cursors.Hand;
+            DBExport.FlatAppearance.BorderSize = 0;
+            DBExport.FlatAppearance.MouseDownBackColor = Color.FromArgb(193, 71, 71);
+            DBExport.FlatAppearance.MouseOverBackColor = Color.FromArgb(239, 88, 88);
+            DBExport.FlatStyle = FlatStyle.Flat;
+            DBExport.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            DBExport.ForeColor = SystemColors.Control;
+            DBExport.Location = new Point(6, 80);
+            DBExport.Name = "DBExport";
+            DBExport.Size = new Size(200, 25);
+            DBExport.TabIndex = 38;
+            DBExport.Text = "Eliminar Base de Datos";
+            DBExport.UseVisualStyleBackColor = false;
+            // 
+            // DBExportButton
+            // 
+            DBExportButton.BackColor = Color.FromArgb(86, 76, 149);
+            DBExportButton.Cursor = Cursors.Hand;
+            DBExportButton.FlatAppearance.BorderSize = 0;
+            DBExportButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            DBExportButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            DBExportButton.FlatStyle = FlatStyle.Flat;
+            DBExportButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            DBExportButton.ForeColor = SystemColors.Control;
+            DBExportButton.Location = new Point(6, 34);
+            DBExportButton.Name = "DBExportButton";
+            DBExportButton.Size = new Size(200, 40);
+            DBExportButton.TabIndex = 37;
+            DBExportButton.Text = "Exportar Base de Datos";
+            DBExportButton.UseVisualStyleBackColor = false;
             // 
             // PantallaReportes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(54, 57, 62);
+            BackColor = Color.FromArgb(31, 30, 36);
             ClientSize = new Size(852, 450);
-            Controls.Add(MateriaTextBox);
-            Controls.Add(label7);
-            Controls.Add(exportarenbutton3);
-            Controls.Add(exportarbutton2);
-            Controls.Add(excelxlsxcheckBox3);
-            Controls.Add(excelxmlcheckBox2);
-            Controls.Add(FormatodereportecheckBox1);
-            Controls.Add(FechasuperiordateTimePicker2);
-            Controls.Add(FechainferiordateTimePicker1);
+            Controls.Add(groupBox3);
+            Controls.Add(pictureBox1);
+            Controls.Add(pictureBox2);
+            Controls.Add(RegistroDGV);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
             Controls.Add(backupbutton1);
-            Controls.Add(busquedatextBox6);
-            Controls.Add(ReportesdataGridView);
-            Controls.Add(SemestrecomboBox3);
-            Controls.Add(Fechasuperiorlabel6);
-            Controls.Add(Fechainferiorlabel5);
-            Controls.Add(Semestrelabel4);
-            Controls.Add(GrupocomboBox1);
-            Controls.Add(ProfesortextBox1);
-            Controls.Add(Materialabel3);
-            Controls.Add(Profesorlabel2);
-            Controls.Add(Grupolabel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaReportes";
             Text = "Pantalla_reportes";
-            ((System.ComponentModel.ISupportInitialize)ReportesdataGridView).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)RegistroDGV).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-        private ComboBox GrupocomboBox1;
-        private TextBox ProfesortextBox1;
+        private ComboBox FiltroGrupocomboBox;
         private Label Materialabel3;
         private Label Profesorlabel2;
         private Label Grupolabel1;
         private Label Semestrelabel4;
         private Label Fechainferiorlabel5;
         private Label Fechasuperiorlabel6;
-        private ComboBox SemestrecomboBox3;
-        private TextBox busquedatextBox6;
-        private DataGridView ReportesdataGridView;
+        private ComboBox FiltroPeriodoComboBox;
         private Button backupbutton1;
-        private DateTimePicker FechainferiordateTimePicker1;
-        private DateTimePicker FechasuperiordateTimePicker2;
+        private DateTimePicker FechaInferiorDTP;
+        private DateTimePicker FechaSuperiorDTP;
         private CheckBox FormatodereportecheckBox1;
         private CheckBox excelxmlcheckBox2;
         private CheckBox excelxlsxcheckBox3;
-        private Button exportarbutton2;
-        private Button exportarenbutton3;
-        private Label label7;
-        private TextBox MateriaTextBox;
+        private GroupBox groupBox1;
+        private ComboBox FiltroProfesorComboBox;
+        private ComboBox FiltroMateriaComboBox;
+        private Label label1;
+        private TextBox textBox1;
+        private GroupBox groupBox2;
+        private DataGridView RegistroDGV;
+        private DataGridViewCheckBoxColumn Select;
+        private DataGridViewTextBoxColumn Semestre;
+        private DataGridViewTextBoxColumn Grupo;
+        private DataGridViewTextBoxColumn Profesor;
+        private DataGridViewTextBoxColumn Materia;
+        private DataGridViewButtonColumn Horario;
+        private DataGridViewButtonColumn Eliminar;
+        private Button BuscarButton;
+        private Button ReporteExportInButton;
+        private PictureBox pictureBox2;
+        private Button ReporteExportButton;
+        private PictureBox pictureBox1;
+        private GroupBox groupBox3;
+        private Button DBExportButton;
+        private Button DBExport;
     }
 }

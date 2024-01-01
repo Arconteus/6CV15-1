@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace RegistroDeAsistencia
 {
-    public partial class PantalllaQR : Form
+    public partial class PantallaQR : Form
     {
         //==============================================================================================
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -24,7 +24,7 @@ namespace RegistroDeAsistencia
         FilterInfoCollection _filterInfoCollection;
         VideoCaptureDevice _videoCaptureDevice;
 
-        public PantalllaQR()
+        public PantallaQR()
         {
             InitializeComponent();
 

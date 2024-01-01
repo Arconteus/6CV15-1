@@ -10,37 +10,12 @@ using System.Windows.Forms;
 
 namespace RegistroDeAsistencia
 {
-    public partial class Pantalla_admin : Form
+    public partial class PantallaAdmin : Form
     {
         private DataTable dt;
-        public Pantalla_admin()
+        public PantallaAdmin()
         {
             InitializeComponent();
-            dt = new DataTable();
-            dt.Columns.Add("X");
-            dt.Columns.Add("Semestre");
-            dt.Columns.Add("Grupo");
-            dt.Columns.Add("Materia");
-            dt.Columns.Add("Profesor");
-
-            GruposDataGridView3.DataSource = dt;
-            GruposDataGridView3.RowHeadersVisible = false;
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

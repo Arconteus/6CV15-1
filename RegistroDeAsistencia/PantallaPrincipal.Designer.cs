@@ -28,76 +28,74 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaPrincipal));
             Header = new Panel();
-            RestoreButton = new PictureBox();
+            MaximizeButton = new PictureBox();
             TittleLabel = new Label();
             MinimizeButton = new PictureBox();
+            RestoreButton = new PictureBox();
             CloseButton = new PictureBox();
-            InicioButton = new Button();
-            AsistenciaButton = new Button();
-            ReportesButton = new Button();
-            AdministrarButton = new Button();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ButtonsPanel = new Panel();
-            PanelPrime = new Panel();
-            MaximixeButton = new PictureBox();
+            ReportesButton = new Button();
+            InicioButton = new Button();
+            AdministrarButton = new Button();
+            AsistenciaButton = new Button();
+            MainPanel = new Panel();
             Header.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)RestoreButton).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)MaximizeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinimizeButton).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)RestoreButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).BeginInit();
             ButtonsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)MaximixeButton).BeginInit();
             SuspendLayout();
             // 
             // Header
             // 
-            Header.BackColor = Color.FromArgb(74, 97, 178);
-            Header.Controls.Add(RestoreButton);
+            Header.BackColor = Color.FromArgb(49, 41, 100);
+            Header.Controls.Add(MaximizeButton);
             Header.Controls.Add(TittleLabel);
-            Header.Controls.Add(MaximixeButton);
             Header.Controls.Add(MinimizeButton);
+            Header.Controls.Add(RestoreButton);
             Header.Controls.Add(CloseButton);
             Header.Dock = DockStyle.Top;
-            Header.ForeColor = SystemColors.ControlText;
             Header.Location = new Point(0, 0);
             Header.Name = "Header";
             Header.Size = new Size(852, 25);
             Header.TabIndex = 0;
             Header.MouseDown += Header_MouseDown;
             // 
-            // RestoreButton
+            // MaximizeButton
             // 
-            RestoreButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            RestoreButton.BackColor = Color.FromArgb(74, 97, 178);
-            RestoreButton.Cursor = Cursors.Hand;
-            RestoreButton.Image = (Image)resources.GetObject("RestoreButton.Image");
-            RestoreButton.Location = new Point(796, 0);
-            RestoreButton.Name = "RestoreButton";
-            RestoreButton.Size = new Size(25, 25);
-            RestoreButton.SizeMode = PictureBoxSizeMode.Zoom;
-            RestoreButton.TabIndex = 4;
-            RestoreButton.TabStop = false;
-            RestoreButton.Visible = false;
-            RestoreButton.Click += RestoreButton_Click;
+            MaximizeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            MaximizeButton.Cursor = Cursors.Hand;
+            MaximizeButton.Image = Properties.Resources.Maximize_Icon;
+            MaximizeButton.Location = new Point(802, 0);
+            MaximizeButton.Margin = new Padding(0);
+            MaximizeButton.Name = "MaximizeButton";
+            MaximizeButton.Size = new Size(25, 25);
+            MaximizeButton.SizeMode = PictureBoxSizeMode.Zoom;
+            MaximizeButton.TabIndex = 3;
+            MaximizeButton.TabStop = false;
+            MaximizeButton.Click += MaximizeButton_Click;
             // 
             // TittleLabel
             // 
+            TittleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             TittleLabel.AutoSize = true;
             TittleLabel.ForeColor = SystemColors.ControlLightLight;
-            TittleLabel.Location = new Point(25, 5);
+            TittleLabel.Location = new Point(21, 7);
             TittleLabel.Name = "TittleLabel";
-            TittleLabel.Size = new Size(120, 15);
-            TittleLabel.TabIndex = 5;
-            TittleLabel.Text = "Registro de asistencia";
+            TittleLabel.Size = new Size(117, 15);
+            TittleLabel.TabIndex = 0;
+            TittleLabel.Text = "Control de asistencia";
+            TittleLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // MinimizeButton
             // 
             MinimizeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            MinimizeButton.BackColor = Color.FromArgb(74, 97, 178);
             MinimizeButton.Cursor = Cursors.Hand;
-            MinimizeButton.Image = (Image)resources.GetObject("MinimizeButton.Image");
-            MinimizeButton.Location = new Point(765, 0);
+            MinimizeButton.Image = Properties.Resources.Minimize_Icon;
+            MinimizeButton.Location = new Point(777, 0);
+            MinimizeButton.Margin = new Padding(0);
             MinimizeButton.Name = "MinimizeButton";
             MinimizeButton.Size = new Size(25, 25);
             MinimizeButton.SizeMode = PictureBoxSizeMode.Zoom;
@@ -105,69 +103,57 @@
             MinimizeButton.TabStop = false;
             MinimizeButton.Click += MinimizeButton_Click;
             // 
+            // RestoreButton
+            // 
+            RestoreButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            RestoreButton.Cursor = Cursors.Hand;
+            RestoreButton.Image = Properties.Resources.Restore_Icon;
+            RestoreButton.Location = new Point(802, 0);
+            RestoreButton.Margin = new Padding(0);
+            RestoreButton.Name = "RestoreButton";
+            RestoreButton.Size = new Size(25, 25);
+            RestoreButton.SizeMode = PictureBoxSizeMode.Zoom;
+            RestoreButton.TabIndex = 1;
+            RestoreButton.TabStop = false;
+            RestoreButton.Click += RestoreButton_Click;
+            // 
             // CloseButton
             // 
             CloseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            CloseButton.BackColor = Color.FromArgb(74, 97, 178);
             CloseButton.Cursor = Cursors.Hand;
-            CloseButton.Image = (Image)resources.GetObject("CloseButton.Image");
+            CloseButton.Image = Properties.Resources.Close_Icon;
             CloseButton.Location = new Point(827, 0);
+            CloseButton.Margin = new Padding(0);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(25, 25);
             CloseButton.SizeMode = PictureBoxSizeMode.Zoom;
-            CloseButton.TabIndex = 1;
+            CloseButton.TabIndex = 0;
             CloseButton.TabStop = false;
             CloseButton.Click += CloseButton_Click;
             // 
-            // InicioButton
+            // ButtonsPanel
             // 
-            InicioButton.Anchor = AnchorStyles.Top;
-            InicioButton.AutoSize = true;
-            InicioButton.BackColor = Color.FromArgb(30, 33, 36);
-            InicioButton.FlatAppearance.BorderSize = 0;
-            InicioButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 97, 178);
-            InicioButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(114, 137, 218);
-            InicioButton.FlatStyle = FlatStyle.Flat;
-            InicioButton.ForeColor = SystemColors.ControlLightLight;
-            InicioButton.Location = new Point(0, 0);
-            InicioButton.Margin = new Padding(0);
-            InicioButton.Name = "InicioButton";
-            InicioButton.Size = new Size(213, 25);
-            InicioButton.TabIndex = 1;
-            InicioButton.Text = "Inicio";
-            InicioButton.UseVisualStyleBackColor = false;
-            InicioButton.Click += InicioButton_Click;
-            // 
-            // AsistenciaButton
-            // 
-            AsistenciaButton.Anchor = AnchorStyles.Top;
-            AsistenciaButton.AutoSize = true;
-            AsistenciaButton.BackColor = Color.FromArgb(30, 33, 36);
-            AsistenciaButton.FlatAppearance.BorderSize = 0;
-            AsistenciaButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 97, 178);
-            AsistenciaButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(114, 137, 218);
-            AsistenciaButton.FlatStyle = FlatStyle.Flat;
-            AsistenciaButton.ForeColor = SystemColors.ControlLightLight;
-            AsistenciaButton.Location = new Point(213, 0);
-            AsistenciaButton.Margin = new Padding(0);
-            AsistenciaButton.Name = "AsistenciaButton";
-            AsistenciaButton.Size = new Size(213, 25);
-            AsistenciaButton.TabIndex = 2;
-            AsistenciaButton.Text = "Asistencia";
-            AsistenciaButton.UseVisualStyleBackColor = false;
-            AsistenciaButton.Click += AsistenciaButton_Click;
+            ButtonsPanel.BackColor = Color.FromArgb(17, 16, 19);
+            ButtonsPanel.Controls.Add(ReportesButton);
+            ButtonsPanel.Controls.Add(InicioButton);
+            ButtonsPanel.Controls.Add(AdministrarButton);
+            ButtonsPanel.Controls.Add(AsistenciaButton);
+            ButtonsPanel.Dock = DockStyle.Top;
+            ButtonsPanel.Location = new Point(0, 25);
+            ButtonsPanel.Name = "ButtonsPanel";
+            ButtonsPanel.Size = new Size(852, 25);
+            ButtonsPanel.TabIndex = 1;
             // 
             // ReportesButton
             // 
             ReportesButton.Anchor = AnchorStyles.Top;
-            ReportesButton.AutoSize = true;
-            ReportesButton.BackColor = Color.FromArgb(30, 33, 36);
+            ReportesButton.BackColor = Color.FromArgb(17, 16, 19);
             ReportesButton.FlatAppearance.BorderSize = 0;
-            ReportesButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 97, 178);
-            ReportesButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(114, 137, 218);
+            ReportesButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            ReportesButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
             ReportesButton.FlatStyle = FlatStyle.Flat;
             ReportesButton.ForeColor = SystemColors.ControlLightLight;
-            ReportesButton.Location = new Point(426, 0);
+            ReportesButton.Location = new Point(639, 0);
             ReportesButton.Margin = new Padding(0);
             ReportesButton.Name = "ReportesButton";
             ReportesButton.Size = new Size(213, 25);
@@ -176,98 +162,104 @@
             ReportesButton.UseVisualStyleBackColor = false;
             ReportesButton.Click += ReportesButton_Click;
             // 
+            // InicioButton
+            // 
+            InicioButton.Anchor = AnchorStyles.Top;
+            InicioButton.BackColor = Color.FromArgb(17, 16, 19);
+            InicioButton.FlatAppearance.BorderSize = 0;
+            InicioButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            InicioButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            InicioButton.FlatStyle = FlatStyle.Flat;
+            InicioButton.ForeColor = SystemColors.ControlLightLight;
+            InicioButton.Location = new Point(0, 0);
+            InicioButton.Margin = new Padding(0);
+            InicioButton.Name = "InicioButton";
+            InicioButton.Size = new Size(213, 25);
+            InicioButton.TabIndex = 0;
+            InicioButton.Text = "Inicio";
+            InicioButton.UseVisualStyleBackColor = false;
+            InicioButton.Click += InicioButton_Click;
+            // 
             // AdministrarButton
             // 
             AdministrarButton.Anchor = AnchorStyles.Top;
-            AdministrarButton.AutoSize = true;
-            AdministrarButton.BackColor = Color.FromArgb(30, 33, 36);
+            AdministrarButton.BackColor = Color.FromArgb(17, 16, 19);
             AdministrarButton.FlatAppearance.BorderSize = 0;
-            AdministrarButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 97, 178);
-            AdministrarButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(114, 137, 218);
+            AdministrarButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            AdministrarButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
             AdministrarButton.FlatStyle = FlatStyle.Flat;
             AdministrarButton.ForeColor = SystemColors.ControlLightLight;
-            AdministrarButton.Location = new Point(639, 0);
+            AdministrarButton.Location = new Point(426, 0);
             AdministrarButton.Margin = new Padding(0);
             AdministrarButton.Name = "AdministrarButton";
             AdministrarButton.Size = new Size(213, 25);
-            AdministrarButton.TabIndex = 4;
+            AdministrarButton.TabIndex = 2;
             AdministrarButton.Text = "Administrar";
             AdministrarButton.UseVisualStyleBackColor = false;
             AdministrarButton.Click += AdministrarButton_Click;
             // 
-            // ButtonsPanel
+            // AsistenciaButton
             // 
-            ButtonsPanel.BackColor = Color.FromArgb(30, 33, 36);
-            ButtonsPanel.Controls.Add(AdministrarButton);
-            ButtonsPanel.Controls.Add(InicioButton);
-            ButtonsPanel.Controls.Add(ReportesButton);
-            ButtonsPanel.Controls.Add(AsistenciaButton);
-            ButtonsPanel.Dock = DockStyle.Top;
-            ButtonsPanel.Location = new Point(0, 25);
-            ButtonsPanel.Name = "ButtonsPanel";
-            ButtonsPanel.Size = new Size(852, 25);
-            ButtonsPanel.TabIndex = 6;
+            AsistenciaButton.Anchor = AnchorStyles.Top;
+            AsistenciaButton.BackColor = Color.FromArgb(17, 16, 19);
+            AsistenciaButton.FlatAppearance.BorderSize = 0;
+            AsistenciaButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            AsistenciaButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            AsistenciaButton.FlatStyle = FlatStyle.Flat;
+            AsistenciaButton.ForeColor = SystemColors.ControlLightLight;
+            AsistenciaButton.Location = new Point(213, 0);
+            AsistenciaButton.Margin = new Padding(0);
+            AsistenciaButton.Name = "AsistenciaButton";
+            AsistenciaButton.Size = new Size(213, 25);
+            AsistenciaButton.TabIndex = 1;
+            AsistenciaButton.Text = "Asistencia";
+            AsistenciaButton.UseVisualStyleBackColor = false;
+            AsistenciaButton.Click += AsistenciaButton_Click;
             // 
-            // PanelPrime
+            // MainPanel
             // 
-            PanelPrime.BackColor = Color.FromArgb(40, 43, 48);
-            PanelPrime.Dock = DockStyle.Fill;
-            PanelPrime.Location = new Point(0, 50);
-            PanelPrime.Name = "PanelPrime";
-            PanelPrime.Size = new Size(852, 450);
-            PanelPrime.TabIndex = 7;
-            // 
-            // MaximixeButton
-            // 
-            MaximixeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            MaximixeButton.BackColor = Color.FromArgb(74, 97, 178);
-            MaximixeButton.Cursor = Cursors.Hand;
-            MaximixeButton.Image = (Image)resources.GetObject("MaximixeButton.Image");
-            MaximixeButton.Location = new Point(796, 0);
-            MaximixeButton.Name = "MaximixeButton";
-            MaximixeButton.Size = new Size(25, 25);
-            MaximixeButton.SizeMode = PictureBoxSizeMode.Zoom;
-            MaximixeButton.TabIndex = 3;
-            MaximixeButton.TabStop = false;
-            MaximixeButton.Click += MaximizeButton_Click;
+            MainPanel.BackColor = Color.FromArgb(31, 30, 36);
+            MainPanel.Dock = DockStyle.Fill;
+            MainPanel.Location = new Point(0, 50);
+            MainPanel.Name = "MainPanel";
+            MainPanel.Size = new Size(852, 450);
+            MainPanel.TabIndex = 2;
             // 
             // PantallaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(54, 57, 62);
             ClientSize = new Size(852, 500);
-            Controls.Add(PanelPrime);
+            Controls.Add(MainPanel);
             Controls.Add(ButtonsPanel);
             Controls.Add(Header);
             FormBorderStyle = FormBorderStyle.None;
+            MinimumSize = new Size(852, 500);
             Name = "PantallaPrincipal";
-            Text = "Registro de asistencia";
+            Text = "PantallaPrincipal";
             Header.ResumeLayout(false);
             Header.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)RestoreButton).EndInit();
+            ((System.ComponentModel.ISupportInitialize)MaximizeButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)MinimizeButton).EndInit();
+            ((System.ComponentModel.ISupportInitialize)RestoreButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).EndInit();
             ButtonsPanel.ResumeLayout(false);
-            ButtonsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)MaximixeButton).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel Header;
-        private PictureBox MinimizeButton;
-        private PictureBox CloseButton;
-        private PictureBox RestoreButton;
+        private Panel ButtonsPanel;
+        private Panel MainPanel;
         private Button InicioButton;
-        private Button AsistenciaButton;
         private Button ReportesButton;
         private Button AdministrarButton;
+        private Button AsistenciaButton;
+        private PictureBox MinimizeButton;
+        private PictureBox RestoreButton;
+        private PictureBox CloseButton;
+        private PictureBox MaximizeButton;
         private Label TittleLabel;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private Panel ButtonsPanel;
-        private Panel PanelPrime;
-        private PictureBox MaximixeButton;
     }
 }
