@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             FinalizarButton = new Button();
             contextMenuStrip1 = new ContextMenuStrip(components);
             label1 = new Label();
@@ -53,16 +53,17 @@
             richTextBox1 = new RichTextBox();
             label2 = new Label();
             RegistroDGV = new DataGridView();
+            ClearButton = new Button();
+            SearchIcon = new PictureBox();
+            SearchPanel = new Panel();
             Select = new DataGridViewCheckBoxColumn();
             Boleta = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Apa = new DataGridViewTextBoxColumn();
             Ama = new DataGridViewTextBoxColumn();
             Escuela = new DataGridViewTextBoxColumn();
+            Carrera = new DataGridViewTextBoxColumn();
             Observacion = new DataGridViewButtonColumn();
-            ClearButton = new Button();
-            SearchIcon = new PictureBox();
-            SearchPanel = new Panel();
             GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)HelpButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -306,25 +307,25 @@
             RegistroDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
             RegistroDGV.BorderStyle = BorderStyle.None;
             RegistroDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             RegistroDGV.ColumnHeadersHeight = 30;
             RegistroDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { Select, Boleta, Nombre, Apa, Ama, Escuela, Observacion });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(63, 62, 70);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle8;
+            RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { Select, Boleta, Nombre, Apa, Ama, Escuela, Carrera, Observacion });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle2;
             RegistroDGV.EnableHeadersVisualStyles = false;
             RegistroDGV.GridColor = Color.White;
             RegistroDGV.Location = new Point(12, 131);
@@ -333,70 +334,18 @@
             RegistroDGV.ReadOnly = true;
             RegistroDGV.RightToLeft = RightToLeft.No;
             RegistroDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             RegistroDGV.RowHeadersVisible = false;
             RegistroDGV.RowTemplate.Height = 25;
             RegistroDGV.Size = new Size(825, 267);
             RegistroDGV.TabIndex = 32;
-            // 
-            // Select
-            // 
-            Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Select.HeaderText = "S";
-            Select.Name = "Select";
-            Select.ReadOnly = true;
-            Select.Width = 18;
-            // 
-            // Boleta
-            // 
-            Boleta.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Boleta.HeaderText = "Boleta";
-            Boleta.Name = "Boleta";
-            Boleta.ReadOnly = true;
-            Boleta.Width = 64;
-            // 
-            // Nombre
-            // 
-            Nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            // 
-            // Apa
-            // 
-            Apa.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Apa.HeaderText = "Apellido P.";
-            Apa.Name = "Apa";
-            Apa.ReadOnly = true;
-            // 
-            // Ama
-            // 
-            Ama.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Ama.HeaderText = "Apellido M.";
-            Ama.Name = "Ama";
-            Ama.ReadOnly = true;
-            // 
-            // Escuela
-            // 
-            Escuela.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Escuela.HeaderText = "Escuela";
-            Escuela.Name = "Escuela";
-            Escuela.ReadOnly = true;
-            // 
-            // Observacion
-            // 
-            Observacion.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            Observacion.HeaderText = "+Obs";
-            Observacion.Name = "Observacion";
-            Observacion.ReadOnly = true;
-            Observacion.Width = 41;
             // 
             // ClearButton
             // 
@@ -438,6 +387,68 @@
             SearchPanel.Name = "SearchPanel";
             SearchPanel.Size = new Size(825, 15);
             SearchPanel.TabIndex = 36;
+            // 
+            // Select
+            // 
+            Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Select.HeaderText = "S";
+            Select.Name = "Select";
+            Select.ReadOnly = true;
+            Select.Width = 18;
+            // 
+            // Boleta
+            // 
+            Boleta.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Boleta.HeaderText = "Boleta";
+            Boleta.Name = "Boleta";
+            Boleta.ReadOnly = true;
+            Boleta.Width = 64;
+            // 
+            // Nombre
+            // 
+            Nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 75;
+            // 
+            // Apa
+            // 
+            Apa.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            Apa.HeaderText = "Apellido P.";
+            Apa.Name = "Apa";
+            Apa.ReadOnly = true;
+            Apa.Width = 88;
+            // 
+            // Ama
+            // 
+            Ama.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            Ama.HeaderText = "Apellido M.";
+            Ama.Name = "Ama";
+            Ama.ReadOnly = true;
+            Ama.Width = 92;
+            // 
+            // Escuela
+            // 
+            Escuela.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Escuela.HeaderText = "Escuela";
+            Escuela.Name = "Escuela";
+            Escuela.ReadOnly = true;
+            // 
+            // Carrera
+            // 
+            Carrera.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Carrera.HeaderText = "Carrera";
+            Carrera.Name = "Carrera";
+            Carrera.ReadOnly = true;
+            // 
+            // Observacion
+            // 
+            Observacion.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            Observacion.HeaderText = "+Obs";
+            Observacion.Name = "Observacion";
+            Observacion.ReadOnly = true;
+            Observacion.Width = 41;
             // 
             // PantallaAsistencia
             // 
@@ -506,6 +517,7 @@
         private DataGridViewTextBoxColumn Apa;
         private DataGridViewTextBoxColumn Ama;
         private DataGridViewTextBoxColumn Escuela;
+        private DataGridViewTextBoxColumn Carrera;
         private DataGridViewButtonColumn Observacion;
     }
 }
