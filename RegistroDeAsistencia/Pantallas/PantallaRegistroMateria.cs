@@ -26,5 +26,10 @@ namespace RegistroDeAsistencia
         {
             this.Close();
         }
+
+        private void PantallaRegistroMateria_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

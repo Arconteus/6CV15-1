@@ -193,7 +193,7 @@
             RegistroMDGV.DefaultCellStyle = dataGridViewCellStyle2;
             RegistroMDGV.EnableHeadersVisualStyles = false;
             RegistroMDGV.GridColor = Color.White;
-            RegistroMDGV.Location = new Point(12, 95);
+            RegistroMDGV.Location = new Point(12, 88);
             RegistroMDGV.Name = "RegistroMDGV";
             RegistroMDGV.ReadOnly = true;
             RegistroMDGV.RightToLeft = RightToLeft.No;
@@ -208,7 +208,7 @@
             RegistroMDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             RegistroMDGV.RowHeadersVisible = false;
             RegistroMDGV.RowTemplate.Height = 25;
-            RegistroMDGV.Size = new Size(426, 343);
+            RegistroMDGV.Size = new Size(426, 350);
             RegistroMDGV.TabIndex = 35;
             // 
             // IDMateria
@@ -241,7 +241,7 @@
             ActualGroupBox.ForeColor = Color.White;
             ActualGroupBox.Location = new Point(12, 28);
             ActualGroupBox.Name = "ActualGroupBox";
-            ActualGroupBox.Size = new Size(426, 52);
+            ActualGroupBox.Size = new Size(426, 54);
             ActualGroupBox.TabIndex = 36;
             ActualGroupBox.TabStop = false;
             ActualGroupBox.Text = "Registro de Materia";
@@ -249,12 +249,12 @@
             // richTextBox1
             // 
             richTextBox1.BackColor = Color.FromArgb(63, 62, 70);
-            richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.BorderStyle = BorderStyle.FixedSingle;
             richTextBox1.ForeColor = SystemColors.ControlLightLight;
             richTextBox1.Location = new Point(62, 19);
             richTextBox1.Margin = new Padding(0);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(328, 23);
+            richTextBox1.Size = new Size(271, 23);
             richTextBox1.TabIndex = 36;
             richTextBox1.Text = "";
             // 
@@ -266,19 +266,19 @@
             AddProfesorButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
             AddProfesorButton.FlatStyle = FlatStyle.Flat;
             AddProfesorButton.ForeColor = SystemColors.Control;
-            AddProfesorButton.Location = new Point(390, 19);
-            AddProfesorButton.Margin = new Padding(0);
+            AddProfesorButton.Location = new Point(333, 19);
+            AddProfesorButton.Margin = new Padding(0, 0, 3, 0);
             AddProfesorButton.Name = "AddProfesorButton";
-            AddProfesorButton.Size = new Size(23, 23);
+            AddProfesorButton.Size = new Size(87, 23);
             AddProfesorButton.TabIndex = 35;
-            AddProfesorButton.Text = "+";
+            AddProfesorButton.Text = "Agregar";
             AddProfesorButton.UseVisualStyleBackColor = false;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(6, 19);
+            label3.Location = new Point(6, 22);
             label3.Name = "label3";
             label3.Size = new Size(53, 15);
             label3.TabIndex = 2;
@@ -296,6 +296,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaRegistroMateria";
             Text = "PantallaRegistroMateria";
+            Load += PantallaRegistroMateria_Load;
             Header.ResumeLayout(false);
             Header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
