@@ -137,5 +137,10 @@ namespace RegistroDeAsistencia
             this.OpenForm<PantallaReportes>();
             this.ChangeSelectedButton("reportes");
         }
+
+        private void Header_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

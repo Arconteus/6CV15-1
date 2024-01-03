@@ -17,5 +17,17 @@ namespace RegistroDeAsistencia
         {
             InitializeComponent();
         }
+
+        private void AddMateriaButton_Click(object sender, EventArgs e)
+        {
+            PantallaRegistroMateria temp = new PantallaRegistroMateria();
+            temp.Show();
+        }
+
+        private void AddProfesorButton_Click(object sender, EventArgs e)
+        {
+            PantallaRegistroProfesor temp = new PantallaRegistroProfesor();
+            temp.Show();
+        }
     }
 }
