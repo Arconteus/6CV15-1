@@ -125,6 +125,7 @@
             AddMateriaButton.TabIndex = 25;
             AddMateriaButton.Text = "+";
             AddMateriaButton.UseVisualStyleBackColor = false;
+            AddMateriaButton.Click += AddMateriaButton_Click;
             // 
             // pictureBox2
             // 
@@ -190,6 +191,7 @@
             AddProfesorButton.TabIndex = 34;
             AddProfesorButton.Text = "+";
             AddProfesorButton.UseVisualStyleBackColor = false;
+            AddProfesorButton.Click += AddProfesorButton_Click;
             // 
             // SemestreComboBox
             // 

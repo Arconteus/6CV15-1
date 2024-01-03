@@ -61,6 +61,7 @@
             Header.Name = "Header";
             Header.Size = new Size(852, 25);
             Header.TabIndex = 0;
+            Header.Paint += Header_Paint;
             Header.MouseDown += Header_MouseDown;
             // 
             // MaximizeButton
