@@ -37,7 +37,12 @@ namespace RegistroDeAsistencia.Libraries
             output.Add(classEscuela.InnerHtml);
 
             var classCarrera = document.DocumentNode.CssSelect(".carrera").First();
-            output.Add(classCarrera.InnerHtml);
+            string CarreraToSet = classCarrera.InnerHtml;
+            //=======================================================
+            // MODIFICAR POR FAVOR LA VARIABLE CarreraToSet PARA QUE
+            // NO SE AGREGEN CARACTERES EXTRAÑOS.
+            //=======================================================
+            output.Add(CarreraToSet);
 
             return output;
         }

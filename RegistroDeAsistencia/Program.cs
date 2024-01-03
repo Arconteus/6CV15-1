@@ -15,6 +15,7 @@ namespace RegistroDeAsistencia
             ApplicationConfiguration.Initialize();
             DataBaseHelper.InitializeDatabase();
             Application.Run(new PantallaPrincipal());
+            //Application.Run(new Test());
         }
     }
 }
