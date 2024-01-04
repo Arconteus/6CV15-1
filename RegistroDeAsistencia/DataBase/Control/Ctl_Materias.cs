@@ -1,4 +1,5 @@
 ﻿using RegistroDeAsistencia.DataBase.Modelo;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
 
@@ -9,13 +10,11 @@ namespace RegistroDeAsistencia.DataBase.Control
         //=============================================================================================================
         // Variables de control de la base de datos
         //=============================================================================================================
-
         private static string connectionString = ConfigurationManager.ConnectionStrings["DataBase"].ConnectionString;
 
         //=============================================================================================================
         // Metodos publicos
         //=============================================================================================================
-
         /**
          * Esta funcion regresa una lista de la clase Materia, que contiene toda la lista de
          * Materia dados de alta.
@@ -24,13 +23,12 @@ namespace RegistroDeAsistencia.DataBase.Control
          **/
         public static List<Materia> GetList()
         {
-            List<Materia> output = GetListWhere("");
-            return output;
+            return GetListWhere("");
         }
+
         public static List<Materia> GetList(string extraParameters)
         {
-            List<Materia> output = GetListWhere(extraParameters);
-            return output;
+            return GetListWhere(extraParameters);
         }
 
         /**
@@ -48,8 +46,7 @@ namespace RegistroDeAsistencia.DataBase.Control
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
-                    command.CommandText =
-                        "select * from ctl_materias where nom_materia = @nom_materia";
+                    command.CommandText = "SELECT * FROM ctl_materias WHERE nom_materia = @nom_materia";
                     command.Parameters.AddWithValue("@nom_materia", materiaInput.nom_materia);
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
@@ -85,10 +82,35 @@ namespace RegistroDeAsistencia.DataBase.Control
             return output;
         }
 
+        /**
+         * Esta funcion elimina la materia con el id proporcionado.
+         * Sintaxis: Ctl_Materias.Delete([idMateria])
+         * Variables: [idMateria] -> int
+         * Return type: bool
+         **/
+        public static bool Delete(int idMateria)
+        {
+            bool output = false;
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = "DELETE FROM ctl_materias WHERE id_materia = @id_materia";
+                    command.Parameters.AddWithValue("@id_materia", idMateria);
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        output = true;
+                    }
+                    command.Parameters.Clear();
+                }
+            }
+            return output;
+        }
+
         //=============================================================================================================
         // Metodos privados
         //=============================================================================================================
-
         /**
          * Funcion interna, neta si no sabes que hace no lo toques
          **/
@@ -100,8 +122,7 @@ namespace RegistroDeAsistencia.DataBase.Control
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
-                    command.CommandText =
-                        @"INSERT INTO ctl_materias (nom_materia) values (@nom_materia)";
+                    command.CommandText = @"INSERT INTO ctl_materias (nom_materia) VALUES (@nom_materia)";
                     command.Parameters.AddWithValue("@nom_materia", materiaInput.nom_materia);
                     if (command.ExecuteNonQuery() > 0)
                     {
@@ -124,8 +145,7 @@ namespace RegistroDeAsistencia.DataBase.Control
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
-                    command.CommandText =
-                        "select * from ctl_materias "+ extraParameters;
+                    command.CommandText = "SELECT * FROM ctl_materias " + extraParameters;
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())

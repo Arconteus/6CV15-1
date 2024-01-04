@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RegistroDeAsistencia.DataBase.Control;
+using RegistroDeAsistencia.DataBase.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +14,16 @@ namespace RegistroDeAsistencia
 {
     public partial class PantallaRegistroMateria : Form
     {
-        private bool eventSubscribed = false;
         private int numeroFilaActual = 1;
 
         public PantallaRegistroMateria()
         {
             InitializeComponent();
+
+            List<Materia> materias = Ctl_Materias.GetList();
+
+            RegistroMDGV.DataSource = materias;
+
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
             buttonColumn.HeaderText = "Eliminar";
             buttonColumn.Name = "EliminarButtonColumn";
@@ -25,22 +31,44 @@ namespace RegistroDeAsistencia
             buttonColumn.UseColumnTextForButtonValue = true;
             RegistroMDGV.Columns.Add(buttonColumn);
 
-            AddMateriaButton.Click += AddMateriaButton_Click;
-        }
+            RegistroMDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            AddMateriaButton.Click += AddMateriaButton_Click;
         }
 
         private void AddMateriaButton_Click(object sender, EventArgs e)
         {
-            string materia = MateriaTextBox.Text;
+            // Obtén el nombre de la materia desde el TextBox
+            string materiaNombre = MateriaTextBox.Text;
 
-            RegistroMDGV.Rows.Add(numeroFilaActual, materia, "");
+            // Verifica si el campo de texto está vacío
+            if (string.IsNullOrWhiteSpace(materiaNombre))
+            {
+                MessageBox.Show("Por favor, ingresa el nombre de la materia.", "Campo Vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Detiene la ejecución si el campo está vacío
+            }
+
+            // Crea una nueva instancia de la clase Materia con el nombre ingresado
+            Materia nuevaMateria = new Materia { nom_materia = materiaNombre };
+
+            // Agrega la nueva materia a la base de datos
+            bool exito = Ctl_Materias.Add(nuevaMateria);
+
+            // Si la adición fue exitosa, actualiza el DataGridView
+            if (exito)
+            {
+                // Refresca la lista de materias desde la base de datos
+                List<Materia> materias = Ctl_Materias.GetList();
+
+                // Asigna la lista actualizada al DataSource del DataGridView
+                RegistroMDGV.DataSource = null;
+                RegistroMDGV.DataSource = materias;
+
+                RegistroMDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
+            }
+
+            // Limpia el TextBox después de agregar la materia
             MateriaTextBox.Clear();
-
-            numeroFilaActual++;
         }
 
         private void RegistroMDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -51,27 +79,47 @@ namespace RegistroDeAsistencia
 
                 if (result == DialogResult.Yes)
                 {
-                    int numeroFila = (int)RegistroMDGV.Rows[e.RowIndex].Cells[0].Value;
+                    int idMateria = (int)RegistroMDGV.Rows[e.RowIndex].Cells["id_materia"].Value;
 
-                    RegistroMDGV.Rows.RemoveAt(e.RowIndex);
+                    bool exito = Ctl_Materias.Delete(idMateria);
 
-                    for (int i = 0; i < RegistroMDGV.Rows.Count; i++)
+                    if (exito)
                     {
-                        RegistroMDGV.Rows[i].Cells[0].Value = i + 1;
-                    }
+                        // Refresca la lista de materias desde la base de datos
+                        List<Materia> materias = Ctl_Materias.GetList();
 
-                    numeroFilaActual = RegistroMDGV.Rows.Count + 1;
+                        // Asigna la lista actualizada al DataSource del DataGridView
+                        RegistroMDGV.DataSource = null;
+                        RegistroMDGV.DataSource = materias;
+
+                        RegistroMDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
+
+                        // Actualiza los números de fila
+                        for (int i = 0; i < RegistroMDGV.Rows.Count; i++)
+                        {
+                            RegistroMDGV.Rows[i].Cells[0].Value = i + 1;
+                        }
+
+                        numeroFilaActual = RegistroMDGV.Rows.Count + 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al eliminar la materia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void PantallaRegistroMateria_Load(object sender, EventArgs e)
         {
-            if (!eventSubscribed)
-            {
-                RegistroMDGV.CellContentClick += RegistroMDGV_CellContentClick;
-                eventSubscribed = true;
-            }
+            RegistroMDGV.CellContentClick += RegistroMDGV_CellContentClick;
+
+            RegistroMDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
         }
     }
 }

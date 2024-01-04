@@ -45,8 +45,6 @@
             MateriaTextBox = new TextBox();
             AddMateriaButton = new Button();
             label3 = new Label();
-            IDMateria = new DataGridViewTextBoxColumn();
-            Materia = new DataGridViewTextBoxColumn();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RestoreButton).BeginInit();
@@ -181,7 +179,6 @@
             RegistroMDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             RegistroMDGV.ColumnHeadersHeight = 30;
             RegistroMDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            RegistroMDGV.Columns.AddRange(new DataGridViewColumn[] { IDMateria, Materia });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -259,19 +256,6 @@
             label3.TabIndex = 2;
             label3.Text = "Materia:";
             // 
-            // IDMateria
-            // 
-            IDMateria.HeaderText = "ID Materia";
-            IDMateria.Name = "IDMateria";
-            IDMateria.ReadOnly = true;
-            // 
-            // Materia
-            // 
-            Materia.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Materia.HeaderText = "Materia";
-            Materia.Name = "Materia";
-            Materia.ReadOnly = true;
-            // 
             // PantallaRegistroMateria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -313,7 +297,5 @@
         private Label label3;
         private Button AddMateriaButton;
         private TextBox MateriaTextBox;
-        private DataGridViewTextBoxColumn IDMateria;
-        private DataGridViewTextBoxColumn Materia;
     }
 }
