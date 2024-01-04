@@ -52,14 +52,14 @@
             NombreTextBox = new TextBox();
             label2 = new Label();
             RegistroPDGV = new DataGridView();
-            SearchPanel = new Panel();
-            SearchComboBox = new TextBox();
-            SearchIcon = new PictureBox();
             ID2 = new DataGridViewTextBoxColumn();
             Numero = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             ApellidoP = new DataGridViewTextBoxColumn();
             ApellidoM = new DataGridViewTextBoxColumn();
+            SearchPanel = new Panel();
+            SearchComboBox = new TextBox();
+            SearchIcon = new PictureBox();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -221,6 +221,7 @@
             NTTextBox.Name = "NTTextBox";
             NTTextBox.Size = new Size(288, 23);
             NTTextBox.TabIndex = 48;
+            NTTextBox.TextChanged += NTTextBox_TextChanged;
             // 
             // AgregarPButton
             // 
@@ -355,6 +356,36 @@
             RegistroPDGV.TabIndex = 38;
             RegistroPDGV.CellContentClick += RegistroMDGV_CellContentClick;
             // 
+            // ID2
+            // 
+            ID2.HeaderText = "ID de Profesor";
+            ID2.Name = "ID2";
+            ID2.ReadOnly = true;
+            // 
+            // Numero
+            // 
+            Numero.HeaderText = "N. de Trabajador";
+            Numero.Name = "Numero";
+            Numero.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // ApellidoP
+            // 
+            ApellidoP.HeaderText = "Apellido (P)";
+            ApellidoP.Name = "ApellidoP";
+            ApellidoP.ReadOnly = true;
+            // 
+            // ApellidoM
+            // 
+            ApellidoM.HeaderText = "Apellido (M)";
+            ApellidoM.Name = "ApellidoM";
+            ApellidoM.ReadOnly = true;
+            // 
             // SearchPanel
             // 
             SearchPanel.BackColor = Color.FromArgb(63, 62, 70);
@@ -389,36 +420,6 @@
             SearchIcon.SizeMode = PictureBoxSizeMode.Zoom;
             SearchIcon.TabIndex = 35;
             SearchIcon.TabStop = false;
-            // 
-            // ID2
-            // 
-            ID2.HeaderText = "ID de Profesor";
-            ID2.Name = "ID2";
-            ID2.ReadOnly = true;
-            // 
-            // Numero
-            // 
-            Numero.HeaderText = "N. de Trabajador";
-            Numero.Name = "Numero";
-            Numero.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            // 
-            // ApellidoP
-            // 
-            ApellidoP.HeaderText = "Apellido (P)";
-            ApellidoP.Name = "ApellidoP";
-            ApellidoP.ReadOnly = true;
-            // 
-            // ApellidoM
-            // 
-            ApellidoM.HeaderText = "Apellido (M)";
-            ApellidoM.Name = "ApellidoM";
-            ApellidoM.ReadOnly = true;
             // 
             // PantallaRegistroProfesor
             // 

@@ -1,4 +1,5 @@
 ﻿using RegistroDeAsistencia.DataBase.Modelo;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
 
@@ -6,42 +7,24 @@ namespace RegistroDeAsistencia.DataBase.Control
 {
     public class Ctl_Profesor
     {
-        //=============================================================================================================
         // Variables de control de la base de datos
-        //=============================================================================================================
-
         private static string connectionString = ConfigurationManager.ConnectionStrings["DataBase"].ConnectionString;
 
-        //=============================================================================================================
-        // Metodos publicos
-        //=============================================================================================================
-
-        /**
-         * Esta funcion regresa una lista de la clase Profesor, que contiene toda la lista de
-         * profesores dados de alta.
-         * Sintaxis: Ctl_Profesor.GetList()
-         * Return Type: List<Profesor>
-         **/
+        // Obtiene una lista de todos los profesores
         public static List<Profesor> GetList()
         {
             List<Profesor> output = GetListWhere("");
             return output;
         }
+
+        // Obtiene una lista de profesores con parámetros adicionales
         public static List<Profesor> GetList(string extraParameters)
         {
             List<Profesor> output = GetListWhere(extraParameters);
             return output;
         }
 
-
-        /**
-         * Esta funcion regresa un valor verdadero si es que existe el profesor, Para verificar
-         * la identidad del profesor unicamente se comprueba el numero de trabajador.
-         * en caso contrario, regresara false.
-         * Sintaxis: Ctl_Materias.Contain([profesorInput])
-         * Variables: [profesorInput] -> profesorInput(){nom_carrera=[string]}
-         * Return type: bool
-         **/
+        // Verifica si un profesor ya está registrado usando el número de trabajador
         public static bool Contain(Profesor profesorInput)
         {
             bool output = false;
@@ -69,20 +52,7 @@ namespace RegistroDeAsistencia.DataBase.Control
             return output;
         }
 
-        /**
-         * Esta funcion añade un profesor si y solo no esta registrado esta antes, cuando la adicion
-         * es exitosa regresa un valor verdadero, pero si la materia ya existe no se añadira el
-         * mismo profesor (o mas bien el mismo numero de trabajador) dos veces y regresara un valor falso.
-         * Sintaxis: Ctl_Materias.add([materia])
-         * Variables: [profesorInput] -> Profesor()
-         * {
-         *      num_trabajador=[string],
-         *      nom_profesor=[string],
-         *      apa_profesor=[string],
-         *      ama_profesor=[string]
-         * }
-         * Return type: bool
-         **/
+        // Añade un profesor si no está registrado
         public static bool Add(Profesor profesorInput)
         {
             bool output = false;
@@ -93,14 +63,31 @@ namespace RegistroDeAsistencia.DataBase.Control
             return output;
         }
 
-        
-        //=============================================================================================================
-        // Metodos privados
-        //=============================================================================================================
+        // Elimina un profesor según su número de trabajador
+        public static bool Delete(string num_trabajador)
+        {
+            bool output = false;
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText =
+                        "DELETE FROM ctl_profesor WHERE num_trabajador = @num_trabajador";
+                    command.Parameters.AddWithValue("@num_trabajador", num_trabajador);
 
-        /**
-         * Funcion interna, neta si no sabes que hace no lo toques
-         **/
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        output = true;
+                    }
+
+                    command.Parameters.Clear();
+                }
+            }
+            return output;
+        }
+
+        // Método interno para añadir un profesor a la base de datos
         private static bool ForceAdd(Profesor profesorInput)
         {
             bool output = false;
@@ -126,9 +113,7 @@ namespace RegistroDeAsistencia.DataBase.Control
             return output;
         }
 
-        /**
-         * Funcion interna, neta si no sabes que hace no lo toques
-         **/
+        // Método interno para obtener una lista de profesores con parámetros adicionales
         private static List<Profesor> GetListWhere(string extraParameters)
         {
             List<Profesor> output = new List<Profesor>();
@@ -138,7 +123,7 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from ctl_profesor "+ extraParameters;
+                        "select * from ctl_profesor " + extraParameters;
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())

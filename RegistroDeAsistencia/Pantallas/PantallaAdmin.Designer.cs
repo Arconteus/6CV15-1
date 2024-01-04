@@ -28,24 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Semestrelabel1 = new Label();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            Grupolabel1 = new Label();
             Profesorlabel2 = new Label();
             Materialabel3 = new Label();
             AddMateriaButton = new Button();
             pictureBox2 = new PictureBox();
             AddGroupGroupBox = new GroupBox();
+            label7 = new Label();
             button1 = new Button();
             AddProfesorButton = new Button();
             SemestreComboBox = new ComboBox();
-            AñoComboBox = new ComboBox();
+            GrupoComboBox = new ComboBox();
             ProfesorComboBox = new ComboBox();
             MateriaComboBox = new ComboBox();
             RegistroDGV = new DataGridView();
             Select = new DataGridViewCheckBoxColumn();
-            Semestre = new DataGridViewTextBoxColumn();
+            Periodo = new DataGridViewTextBoxColumn();
             Grupo = new DataGridViewTextBoxColumn();
             Profesor = new DataGridViewTextBoxColumn();
             Materia = new DataGridViewTextBoxColumn();
@@ -80,15 +81,15 @@
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // Semestrelabel1
+            // Grupolabel1
             // 
-            Semestrelabel1.AutoSize = true;
-            Semestrelabel1.ForeColor = SystemColors.ControlLightLight;
-            Semestrelabel1.Location = new Point(6, 25);
-            Semestrelabel1.Name = "Semestrelabel1";
-            Semestrelabel1.Size = new Size(55, 15);
-            Semestrelabel1.TabIndex = 0;
-            Semestrelabel1.Text = "Semestre";
+            Grupolabel1.AutoSize = true;
+            Grupolabel1.ForeColor = SystemColors.ControlLightLight;
+            Grupolabel1.Location = new Point(10, 25);
+            Grupolabel1.Name = "Grupolabel1";
+            Grupolabel1.Size = new Size(40, 15);
+            Grupolabel1.TabIndex = 0;
+            Grupolabel1.Text = "Grupo";
             // 
             // Profesorlabel2
             // 
@@ -104,11 +105,12 @@
             // 
             Materialabel3.AutoSize = true;
             Materialabel3.ForeColor = SystemColors.ControlLightLight;
-            Materialabel3.Location = new Point(208, 25);
+            Materialabel3.Location = new Point(258, 26);
             Materialabel3.Name = "Materialabel3";
             Materialabel3.Size = new Size(47, 15);
             Materialabel3.TabIndex = 2;
             Materialabel3.Text = "Materia";
+            Materialabel3.Click += Materialabel3_Click;
             // 
             // AddMateriaButton
             // 
@@ -140,14 +142,15 @@
             // 
             // AddGroupGroupBox
             // 
+            AddGroupGroupBox.Controls.Add(label7);
             AddGroupGroupBox.Controls.Add(button1);
             AddGroupGroupBox.Controls.Add(AddProfesorButton);
             AddGroupGroupBox.Controls.Add(AddMateriaButton);
             AddGroupGroupBox.Controls.Add(SemestreComboBox);
-            AddGroupGroupBox.Controls.Add(AñoComboBox);
+            AddGroupGroupBox.Controls.Add(GrupoComboBox);
             AddGroupGroupBox.Controls.Add(ProfesorComboBox);
             AddGroupGroupBox.Controls.Add(MateriaComboBox);
-            AddGroupGroupBox.Controls.Add(Semestrelabel1);
+            AddGroupGroupBox.Controls.Add(Grupolabel1);
             AddGroupGroupBox.Controls.Add(Profesorlabel2);
             AddGroupGroupBox.Controls.Add(Materialabel3);
             AddGroupGroupBox.ForeColor = SystemColors.ControlLightLight;
@@ -157,6 +160,16 @@
             AddGroupGroupBox.TabIndex = 27;
             AddGroupGroupBox.TabStop = false;
             AddGroupGroupBox.Text = "Agregar Grupo";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ForeColor = SystemColors.Control;
+            label7.Location = new Point(161, 25);
+            label7.Name = "label7";
+            label7.Size = new Size(48, 15);
+            label7.TabIndex = 36;
+            label7.Text = "Periodo";
             // 
             // button1
             // 
@@ -200,23 +213,24 @@
             SemestreComboBox.ForeColor = SystemColors.Window;
             SemestreComboBox.FormattingEnabled = true;
             SemestreComboBox.Items.AddRange(new object[] { "1", "2" });
-            SemestreComboBox.Location = new Point(161, 22);
+            SemestreComboBox.Location = new Point(215, 23);
             SemestreComboBox.Name = "SemestreComboBox";
-            SemestreComboBox.Size = new Size(41, 23);
+            SemestreComboBox.Size = new Size(37, 23);
             SemestreComboBox.TabIndex = 8;
             SemestreComboBox.Text = "-";
             // 
-            // AñoComboBox
+            // GrupoComboBox
             // 
-            AñoComboBox.BackColor = Color.FromArgb(63, 62, 70);
-            AñoComboBox.FlatStyle = FlatStyle.Flat;
-            AñoComboBox.ForeColor = SystemColors.Window;
-            AñoComboBox.FormattingEnabled = true;
-            AñoComboBox.Location = new Point(67, 22);
-            AñoComboBox.Name = "AñoComboBox";
-            AñoComboBox.Size = new Size(88, 23);
-            AñoComboBox.TabIndex = 7;
-            AñoComboBox.Text = "-";
+            GrupoComboBox.BackColor = Color.FromArgb(63, 62, 70);
+            GrupoComboBox.FlatStyle = FlatStyle.Flat;
+            GrupoComboBox.ForeColor = SystemColors.Window;
+            GrupoComboBox.FormattingEnabled = true;
+            GrupoComboBox.Location = new Point(67, 22);
+            GrupoComboBox.Name = "GrupoComboBox";
+            GrupoComboBox.Size = new Size(88, 23);
+            GrupoComboBox.TabIndex = 7;
+            GrupoComboBox.Text = "-";
+            GrupoComboBox.SelectedIndexChanged += AñoComboBox_SelectedIndexChanged;
             // 
             // ProfesorComboBox
             // 
@@ -237,12 +251,13 @@
             MateriaComboBox.FlatStyle = FlatStyle.Flat;
             MateriaComboBox.ForeColor = SystemColors.Window;
             MateriaComboBox.FormattingEnabled = true;
-            MateriaComboBox.Location = new Point(261, 22);
+            MateriaComboBox.Location = new Point(311, 22);
             MateriaComboBox.Margin = new Padding(3, 3, 0, 3);
             MateriaComboBox.Name = "MateriaComboBox";
-            MateriaComboBox.Size = new Size(312, 23);
+            MateriaComboBox.Size = new Size(262, 23);
             MateriaComboBox.TabIndex = 5;
             MateriaComboBox.Text = "-";
+            MateriaComboBox.SelectedIndexChanged += MateriaComboBox_SelectedIndexChanged;
             // 
             // RegistroDGV
             // 
@@ -251,25 +266,25 @@
             RegistroDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
             RegistroDGV.BorderStyle = BorderStyle.None;
             RegistroDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             RegistroDGV.ColumnHeadersHeight = 30;
             RegistroDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { Select, Semestre, Grupo, Profesor, Materia, Horario, Eliminar });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { Select, Periodo, Grupo, Profesor, Materia, Horario, Eliminar });
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle5;
             RegistroDGV.EnableHeadersVisualStyles = false;
             RegistroDGV.GridColor = Color.White;
             RegistroDGV.Location = new Point(12, 118);
@@ -278,14 +293,14 @@
             RegistroDGV.ReadOnly = true;
             RegistroDGV.RightToLeft = RightToLeft.No;
             RegistroDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             RegistroDGV.RowHeadersVisible = false;
             RegistroDGV.RowTemplate.Height = 25;
             RegistroDGV.Size = new Size(610, 320);
@@ -300,13 +315,11 @@
             Select.ReadOnly = true;
             Select.Width = 18;
             // 
-            // Semestre
+            // Periodo
             // 
-            Semestre.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Semestre.HeaderText = "Semestre";
-            Semestre.Name = "Semestre";
-            Semestre.ReadOnly = true;
-            Semestre.Width = 79;
+            Periodo.HeaderText = "Periodo";
+            Periodo.Name = "Periodo";
+            Periodo.ReadOnly = true;
             // 
             // Grupo
             // 
@@ -572,6 +585,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaAdmin";
             Text = "Pantalla_admin";
+            Load += PantallaAdmin_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             AddGroupGroupBox.ResumeLayout(false);
             AddGroupGroupBox.PerformLayout();
@@ -588,7 +602,7 @@
 
         #endregion
 
-        private Label Semestrelabel1;
+        private Label Grupolabel1;
         private Label Profesorlabel2;
         private Label Materialabel3;
         private Button AddMateriaButton;
@@ -598,7 +612,7 @@
         private ComboBox ProfesorComboBox;
         private DataGridView RegistroDGV;
         private ComboBox SemestreComboBox;
-        private ComboBox AñoComboBox;
+        private ComboBox GrupoComboBox;
         private Button AddProfesorButton;
         private Button button1;
         private PictureBox pictureBox1;
@@ -615,16 +629,17 @@
         private ComboBox FiltroMateriaComboBox;
         private Label label6;
         private ComboBox FiltroPeriodoComboBox;
+        private Button button2;
+        private Panel panel4;
+        private ComboBox FiltroCodigoComboBox;
+        private Label label5;
+        private Label label7;
         private DataGridViewCheckBoxColumn Select;
-        private DataGridViewTextBoxColumn Semestre;
+        private DataGridViewTextBoxColumn Periodo;
         private DataGridViewTextBoxColumn Grupo;
         private DataGridViewTextBoxColumn Profesor;
         private DataGridViewTextBoxColumn Materia;
         private DataGridViewButtonColumn Horario;
         private DataGridViewButtonColumn Eliminar;
-        private Button button2;
-        private Panel panel4;
-        private ComboBox FiltroCodigoComboBox;
-        private Label label5;
     }
 }
