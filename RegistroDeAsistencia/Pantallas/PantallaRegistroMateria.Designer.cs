@@ -41,13 +41,12 @@
             MinimizeButton = new PictureBox();
             CloseButton = new PictureBox();
             RegistroMDGV = new DataGridView();
+            ActualGroupBox = new GroupBox();
+            MateriaTextBox = new TextBox();
+            AddMateriaButton = new Button();
+            label3 = new Label();
             IDMateria = new DataGridViewTextBoxColumn();
             Materia = new DataGridViewTextBoxColumn();
-            Eliminar = new DataGridViewButtonColumn();
-            ActualGroupBox = new GroupBox();
-            richTextBox1 = new RichTextBox();
-            AddProfesorButton = new Button();
-            label3 = new Label();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RestoreButton).BeginInit();
@@ -182,7 +181,7 @@
             RegistroMDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             RegistroMDGV.ColumnHeadersHeight = 30;
             RegistroMDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            RegistroMDGV.Columns.AddRange(new DataGridViewColumn[] { IDMateria, Materia, Eliminar });
+            RegistroMDGV.Columns.AddRange(new DataGridViewColumn[] { IDMateria, Materia });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -210,6 +209,55 @@
             RegistroMDGV.RowTemplate.Height = 25;
             RegistroMDGV.Size = new Size(426, 350);
             RegistroMDGV.TabIndex = 35;
+            RegistroMDGV.CellContentClick += RegistroMDGV_CellContentClick;
+            // 
+            // ActualGroupBox
+            // 
+            ActualGroupBox.Anchor = AnchorStyles.Top;
+            ActualGroupBox.Controls.Add(MateriaTextBox);
+            ActualGroupBox.Controls.Add(AddMateriaButton);
+            ActualGroupBox.Controls.Add(label3);
+            ActualGroupBox.ForeColor = Color.White;
+            ActualGroupBox.Location = new Point(12, 28);
+            ActualGroupBox.Name = "ActualGroupBox";
+            ActualGroupBox.Size = new Size(426, 54);
+            ActualGroupBox.TabIndex = 36;
+            ActualGroupBox.TabStop = false;
+            ActualGroupBox.Text = "Registro de Materia";
+            // 
+            // MateriaTextBox
+            // 
+            MateriaTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            MateriaTextBox.Location = new Point(65, 19);
+            MateriaTextBox.Name = "MateriaTextBox";
+            MateriaTextBox.Size = new Size(273, 23);
+            MateriaTextBox.TabIndex = 49;
+            // 
+            // AddMateriaButton
+            // 
+            AddMateriaButton.BackColor = Color.FromArgb(86, 76, 149);
+            AddMateriaButton.FlatAppearance.BorderSize = 0;
+            AddMateriaButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            AddMateriaButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            AddMateriaButton.FlatStyle = FlatStyle.Flat;
+            AddMateriaButton.ForeColor = SystemColors.Control;
+            AddMateriaButton.Location = new Point(333, 19);
+            AddMateriaButton.Margin = new Padding(0, 0, 3, 0);
+            AddMateriaButton.Name = "AddMateriaButton";
+            AddMateriaButton.Size = new Size(87, 23);
+            AddMateriaButton.TabIndex = 35;
+            AddMateriaButton.Text = "Agregar";
+            AddMateriaButton.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(6, 22);
+            label3.Name = "label3";
+            label3.Size = new Size(53, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Materia:";
             // 
             // IDMateria
             // 
@@ -224,66 +272,6 @@
             Materia.Name = "Materia";
             Materia.ReadOnly = true;
             // 
-            // Eliminar
-            // 
-            Eliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Eliminar.HeaderText = "Eliminar";
-            Eliminar.Name = "Eliminar";
-            Eliminar.ReadOnly = true;
-            Eliminar.Width = 55;
-            // 
-            // ActualGroupBox
-            // 
-            ActualGroupBox.Anchor = AnchorStyles.Top;
-            ActualGroupBox.Controls.Add(richTextBox1);
-            ActualGroupBox.Controls.Add(AddProfesorButton);
-            ActualGroupBox.Controls.Add(label3);
-            ActualGroupBox.ForeColor = Color.White;
-            ActualGroupBox.Location = new Point(12, 28);
-            ActualGroupBox.Name = "ActualGroupBox";
-            ActualGroupBox.Size = new Size(426, 54);
-            ActualGroupBox.TabIndex = 36;
-            ActualGroupBox.TabStop = false;
-            ActualGroupBox.Text = "Registro de Materia";
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.BackColor = Color.FromArgb(63, 62, 70);
-            richTextBox1.BorderStyle = BorderStyle.FixedSingle;
-            richTextBox1.ForeColor = SystemColors.ControlLightLight;
-            richTextBox1.Location = new Point(62, 19);
-            richTextBox1.Margin = new Padding(0);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(271, 23);
-            richTextBox1.TabIndex = 36;
-            richTextBox1.Text = "";
-            // 
-            // AddProfesorButton
-            // 
-            AddProfesorButton.BackColor = Color.FromArgb(86, 76, 149);
-            AddProfesorButton.FlatAppearance.BorderSize = 0;
-            AddProfesorButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
-            AddProfesorButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
-            AddProfesorButton.FlatStyle = FlatStyle.Flat;
-            AddProfesorButton.ForeColor = SystemColors.Control;
-            AddProfesorButton.Location = new Point(333, 19);
-            AddProfesorButton.Margin = new Padding(0, 0, 3, 0);
-            AddProfesorButton.Name = "AddProfesorButton";
-            AddProfesorButton.Size = new Size(87, 23);
-            AddProfesorButton.TabIndex = 35;
-            AddProfesorButton.Text = "Agregar";
-            AddProfesorButton.UseVisualStyleBackColor = false;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(6, 22);
-            label3.Name = "label3";
-            label3.Size = new Size(53, 15);
-            label3.TabIndex = 2;
-            label3.Text = "Materia:";
-            // 
             // PantallaRegistroMateria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -296,7 +284,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaRegistroMateria";
             Text = "PantallaRegistroMateria";
-            Load += PantallaRegistroMateria_Load;
             Header.ResumeLayout(false);
             Header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -322,12 +309,11 @@
         private PictureBox CloseButton;
         private PictureBox pictureBox1;
         private DataGridView RegistroMDGV;
-        private DataGridViewTextBoxColumn IDMateria;
-        private DataGridViewTextBoxColumn Materia;
-        private DataGridViewButtonColumn Eliminar;
         private GroupBox ActualGroupBox;
         private Label label3;
-        private Button AddProfesorButton;
-        private RichTextBox richTextBox1;
+        private Button AddMateriaButton;
+        private TextBox MateriaTextBox;
+        private DataGridViewTextBoxColumn IDMateria;
+        private DataGridViewTextBoxColumn Materia;
     }
 }

@@ -29,5 +29,10 @@ namespace RegistroDeAsistencia
             PantallaRegistroProfesor temp = new PantallaRegistroProfesor();
             temp.Show();
         }
+
+        private void RegistroDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaRegistroProfesor));
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Header = new Panel();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
@@ -42,25 +42,24 @@
             MinimizeButton = new PictureBox();
             CloseButton = new PictureBox();
             ActualGroupBox = new GroupBox();
-            FinalizarButton = new Button();
+            NTTextBox = new TextBox();
+            AgregarPButton = new Button();
+            AMTextBox = new TextBox();
             label4 = new Label();
             label1 = new Label();
-            label2 = new Label();
+            APTextBox = new TextBox();
             label3 = new Label();
-            RegistroMDGV = new DataGridView();
+            NombreTextBox = new TextBox();
+            label2 = new Label();
+            RegistroPDGV = new DataGridView();
+            SearchPanel = new Panel();
+            SearchComboBox = new TextBox();
+            SearchIcon = new PictureBox();
             ID2 = new DataGridViewTextBoxColumn();
             Numero = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             ApellidoP = new DataGridViewTextBoxColumn();
             ApellidoM = new DataGridViewTextBoxColumn();
-            Eliminar = new DataGridViewButtonColumn();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            SearchPanel = new Panel();
-            SearchComboBox = new TextBox();
-            SearchIcon = new PictureBox();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -70,7 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)MinimizeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).BeginInit();
             ActualGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)RegistroMDGV).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)RegistroPDGV).BeginInit();
             SearchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SearchIcon).BeginInit();
             SuspendLayout();
@@ -197,14 +196,14 @@
             // ActualGroupBox
             // 
             ActualGroupBox.Anchor = AnchorStyles.Top;
-            ActualGroupBox.Controls.Add(textBox4);
-            ActualGroupBox.Controls.Add(FinalizarButton);
-            ActualGroupBox.Controls.Add(textBox3);
+            ActualGroupBox.Controls.Add(NTTextBox);
+            ActualGroupBox.Controls.Add(AgregarPButton);
+            ActualGroupBox.Controls.Add(AMTextBox);
             ActualGroupBox.Controls.Add(label4);
             ActualGroupBox.Controls.Add(label1);
-            ActualGroupBox.Controls.Add(textBox2);
+            ActualGroupBox.Controls.Add(APTextBox);
             ActualGroupBox.Controls.Add(label3);
-            ActualGroupBox.Controls.Add(textBox1);
+            ActualGroupBox.Controls.Add(NombreTextBox);
             ActualGroupBox.Controls.Add(label2);
             ActualGroupBox.ForeColor = Color.White;
             ActualGroupBox.Location = new Point(12, 31);
@@ -215,23 +214,39 @@
             ActualGroupBox.Text = "Datos del profesor";
             ActualGroupBox.Enter += ActualGroupBox_Enter;
             // 
-            // FinalizarButton
+            // NTTextBox
             // 
-            FinalizarButton.BackColor = Color.FromArgb(86, 76, 149);
-            FinalizarButton.Cursor = Cursors.Hand;
-            FinalizarButton.FlatAppearance.BorderSize = 0;
-            FinalizarButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
-            FinalizarButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
-            FinalizarButton.FlatStyle = FlatStyle.Flat;
-            FinalizarButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            FinalizarButton.ForeColor = SystemColors.Control;
-            FinalizarButton.Location = new Point(431, 69);
-            FinalizarButton.Margin = new Padding(0);
-            FinalizarButton.Name = "FinalizarButton";
-            FinalizarButton.Size = new Size(140, 23);
-            FinalizarButton.TabIndex = 44;
-            FinalizarButton.Text = "Agregar";
-            FinalizarButton.UseVisualStyleBackColor = false;
+            NTTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            NTTextBox.Location = new Point(137, 69);
+            NTTextBox.Name = "NTTextBox";
+            NTTextBox.Size = new Size(288, 23);
+            NTTextBox.TabIndex = 48;
+            // 
+            // AgregarPButton
+            // 
+            AgregarPButton.BackColor = Color.FromArgb(86, 76, 149);
+            AgregarPButton.Cursor = Cursors.Hand;
+            AgregarPButton.FlatAppearance.BorderSize = 0;
+            AgregarPButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            AgregarPButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            AgregarPButton.FlatStyle = FlatStyle.Flat;
+            AgregarPButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            AgregarPButton.ForeColor = SystemColors.Control;
+            AgregarPButton.Location = new Point(431, 69);
+            AgregarPButton.Margin = new Padding(0);
+            AgregarPButton.Name = "AgregarPButton";
+            AgregarPButton.Size = new Size(140, 23);
+            AgregarPButton.TabIndex = 44;
+            AgregarPButton.Text = "Agregar";
+            AgregarPButton.UseVisualStyleBackColor = false;
+            // 
+            // AMTextBox
+            // 
+            AMTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            AMTextBox.Location = new Point(431, 40);
+            AMTextBox.Name = "AMTextBox";
+            AMTextBox.Size = new Size(139, 23);
+            AMTextBox.TabIndex = 47;
             // 
             // label4
             // 
@@ -247,11 +262,38 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(286, 22);
+            label1.Location = new Point(431, 19);
             label1.Name = "label1";
             label1.Size = new Size(99, 15);
             label1.TabIndex = 37;
             label1.Text = "Apellido Materno";
+            // 
+            // APTextBox
+            // 
+            APTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            APTextBox.Location = new Point(286, 40);
+            APTextBox.Name = "APTextBox";
+            APTextBox.Size = new Size(139, 23);
+            APTextBox.TabIndex = 46;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(286, 19);
+            label3.Name = "label3";
+            label3.Size = new Size(95, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Apellido Paterno";
+            // 
+            // NombreTextBox
+            // 
+            NombreTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            NombreTextBox.Location = new Point(6, 40);
+            NombreTextBox.Name = "NombreTextBox";
+            NombreTextBox.Size = new Size(274, 23);
+            NombreTextBox.TabIndex = 45;
+            NombreTextBox.TextChanged += NombreTextBox_TextChanged;
             // 
             // label2
             // 
@@ -263,134 +305,55 @@
             label2.TabIndex = 39;
             label2.Text = "Nombres:";
             // 
-            // label3
+            // RegistroPDGV
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(432, 22);
-            label3.Name = "label3";
-            label3.Size = new Size(95, 15);
-            label3.TabIndex = 2;
-            label3.Text = "Apellido Paterno";
-            // 
-            // RegistroMDGV
-            // 
-            RegistroMDGV.AllowUserToDeleteRows = false;
-            RegistroMDGV.AllowUserToOrderColumns = true;
-            RegistroMDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            RegistroMDGV.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            RegistroMDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
-            RegistroMDGV.BorderStyle = BorderStyle.None;
-            RegistroMDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            RegistroMDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            RegistroMDGV.ColumnHeadersHeight = 30;
-            RegistroMDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            RegistroMDGV.Columns.AddRange(new DataGridViewColumn[] { ID2, Numero, Nombre, ApellidoP, ApellidoM, Eliminar });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(63, 62, 70);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            RegistroMDGV.DefaultCellStyle = dataGridViewCellStyle5;
-            RegistroMDGV.EnableHeadersVisualStyles = false;
-            RegistroMDGV.GridColor = Color.White;
-            RegistroMDGV.Location = new Point(12, 161);
-            RegistroMDGV.Margin = new Padding(3, 0, 3, 3);
-            RegistroMDGV.Name = "RegistroMDGV";
-            RegistroMDGV.ReadOnly = true;
-            RegistroMDGV.RightToLeft = RightToLeft.No;
-            RegistroMDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            RegistroMDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            RegistroMDGV.RowHeadersVisible = false;
-            RegistroMDGV.RowTemplate.Height = 25;
-            RegistroMDGV.Size = new Size(576, 277);
-            RegistroMDGV.TabIndex = 38;
-            // 
-            // ID2
-            // 
-            ID2.HeaderText = "ID de Profesor";
-            ID2.Name = "ID2";
-            ID2.ReadOnly = true;
-            // 
-            // Numero
-            // 
-            Numero.HeaderText = "N. de Trabajador";
-            Numero.Name = "Numero";
-            Numero.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            // 
-            // ApellidoP
-            // 
-            ApellidoP.HeaderText = "Apellido (P)";
-            ApellidoP.Name = "ApellidoP";
-            ApellidoP.ReadOnly = true;
-            // 
-            // ApellidoM
-            // 
-            ApellidoM.HeaderText = "Apellido (M)";
-            ApellidoM.Name = "ApellidoM";
-            ApellidoM.ReadOnly = true;
-            // 
-            // Eliminar
-            // 
-            Eliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Eliminar.HeaderText = "Eliminar";
-            Eliminar.Name = "Eliminar";
-            Eliminar.ReadOnly = true;
-            Eliminar.Width = 55;
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.FromArgb(63, 62, 70);
-            textBox1.Location = new Point(6, 40);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(274, 23);
-            textBox1.TabIndex = 45;
-            // 
-            // textBox2
-            // 
-            textBox2.BackColor = Color.FromArgb(63, 62, 70);
-            textBox2.Location = new Point(286, 40);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(139, 23);
-            textBox2.TabIndex = 46;
-            // 
-            // textBox3
-            // 
-            textBox3.BackColor = Color.FromArgb(63, 62, 70);
-            textBox3.Location = new Point(431, 40);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(139, 23);
-            textBox3.TabIndex = 47;
-            // 
-            // textBox4
-            // 
-            textBox4.BackColor = Color.FromArgb(63, 62, 70);
-            textBox4.Location = new Point(137, 69);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(288, 23);
-            textBox4.TabIndex = 48;
+            RegistroPDGV.AllowUserToDeleteRows = false;
+            RegistroPDGV.AllowUserToOrderColumns = true;
+            RegistroPDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            RegistroPDGV.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            RegistroPDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
+            RegistroPDGV.BorderStyle = BorderStyle.None;
+            RegistroPDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            RegistroPDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            RegistroPDGV.ColumnHeadersHeight = 30;
+            RegistroPDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            RegistroPDGV.Columns.AddRange(new DataGridViewColumn[] { ID2, Numero, Nombre, ApellidoP, ApellidoM });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            RegistroPDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            RegistroPDGV.EnableHeadersVisualStyles = false;
+            RegistroPDGV.GridColor = Color.White;
+            RegistroPDGV.Location = new Point(12, 161);
+            RegistroPDGV.Margin = new Padding(3, 0, 3, 3);
+            RegistroPDGV.Name = "RegistroPDGV";
+            RegistroPDGV.ReadOnly = true;
+            RegistroPDGV.RightToLeft = RightToLeft.No;
+            RegistroPDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            RegistroPDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            RegistroPDGV.RowHeadersVisible = false;
+            RegistroPDGV.RowTemplate.Height = 25;
+            RegistroPDGV.Size = new Size(576, 277);
+            RegistroPDGV.TabIndex = 38;
+            RegistroPDGV.CellContentClick += RegistroMDGV_CellContentClick;
             // 
             // SearchPanel
             // 
@@ -427,6 +390,36 @@
             SearchIcon.TabIndex = 35;
             SearchIcon.TabStop = false;
             // 
+            // ID2
+            // 
+            ID2.HeaderText = "ID de Profesor";
+            ID2.Name = "ID2";
+            ID2.ReadOnly = true;
+            // 
+            // Numero
+            // 
+            Numero.HeaderText = "N. de Trabajador";
+            Numero.Name = "Numero";
+            Numero.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // ApellidoP
+            // 
+            ApellidoP.HeaderText = "Apellido (P)";
+            ApellidoP.Name = "ApellidoP";
+            ApellidoP.ReadOnly = true;
+            // 
+            // ApellidoM
+            // 
+            ApellidoM.HeaderText = "Apellido (M)";
+            ApellidoM.Name = "ApellidoM";
+            ApellidoM.ReadOnly = true;
+            // 
             // PantallaRegistroProfesor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -434,12 +427,13 @@
             BackColor = Color.FromArgb(31, 30, 36);
             ClientSize = new Size(600, 450);
             Controls.Add(SearchPanel);
-            Controls.Add(RegistroMDGV);
+            Controls.Add(RegistroPDGV);
             Controls.Add(ActualGroupBox);
             Controls.Add(Header);
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaRegistroProfesor";
             Text = "PantallaRegistroProfesor";
+            Load += PantallaRegistroProfesor_Load;
             Header.ResumeLayout(false);
             Header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -451,7 +445,7 @@
             ((System.ComponentModel.ISupportInitialize)CloseButton).EndInit();
             ActualGroupBox.ResumeLayout(false);
             ActualGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)RegistroMDGV).EndInit();
+            ((System.ComponentModel.ISupportInitialize)RegistroPDGV).EndInit();
             SearchPanel.ResumeLayout(false);
             SearchPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SearchIcon).EndInit();
@@ -474,23 +468,22 @@
         private Label label1;
         private Button AddProfesorButton;
         private Label label3;
-        private DataGridView RegistroMDGV;
+        private DataGridView RegistroPDGV;
         private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn ApellidoP;
-        private DataGridViewTextBoxColumn ApellidoM;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewButtonColumn Eliminar;
         private Label label4;
         private Button button1;
-        private DataGridViewTextBoxColumn ID2;
-        private DataGridViewTextBoxColumn Numero;
-        private Button FinalizarButton;
-        private TextBox textBox1;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private Button AgregarPButton;
+        private TextBox NombreTextBox;
+        private TextBox NTTextBox;
+        private TextBox AMTextBox;
+        private TextBox APTextBox;
         private Panel SearchPanel;
         private TextBox SearchComboBox;
         private PictureBox SearchIcon;
+        private DataGridViewTextBoxColumn ID2;
+        private DataGridViewTextBoxColumn Numero;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn ApellidoP;
+        private DataGridViewTextBoxColumn ApellidoM;
     }
 }

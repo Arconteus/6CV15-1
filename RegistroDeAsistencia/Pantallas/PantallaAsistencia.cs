@@ -51,5 +51,10 @@ namespace RegistroDeAsistencia
         {
 
         }
+
+        private void PantallaAsistencia_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

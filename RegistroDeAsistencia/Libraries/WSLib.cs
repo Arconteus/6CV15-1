@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HtmlAgilityPack;
-using RegistroDeAsistencia.DataBase.Modelo;
-using ScrapySharp.Extensions;
-using HtmlDocument = HtmlAgilityPack.HtmlDocument;
+using AngleSharp;
+using AngleSharp.Dom;
+using AngleSharp.Html.Parser;
 
 namespace RegistroDeAsistencia.Libraries
 {
@@ -16,13 +15,14 @@ namespace RegistroDeAsistencia.Libraries
         {
             List<String> output = new List<String>();
 
-            HtmlWeb oWeb = new HtmlWeb();
-            HtmlDocument document = oWeb.Load(url);
-            var classBoleta = document.DocumentNode.CssSelect(".boleta").First();
-           
+            var config = Configuration.Default.WithDefaultLoader();
+            var context = BrowsingContext.New(config);
+            var document = context.OpenAsync(url).GetAwaiter().GetResult();
+
+            var classBoleta = document.QuerySelector(".boleta");
             output.Add(classBoleta.InnerHtml);
 
-            var classNombre = document.DocumentNode.CssSelect(".nombre").First();
+            var classNombre = document.QuerySelector(".nombre");
             List<String> FullName = classNombre.InnerHtml.Split(' ').ToList();
             string ama = FullName[FullName.Count - 1];
             string apa = FullName[FullName.Count - 2];
@@ -33,10 +33,10 @@ namespace RegistroDeAsistencia.Libraries
             output.Add(apa);
             output.Add(ama);
 
-            var classEscuela = document.DocumentNode.CssSelect(".escuela").First();
+            var classEscuela = document.QuerySelector(".escuela");
             output.Add(classEscuela.InnerHtml);
 
-            var classCarrera = document.DocumentNode.CssSelect(".carrera").First();
+            var classCarrera = document.QuerySelector(".carrera");
             string CarreraToSet = classCarrera.InnerHtml;
             //=======================================================
             // MODIFICAR POR FAVOR LA VARIABLE CarreraToSet PARA QUE

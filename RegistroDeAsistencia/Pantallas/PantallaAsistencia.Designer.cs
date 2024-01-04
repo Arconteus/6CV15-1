@@ -53,9 +53,6 @@
             richTextBox1 = new RichTextBox();
             label2 = new Label();
             RegistroDGV = new DataGridView();
-            ClearButton = new Button();
-            SearchIcon = new PictureBox();
-            SearchPanel = new Panel();
             Select = new DataGridViewCheckBoxColumn();
             Boleta = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
@@ -64,6 +61,9 @@
             Escuela = new DataGridViewTextBoxColumn();
             Carrera = new DataGridViewTextBoxColumn();
             Observacion = new DataGridViewButtonColumn();
+            ClearButton = new Button();
+            SearchIcon = new PictureBox();
+            SearchPanel = new Panel();
             GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)HelpButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -347,47 +347,6 @@
             RegistroDGV.Size = new Size(825, 267);
             RegistroDGV.TabIndex = 32;
             // 
-            // ClearButton
-            // 
-            ClearButton.BackColor = Color.FromArgb(17, 16, 19);
-            ClearButton.Cursor = Cursors.Hand;
-            ClearButton.FlatAppearance.BorderSize = 0;
-            ClearButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(193, 71, 71);
-            ClearButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(239, 88, 88);
-            ClearButton.FlatStyle = FlatStyle.Flat;
-            ClearButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            ClearButton.ForeColor = SystemColors.Control;
-            ClearButton.Location = new Point(714, 66);
-            ClearButton.Name = "ClearButton";
-            ClearButton.Size = new Size(123, 35);
-            ClearButton.TabIndex = 33;
-            ClearButton.Text = "Limpiar";
-            ClearButton.UseVisualStyleBackColor = false;
-            ClearButton.Click += ClearButton_Click;
-            // 
-            // SearchIcon
-            // 
-            SearchIcon.BackColor = Color.FromArgb(63, 62, 70);
-            SearchIcon.Image = Properties.Resources.Search_Icon;
-            SearchIcon.Location = new Point(0, 0);
-            SearchIcon.Margin = new Padding(0);
-            SearchIcon.Name = "SearchIcon";
-            SearchIcon.Size = new Size(16, 16);
-            SearchIcon.SizeMode = PictureBoxSizeMode.Zoom;
-            SearchIcon.TabIndex = 35;
-            SearchIcon.TabStop = false;
-            // 
-            // SearchPanel
-            // 
-            SearchPanel.BackColor = Color.FromArgb(63, 62, 70);
-            SearchPanel.Controls.Add(SearchComboBox);
-            SearchPanel.Controls.Add(SearchIcon);
-            SearchPanel.Location = new Point(12, 115);
-            SearchPanel.Margin = new Padding(0);
-            SearchPanel.Name = "SearchPanel";
-            SearchPanel.Size = new Size(825, 15);
-            SearchPanel.TabIndex = 36;
-            // 
             // Select
             // 
             Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -450,6 +409,47 @@
             Observacion.ReadOnly = true;
             Observacion.Width = 41;
             // 
+            // ClearButton
+            // 
+            ClearButton.BackColor = Color.FromArgb(17, 16, 19);
+            ClearButton.Cursor = Cursors.Hand;
+            ClearButton.FlatAppearance.BorderSize = 0;
+            ClearButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(193, 71, 71);
+            ClearButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(239, 88, 88);
+            ClearButton.FlatStyle = FlatStyle.Flat;
+            ClearButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            ClearButton.ForeColor = SystemColors.Control;
+            ClearButton.Location = new Point(714, 66);
+            ClearButton.Name = "ClearButton";
+            ClearButton.Size = new Size(123, 35);
+            ClearButton.TabIndex = 33;
+            ClearButton.Text = "Limpiar";
+            ClearButton.UseVisualStyleBackColor = false;
+            ClearButton.Click += ClearButton_Click;
+            // 
+            // SearchIcon
+            // 
+            SearchIcon.BackColor = Color.FromArgb(63, 62, 70);
+            SearchIcon.Image = Properties.Resources.Search_Icon;
+            SearchIcon.Location = new Point(0, 0);
+            SearchIcon.Margin = new Padding(0);
+            SearchIcon.Name = "SearchIcon";
+            SearchIcon.Size = new Size(16, 16);
+            SearchIcon.SizeMode = PictureBoxSizeMode.Zoom;
+            SearchIcon.TabIndex = 35;
+            SearchIcon.TabStop = false;
+            // 
+            // SearchPanel
+            // 
+            SearchPanel.BackColor = Color.FromArgb(63, 62, 70);
+            SearchPanel.Controls.Add(SearchComboBox);
+            SearchPanel.Controls.Add(SearchIcon);
+            SearchPanel.Location = new Point(12, 115);
+            SearchPanel.Margin = new Padding(0);
+            SearchPanel.Name = "SearchPanel";
+            SearchPanel.Size = new Size(825, 15);
+            SearchPanel.TabIndex = 36;
+            // 
             // PantallaAsistencia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -471,6 +471,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaAsistencia";
             Text = " ";
+            Load += PantallaAsistencia_Load;
             GroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)HelpButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
