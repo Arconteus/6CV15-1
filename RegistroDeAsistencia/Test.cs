@@ -21,6 +21,9 @@ namespace RegistroDeAsistencia
             DGV3.DataSource = Ctl_CodigoGrupo.GetList();
             DGV4.DataSource = Ctl_Profesor.GetList();
             DGV5.DataSource = Ctl_Materias.GetList();
+            DGV6.DataSource = Ctl_Dia.GetList();
+            DGV7.DataSource = Ctl_Hora.GetList();
+            DGV8.DataSource = Ctl_Horario.GetList();
         }
     }
 }

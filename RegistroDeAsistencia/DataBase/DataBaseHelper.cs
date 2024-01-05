@@ -2,6 +2,7 @@
 using RegistroDeAsistencia.DataBase.Modelo;
 using System.Configuration;
 using System.Data.SQLite;
+using System.Security.AccessControl;
 public static class DataBaseHelper
 {
     //==============================================
@@ -42,8 +43,44 @@ public static class DataBaseHelper
         InitializeProfesors();
         InitializeEscuelas();
         InitializeCarreras();
+        InitializeTimeThings();
     }
 
+    private static void InitializeTimeThings()
+    {
+        List<string> DiasSemanaToAdd = new List<string>();
+        DiasSemanaToAdd.Add("LUNES");
+        DiasSemanaToAdd.Add("MARTES");
+        DiasSemanaToAdd.Add("MIERCOLES");
+        DiasSemanaToAdd.Add("JUEVES");
+        DiasSemanaToAdd.Add("VIERNES");
+        DiasSemanaToAdd.Add("SABADO");
+        DiasSemanaToAdd.Add("DOMINGO");
+
+        foreach(string iteration in DiasSemanaToAdd)
+        {
+            Ctl_Dia.ForceAdd(new Dia() { desc_dia = iteration });
+        }
+
+        List<string> HorasToAdd = new List<string>();
+        HorasToAdd.Add("07:00");
+        HorasToAdd.Add("08:30");
+        HorasToAdd.Add("10:00");
+        HorasToAdd.Add("11:30");
+        HorasToAdd.Add("13:00");
+        HorasToAdd.Add("14:30");
+        HorasToAdd.Add("16:00");
+        HorasToAdd.Add("17:30");
+        HorasToAdd.Add("19:00");
+        HorasToAdd.Add("20:30");
+        HorasToAdd.Add("22:00");
+
+        foreach(string iteration in  HorasToAdd)
+        {
+            Ctl_Hora.ForceAdd(new Hora() { desc_horas = iteration });
+        }
+
+    }
     private static void InitializeCodigoGrupo()
     {
         if (!Ctl_CodigoGrupo.Contain(new CodigoGrupo() { desc_grupo = "Sin codigo" }))
