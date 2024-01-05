@@ -79,3 +79,23 @@ CREATE TABLE IF NOT EXISTS tbl_observacionAlumno(
   	CONSTRAINT "fk_relacion" FOREIGN KEY(id_relacion_observacion)
   	REFERENCES tbl_relacionRegistroAlumno(id_relacion)
 );
+CREATE TABLE ctl_diasSemana(
+	id_diaSemena INTEGER PRIMARY KEY AUTOINCREMENT,
+  	desc_dia varchar(9) not NULL
+);
+CREATE TABLE ctl_horas(
+	id_horas INTEGER PRIMARY KEY AUTOINCREMENT,
+  	desc_horas varchar(5) not NULL
+);
+CREATE TABLE ctl_horario(
+  id_horario INTEGER PRIMARY KEY AUTOINCREMENT,
+  grupo_horario INTEGER not null,
+  hora_horario INTEGER not null,
+  dia_horario varchar(9) not null,
+  CONSTRAINT "dia_horario" FOREIGN KEY (dia_horario)
+  REFERENCES ctl_diasSemana(id_diasemena),
+  CONSTRAINT "hora_horario" FOREIGN KEY (hora_horario)
+  REFERENCES ctl_horas(id_horas),
+  CONSTRAINT "grupo_horario" FOREIGN KEY(grupo_horario)
+  REFERENCES ctl_grupo(id_grupo)
+)
