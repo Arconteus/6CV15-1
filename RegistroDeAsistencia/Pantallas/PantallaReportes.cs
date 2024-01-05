@@ -18,5 +18,10 @@ namespace RegistroDeAsistencia
             InitializeComponent();
             dt = new DataTable();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

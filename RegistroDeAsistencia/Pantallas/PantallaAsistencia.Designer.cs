@@ -43,7 +43,6 @@
             GroupBox = new GroupBox();
             FolioLabel = new Label();
             SearchComboBox = new TextBox();
-            HelpButton = new PictureBox();
             pictureBox2 = new PictureBox();
             QrBox = new PictureBox();
             DetallesGroupBox = new GroupBox();
@@ -53,9 +52,6 @@
             richTextBox1 = new RichTextBox();
             label2 = new Label();
             RegistroDGV = new DataGridView();
-            ClearButton = new Button();
-            SearchIcon = new PictureBox();
-            SearchPanel = new Panel();
             Select = new DataGridViewCheckBoxColumn();
             Boleta = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
@@ -64,8 +60,10 @@
             Escuela = new DataGridViewTextBoxColumn();
             Carrera = new DataGridViewTextBoxColumn();
             Observacion = new DataGridViewButtonColumn();
+            ClearButton = new Button();
+            SearchIcon = new PictureBox();
+            SearchPanel = new Panel();
             GroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)HelpButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)QrBox).BeginInit();
             DetallesGroupBox.SuspendLayout();
@@ -165,7 +163,7 @@
             GroupBox.ForeColor = SystemColors.Control;
             GroupBox.Location = new Point(714, 12);
             GroupBox.Name = "GroupBox";
-            GroupBox.Size = new Size(71, 45);
+            GroupBox.Size = new Size(123, 45);
             GroupBox.TabIndex = 21;
             GroupBox.TabStop = false;
             GroupBox.Text = "Folio";
@@ -175,7 +173,7 @@
             FolioLabel.Dock = DockStyle.Fill;
             FolioLabel.Location = new Point(3, 19);
             FolioLabel.Name = "FolioLabel";
-            FolioLabel.Size = new Size(65, 23);
+            FolioLabel.Size = new Size(117, 23);
             FolioLabel.TabIndex = 22;
             FolioLabel.Text = "000001";
             FolioLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -191,18 +189,6 @@
             SearchComboBox.Size = new Size(796, 16);
             SearchComboBox.TabIndex = 24;
             SearchComboBox.Tag = "sdvsdvsd";
-            // 
-            // HelpButton
-            // 
-            HelpButton.Cursor = Cursors.Hand;
-            HelpButton.Image = Properties.Resources.Help_Icon;
-            HelpButton.Location = new Point(792, 12);
-            HelpButton.Name = "HelpButton";
-            HelpButton.Size = new Size(45, 45);
-            HelpButton.SizeMode = PictureBoxSizeMode.Zoom;
-            HelpButton.TabIndex = 25;
-            HelpButton.TabStop = false;
-            HelpButton.Click += HelpButton_Click;
             // 
             // pictureBox2
             // 
@@ -347,47 +333,6 @@
             RegistroDGV.Size = new Size(825, 267);
             RegistroDGV.TabIndex = 32;
             // 
-            // ClearButton
-            // 
-            ClearButton.BackColor = Color.FromArgb(17, 16, 19);
-            ClearButton.Cursor = Cursors.Hand;
-            ClearButton.FlatAppearance.BorderSize = 0;
-            ClearButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(193, 71, 71);
-            ClearButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(239, 88, 88);
-            ClearButton.FlatStyle = FlatStyle.Flat;
-            ClearButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            ClearButton.ForeColor = SystemColors.Control;
-            ClearButton.Location = new Point(714, 66);
-            ClearButton.Name = "ClearButton";
-            ClearButton.Size = new Size(123, 35);
-            ClearButton.TabIndex = 33;
-            ClearButton.Text = "Limpiar";
-            ClearButton.UseVisualStyleBackColor = false;
-            ClearButton.Click += ClearButton_Click;
-            // 
-            // SearchIcon
-            // 
-            SearchIcon.BackColor = Color.FromArgb(63, 62, 70);
-            SearchIcon.Image = Properties.Resources.Search_Icon;
-            SearchIcon.Location = new Point(0, 0);
-            SearchIcon.Margin = new Padding(0);
-            SearchIcon.Name = "SearchIcon";
-            SearchIcon.Size = new Size(16, 16);
-            SearchIcon.SizeMode = PictureBoxSizeMode.Zoom;
-            SearchIcon.TabIndex = 35;
-            SearchIcon.TabStop = false;
-            // 
-            // SearchPanel
-            // 
-            SearchPanel.BackColor = Color.FromArgb(63, 62, 70);
-            SearchPanel.Controls.Add(SearchComboBox);
-            SearchPanel.Controls.Add(SearchIcon);
-            SearchPanel.Location = new Point(12, 115);
-            SearchPanel.Margin = new Padding(0);
-            SearchPanel.Name = "SearchPanel";
-            SearchPanel.Size = new Size(825, 15);
-            SearchPanel.TabIndex = 36;
-            // 
             // Select
             // 
             Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -450,6 +395,47 @@
             Observacion.ReadOnly = true;
             Observacion.Width = 41;
             // 
+            // ClearButton
+            // 
+            ClearButton.BackColor = Color.FromArgb(17, 16, 19);
+            ClearButton.Cursor = Cursors.Hand;
+            ClearButton.FlatAppearance.BorderSize = 0;
+            ClearButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(193, 71, 71);
+            ClearButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(239, 88, 88);
+            ClearButton.FlatStyle = FlatStyle.Flat;
+            ClearButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            ClearButton.ForeColor = SystemColors.Control;
+            ClearButton.Location = new Point(714, 66);
+            ClearButton.Name = "ClearButton";
+            ClearButton.Size = new Size(123, 35);
+            ClearButton.TabIndex = 33;
+            ClearButton.Text = "Limpiar";
+            ClearButton.UseVisualStyleBackColor = false;
+            ClearButton.Click += ClearButton_Click;
+            // 
+            // SearchIcon
+            // 
+            SearchIcon.BackColor = Color.FromArgb(63, 62, 70);
+            SearchIcon.Image = Properties.Resources.Search_Icon;
+            SearchIcon.Location = new Point(0, 0);
+            SearchIcon.Margin = new Padding(0);
+            SearchIcon.Name = "SearchIcon";
+            SearchIcon.Size = new Size(16, 16);
+            SearchIcon.SizeMode = PictureBoxSizeMode.Zoom;
+            SearchIcon.TabIndex = 35;
+            SearchIcon.TabStop = false;
+            // 
+            // SearchPanel
+            // 
+            SearchPanel.BackColor = Color.FromArgb(63, 62, 70);
+            SearchPanel.Controls.Add(SearchComboBox);
+            SearchPanel.Controls.Add(SearchIcon);
+            SearchPanel.Location = new Point(12, 115);
+            SearchPanel.Margin = new Padding(0);
+            SearchPanel.Name = "SearchPanel";
+            SearchPanel.Size = new Size(825, 15);
+            SearchPanel.TabIndex = 36;
+            // 
             // PantallaAsistencia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -464,15 +450,14 @@
             Controls.Add(DetallesGroupBox);
             Controls.Add(QrBox);
             Controls.Add(pictureBox2);
-            Controls.Add(HelpButton);
             Controls.Add(GroupBox);
             Controls.Add(label1);
             Controls.Add(FinalizarButton);
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaAsistencia";
             Text = " ";
+            Load += PantallaAsistencia_Load;
             GroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)HelpButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)QrBox).EndInit();
             DetallesGroupBox.ResumeLayout(false);
@@ -498,7 +483,6 @@
         private GroupBox GroupBox;
         private Label FolioLabel;
         private TextBox SearchComboBox;
-        private PictureBox HelpButton;
         private PictureBox pictureBox2;
         private PictureBox QrBox;
         private GroupBox DetallesGroupBox;

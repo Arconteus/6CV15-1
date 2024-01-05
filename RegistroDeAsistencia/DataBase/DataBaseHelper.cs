@@ -88,11 +88,11 @@ public static class DataBaseHelper
             Ctl_CodigoGrupo.Add(new CodigoGrupo() { desc_grupo = "Sin codigo" });
         }
 
-        for (int i = 1; i < 8; i++)
+        for (int i = 1; i < 9; i++)
         {
             for (int j = 1; j < 4; j++)
             {
-                for (int k = 1; k < 6; k++)
+                for (int k = 1; k < 7; k++)
                 {
                     //===================================================================================
                     string codigoMatutino = i + "CV" + j + k;
@@ -101,7 +101,7 @@ public static class DataBaseHelper
                         Ctl_CodigoGrupo.Add(new CodigoGrupo() { desc_grupo = codigoMatutino });
                     }
                     //===================================================================================
-                    string codigoVespertino = i + "CV" + j + k;
+                    string codigoVespertino = i + "CM" + j + k;
                     if (!Ctl_CodigoGrupo.Contain(new CodigoGrupo() { desc_grupo = codigoVespertino }))
                     {
                         Ctl_CodigoGrupo.Add(new CodigoGrupo() { desc_grupo = codigoVespertino });
