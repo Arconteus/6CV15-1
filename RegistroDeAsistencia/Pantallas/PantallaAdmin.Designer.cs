@@ -44,13 +44,6 @@
             ProfesorComboBox = new ComboBox();
             MateriaComboBox = new ComboBox();
             RegistroDGV = new DataGridView();
-            Anio = new DataGridViewTextBoxColumn();
-            Periodo = new DataGridViewTextBoxColumn();
-            Grupo = new DataGridViewTextBoxColumn();
-            Profesor = new DataGridViewTextBoxColumn();
-            Materia = new DataGridViewTextBoxColumn();
-            Horario = new DataGridViewButtonColumn();
-            Eliminar = new DataGridViewButtonColumn();
             pictureBox1 = new PictureBox();
             groupBox1 = new GroupBox();
             button2 = new Button();
@@ -69,6 +62,13 @@
             label2 = new Label();
             FiltroAñoTextBox = new TextBox();
             label1 = new Label();
+            Anio = new DataGridViewTextBoxColumn();
+            Periodo = new DataGridViewTextBoxColumn();
+            Grupo = new DataGridViewTextBoxColumn();
+            Profesor = new DataGridViewTextBoxColumn();
+            Materia = new DataGridViewTextBoxColumn();
+            Horario = new DataGridViewTextBoxColumn();
+            Eliminar = new DataGridViewButtonColumn();
             AddGroupGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RegistroDGV).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -295,62 +295,6 @@
             RegistroDGV.TabIndex = 33;
             RegistroDGV.CellContentClick += RegistroDGV_CellContentClick;
             // 
-            // Anio
-            // 
-            Anio.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Anio.HeaderText = "Año";
-            Anio.Name = "Anio";
-            Anio.ReadOnly = true;
-            Anio.Resizable = DataGridViewTriState.True;
-            Anio.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Anio.Width = 34;
-            // 
-            // Periodo
-            // 
-            Periodo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Periodo.HeaderText = "Periodo";
-            Periodo.Name = "Periodo";
-            Periodo.ReadOnly = true;
-            Periodo.Width = 72;
-            // 
-            // Grupo
-            // 
-            Grupo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Grupo.HeaderText = "Grupo";
-            Grupo.Name = "Grupo";
-            Grupo.ReadOnly = true;
-            Grupo.Width = 64;
-            // 
-            // Profesor
-            // 
-            Profesor.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Profesor.HeaderText = "Profesor";
-            Profesor.Name = "Profesor";
-            Profesor.ReadOnly = true;
-            // 
-            // Materia
-            // 
-            Materia.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Materia.HeaderText = "Materia";
-            Materia.Name = "Materia";
-            Materia.ReadOnly = true;
-            // 
-            // Horario
-            // 
-            Horario.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Horario.HeaderText = "Horario";
-            Horario.Name = "Horario";
-            Horario.ReadOnly = true;
-            Horario.Width = 52;
-            // 
-            // Eliminar
-            // 
-            Eliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Eliminar.HeaderText = "Eliminar";
-            Eliminar.Name = "Eliminar";
-            Eliminar.ReadOnly = true;
-            Eliminar.Width = 55;
-            // 
             // pictureBox1
             // 
             pictureBox1.Cursor = Cursors.Hand;
@@ -563,6 +507,60 @@
             label1.Text = "Semestre";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // Anio
+            // 
+            Anio.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Anio.HeaderText = "Año";
+            Anio.Name = "Anio";
+            Anio.ReadOnly = true;
+            Anio.Resizable = DataGridViewTriState.True;
+            Anio.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Anio.Width = 34;
+            // 
+            // Periodo
+            // 
+            Periodo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Periodo.HeaderText = "Periodo";
+            Periodo.Name = "Periodo";
+            Periodo.ReadOnly = true;
+            Periodo.Width = 72;
+            // 
+            // Grupo
+            // 
+            Grupo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Grupo.HeaderText = "Grupo";
+            Grupo.Name = "Grupo";
+            Grupo.ReadOnly = true;
+            Grupo.Width = 64;
+            // 
+            // Profesor
+            // 
+            Profesor.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Profesor.HeaderText = "Profesor";
+            Profesor.Name = "Profesor";
+            Profesor.ReadOnly = true;
+            // 
+            // Materia
+            // 
+            Materia.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Materia.HeaderText = "Materia";
+            Materia.Name = "Materia";
+            Materia.ReadOnly = true;
+            // 
+            // Horario
+            // 
+            Horario.HeaderText = "Horario";
+            Horario.Name = "Horario";
+            Horario.ReadOnly = true;
+            // 
+            // Eliminar
+            // 
+            Eliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.Name = "Eliminar";
+            Eliminar.ReadOnly = true;
+            Eliminar.Width = 55;
+            // 
             // PantallaAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -628,7 +626,7 @@
         private DataGridViewTextBoxColumn Grupo;
         private DataGridViewTextBoxColumn Profesor;
         private DataGridViewTextBoxColumn Materia;
-        private DataGridViewButtonColumn Horario;
+        private DataGridViewTextBoxColumn Horario;
         private DataGridViewButtonColumn Eliminar;
     }
 }

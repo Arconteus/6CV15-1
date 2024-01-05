@@ -14,8 +14,8 @@ namespace RegistroDeAsistencia
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             DataBaseHelper.InitializeDatabase();
-            //Application.Run(new PantallaPrincipal());
-            Application.Run(new Test());
+            Application.Run(new PantallaPrincipal());
+            //Application.Run(new Test());
         }
     }
 }
