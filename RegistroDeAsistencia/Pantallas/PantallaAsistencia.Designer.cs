@@ -43,7 +43,6 @@
             GroupBox = new GroupBox();
             FolioLabel = new Label();
             SearchComboBox = new TextBox();
-            HelpButton = new PictureBox();
             pictureBox2 = new PictureBox();
             QrBox = new PictureBox();
             DetallesGroupBox = new GroupBox();
@@ -65,7 +64,6 @@
             SearchIcon = new PictureBox();
             SearchPanel = new Panel();
             GroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)HelpButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)QrBox).BeginInit();
             DetallesGroupBox.SuspendLayout();
@@ -165,7 +163,7 @@
             GroupBox.ForeColor = SystemColors.Control;
             GroupBox.Location = new Point(714, 12);
             GroupBox.Name = "GroupBox";
-            GroupBox.Size = new Size(71, 45);
+            GroupBox.Size = new Size(123, 45);
             GroupBox.TabIndex = 21;
             GroupBox.TabStop = false;
             GroupBox.Text = "Folio";
@@ -175,7 +173,7 @@
             FolioLabel.Dock = DockStyle.Fill;
             FolioLabel.Location = new Point(3, 19);
             FolioLabel.Name = "FolioLabel";
-            FolioLabel.Size = new Size(65, 23);
+            FolioLabel.Size = new Size(117, 23);
             FolioLabel.TabIndex = 22;
             FolioLabel.Text = "000001";
             FolioLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -191,18 +189,6 @@
             SearchComboBox.Size = new Size(796, 16);
             SearchComboBox.TabIndex = 24;
             SearchComboBox.Tag = "sdvsdvsd";
-            // 
-            // HelpButton
-            // 
-            HelpButton.Cursor = Cursors.Hand;
-            HelpButton.Image = Properties.Resources.Help_Icon;
-            HelpButton.Location = new Point(792, 12);
-            HelpButton.Name = "HelpButton";
-            HelpButton.Size = new Size(45, 45);
-            HelpButton.SizeMode = PictureBoxSizeMode.Zoom;
-            HelpButton.TabIndex = 25;
-            HelpButton.TabStop = false;
-            HelpButton.Click += HelpButton_Click;
             // 
             // pictureBox2
             // 
@@ -464,7 +450,6 @@
             Controls.Add(DetallesGroupBox);
             Controls.Add(QrBox);
             Controls.Add(pictureBox2);
-            Controls.Add(HelpButton);
             Controls.Add(GroupBox);
             Controls.Add(label1);
             Controls.Add(FinalizarButton);
@@ -473,7 +458,6 @@
             Text = " ";
             Load += PantallaAsistencia_Load;
             GroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)HelpButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)QrBox).EndInit();
             DetallesGroupBox.ResumeLayout(false);
@@ -499,7 +483,6 @@
         private GroupBox GroupBox;
         private Label FolioLabel;
         private TextBox SearchComboBox;
-        private PictureBox HelpButton;
         private PictureBox pictureBox2;
         private PictureBox QrBox;
         private GroupBox DetallesGroupBox;

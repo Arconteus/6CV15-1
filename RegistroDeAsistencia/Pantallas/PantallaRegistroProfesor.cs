@@ -38,6 +38,7 @@ namespace RegistroDeAsistencia
 
             // Añadir evento para el ComboBox
             SearchComboBox.TextChanged += SearchComboBox_SelectedIndexChanged;
+            RegistroPDGV.Columns["DeleteButtonColumn"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         private void RegistroPDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)

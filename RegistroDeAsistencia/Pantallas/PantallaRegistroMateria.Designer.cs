@@ -221,10 +221,12 @@
             ActualGroupBox.TabIndex = 36;
             ActualGroupBox.TabStop = false;
             ActualGroupBox.Text = "Registro de Materia";
+            ActualGroupBox.Enter += ActualGroupBox_Enter;
             // 
             // MateriaTextBox
             // 
             MateriaTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            MateriaTextBox.ForeColor = SystemColors.ControlLightLight;
             MateriaTextBox.Location = new Point(65, 19);
             MateriaTextBox.Name = "MateriaTextBox";
             MateriaTextBox.Size = new Size(273, 23);

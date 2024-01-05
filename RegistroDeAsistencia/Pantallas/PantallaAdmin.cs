@@ -124,5 +124,10 @@ namespace RegistroDeAsistencia
         {
 
         }
+
+        private void ProfesorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

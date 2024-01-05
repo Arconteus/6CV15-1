@@ -52,14 +52,14 @@
             NombreTextBox = new TextBox();
             label2 = new Label();
             RegistroPDGV = new DataGridView();
+            SearchPanel = new Panel();
+            SearchComboBox = new TextBox();
+            SearchIcon = new PictureBox();
             ID2 = new DataGridViewTextBoxColumn();
             Numero = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             ApellidoP = new DataGridViewTextBoxColumn();
             ApellidoM = new DataGridViewTextBoxColumn();
-            SearchPanel = new Panel();
-            SearchComboBox = new TextBox();
-            SearchIcon = new PictureBox();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -217,6 +217,7 @@
             // NTTextBox
             // 
             NTTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            NTTextBox.ForeColor = SystemColors.ControlLightLight;
             NTTextBox.Location = new Point(137, 69);
             NTTextBox.Name = "NTTextBox";
             NTTextBox.Size = new Size(288, 23);
@@ -244,6 +245,7 @@
             // AMTextBox
             // 
             AMTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            AMTextBox.ForeColor = SystemColors.ControlLightLight;
             AMTextBox.Location = new Point(431, 40);
             AMTextBox.Name = "AMTextBox";
             AMTextBox.Size = new Size(139, 23);
@@ -272,6 +274,7 @@
             // APTextBox
             // 
             APTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            APTextBox.ForeColor = SystemColors.ControlText;
             APTextBox.Location = new Point(286, 40);
             APTextBox.Name = "APTextBox";
             APTextBox.Size = new Size(139, 23);
@@ -290,6 +293,7 @@
             // NombreTextBox
             // 
             NombreTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            NombreTextBox.ForeColor = SystemColors.ControlLightLight;
             NombreTextBox.Location = new Point(6, 40);
             NombreTextBox.Name = "NombreTextBox";
             NombreTextBox.Size = new Size(274, 23);
@@ -356,36 +360,6 @@
             RegistroPDGV.TabIndex = 38;
             RegistroPDGV.CellContentClick += RegistroMDGV_CellContentClick;
             // 
-            // ID2
-            // 
-            ID2.HeaderText = "ID de Profesor";
-            ID2.Name = "ID2";
-            ID2.ReadOnly = true;
-            // 
-            // Numero
-            // 
-            Numero.HeaderText = "N. de Trabajador";
-            Numero.Name = "Numero";
-            Numero.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            // 
-            // ApellidoP
-            // 
-            ApellidoP.HeaderText = "Apellido (P)";
-            ApellidoP.Name = "ApellidoP";
-            ApellidoP.ReadOnly = true;
-            // 
-            // ApellidoM
-            // 
-            ApellidoM.HeaderText = "Apellido (M)";
-            ApellidoM.Name = "ApellidoM";
-            ApellidoM.ReadOnly = true;
-            // 
             // SearchPanel
             // 
             SearchPanel.BackColor = Color.FromArgb(63, 62, 70);
@@ -420,6 +394,45 @@
             SearchIcon.SizeMode = PictureBoxSizeMode.Zoom;
             SearchIcon.TabIndex = 35;
             SearchIcon.TabStop = false;
+            // 
+            // ID2
+            // 
+            ID2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ID2.HeaderText = "ID";
+            ID2.Name = "ID2";
+            ID2.ReadOnly = true;
+            ID2.Width = 42;
+            // 
+            // Numero
+            // 
+            Numero.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Numero.HeaderText = "N. de Trabajador";
+            Numero.Name = "Numero";
+            Numero.ReadOnly = true;
+            Numero.Width = 117;
+            // 
+            // Nombre
+            // 
+            Nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // ApellidoP
+            // 
+            ApellidoP.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ApellidoP.HeaderText = "Apellido (P)";
+            ApellidoP.Name = "ApellidoP";
+            ApellidoP.ReadOnly = true;
+            ApellidoP.Width = 93;
+            // 
+            // ApellidoM
+            // 
+            ApellidoM.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ApellidoM.HeaderText = "Apellido (M)";
+            ApellidoM.Name = "ApellidoM";
+            ApellidoM.ReadOnly = true;
+            ApellidoM.Width = 97;
             // 
             // PantallaRegistroProfesor
             // 

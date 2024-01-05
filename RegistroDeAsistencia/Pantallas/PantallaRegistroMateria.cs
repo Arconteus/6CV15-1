@@ -34,6 +34,12 @@ namespace RegistroDeAsistencia
             RegistroMDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
 
             AddMateriaButton.Click += AddMateriaButton_Click;
+            RegistroMDGV.Columns["id_materia"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            RegistroMDGV.Columns["nom_materia"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            RegistroMDGV.Columns["EliminarButtonColumn"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            // Establece AutoSizeColumnsMode a None para evitar ajustes automáticos de tamaño de columna
+            RegistroMDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
         }
 
         private void AddMateriaButton_Click(object sender, EventArgs e)
@@ -65,6 +71,11 @@ namespace RegistroDeAsistencia
                 RegistroMDGV.DataSource = materias;
 
                 RegistroMDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
+
+                // Establecer anchos específicos para las columnas
+                RegistroMDGV.Columns["id_materia"].Width = 50;  // Ancho en píxeles
+                RegistroMDGV.Columns["nom_materia"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                RegistroMDGV.Columns["EliminarButtonColumn"].Width = 80;  // Ancho en píxeles
             }
 
             // Limpia el TextBox después de agregar la materia
@@ -94,6 +105,11 @@ namespace RegistroDeAsistencia
 
                         RegistroMDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
 
+                        // Establecer anchos específicos para las columnas
+                        RegistroMDGV.Columns["id_materia"].Width = 50;  // Ancho en píxeles
+                        RegistroMDGV.Columns["nom_materia"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                        RegistroMDGV.Columns["EliminarButtonColumn"].Width = 80;  // Ancho en píxeles
+
                         // Actualiza los números de fila
                         for (int i = 0; i < RegistroMDGV.Rows.Count; i++)
                         {
@@ -120,6 +136,11 @@ namespace RegistroDeAsistencia
             RegistroMDGV.CellContentClick += RegistroMDGV_CellContentClick;
 
             RegistroMDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
+        }
+
+        private void ActualGroupBox_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Grupolabel1 = new Label();
             Profesorlabel2 = new Label();
             Materialabel3 = new Label();
             AddMateriaButton = new Button();
-            pictureBox2 = new PictureBox();
             AddGroupGroupBox = new GroupBox();
             label7 = new Label();
             button1 = new Button();
@@ -45,7 +44,7 @@
             ProfesorComboBox = new ComboBox();
             MateriaComboBox = new ComboBox();
             RegistroDGV = new DataGridView();
-            Select = new DataGridViewCheckBoxColumn();
+            Anio = new DataGridViewTextBoxColumn();
             Periodo = new DataGridViewTextBoxColumn();
             Grupo = new DataGridViewTextBoxColumn();
             Profesor = new DataGridViewTextBoxColumn();
@@ -70,7 +69,6 @@
             label2 = new Label();
             FiltroAñoTextBox = new TextBox();
             label1 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             AddGroupGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RegistroDGV).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -128,17 +126,6 @@
             AddMateriaButton.Text = "+";
             AddMateriaButton.UseVisualStyleBackColor = false;
             AddMateriaButton.Click += AddMateriaButton_Click;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Cursor = Cursors.Hand;
-            pictureBox2.Image = Properties.Resources.Help_Icon;
-            pictureBox2.Location = new Point(795, 12);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(45, 45);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 26;
-            pictureBox2.TabStop = false;
             // 
             // AddGroupGroupBox
             // 
@@ -244,6 +231,7 @@
             ProfesorComboBox.Size = new Size(506, 23);
             ProfesorComboBox.TabIndex = 6;
             ProfesorComboBox.Text = "-";
+            ProfesorComboBox.SelectedIndexChanged += ProfesorComboBox_SelectedIndexChanged;
             // 
             // MateriaComboBox
             // 
@@ -266,25 +254,25 @@
             RegistroDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
             RegistroDGV.BorderStyle = BorderStyle.None;
             RegistroDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             RegistroDGV.ColumnHeadersHeight = 30;
             RegistroDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { Select, Periodo, Grupo, Profesor, Materia, Horario, Eliminar });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(63, 62, 70);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle5;
+            RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { Anio, Periodo, Grupo, Profesor, Materia, Horario, Eliminar });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle2;
             RegistroDGV.EnableHeadersVisualStyles = false;
             RegistroDGV.GridColor = Color.White;
             RegistroDGV.Location = new Point(12, 118);
@@ -293,37 +281,41 @@
             RegistroDGV.ReadOnly = true;
             RegistroDGV.RightToLeft = RightToLeft.No;
             RegistroDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             RegistroDGV.RowHeadersVisible = false;
             RegistroDGV.RowTemplate.Height = 25;
             RegistroDGV.Size = new Size(610, 320);
             RegistroDGV.TabIndex = 33;
             RegistroDGV.CellContentClick += RegistroDGV_CellContentClick;
             // 
-            // Select
+            // Anio
             // 
-            Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Select.HeaderText = "S";
-            Select.Name = "Select";
-            Select.ReadOnly = true;
-            Select.Width = 18;
+            Anio.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Anio.HeaderText = "Año";
+            Anio.Name = "Anio";
+            Anio.ReadOnly = true;
+            Anio.Resizable = DataGridViewTriState.True;
+            Anio.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Anio.Width = 34;
             // 
             // Periodo
             // 
+            Periodo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             Periodo.HeaderText = "Periodo";
             Periodo.Name = "Periodo";
             Periodo.ReadOnly = true;
+            Periodo.Width = 72;
             // 
             // Grupo
             // 
-            Grupo.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Grupo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             Grupo.HeaderText = "Grupo";
             Grupo.Name = "Grupo";
             Grupo.ReadOnly = true;
@@ -363,7 +355,7 @@
             // 
             pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Image = Properties.Resources.Group_Icon;
-            pictureBox1.Location = new Point(699, 12);
+            pictureBox1.Location = new Point(724, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(90, 90);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -580,13 +572,11 @@
             Controls.Add(pictureBox1);
             Controls.Add(RegistroDGV);
             Controls.Add(AddGroupGroupBox);
-            Controls.Add(pictureBox2);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaAdmin";
             Text = "Pantalla_admin";
             Load += PantallaAdmin_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             AddGroupGroupBox.ResumeLayout(false);
             AddGroupGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)RegistroDGV).EndInit();
@@ -606,7 +596,6 @@
         private Label Profesorlabel2;
         private Label Materialabel3;
         private Button AddMateriaButton;
-        private PictureBox pictureBox2;
         private GroupBox AddGroupGroupBox;
         private ComboBox MateriaComboBox;
         private ComboBox ProfesorComboBox;
@@ -634,7 +623,7 @@
         private ComboBox FiltroCodigoComboBox;
         private Label label5;
         private Label label7;
-        private DataGridViewCheckBoxColumn Select;
+        private DataGridViewTextBoxColumn Anio;
         private DataGridViewTextBoxColumn Periodo;
         private DataGridViewTextBoxColumn Grupo;
         private DataGridViewTextBoxColumn Profesor;

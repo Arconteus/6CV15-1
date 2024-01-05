@@ -18,5 +18,19 @@ namespace RegistroDeAsistencia.Pantallas
             InitializeComponent();
 
         }
+
+        private void LunesLabel3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void ViernerLabel9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
