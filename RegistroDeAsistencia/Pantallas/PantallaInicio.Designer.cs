@@ -223,6 +223,7 @@
             RegistroPDGV.RowTemplate.Height = 25;
             RegistroPDGV.Size = new Size(828, 326);
             RegistroPDGV.TabIndex = 91;
+            RegistroPDGV.CellContentClick += RegistroPDGV_CellContentClick;
             // 
             // Hora
             // 
