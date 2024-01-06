@@ -39,5 +39,10 @@ namespace RegistroDeAsistencia.Pantallas
             temp.Show();
 
         }
+
+        private void PantallaInicio_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

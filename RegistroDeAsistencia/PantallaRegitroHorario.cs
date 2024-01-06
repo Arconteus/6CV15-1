@@ -18,15 +18,55 @@ namespace RegistroDeAsistencia
         public PantallaRegitroHorario()
         {
             InitializeComponent();
-            CargarDiasEnComboBox();
-            CargarHorasEnComboBox();
-            CargarGruposEnComboBox();  // Agrega esta línea para cargar los grupos en el ComboBox
-
-            // Agrega esta línea para cargar los datos en la DataGridView
+            CargarGruposEnComboBox();
             CargarHorasEnDataGridView();
 
             // Configura AllowUserToAddRows a false para evitar la fila adicional sin información
             RegistroPDGV.AllowUserToAddRows = false;
+
+            // Agrega el evento de clic al botón "AgregarHButton"
+            AgregarHButton.Click += AgregarHButton_Click;
+        }
+
+        private void AgregarHButton_Click(object sender, EventArgs e)
+        {
+            // Obtiene el grupo seleccionado
+            CodigoGrupo grupoSeleccionado = (CodigoGrupo)MateriaComboBox.SelectedItem;
+
+            // Verifica si se ha seleccionado una celda en el DataGridView
+            if (RegistroPDGV.SelectedCells.Count > 0)
+            {
+                // Obtiene la celda seleccionada
+                DataGridViewCell cell = RegistroPDGV.SelectedCells[0];
+
+                // Verifica si la celda está en blanco o contiene "Libre"
+                if (cell.Value == null || cell.Value.ToString() == "Libre")
+                {
+                    // Actualiza el valor de la celda con el nuevo grupo si la celda está en blanco o contiene "Libre"
+                    cell.Value = grupoSeleccionado.desc_grupo;
+                }
+                else
+                {
+                    // Verifica si la celda contiene un grupo existente
+                    if (cell.Value.ToString() != grupoSeleccionado.desc_grupo)
+                    {
+                        // Pregunta al usuario si desea reemplazar el grupo existente
+                        DialogResult result = MessageBox.Show($"¿Estás seguro de que deseas reemplazar al grupo '{cell.Value}' por '{grupoSeleccionado.desc_grupo}'?", "Reemplazo de grupo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        // Realiza la acción correspondiente según la respuesta del usuario
+                        if (result == DialogResult.Yes)
+                        {
+                            // Actualiza el valor de la celda con el nuevo grupo
+                            cell.Value = grupoSeleccionado.desc_grupo;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Muestra un mensaje si no se ha seleccionado ninguna celda
+                MessageBox.Show("Por favor, seleccione una celda vacía en el horario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -73,29 +113,12 @@ namespace RegistroDeAsistencia
         {
 
         }
-
-        private void CargarDiasEnComboBox()
-        {
-            List<Dia> dias = Ctl_Dia.GetList();
-            DiaComboBox.DataSource = dias;
-            DiaComboBox.DisplayMember = "desc_dia";
-            // DiaComboBox.ValueMember = "id_diaSemana"; // Opcional, si tienes un valor asociado
-        }
-
-        private void CargarHorasEnComboBox()
-        {
-            List<Hora> horas = Ctl_Hora.GetList();
-            HoraComboBox.DataSource = horas;
-            HoraComboBox.DisplayMember = "desc_horas";
-            // HoraComboBox.ValueMember = "id_horas"; // Opcional, si tienes un valor asociado
-        }
-
         private void CargarHorasEnDataGridView()
         {
             List<Hora> horas = Ctl_Hora.GetList();
             foreach (Hora hora in horas)
             {
-                RegistroPDGV.Rows.Add(hora.desc_horas, "", "", "", "", "");
+                RegistroPDGV.Rows.Add(hora.desc_horas, "Libre", "Libre", "Libre", "Libre", "Libre");
             }
         }
 

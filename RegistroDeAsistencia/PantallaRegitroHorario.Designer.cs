@@ -34,10 +34,6 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             HorarioGroupBox = new GroupBox();
             AgregarHButton = new Button();
-            HoraComboBox = new ComboBox();
-            DiaComboBox = new ComboBox();
-            Horalabel = new Label();
-            DiaLabel = new Label();
             MateriaComboBox = new ComboBox();
             MateriaLabel = new Label();
             Header = new Panel();
@@ -72,16 +68,12 @@
             // 
             HorarioGroupBox.Anchor = AnchorStyles.Top;
             HorarioGroupBox.Controls.Add(AgregarHButton);
-            HorarioGroupBox.Controls.Add(HoraComboBox);
-            HorarioGroupBox.Controls.Add(DiaComboBox);
-            HorarioGroupBox.Controls.Add(Horalabel);
-            HorarioGroupBox.Controls.Add(DiaLabel);
             HorarioGroupBox.Controls.Add(MateriaComboBox);
             HorarioGroupBox.Controls.Add(MateriaLabel);
             HorarioGroupBox.ForeColor = Color.White;
             HorarioGroupBox.Location = new Point(12, 28);
             HorarioGroupBox.Name = "HorarioGroupBox";
-            HorarioGroupBox.Size = new Size(626, 57);
+            HorarioGroupBox.Size = new Size(259, 57);
             HorarioGroupBox.TabIndex = 37;
             HorarioGroupBox.TabStop = false;
             HorarioGroupBox.Text = "Registro de Hora";
@@ -97,60 +89,13 @@
             AgregarHButton.FlatStyle = FlatStyle.Flat;
             AgregarHButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             AgregarHButton.ForeColor = SystemColors.Control;
-            AgregarHButton.Location = new Point(521, 19);
+            AgregarHButton.Location = new Point(168, 19);
             AgregarHButton.Margin = new Padding(0);
             AgregarHButton.Name = "AgregarHButton";
             AgregarHButton.Size = new Size(77, 23);
             AgregarHButton.TabIndex = 45;
             AgregarHButton.Text = "Agregar";
-            AgregarHButton.UseVisualStyleBackColor = false;            // 
-            // HoraComboBox
-            // 
-            HoraComboBox.BackColor = Color.FromArgb(63, 62, 70);
-            HoraComboBox.FlatStyle = FlatStyle.Flat;
-            HoraComboBox.ForeColor = SystemColors.Window;
-            HoraComboBox.FormattingEnabled = true;
-            HoraComboBox.Location = new Point(403, 19);
-            HoraComboBox.Margin = new Padding(3, 3, 0, 3);
-            HoraComboBox.Name = "HoraComboBox";
-            HoraComboBox.Size = new Size(118, 23);
-            HoraComboBox.TabIndex = 40;
-            HoraComboBox.Text = "-";
-            HoraComboBox.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
-            // 
-            // DiaComboBox
-            // 
-            DiaComboBox.BackColor = Color.FromArgb(63, 62, 70);
-            DiaComboBox.FlatStyle = FlatStyle.Flat;
-            DiaComboBox.ForeColor = SystemColors.Window;
-            DiaComboBox.FormattingEnabled = true;
-            DiaComboBox.Location = new Point(202, 19);
-            DiaComboBox.Margin = new Padding(3, 3, 0, 3);
-            DiaComboBox.Name = "DiaComboBox";
-            DiaComboBox.Size = new Size(158, 23);
-            DiaComboBox.TabIndex = 39;
-            DiaComboBox.Text = "-";
-            DiaComboBox.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            // 
-            // Horalabel
-            // 
-            Horalabel.AutoSize = true;
-            Horalabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            Horalabel.Location = new Point(363, 22);
-            Horalabel.Name = "Horalabel";
-            Horalabel.Size = new Size(34, 15);
-            Horalabel.TabIndex = 38;
-            Horalabel.Text = "Hora";
-            // 
-            // DiaLabel
-            // 
-            DiaLabel.AutoSize = true;
-            DiaLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            DiaLabel.Location = new Point(171, 22);
-            DiaLabel.Name = "DiaLabel";
-            DiaLabel.Size = new Size(25, 15);
-            DiaLabel.TabIndex = 37;
-            DiaLabel.Text = "Día";
+            AgregarHButton.UseVisualStyleBackColor = false;
             // 
             // MateriaComboBox
             // 
@@ -325,7 +270,7 @@
             RegistroPDGV.DefaultCellStyle = dataGridViewCellStyle2;
             RegistroPDGV.EnableHeadersVisualStyles = false;
             RegistroPDGV.GridColor = Color.White;
-            RegistroPDGV.Location = new Point(12, 88);
+            RegistroPDGV.Location = new Point(12, 123);
             RegistroPDGV.Margin = new Padding(3, 0, 3, 3);
             RegistroPDGV.Name = "RegistroPDGV";
             RegistroPDGV.ReadOnly = true;
@@ -341,7 +286,7 @@
             RegistroPDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             RegistroPDGV.RowHeadersVisible = false;
             RegistroPDGV.RowTemplate.Height = 25;
-            RegistroPDGV.Size = new Size(626, 350);
+            RegistroPDGV.Size = new Size(626, 315);
             RegistroPDGV.TabIndex = 39;
             RegistroPDGV.CellContentClick += RegistroPDGV_CellContentClick;
             // 
@@ -429,10 +374,6 @@
         private PictureBox CloseButton;
         private PictureBox pictureBox2;
         private ComboBox MateriaComboBox;
-        private Label Horalabel;
-        private Label DiaLabel;
-        private ComboBox DiaComboBox;
-        private ComboBox HoraComboBox;
         private DataGridView RegistroPDGV;
         private DataGridViewTextBoxColumn Hora;
         private DataGridViewTextBoxColumn Dia1;
