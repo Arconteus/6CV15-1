@@ -77,7 +77,6 @@
             HorarioGroupBox.TabIndex = 37;
             HorarioGroupBox.TabStop = false;
             HorarioGroupBox.Text = "Registro de Hora";
-            HorarioGroupBox.Enter += HorarioGroupBox_Enter;
             // 
             // AgregarHButton
             // 
@@ -270,7 +269,7 @@
             RegistroPDGV.DefaultCellStyle = dataGridViewCellStyle2;
             RegistroPDGV.EnableHeadersVisualStyles = false;
             RegistroPDGV.GridColor = Color.White;
-            RegistroPDGV.Location = new Point(12, 123);
+            RegistroPDGV.Location = new Point(12, 99);
             RegistroPDGV.Margin = new Padding(3, 0, 3, 3);
             RegistroPDGV.Name = "RegistroPDGV";
             RegistroPDGV.ReadOnly = true;
@@ -286,7 +285,7 @@
             RegistroPDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             RegistroPDGV.RowHeadersVisible = false;
             RegistroPDGV.RowTemplate.Height = 25;
-            RegistroPDGV.Size = new Size(626, 315);
+            RegistroPDGV.Size = new Size(626, 321);
             RegistroPDGV.TabIndex = 39;
             RegistroPDGV.CellContentClick += RegistroPDGV_CellContentClick;
             // 
@@ -338,7 +337,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(31, 30, 36);
-            ClientSize = new Size(650, 450);
+            ClientSize = new Size(650, 432);
             Controls.Add(RegistroPDGV);
             Controls.Add(Header);
             Controls.Add(HorarioGroupBox);

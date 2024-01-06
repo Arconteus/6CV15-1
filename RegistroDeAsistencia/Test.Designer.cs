@@ -40,11 +40,13 @@
             tabPage5 = new TabPage();
             DGV5 = new DataGridView();
             tabPage6 = new TabPage();
-            tabPage7 = new TabPage();
-            tabPage8 = new TabPage();
             DGV6 = new DataGridView();
+            tabPage7 = new TabPage();
             DGV7 = new DataGridView();
+            tabPage8 = new TabPage();
             DGV8 = new DataGridView();
+            tabPage9 = new TabPage();
+            DGV9 = new DataGridView();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV1).BeginInit();
@@ -57,11 +59,13 @@
             tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV5).BeginInit();
             tabPage6.SuspendLayout();
-            tabPage7.SuspendLayout();
-            tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV6).BeginInit();
+            tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV7).BeginInit();
+            tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV8).BeginInit();
+            tabPage9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DGV9).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -74,6 +78,7 @@
             tabControl1.Controls.Add(tabPage6);
             tabControl1.Controls.Add(tabPage7);
             tabControl1.Controls.Add(tabPage8);
+            tabControl1.Controls.Add(tabPage9);
             tabControl1.Location = new Point(12, 24);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -191,6 +196,15 @@
             tabPage6.Text = "tabPage6";
             tabPage6.UseVisualStyleBackColor = true;
             // 
+            // DGV6
+            // 
+            DGV6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGV6.Location = new Point(6, 6);
+            DGV6.Name = "DGV6";
+            DGV6.RowTemplate.Height = 25;
+            DGV6.Size = new Size(732, 350);
+            DGV6.TabIndex = 0;
+            // 
             // tabPage7
             // 
             tabPage7.Controls.Add(DGV7);
@@ -201,6 +215,15 @@
             tabPage7.TabIndex = 6;
             tabPage7.Text = "tabPage7";
             tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // DGV7
+            // 
+            DGV7.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGV7.Location = new Point(6, 6);
+            DGV7.Name = "DGV7";
+            DGV7.RowTemplate.Height = 25;
+            DGV7.Size = new Size(732, 350);
+            DGV7.TabIndex = 0;
             // 
             // tabPage8
             // 
@@ -213,24 +236,6 @@
             tabPage8.Text = "tabPage8";
             tabPage8.UseVisualStyleBackColor = true;
             // 
-            // DGV6
-            // 
-            DGV6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGV6.Location = new Point(6, 6);
-            DGV6.Name = "DGV6";
-            DGV6.RowTemplate.Height = 25;
-            DGV6.Size = new Size(732, 350);
-            DGV6.TabIndex = 0;
-            // 
-            // DGV7
-            // 
-            DGV7.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGV7.Location = new Point(6, 6);
-            DGV7.Name = "DGV7";
-            DGV7.RowTemplate.Height = 25;
-            DGV7.Size = new Size(732, 350);
-            DGV7.TabIndex = 0;
-            // 
             // DGV8
             // 
             DGV8.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -239,6 +244,26 @@
             DGV8.RowTemplate.Height = 25;
             DGV8.Size = new Size(732, 353);
             DGV8.TabIndex = 0;
+            // 
+            // tabPage9
+            // 
+            tabPage9.Controls.Add(DGV9);
+            tabPage9.Location = new Point(4, 24);
+            tabPage9.Name = "tabPage9";
+            tabPage9.Padding = new Padding(3);
+            tabPage9.Size = new Size(744, 362);
+            tabPage9.TabIndex = 8;
+            tabPage9.Text = "tabPage9";
+            tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // DGV9
+            // 
+            DGV9.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGV9.Location = new Point(6, 5);
+            DGV9.Name = "DGV9";
+            DGV9.RowTemplate.Height = 25;
+            DGV9.Size = new Size(732, 353);
+            DGV9.TabIndex = 1;
             // 
             // Test
             // 
@@ -260,11 +285,13 @@
             tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DGV5).EndInit();
             tabPage6.ResumeLayout(false);
-            tabPage7.ResumeLayout(false);
-            tabPage8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DGV6).EndInit();
+            tabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DGV7).EndInit();
+            tabPage8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DGV8).EndInit();
+            tabPage9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DGV9).EndInit();
             ResumeLayout(false);
         }
 
@@ -287,5 +314,7 @@
         private DataGridView DGV6;
         private DataGridView DGV7;
         private DataGridView DGV8;
+        private TabPage tabPage9;
+        private DataGridView DGV9;
     }
 }

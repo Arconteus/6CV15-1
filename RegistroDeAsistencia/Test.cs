@@ -24,6 +24,12 @@ namespace RegistroDeAsistencia
             DGV6.DataSource = Ctl_Dia.GetList();
             DGV7.DataSource = Ctl_Hora.GetList();
             DGV8.DataSource = Ctl_Horario.GetList();
+            DGV9.DataSource = Ctl_Grupo.GetList();
+        }
+
+        private void pictCamImagem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

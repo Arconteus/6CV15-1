@@ -44,6 +44,9 @@ namespace RegistroDeAsistencia
                 {
                     // Actualiza el valor de la celda con el nuevo grupo si la celda está en blanco o contiene "Libre"
                     cell.Value = grupoSeleccionado.desc_grupo;
+
+                    // Agrega el nuevo registro a la base de datos
+                    AgregarRegistroEnBaseDeDatos(grupoSeleccionado.desc_grupo, cell.RowIndex);
                 }
                 else
                 {
@@ -58,6 +61,9 @@ namespace RegistroDeAsistencia
                         {
                             // Actualiza el valor de la celda con el nuevo grupo
                             cell.Value = grupoSeleccionado.desc_grupo;
+
+                            // Agrega el nuevo registro a la base de datos
+                            AgregarRegistroEnBaseDeDatos(grupoSeleccionado.desc_grupo, cell.RowIndex);
                         }
                     }
                 }
@@ -69,6 +75,33 @@ namespace RegistroDeAsistencia
             }
         }
 
+        private void AgregarRegistroEnBaseDeDatos(string descGrupo, int rowIndex)
+        {
+            // Obtén la información adicional necesaria (hora, día, etc.) según la fila seleccionada
+            // Esto dependerá de cómo esté estructurado tu DataGridView y tus datos.
+
+            // Escribe el código para obtener la información adicional necesaria desde la fila y otras fuentes
+
+            // Construye el objeto Horario con la información necesaria
+            Horario nuevoRegistro = new Horario()
+            {
+                grupo_horario = descGrupo, // Aquí deberías asignar el valor correcto según tu estructura de datos
+                // Asigna otros valores necesarios
+            };
+
+            // Intenta agregar el nuevo registro a la base de datos
+            if (Ctl_Horario.Add(nuevoRegistro))
+            {
+                // Éxito al agregar en la base de datos
+                MessageBox.Show("Registro agregado correctamente en la base de datos.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // Error al agregar en la base de datos
+                MessageBox.Show("Error al agregar el registro en la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -76,43 +109,14 @@ namespace RegistroDeAsistencia
 
         private void MateriaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
+            // Código adicional si es necesario
         }
 
         private void RegistroPDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            // Código adicional si es necesario
         }
 
-        private void HorarioGroupBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AgregarPButton_Click(object sender, EventArgs e)
-        {
-
-        }
         private void CargarHorasEnDataGridView()
         {
             List<Hora> horas = Ctl_Hora.GetList();
