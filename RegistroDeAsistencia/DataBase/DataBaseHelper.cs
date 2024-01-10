@@ -86,11 +86,11 @@ public static class DataBaseHelper
             Ctl_CodigoGrupo.Add(new CodigoGrupo() { desc_grupo = "Sin codigo" });
         }
 
-        for (int i = 1; i < 9; i++)
+        for (int i = 1; i <= 8; i++) // Semestres = 8
         {
-            for (int j = 1; j < 4; j++)
+            for (int j = 1; j <= 3; j++) // Grupos maximos = 3
             {
-                for (int k = 1; k < 7; k++)
+                for (int k = 1; k <= 6; k++) // Materias por semestre = 6
                 {
                     //===================================================================================
                     string codigoMatutino = i + "CV" + j + k;
