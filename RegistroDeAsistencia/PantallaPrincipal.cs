@@ -38,7 +38,7 @@ namespace RegistroDeAsistencia
             Color DefaultColor = Color.FromArgb(17, 16, 19);
             this.InicioButton.BackColor = DefaultColor;
             this.AsistenciaButton.BackColor = DefaultColor;
-            this.ReportesButton.BackColor = DefaultColor;
+            this.TestButton.BackColor = DefaultColor;
             this.AdministrarButton.BackColor = DefaultColor;
             switch (button)
             {
@@ -49,7 +49,7 @@ namespace RegistroDeAsistencia
                     this.AsistenciaButton.BackColor = SelectedColor;
                     break;
                 case "reportes":
-                    this.ReportesButton.BackColor = SelectedColor;
+                    this.TestButton.BackColor = SelectedColor;
                     break;
                 case "administracion":
                     this.AdministrarButton.BackColor = SelectedColor;
@@ -141,6 +141,12 @@ namespace RegistroDeAsistencia
         private void Header_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Test temp = new Test();
+            temp.Show();
         }
     }
 }

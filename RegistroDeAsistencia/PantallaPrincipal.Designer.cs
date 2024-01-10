@@ -35,22 +35,25 @@
             RestoreButton = new PictureBox();
             CloseButton = new PictureBox();
             ButtonsPanel = new Panel();
-            ReportesButton = new Button();
+            TestButton = new Button();
             InicioButton = new Button();
             AdministrarButton = new Button();
             AsistenciaButton = new Button();
             MainPanel = new Panel();
+            pictureBox1 = new PictureBox();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MaximizeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinimizeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RestoreButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).BeginInit();
             ButtonsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // Header
             // 
             Header.BackColor = Color.FromArgb(49, 41, 100);
+            Header.Controls.Add(pictureBox1);
             Header.Controls.Add(MaximizeButton);
             Header.Controls.Add(TittleLabel);
             Header.Controls.Add(MinimizeButton);
@@ -83,7 +86,7 @@
             TittleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             TittleLabel.AutoSize = true;
             TittleLabel.ForeColor = SystemColors.ControlLightLight;
-            TittleLabel.Location = new Point(21, 7);
+            TittleLabel.Location = new Point(28, 7);
             TittleLabel.Name = "TittleLabel";
             TittleLabel.Size = new Size(117, 15);
             TittleLabel.TabIndex = 0;
@@ -136,7 +139,7 @@
             // ButtonsPanel
             // 
             ButtonsPanel.BackColor = Color.FromArgb(17, 16, 19);
-            ButtonsPanel.Controls.Add(ReportesButton);
+            ButtonsPanel.Controls.Add(TestButton);
             ButtonsPanel.Controls.Add(InicioButton);
             ButtonsPanel.Controls.Add(AdministrarButton);
             ButtonsPanel.Controls.Add(AsistenciaButton);
@@ -146,23 +149,23 @@
             ButtonsPanel.Size = new Size(852, 25);
             ButtonsPanel.TabIndex = 1;
             // 
-            // ReportesButton
+            // TestButton
             // 
-            ReportesButton.Anchor = AnchorStyles.Top;
-            ReportesButton.BackColor = Color.FromArgb(17, 16, 19);
-            ReportesButton.FlatAppearance.BorderSize = 0;
-            ReportesButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
-            ReportesButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
-            ReportesButton.FlatStyle = FlatStyle.Flat;
-            ReportesButton.ForeColor = SystemColors.ControlLightLight;
-            ReportesButton.Location = new Point(639, 0);
-            ReportesButton.Margin = new Padding(0);
-            ReportesButton.Name = "ReportesButton";
-            ReportesButton.Size = new Size(213, 25);
-            ReportesButton.TabIndex = 3;
-            ReportesButton.Text = "Reportes";
-            ReportesButton.UseVisualStyleBackColor = false;
-            ReportesButton.Click += ReportesButton_Click;
+            TestButton.Anchor = AnchorStyles.Top;
+            TestButton.BackColor = Color.FromArgb(17, 16, 19);
+            TestButton.FlatAppearance.BorderSize = 0;
+            TestButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            TestButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            TestButton.FlatStyle = FlatStyle.Flat;
+            TestButton.ForeColor = SystemColors.ControlLightLight;
+            TestButton.Location = new Point(639, 0);
+            TestButton.Margin = new Padding(0);
+            TestButton.Name = "TestButton";
+            TestButton.Size = new Size(213, 25);
+            TestButton.TabIndex = 3;
+            TestButton.Text = "Reportes";
+            TestButton.UseVisualStyleBackColor = false;
+            TestButton.Click += ReportesButton_Click;
             // 
             // InicioButton
             // 
@@ -227,6 +230,20 @@
             MainPanel.Size = new Size(852, 450);
             MainPanel.TabIndex = 2;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox1.Cursor = Cursors.Hand;
+            pictureBox1.Image = Properties.Resources.Test_Icon;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Margin = new Padding(0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(25, 25);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
             // PantallaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -246,6 +263,7 @@
             ((System.ComponentModel.ISupportInitialize)RestoreButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).EndInit();
             ButtonsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -255,7 +273,7 @@
         private Panel ButtonsPanel;
         private Panel MainPanel;
         private Button InicioButton;
-        private Button ReportesButton;
+        private Button TestButton;
         private Button AdministrarButton;
         private Button AsistenciaButton;
         private PictureBox MinimizeButton;
@@ -263,5 +281,6 @@
         private PictureBox CloseButton;
         private PictureBox MaximizeButton;
         private Label TittleLabel;
+        private PictureBox pictureBox1;
     }
 }
