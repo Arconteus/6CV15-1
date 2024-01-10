@@ -21,6 +21,9 @@ namespace RegistroDeAsistencia
         {
             InitializeComponent();
             this.RestoreButton.Visible = false;
+            this.OpenForm<PantallaReportes>();
+            this.OpenForm<PantallaAdmin>();
+            this.OpenForm<PantallaAsistencia>();
             this.OpenForm<PantallaInicio>();
             this.ChangeSelectedButton("inicio");
         }
