@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace RegistroDeAsistencia.Pantallas
 
-{   
+{
     public partial class PantallaInicio : Form
 
     {
@@ -67,6 +67,11 @@ namespace RegistroDeAsistencia.Pantallas
         }
 
         private void PantallaInicio_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HoraLabel_Click(object sender, EventArgs e)
         {
 
         }

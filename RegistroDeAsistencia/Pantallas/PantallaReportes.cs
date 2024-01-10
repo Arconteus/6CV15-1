@@ -11,13 +11,37 @@ namespace RegistroDeAsistencia
     {
         private DataTable dt;
         private List<CodigoGrupo> listaGrupos;
+        private System.Windows.Forms.Timer timer;
 
         public PantallaReportes()
         {
             InitializeComponent();
             dt = new DataTable();
+            // Inicia un temporizador para actualizar la fecha y la hora cada segundo
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000; // Intervalo en milisegundos (1 segundo)
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
+            // Llama al método para mostrar la fecha y la hora inicialmente
+            MostrarFechaYHora();
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Este evento se ejecutará cada segundo
+            MostrarFechaYHora();
+        }
+
+        private void MostrarFechaYHora()
+        {
+            // Obtén la fecha y la hora actuales
+            DateTime ahora = DateTime.Now;
+
+            // Actualiza el texto de los Labels con la fecha y la hora
+            FechaLabel.Text = ahora.ToString("dd-MM-yyyy"); // Formato de fecha personalizado
+            HoraLabel.Text = ahora.ToString("HH:mm:ss"); // Formato de hora personalizado
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
