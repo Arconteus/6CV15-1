@@ -109,7 +109,7 @@ namespace RegistroDeAsistencia
 
         private void RestoreButton_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Normal;
             this.MaximizeButton.Visible = true;
             this.RestoreButton.Visible = false;
         }

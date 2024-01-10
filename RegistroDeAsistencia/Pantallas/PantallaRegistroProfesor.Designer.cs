@@ -52,14 +52,14 @@
             NombreTextBox = new TextBox();
             label2 = new Label();
             RegistroPDGV = new DataGridView();
-            SearchPanel = new Panel();
-            SearchComboBox = new TextBox();
-            SearchIcon = new PictureBox();
             ID2 = new DataGridViewTextBoxColumn();
             Numero = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             ApellidoP = new DataGridViewTextBoxColumn();
             ApellidoM = new DataGridViewTextBoxColumn();
+            SearchPanel = new Panel();
+            SearchComboBox = new TextBox();
+            SearchIcon = new PictureBox();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -92,6 +92,7 @@
             Header.Name = "Header";
             Header.Size = new Size(600, 25);
             Header.TabIndex = 8;
+            Header.MouseDown += Header_MouseDown;
             // 
             // pictureBox2
             // 
@@ -153,6 +154,7 @@
             TittleLabel.Size = new Size(124, 15);
             TittleLabel.TabIndex = 5;
             TittleLabel.Text = "Registro de Profesores";
+            TittleLabel.MouseDown += Header_MouseDown;
             // 
             // MaximixeButton
             // 
@@ -241,6 +243,7 @@
             AgregarPButton.TabIndex = 44;
             AgregarPButton.Text = "Agregar";
             AgregarPButton.UseVisualStyleBackColor = false;
+            AgregarPButton.Click += AgregarPButton_Click_1;
             // 
             // AMTextBox
             // 
@@ -274,7 +277,7 @@
             // APTextBox
             // 
             APTextBox.BackColor = Color.FromArgb(63, 62, 70);
-            APTextBox.ForeColor = SystemColors.ControlText;
+            APTextBox.ForeColor = SystemColors.ControlLightLight;
             APTextBox.Location = new Point(286, 40);
             APTextBox.Name = "APTextBox";
             APTextBox.Size = new Size(139, 23);
@@ -360,41 +363,6 @@
             RegistroPDGV.TabIndex = 38;
             RegistroPDGV.CellContentClick += RegistroMDGV_CellContentClick;
             // 
-            // SearchPanel
-            // 
-            SearchPanel.BackColor = Color.FromArgb(63, 62, 70);
-            SearchPanel.Controls.Add(SearchComboBox);
-            SearchPanel.Controls.Add(SearchIcon);
-            SearchPanel.Location = new Point(12, 146);
-            SearchPanel.Margin = new Padding(0, 6, 0, 0);
-            SearchPanel.Name = "SearchPanel";
-            SearchPanel.Size = new Size(576, 15);
-            SearchPanel.TabIndex = 39;
-            // 
-            // SearchComboBox
-            // 
-            SearchComboBox.BackColor = Color.FromArgb(63, 62, 70);
-            SearchComboBox.BorderStyle = BorderStyle.None;
-            SearchComboBox.ForeColor = SystemColors.Window;
-            SearchComboBox.Location = new Point(29, 0);
-            SearchComboBox.Margin = new Padding(0);
-            SearchComboBox.Name = "SearchComboBox";
-            SearchComboBox.Size = new Size(547, 16);
-            SearchComboBox.TabIndex = 24;
-            SearchComboBox.Tag = "sdvsdvsd";
-            // 
-            // SearchIcon
-            // 
-            SearchIcon.BackColor = Color.FromArgb(63, 62, 70);
-            SearchIcon.Image = Properties.Resources.Search_Icon;
-            SearchIcon.Location = new Point(0, 0);
-            SearchIcon.Margin = new Padding(0);
-            SearchIcon.Name = "SearchIcon";
-            SearchIcon.Size = new Size(16, 16);
-            SearchIcon.SizeMode = PictureBoxSizeMode.Zoom;
-            SearchIcon.TabIndex = 35;
-            SearchIcon.TabStop = false;
-            // 
             // ID2
             // 
             ID2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -433,6 +401,41 @@
             ApellidoM.Name = "ApellidoM";
             ApellidoM.ReadOnly = true;
             ApellidoM.Width = 97;
+            // 
+            // SearchPanel
+            // 
+            SearchPanel.BackColor = Color.FromArgb(63, 62, 70);
+            SearchPanel.Controls.Add(SearchComboBox);
+            SearchPanel.Controls.Add(SearchIcon);
+            SearchPanel.Location = new Point(12, 146);
+            SearchPanel.Margin = new Padding(0, 6, 0, 0);
+            SearchPanel.Name = "SearchPanel";
+            SearchPanel.Size = new Size(576, 15);
+            SearchPanel.TabIndex = 39;
+            // 
+            // SearchComboBox
+            // 
+            SearchComboBox.BackColor = Color.FromArgb(63, 62, 70);
+            SearchComboBox.BorderStyle = BorderStyle.None;
+            SearchComboBox.ForeColor = SystemColors.Window;
+            SearchComboBox.Location = new Point(29, 0);
+            SearchComboBox.Margin = new Padding(0);
+            SearchComboBox.Name = "SearchComboBox";
+            SearchComboBox.Size = new Size(547, 16);
+            SearchComboBox.TabIndex = 24;
+            SearchComboBox.Tag = "sdvsdvsd";
+            // 
+            // SearchIcon
+            // 
+            SearchIcon.BackColor = Color.FromArgb(63, 62, 70);
+            SearchIcon.Image = Properties.Resources.Search_Icon;
+            SearchIcon.Location = new Point(0, 0);
+            SearchIcon.Margin = new Padding(0);
+            SearchIcon.Name = "SearchIcon";
+            SearchIcon.Size = new Size(16, 16);
+            SearchIcon.SizeMode = PictureBoxSizeMode.Zoom;
+            SearchIcon.TabIndex = 35;
+            SearchIcon.TabStop = false;
             // 
             // PantallaRegistroProfesor
             // 
