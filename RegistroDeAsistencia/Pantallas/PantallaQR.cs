@@ -23,15 +23,23 @@ namespace RegistroDeAsistencia
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int sParam, int lParam);
 
-        FilterInfoCollection _filterInfoCollection;
-        VideoCaptureDevice _videoCaptureDevice;
+        private FilterInfoCollection _filterInfoCollection;
+        private VideoCaptureDevice _videoCaptureDevice;
         private Bitmap capturedImage;
 
         public PantallaQR()
         {
             InitializeComponent();
 
+            RefreshCamerasList();
+
+            cmbCameras.SelectedIndexChanged += cmbCameras_SelectedIndexChanged;
+        }
+
+        private void RefreshCamerasList()
+        {
             _filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            cmbCameras.Items.Clear();
 
             if (_filterInfoCollection.Count == 0)
             {
@@ -43,11 +51,10 @@ namespace RegistroDeAsistencia
                 foreach (FilterInfo filterInfo in _filterInfoCollection)
                     cmbCameras.Items.Add(filterInfo.Name);
 
+                cmbCameras.Enabled = true;
                 cmbCameras.SelectedIndex = 0;
                 _videoCaptureDevice = new VideoCaptureDevice();
             }
-
-            cmbCameras.SelectedIndexChanged += cmbCameras_SelectedIndexChanged;
         }
 
         private void cmbCameras_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,6 +79,12 @@ namespace RegistroDeAsistencia
 
         private void CloseButtonQR_Click(object sender, EventArgs e)
         {
+            if (_videoCaptureDevice != null && _videoCaptureDevice.IsRunning)
+            {
+                _videoCaptureDevice.SignalToStop();
+                _videoCaptureDevice.WaitForStop();
+            }
+
             this.Close();
         }
 
@@ -82,11 +95,6 @@ namespace RegistroDeAsistencia
         }
 
         private void PantallaQR_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LectorQRButton_Click(object sender, EventArgs e)
         {
 
         }

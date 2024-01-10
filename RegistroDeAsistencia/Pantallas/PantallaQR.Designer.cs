@@ -131,7 +131,6 @@
             LectorQRButton.TabIndex = 3;
             LectorQRButton.Text = "BarCode";
             LectorQRButton.UseVisualStyleBackColor = false;
-            LectorQRButton.Click += LectorQRButton_Click;
             // 
             // pictCamImagem
             // 
