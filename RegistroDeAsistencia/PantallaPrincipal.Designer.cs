@@ -89,6 +89,7 @@
             TittleLabel.TabIndex = 0;
             TittleLabel.Text = "Control de asistencia";
             TittleLabel.TextAlign = ContentAlignment.MiddleLeft;
+            TittleLabel.MouseDown += Header_MouseDown;
             // 
             // MinimizeButton
             // 
