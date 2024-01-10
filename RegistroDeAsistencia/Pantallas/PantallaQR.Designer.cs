@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaQR));
-            IniciarButton = new Button();
+            Scan = new Button();
             RegistroManualButton = new Button();
             WebcamButton = new Button();
             LectorQRButton = new Button();
@@ -44,6 +44,7 @@
             MinimizeButton = new PictureBox();
             CloseButton = new PictureBox();
             panel1 = new Panel();
+            CamPB = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictCamImagem).BeginInit();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RestoreButton).BeginInit();
@@ -52,27 +53,28 @@
             ((System.ComponentModel.ISupportInitialize)MinimizeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)CamPB).BeginInit();
             SuspendLayout();
             // 
-            // IniciarButton
+            // Scan
             // 
-            IniciarButton.BackColor = Color.FromArgb(86, 76, 149);
-            IniciarButton.Cursor = Cursors.Hand;
-            IniciarButton.Dock = DockStyle.Bottom;
-            IniciarButton.FlatAppearance.BorderSize = 0;
-            IniciarButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
-            IniciarButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
-            IniciarButton.FlatStyle = FlatStyle.Flat;
-            IniciarButton.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            IniciarButton.ForeColor = SystemColors.ControlLightLight;
-            IniciarButton.Location = new Point(0, 319);
-            IniciarButton.Margin = new Padding(0);
-            IniciarButton.Name = "IniciarButton";
-            IniciarButton.Size = new Size(250, 54);
-            IniciarButton.TabIndex = 0;
-            IniciarButton.Text = "Escanear";
-            IniciarButton.UseVisualStyleBackColor = false;
-            IniciarButton.Click += ScanButton_Click;
+            Scan.BackColor = Color.FromArgb(86, 76, 149);
+            Scan.Cursor = Cursors.Hand;
+            Scan.Dock = DockStyle.Bottom;
+            Scan.FlatAppearance.BorderSize = 0;
+            Scan.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            Scan.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            Scan.FlatStyle = FlatStyle.Flat;
+            Scan.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            Scan.ForeColor = SystemColors.ControlLightLight;
+            Scan.Location = new Point(0, 319);
+            Scan.Margin = new Padding(0);
+            Scan.Name = "Scan";
+            Scan.Size = new Size(320, 54);
+            Scan.TabIndex = 0;
+            Scan.Text = "Escanear";
+            Scan.UseVisualStyleBackColor = false;
+            Scan.Click += Scan_Click;
             // 
             // RegistroManualButton
             // 
@@ -88,7 +90,7 @@
             RegistroManualButton.Location = new Point(0, 373);
             RegistroManualButton.Margin = new Padding(0);
             RegistroManualButton.Name = "RegistroManualButton";
-            RegistroManualButton.Size = new Size(250, 31);
+            RegistroManualButton.Size = new Size(320, 31);
             RegistroManualButton.TabIndex = 1;
             RegistroManualButton.Text = "Registro Manual";
             RegistroManualButton.UseVisualStyleBackColor = false;
@@ -107,7 +109,7 @@
             WebcamButton.Location = new Point(0, 0);
             WebcamButton.Margin = new Padding(0);
             WebcamButton.Name = "WebcamButton";
-            WebcamButton.Size = new Size(125, 25);
+            WebcamButton.Size = new Size(170, 25);
             WebcamButton.TabIndex = 2;
             WebcamButton.Text = "QR";
             WebcamButton.UseVisualStyleBackColor = false;
@@ -122,10 +124,10 @@
             LectorQRButton.FlatStyle = FlatStyle.Flat;
             LectorQRButton.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             LectorQRButton.ForeColor = SystemColors.ControlLightLight;
-            LectorQRButton.Location = new Point(125, 0);
+            LectorQRButton.Location = new Point(170, 0);
             LectorQRButton.Margin = new Padding(0);
             LectorQRButton.Name = "LectorQRButton";
-            LectorQRButton.Size = new Size(125, 25);
+            LectorQRButton.Size = new Size(150, 25);
             LectorQRButton.TabIndex = 3;
             LectorQRButton.Text = "BarCode";
             LectorQRButton.UseVisualStyleBackColor = false;
@@ -136,7 +138,7 @@
             pictCamImagem.BackColor = Color.Transparent;
             pictCamImagem.Location = new Point(13, 56);
             pictCamImagem.Name = "pictCamImagem";
-            pictCamImagem.Size = new Size(225, 225);
+            pictCamImagem.Size = new Size(295, 225);
             pictCamImagem.SizeMode = PictureBoxSizeMode.Zoom;
             pictCamImagem.TabIndex = 4;
             pictCamImagem.TabStop = false;
@@ -149,8 +151,9 @@
             cmbCameras.FormattingEnabled = true;
             cmbCameras.Items.AddRange(new object[] { "Selecciona la Cámara" });
             cmbCameras.Location = new Point(13, 287);
+            cmbCameras.Margin = new Padding(0);
             cmbCameras.Name = "cmbCameras";
-            cmbCameras.Size = new Size(225, 23);
+            cmbCameras.Size = new Size(250, 23);
             cmbCameras.TabIndex = 5;
             cmbCameras.SelectedIndexChanged += cmbCameras_SelectedIndexChanged;
             // 
@@ -168,7 +171,7 @@
             Header.Location = new Point(0, 0);
             Header.Margin = new Padding(0);
             Header.Name = "Header";
-            Header.Size = new Size(250, 25);
+            Header.Size = new Size(320, 25);
             Header.TabIndex = 6;
             Header.MouseDown += Header_MouseDown;
             // 
@@ -178,7 +181,7 @@
             RestoreButton.BackColor = Color.FromArgb(74, 97, 178);
             RestoreButton.Cursor = Cursors.Hand;
             RestoreButton.Image = (Image)resources.GetObject("RestoreButton.Image");
-            RestoreButton.Location = new Point(846, 0);
+            RestoreButton.Location = new Point(916, 0);
             RestoreButton.Name = "RestoreButton";
             RestoreButton.Size = new Size(25, 25);
             RestoreButton.SizeMode = PictureBoxSizeMode.Zoom;
@@ -191,7 +194,7 @@
             CloseButtonQR.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             CloseButtonQR.Cursor = Cursors.Hand;
             CloseButtonQR.Image = Properties.Resources.Close_Icon;
-            CloseButtonQR.Location = new Point(222, 0);
+            CloseButtonQR.Location = new Point(292, 0);
             CloseButtonQR.Name = "CloseButtonQR";
             CloseButtonQR.Size = new Size(25, 25);
             CloseButtonQR.SizeMode = PictureBoxSizeMode.Zoom;
@@ -216,7 +219,7 @@
             MaximixeButton.BackColor = Color.FromArgb(74, 97, 178);
             MaximixeButton.Cursor = Cursors.Hand;
             MaximixeButton.Image = (Image)resources.GetObject("MaximixeButton.Image");
-            MaximixeButton.Location = new Point(846, 0);
+            MaximixeButton.Location = new Point(916, 0);
             MaximixeButton.Name = "MaximixeButton";
             MaximixeButton.Size = new Size(25, 25);
             MaximixeButton.SizeMode = PictureBoxSizeMode.Zoom;
@@ -229,7 +232,7 @@
             MinimizeButton.BackColor = Color.FromArgb(74, 97, 178);
             MinimizeButton.Cursor = Cursors.Hand;
             MinimizeButton.Image = (Image)resources.GetObject("MinimizeButton.Image");
-            MinimizeButton.Location = new Point(815, 0);
+            MinimizeButton.Location = new Point(885, 0);
             MinimizeButton.Name = "MinimizeButton";
             MinimizeButton.Size = new Size(25, 25);
             MinimizeButton.SizeMode = PictureBoxSizeMode.Zoom;
@@ -242,7 +245,7 @@
             CloseButton.BackColor = Color.FromArgb(74, 97, 178);
             CloseButton.Cursor = Cursors.Hand;
             CloseButton.Image = (Image)resources.GetObject("CloseButton.Image");
-            CloseButton.Location = new Point(877, 0);
+            CloseButton.Location = new Point(947, 0);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(25, 25);
             CloseButton.SizeMode = PictureBoxSizeMode.Zoom;
@@ -256,20 +259,36 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 25);
             panel1.Name = "panel1";
-            panel1.Size = new Size(250, 25);
+            panel1.Size = new Size(320, 25);
             panel1.TabIndex = 7;
+            // 
+            // CamPB
+            // 
+            CamPB.Anchor = AnchorStyles.Top;
+            CamPB.BackColor = Color.FromArgb(86, 76, 149);
+            CamPB.Cursor = Cursors.Hand;
+            CamPB.Image = Properties.Resources.Camera_Icon;
+            CamPB.Location = new Point(263, 288);
+            CamPB.Margin = new Padding(0);
+            CamPB.Name = "CamPB";
+            CamPB.Size = new Size(45, 22);
+            CamPB.SizeMode = PictureBoxSizeMode.Zoom;
+            CamPB.TabIndex = 29;
+            CamPB.TabStop = false;
+            CamPB.Click += CamPB_Click;
             // 
             // PantallaQR
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(31, 30, 36);
-            ClientSize = new Size(250, 404);
+            ClientSize = new Size(320, 404);
+            Controls.Add(CamPB);
             Controls.Add(panel1);
             Controls.Add(Header);
             Controls.Add(cmbCameras);
             Controls.Add(pictCamImagem);
-            Controls.Add(IniciarButton);
+            Controls.Add(Scan);
             Controls.Add(RegistroManualButton);
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaQR";
@@ -284,12 +303,13 @@
             ((System.ComponentModel.ISupportInitialize)MinimizeButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).EndInit();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)CamPB).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button IniciarButton;
+        private Button Scan;
         private Button RegistroManualButton;
         private Button WebcamButton;
         private Button LectorQRButton;
@@ -306,5 +326,6 @@
         private PictureBox CloseButton;
         private PictureBox CloseButtonQR;
         private Panel panel1;
+        private PictureBox CamPB;
     }
 }
