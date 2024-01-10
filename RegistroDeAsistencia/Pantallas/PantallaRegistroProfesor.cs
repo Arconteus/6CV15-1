@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -40,7 +41,23 @@ namespace RegistroDeAsistencia
             SearchComboBox.TextChanged += SearchComboBox_SelectedIndexChanged;
             RegistroPDGV.Columns["DeleteButtonColumn"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
+        //==================================================================
+        // Funciones custom
+        //==================================================================
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
+        //==================================================================
+        // Funciones de forms
+        //==================================================================
+
+        private void Header_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
         private void RegistroPDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == RegistroPDGV.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0)
@@ -73,10 +90,10 @@ namespace RegistroDeAsistencia
 
         private void AgregarPButton_Click(object sender, EventArgs e)
         {
-            string nt = NTTextBox.Text;
-            string nombre = NombreTextBox.Text;
-            string ap = APTextBox.Text;
-            string am = AMTextBox.Text;
+            string nt = NTTextBox.Text.ToUpper();
+            string nombre = NombreTextBox.Text.ToUpper();
+            string ap = APTextBox.Text.ToUpper();
+            string am = AMTextBox.Text.ToUpper();
 
             // Validar campos vacíos antes de agregar una nueva fila
             if (string.IsNullOrWhiteSpace(nt) || string.IsNullOrWhiteSpace(nombre) ||
@@ -183,6 +200,11 @@ namespace RegistroDeAsistencia
         }
 
         private void NTTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AgregarPButton_Click_1(object sender, EventArgs e)
         {
 
         }

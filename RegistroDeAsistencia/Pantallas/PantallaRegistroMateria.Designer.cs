@@ -73,6 +73,7 @@
             Header.Name = "Header";
             Header.Size = new Size(450, 25);
             Header.TabIndex = 7;
+            Header.MouseDown += Header_MouseDown;
             // 
             // pictureBox1
             // 
@@ -122,6 +123,7 @@
             TittleLabel.Size = new Size(109, 15);
             TittleLabel.TabIndex = 5;
             TittleLabel.Text = "Registro de Materia";
+            TittleLabel.MouseDown += Header_MouseDown;
             // 
             // MaximixeButton
             // 
@@ -247,6 +249,7 @@
             AddMateriaButton.TabIndex = 35;
             AddMateriaButton.Text = "Agregar";
             AddMateriaButton.UseVisualStyleBackColor = false;
+            AddMateriaButton.Click += AddMateriaButton_Click_1;
             // 
             // label3
             // 
