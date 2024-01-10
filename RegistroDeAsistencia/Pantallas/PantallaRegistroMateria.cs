@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,14 +39,34 @@ namespace RegistroDeAsistencia
             RegistroMDGV.Columns["nom_materia"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             RegistroMDGV.Columns["EliminarButtonColumn"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
+            RegistroMDGV.Columns["id_materia"].HeaderText = "ID";
+            RegistroMDGV.Columns["nom_materia"].HeaderText = "Materia";
+            RegistroMDGV.Columns["EliminarButtonColumn"].HeaderText = "Eliminar";
+
             // Establece AutoSizeColumnsMode a None para evitar ajustes automáticos de tamaño de columna
             RegistroMDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
         }
+        //==================================================================
+        // Funciones custom
+        //==================================================================
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
+        //==================================================================
+        // Funciones de forms
+        //==================================================================
+
+        private void Header_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
         private void AddMateriaButton_Click(object sender, EventArgs e)
         {
             // Obtén el nombre de la materia desde el TextBox
-            string materiaNombre = MateriaTextBox.Text;
+            string materiaNombre = MateriaTextBox.Text.ToUpper();
 
             // Verifica si el campo de texto está vacío
             if (string.IsNullOrWhiteSpace(materiaNombre))
@@ -139,6 +160,11 @@ namespace RegistroDeAsistencia
         }
 
         private void ActualGroupBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddMateriaButton_Click_1(object sender, EventArgs e)
         {
 
         }

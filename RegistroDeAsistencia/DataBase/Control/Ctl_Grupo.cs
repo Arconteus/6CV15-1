@@ -49,7 +49,9 @@ namespace RegistroDeAsistencia.DataBase.Control
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText =
-                        "select * from Ctl_Grupo where desc_grupo = @desc_grupo";
+                        "select * from Ctl_Grupo where codigo_grupo = @codigo_grupo " +
+                        "and anio = @anio " +
+                        "and periodo = @periodo";
                     command.Parameters.AddWithValue("@codigo_grupo", grupoInput.codigo_grupo);
                     command.Parameters.AddWithValue("@anio", grupoInput.anio);
                     command.Parameters.AddWithValue("@periodo", grupoInput.periodo);
@@ -86,6 +88,27 @@ namespace RegistroDeAsistencia.DataBase.Control
             if (!Contain(grupoInput))
             {
                 output = ForceAdd(grupoInput);
+            }
+            return output;
+        }
+
+        public static bool Delete(Grupo grupoInput)
+        {
+            bool output = false;
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText =
+                        "DELETE FROM ctl_grupo WHERE id_grupo = @id_grupo";
+                    command.Parameters.AddWithValue("@id_grupo", grupoInput.id_grupo);
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        output = true;
+                    }
+                    command.Parameters.Clear();
+                }
             }
             return output;
         }

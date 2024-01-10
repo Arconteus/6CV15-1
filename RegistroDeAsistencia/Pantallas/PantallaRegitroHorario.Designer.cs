@@ -138,6 +138,7 @@
             Header.Name = "Header";
             Header.Size = new Size(650, 25);
             Header.TabIndex = 38;
+            Header.MouseDown += Header_MouseDown;
             // 
             // pictureBox2
             // 
@@ -199,6 +200,7 @@
             TittleLabel.Size = new Size(130, 15);
             TittleLabel.TabIndex = 5;
             TittleLabel.Text = "Asignación de Horarios";
+            TittleLabel.MouseDown += Header_MouseDown;
             // 
             // MaximixeButton
             // 
