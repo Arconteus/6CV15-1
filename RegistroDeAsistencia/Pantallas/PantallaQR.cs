@@ -74,5 +74,15 @@ namespace RegistroDeAsistencia
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0x0f012, 0);
         }
+
+        private void pictCamImagem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PantallaQR_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

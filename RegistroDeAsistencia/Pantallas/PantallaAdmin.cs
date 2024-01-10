@@ -35,31 +35,28 @@ namespace RegistroDeAsistencia
 
         private void RegistroDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Código para el evento CellContentClick si es necesario
+
         }
 
         private void MateriaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Código para el evento SelectedIndexChanged si es necesario
+
         }
 
         private void Materialabel3_Click(object sender, EventArgs e)
         {
-            // Código para el evento Click si es necesario
+
         }
 
         private void PantallaAdmin_Load(object sender, EventArgs e)
         {
-            // Cargar las materias al ComboBox en el evento Load
+            // Cargar las materias al ComboBox
             CargarMaterias();
-
-            // Cargar los profesores al ComboBox en el evento Load
+            // Cargar los profesores al ComboBox
             CargarProfesores();
-
-            // Cargar los grupos al ComboBox en el evento Load
+            // Cargar los grupos al ComboBox
             CargarGrupos();
         }
-
         private void CargarMaterias()
         {
             // Obtener la lista de materias desde la base de datos
@@ -93,9 +90,6 @@ namespace RegistroDeAsistencia
             // Especificar qué propiedad de la clase Profesor se mostrará en el ComboBox
             ProfesorComboBox.DisplayMember = "NombreCompleto";
 
-            // Opcional: Puedes especificar qué propiedad de la clase Profesor se utilizará como valor
-            // ProfesorComboBox.ValueMember = "num_trabajador";
-
             // Habilitar la funcionalidad de búsqueda
             ProfesorComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             ProfesorComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
@@ -112,9 +106,6 @@ namespace RegistroDeAsistencia
             // Especificar qué propiedad de la clase CodigoGrupo se mostrará en el ComboBox
             GrupoComboBox.DisplayMember = "desc_grupo";
 
-            // Opcional: Puedes especificar qué propiedad de la clase CodigoGrupo se utilizará como valor
-            // GrupoComboBox.ValueMember = "id_codigo";
-
             // Habilitar la funcionalidad de búsqueda
             GrupoComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             GrupoComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
@@ -126,6 +117,11 @@ namespace RegistroDeAsistencia
         }
 
         private void ProfesorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

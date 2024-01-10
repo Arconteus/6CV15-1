@@ -54,8 +54,6 @@ public static class DataBaseHelper
         DiasSemanaToAdd.Add("MIERCOLES");
         DiasSemanaToAdd.Add("JUEVES");
         DiasSemanaToAdd.Add("VIERNES");
-        DiasSemanaToAdd.Add("SABADO");
-        DiasSemanaToAdd.Add("DOMINGO");
 
         foreach(string iteration in DiasSemanaToAdd)
         {

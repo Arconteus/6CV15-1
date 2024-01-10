@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaRegitroHorario));
-            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             HorarioGroupBox = new GroupBox();
-            label3 = new Label();
+            AgregarHButton = new Button();
+            MateriaComboBox = new ComboBox();
+            MateriaLabel = new Label();
             Header = new Panel();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
@@ -43,11 +45,6 @@
             MaximixeButton = new PictureBox();
             MinimizeButton = new PictureBox();
             CloseButton = new PictureBox();
-            MateriaComboBox = new ComboBox();
-            label1 = new Label();
-            label2 = new Label();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
             RegistroPDGV = new DataGridView();
             Hora = new DataGridViewTextBoxColumn();
             Dia1 = new DataGridViewTextBoxColumn();
@@ -55,7 +52,6 @@
             Dia3 = new DataGridViewTextBoxColumn();
             Dia4 = new DataGridViewTextBoxColumn();
             Dia5 = new DataGridViewTextBoxColumn();
-            AgregarPButton = new Button();
             HorarioGroupBox.SuspendLayout();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -71,31 +67,58 @@
             // HorarioGroupBox
             // 
             HorarioGroupBox.Anchor = AnchorStyles.Top;
-            HorarioGroupBox.Controls.Add(AgregarPButton);
-            HorarioGroupBox.Controls.Add(comboBox2);
-            HorarioGroupBox.Controls.Add(comboBox1);
-            HorarioGroupBox.Controls.Add(label2);
-            HorarioGroupBox.Controls.Add(label1);
+            HorarioGroupBox.Controls.Add(AgregarHButton);
             HorarioGroupBox.Controls.Add(MateriaComboBox);
-            HorarioGroupBox.Controls.Add(label3);
+            HorarioGroupBox.Controls.Add(MateriaLabel);
             HorarioGroupBox.ForeColor = Color.White;
             HorarioGroupBox.Location = new Point(12, 28);
             HorarioGroupBox.Name = "HorarioGroupBox";
-            HorarioGroupBox.Size = new Size(626, 99);
+            HorarioGroupBox.Size = new Size(259, 57);
             HorarioGroupBox.TabIndex = 37;
             HorarioGroupBox.TabStop = false;
             HorarioGroupBox.Text = "Registro de Hora";
-            HorarioGroupBox.Enter += HorarioGroupBox_Enter;
             // 
-            // label3
+            // AgregarHButton
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(6, 22);
-            label3.Name = "label3";
-            label3.Size = new Size(50, 15);
-            label3.TabIndex = 2;
-            label3.Text = "Materia";
+            AgregarHButton.BackColor = Color.FromArgb(86, 76, 149);
+            AgregarHButton.Cursor = Cursors.Hand;
+            AgregarHButton.FlatAppearance.BorderSize = 0;
+            AgregarHButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            AgregarHButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            AgregarHButton.FlatStyle = FlatStyle.Flat;
+            AgregarHButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            AgregarHButton.ForeColor = SystemColors.Control;
+            AgregarHButton.Location = new Point(168, 19);
+            AgregarHButton.Margin = new Padding(0);
+            AgregarHButton.Name = "AgregarHButton";
+            AgregarHButton.Size = new Size(77, 23);
+            AgregarHButton.TabIndex = 45;
+            AgregarHButton.Text = "Agregar";
+            AgregarHButton.UseVisualStyleBackColor = false;
+            // 
+            // MateriaComboBox
+            // 
+            MateriaComboBox.BackColor = Color.FromArgb(63, 62, 70);
+            MateriaComboBox.FlatStyle = FlatStyle.Flat;
+            MateriaComboBox.ForeColor = SystemColors.Window;
+            MateriaComboBox.FormattingEnabled = true;
+            MateriaComboBox.Location = new Point(62, 19);
+            MateriaComboBox.Margin = new Padding(3, 3, 0, 3);
+            MateriaComboBox.Name = "MateriaComboBox";
+            MateriaComboBox.Size = new Size(106, 23);
+            MateriaComboBox.TabIndex = 36;
+            MateriaComboBox.Text = "-";
+            MateriaComboBox.SelectedIndexChanged += MateriaComboBox_SelectedIndexChanged;
+            // 
+            // MateriaLabel
+            // 
+            MateriaLabel.AutoSize = true;
+            MateriaLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            MateriaLabel.Location = new Point(6, 22);
+            MateriaLabel.Name = "MateriaLabel";
+            MateriaLabel.Size = new Size(42, 15);
+            MateriaLabel.TabIndex = 2;
+            MateriaLabel.Text = "Grupo";
             // 
             // Header
             // 
@@ -216,69 +239,6 @@
             CloseButton.TabIndex = 1;
             CloseButton.TabStop = false;
             // 
-            // MateriaComboBox
-            // 
-            MateriaComboBox.BackColor = Color.FromArgb(63, 62, 70);
-            MateriaComboBox.FlatStyle = FlatStyle.Flat;
-            MateriaComboBox.ForeColor = SystemColors.Window;
-            MateriaComboBox.FormattingEnabled = true;
-            MateriaComboBox.Location = new Point(62, 19);
-            MateriaComboBox.Margin = new Padding(3, 3, 0, 3);
-            MateriaComboBox.Name = "MateriaComboBox";
-            MateriaComboBox.Size = new Size(389, 23);
-            MateriaComboBox.TabIndex = 36;
-            MateriaComboBox.Text = "-";
-            MateriaComboBox.SelectedIndexChanged += MateriaComboBox_SelectedIndexChanged;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(6, 61);
-            label1.Name = "label1";
-            label1.Size = new Size(25, 15);
-            label1.TabIndex = 37;
-            label1.Text = "Día";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(454, 22);
-            label2.Name = "label2";
-            label2.Size = new Size(34, 15);
-            label2.TabIndex = 38;
-            label2.Text = "Hora";
-            label2.Click += label2_Click;
-            // 
-            // comboBox1
-            // 
-            comboBox1.BackColor = Color.FromArgb(63, 62, 70);
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.ForeColor = SystemColors.Window;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(62, 58);
-            comboBox1.Margin = new Padding(3, 3, 0, 3);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(389, 23);
-            comboBox1.TabIndex = 39;
-            comboBox1.Text = "-";
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            // 
-            // comboBox2
-            // 
-            comboBox2.BackColor = Color.FromArgb(63, 62, 70);
-            comboBox2.FlatStyle = FlatStyle.Flat;
-            comboBox2.ForeColor = SystemColors.Window;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(494, 19);
-            comboBox2.Margin = new Padding(3, 3, 0, 3);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(118, 23);
-            comboBox2.TabIndex = 40;
-            comboBox2.Text = "-";
-            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
-            // 
             // RegistroPDGV
             // 
             RegistroPDGV.AllowUserToDeleteRows = false;
@@ -288,44 +248,44 @@
             RegistroPDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
             RegistroPDGV.BorderStyle = BorderStyle.None;
             RegistroPDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle19.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle19.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle19.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle19.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.True;
-            RegistroPDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            RegistroPDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             RegistroPDGV.ColumnHeadersHeight = 30;
             RegistroPDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             RegistroPDGV.Columns.AddRange(new DataGridViewColumn[] { Hora, Dia1, Dia2, Dia3, Dia4, Dia5 });
-            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = Color.FromArgb(63, 62, 70);
-            dataGridViewCellStyle20.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle20.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle20.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle20.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = DataGridViewTriState.False;
-            RegistroPDGV.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            RegistroPDGV.DefaultCellStyle = dataGridViewCellStyle2;
             RegistroPDGV.EnableHeadersVisualStyles = false;
             RegistroPDGV.GridColor = Color.White;
-            RegistroPDGV.Location = new Point(12, 130);
+            RegistroPDGV.Location = new Point(12, 99);
             RegistroPDGV.Margin = new Padding(3, 0, 3, 3);
             RegistroPDGV.Name = "RegistroPDGV";
             RegistroPDGV.ReadOnly = true;
             RegistroPDGV.RightToLeft = RightToLeft.No;
             RegistroPDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle21.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle21.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle21.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.True;
-            RegistroPDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            RegistroPDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             RegistroPDGV.RowHeadersVisible = false;
             RegistroPDGV.RowTemplate.Height = 25;
-            RegistroPDGV.Size = new Size(626, 308);
+            RegistroPDGV.Size = new Size(626, 321);
             RegistroPDGV.TabIndex = 39;
             RegistroPDGV.CellContentClick += RegistroPDGV_CellContentClick;
             // 
@@ -372,31 +332,12 @@
             Dia5.Name = "Dia5";
             Dia5.ReadOnly = true;
             // 
-            // AgregarPButton
-            // 
-            AgregarPButton.BackColor = Color.FromArgb(86, 76, 149);
-            AgregarPButton.Cursor = Cursors.Hand;
-            AgregarPButton.FlatAppearance.BorderSize = 0;
-            AgregarPButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
-            AgregarPButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
-            AgregarPButton.FlatStyle = FlatStyle.Flat;
-            AgregarPButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            AgregarPButton.ForeColor = SystemColors.Control;
-            AgregarPButton.Location = new Point(454, 58);
-            AgregarPButton.Margin = new Padding(0);
-            AgregarPButton.Name = "AgregarPButton";
-            AgregarPButton.Size = new Size(158, 23);
-            AgregarPButton.TabIndex = 45;
-            AgregarPButton.Text = "Agregar";
-            AgregarPButton.UseVisualStyleBackColor = false;
-            AgregarPButton.Click += AgregarPButton_Click;
-            // 
             // PantallaRegitroHorario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(31, 30, 36);
-            ClientSize = new Size(650, 450);
+            ClientSize = new Size(650, 432);
             Controls.Add(RegistroPDGV);
             Controls.Add(Header);
             Controls.Add(HorarioGroupBox);
@@ -421,7 +362,7 @@
         #endregion
 
         private GroupBox HorarioGroupBox;
-        private Label label3;
+        private Label MateriaLabel;
         private Panel Header;
         private PictureBox pictureBox1;
         private PictureBox RestoreButton;
@@ -432,10 +373,6 @@
         private PictureBox CloseButton;
         private PictureBox pictureBox2;
         private ComboBox MateriaComboBox;
-        private Label label2;
-        private Label label1;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
         private DataGridView RegistroPDGV;
         private DataGridViewTextBoxColumn Hora;
         private DataGridViewTextBoxColumn Dia1;
@@ -443,6 +380,6 @@
         private DataGridViewTextBoxColumn Dia3;
         private DataGridViewTextBoxColumn Dia4;
         private DataGridViewTextBoxColumn Dia5;
-        private Button AgregarPButton;
+        private Button AgregarHButton;
     }
 }

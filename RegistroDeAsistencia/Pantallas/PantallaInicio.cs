@@ -59,8 +59,14 @@ namespace RegistroDeAsistencia.Pantallas
         {
 
         }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            PantallaRegitroHorario temp = new PantallaRegitroHorario();
+            temp.Show();
 
-        private void RegistroPDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        }
+
+        private void PantallaInicio_Load(object sender, EventArgs e)
         {
 
         }

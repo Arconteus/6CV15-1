@@ -105,7 +105,7 @@
             WebcamButton.Name = "WebcamButton";
             WebcamButton.Size = new Size(225, 25);
             WebcamButton.TabIndex = 2;
-            WebcamButton.Text = "Webcam";
+            WebcamButton.Text = "QR";
             WebcamButton.UseVisualStyleBackColor = false;
             // 
             // LectorQRButton
@@ -123,7 +123,7 @@
             LectorQRButton.Name = "LectorQRButton";
             LectorQRButton.Size = new Size(225, 25);
             LectorQRButton.TabIndex = 3;
-            LectorQRButton.Text = "Lectro QR";
+            LectorQRButton.Text = "BarCode";
             LectorQRButton.UseVisualStyleBackColor = false;
             // 
             // pictCamImagem
@@ -134,6 +134,7 @@
             pictCamImagem.SizeMode = PictureBoxSizeMode.Zoom;
             pictCamImagem.TabIndex = 4;
             pictCamImagem.TabStop = false;
+            pictCamImagem.Click += pictCamImagem_Click;
             // 
             // cmbCameras
             // 
@@ -258,6 +259,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaQR";
             Text = "RegistroQR";
+            Load += PantallaQR_Load;
             ((System.ComponentModel.ISupportInitialize)pictCamImagem).EndInit();
             Header.ResumeLayout(false);
             Header.PerformLayout();

@@ -42,7 +42,7 @@
             groupBox1 = new GroupBox();
             FechaLabel = new Label();
             HoraLabel = new Label();
-            RegistroPDGV = new DataGridView();
+            VisualDGV = new DataGridView();
             Hora = new DataGridViewTextBoxColumn();
             Dia1 = new DataGridViewTextBoxColumn();
             Dia2 = new DataGridViewTextBoxColumn();
@@ -52,7 +52,7 @@
             ActualGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)RegistroPDGV).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)VisualDGV).BeginInit();
             SuspendLayout();
             // 
             // ActualGroupBox
@@ -140,6 +140,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 22;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // groupBox1
             // 
@@ -175,15 +176,15 @@
             HoraLabel.Text = "XX:XX P.M.";
             HoraLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // RegistroPDGV
+            // VisualDGV
             // 
-            RegistroPDGV.AllowUserToDeleteRows = false;
-            RegistroPDGV.AllowUserToOrderColumns = true;
-            RegistroPDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            RegistroPDGV.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            RegistroPDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
-            RegistroPDGV.BorderStyle = BorderStyle.None;
-            RegistroPDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            VisualDGV.AllowUserToDeleteRows = false;
+            VisualDGV.AllowUserToOrderColumns = true;
+            VisualDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            VisualDGV.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            VisualDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
+            VisualDGV.BorderStyle = BorderStyle.None;
+            VisualDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -191,10 +192,10 @@
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            RegistroPDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            RegistroPDGV.ColumnHeadersHeight = 30;
-            RegistroPDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            RegistroPDGV.Columns.AddRange(new DataGridViewColumn[] { Hora, Dia1, Dia2, Dia3, Dia4, Dia5 });
+            VisualDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            VisualDGV.ColumnHeadersHeight = 30;
+            VisualDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            VisualDGV.Columns.AddRange(new DataGridViewColumn[] { Hora, Dia1, Dia2, Dia3, Dia4, Dia5 });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -202,15 +203,15 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            RegistroPDGV.DefaultCellStyle = dataGridViewCellStyle2;
-            RegistroPDGV.EnableHeadersVisualStyles = false;
-            RegistroPDGV.GridColor = Color.White;
-            RegistroPDGV.Location = new Point(12, 112);
-            RegistroPDGV.Margin = new Padding(3, 0, 3, 3);
-            RegistroPDGV.Name = "RegistroPDGV";
-            RegistroPDGV.ReadOnly = true;
-            RegistroPDGV.RightToLeft = RightToLeft.No;
-            RegistroPDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            VisualDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            VisualDGV.EnableHeadersVisualStyles = false;
+            VisualDGV.GridColor = Color.White;
+            VisualDGV.Location = new Point(12, 112);
+            VisualDGV.Margin = new Padding(3, 0, 3, 3);
+            VisualDGV.Name = "VisualDGV";
+            VisualDGV.ReadOnly = true;
+            VisualDGV.RightToLeft = RightToLeft.No;
+            VisualDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -218,12 +219,11 @@
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            RegistroPDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            RegistroPDGV.RowHeadersVisible = false;
-            RegistroPDGV.RowTemplate.Height = 25;
-            RegistroPDGV.Size = new Size(828, 326);
-            RegistroPDGV.TabIndex = 91;
-            RegistroPDGV.CellContentClick += RegistroPDGV_CellContentClick;
+            VisualDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            VisualDGV.RowHeadersVisible = false;
+            VisualDGV.RowTemplate.Height = 25;
+            VisualDGV.Size = new Size(828, 326);
+            VisualDGV.TabIndex = 91;
             // 
             // Hora
             // 
@@ -274,7 +274,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(31, 30, 36);
             ClientSize = new Size(852, 450);
-            Controls.Add(RegistroPDGV);
+            Controls.Add(VisualDGV);
             Controls.Add(groupBox1);
             Controls.Add(pictureBox1);
             Controls.Add(ActualGroupBox);
@@ -282,11 +282,12 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaInicio";
             Text = "PantallaInicio";
+            Load += PantallaInicio_Load;
             ActualGroupBox.ResumeLayout(false);
             ActualGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)RegistroPDGV).EndInit();
+            ((System.ComponentModel.ISupportInitialize)VisualDGV).EndInit();
             ResumeLayout(false);
         }
 
@@ -302,7 +303,7 @@
         private GroupBox groupBox1;
         private Label HoraLabel;
         private Label FechaLabel;
-        private DataGridView RegistroPDGV;
+        private DataGridView VisualDGV;
         private DataGridViewTextBoxColumn Hora;
         private DataGridViewTextBoxColumn Dia1;
         private DataGridViewTextBoxColumn Dia2;
