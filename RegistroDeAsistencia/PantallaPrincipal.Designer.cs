@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             Header = new Panel();
+            pictureBox1 = new PictureBox();
             MaximizeButton = new PictureBox();
             TittleLabel = new Label();
             MinimizeButton = new PictureBox();
@@ -40,14 +41,13 @@
             AdministrarButton = new Button();
             AsistenciaButton = new Button();
             MainPanel = new Panel();
-            pictureBox1 = new PictureBox();
             Header.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MaximizeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinimizeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RestoreButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).BeginInit();
             ButtonsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // Header
@@ -62,17 +62,30 @@
             Header.Dock = DockStyle.Top;
             Header.Location = new Point(0, 0);
             Header.Name = "Header";
-            Header.Size = new Size(852, 25);
+            Header.Size = new Size(1300, 25);
             Header.TabIndex = 0;
             Header.Paint += Header_Paint;
             Header.MouseDown += Header_MouseDown;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Cursor = Cursors.Hand;
+            pictureBox1.Image = Properties.Resources.Test_Icon;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Margin = new Padding(0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(25, 25);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // MaximizeButton
             // 
             MaximizeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             MaximizeButton.Cursor = Cursors.Hand;
             MaximizeButton.Image = Properties.Resources.Maximize_Icon;
-            MaximizeButton.Location = new Point(802, 0);
+            MaximizeButton.Location = new Point(1250, 0);
             MaximizeButton.Margin = new Padding(0);
             MaximizeButton.Name = "MaximizeButton";
             MaximizeButton.Size = new Size(25, 25);
@@ -99,7 +112,7 @@
             MinimizeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             MinimizeButton.Cursor = Cursors.Hand;
             MinimizeButton.Image = Properties.Resources.Minimize_Icon;
-            MinimizeButton.Location = new Point(777, 0);
+            MinimizeButton.Location = new Point(1225, 0);
             MinimizeButton.Margin = new Padding(0);
             MinimizeButton.Name = "MinimizeButton";
             MinimizeButton.Size = new Size(25, 25);
@@ -113,7 +126,7 @@
             RestoreButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             RestoreButton.Cursor = Cursors.Hand;
             RestoreButton.Image = Properties.Resources.Restore_Icon;
-            RestoreButton.Location = new Point(802, 0);
+            RestoreButton.Location = new Point(1250, 0);
             RestoreButton.Margin = new Padding(0);
             RestoreButton.Name = "RestoreButton";
             RestoreButton.Size = new Size(25, 25);
@@ -127,7 +140,7 @@
             CloseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             CloseButton.Cursor = Cursors.Hand;
             CloseButton.Image = Properties.Resources.Close_Icon;
-            CloseButton.Location = new Point(827, 0);
+            CloseButton.Location = new Point(1275, 0);
             CloseButton.Margin = new Padding(0);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(25, 25);
@@ -146,7 +159,7 @@
             ButtonsPanel.Dock = DockStyle.Top;
             ButtonsPanel.Location = new Point(0, 25);
             ButtonsPanel.Name = "ButtonsPanel";
-            ButtonsPanel.Size = new Size(852, 25);
+            ButtonsPanel.Size = new Size(1300, 25);
             ButtonsPanel.TabIndex = 1;
             // 
             // TestButton
@@ -158,10 +171,10 @@
             TestButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
             TestButton.FlatStyle = FlatStyle.Flat;
             TestButton.ForeColor = SystemColors.ControlLightLight;
-            TestButton.Location = new Point(639, 0);
+            TestButton.Location = new Point(975, 0);
             TestButton.Margin = new Padding(0);
             TestButton.Name = "TestButton";
-            TestButton.Size = new Size(213, 25);
+            TestButton.Size = new Size(325, 25);
             TestButton.TabIndex = 3;
             TestButton.Text = "Reportes";
             TestButton.UseVisualStyleBackColor = false;
@@ -179,7 +192,7 @@
             InicioButton.Location = new Point(0, 0);
             InicioButton.Margin = new Padding(0);
             InicioButton.Name = "InicioButton";
-            InicioButton.Size = new Size(213, 25);
+            InicioButton.Size = new Size(325, 25);
             InicioButton.TabIndex = 0;
             InicioButton.Text = "Inicio";
             InicioButton.UseVisualStyleBackColor = false;
@@ -194,10 +207,10 @@
             AdministrarButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
             AdministrarButton.FlatStyle = FlatStyle.Flat;
             AdministrarButton.ForeColor = SystemColors.ControlLightLight;
-            AdministrarButton.Location = new Point(426, 0);
+            AdministrarButton.Location = new Point(650, 0);
             AdministrarButton.Margin = new Padding(0);
             AdministrarButton.Name = "AdministrarButton";
-            AdministrarButton.Size = new Size(213, 25);
+            AdministrarButton.Size = new Size(325, 25);
             AdministrarButton.TabIndex = 2;
             AdministrarButton.Text = "Administrar";
             AdministrarButton.UseVisualStyleBackColor = false;
@@ -212,10 +225,10 @@
             AsistenciaButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
             AsistenciaButton.FlatStyle = FlatStyle.Flat;
             AsistenciaButton.ForeColor = SystemColors.ControlLightLight;
-            AsistenciaButton.Location = new Point(213, 0);
+            AsistenciaButton.Location = new Point(325, 0);
             AsistenciaButton.Margin = new Padding(0);
             AsistenciaButton.Name = "AsistenciaButton";
-            AsistenciaButton.Size = new Size(213, 25);
+            AsistenciaButton.Size = new Size(325, 25);
             AsistenciaButton.TabIndex = 1;
             AsistenciaButton.Text = "Asistencia";
             AsistenciaButton.UseVisualStyleBackColor = false;
@@ -227,28 +240,14 @@
             MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(0, 50);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(852, 450);
+            MainPanel.Size = new Size(1300, 600);
             MainPanel.TabIndex = 2;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox1.Cursor = Cursors.Hand;
-            pictureBox1.Image = Properties.Resources.Test_Icon;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Margin = new Padding(0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(25, 25);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // PantallaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(852, 500);
+            ClientSize = new Size(1300, 650);
             Controls.Add(MainPanel);
             Controls.Add(ButtonsPanel);
             Controls.Add(Header);
@@ -258,12 +257,12 @@
             Text = "PantallaPrincipal";
             Header.ResumeLayout(false);
             Header.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)MaximizeButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)MinimizeButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)RestoreButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)CloseButton).EndInit();
             ButtonsPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             FinalizarButton = new Button();
             contextMenuStrip1 = new ContextMenuStrip(components);
             label1 = new Label();
@@ -63,6 +63,9 @@
             ClearButton = new Button();
             SearchIcon = new PictureBox();
             SearchPanel = new Panel();
+            groupBox1 = new GroupBox();
+            FechaLabel = new Label();
+            HoraLabel = new Label();
             GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)QrBox).BeginInit();
@@ -70,10 +73,12 @@
             ((System.ComponentModel.ISupportInitialize)RegistroDGV).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SearchIcon).BeginInit();
             SearchPanel.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // FinalizarButton
             // 
+            FinalizarButton.Anchor = AnchorStyles.Top;
             FinalizarButton.BackColor = Color.FromArgb(86, 76, 149);
             FinalizarButton.Cursor = Cursors.Hand;
             FinalizarButton.FlatAppearance.BorderSize = 0;
@@ -82,7 +87,7 @@
             FinalizarButton.FlatStyle = FlatStyle.Flat;
             FinalizarButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             FinalizarButton.ForeColor = SystemColors.Control;
-            FinalizarButton.Location = new Point(740, 404);
+            FinalizarButton.Location = new Point(1194, 555);
             FinalizarButton.Margin = new Padding(0);
             FinalizarButton.Name = "FinalizarButton";
             FinalizarButton.Size = new Size(97, 33);
@@ -97,6 +102,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Location = new Point(22, 384);
             label1.Name = "label1";
@@ -159,9 +165,10 @@
             // 
             // GroupBox
             // 
+            GroupBox.Anchor = AnchorStyles.Top;
             GroupBox.Controls.Add(FolioLabel);
             GroupBox.ForeColor = SystemColors.Control;
-            GroupBox.Location = new Point(714, 12);
+            GroupBox.Location = new Point(927, 15);
             GroupBox.Name = "GroupBox";
             GroupBox.Size = new Size(123, 45);
             GroupBox.TabIndex = 21;
@@ -186,14 +193,16 @@
             SearchComboBox.Location = new Point(29, 0);
             SearchComboBox.Margin = new Padding(0);
             SearchComboBox.Name = "SearchComboBox";
-            SearchComboBox.Size = new Size(796, 16);
+            SearchComboBox.Size = new Size(1247, 16);
             SearchComboBox.TabIndex = 24;
             SearchComboBox.Tag = "sdvsdvsd";
+            SearchComboBox.TextChanged += SearchComboBox_TextChanged;
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.Top;
             pictureBox2.Image = Properties.Resources.Eye_Icon;
-            pictureBox2.Location = new Point(12, 404);
+            pictureBox2.Location = new Point(12, 555);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(33, 33);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -202,6 +211,7 @@
             // 
             // QrBox
             // 
+            QrBox.Anchor = AnchorStyles.Top;
             QrBox.Cursor = Cursors.Hand;
             QrBox.Image = Properties.Resources.ID_Icon;
             QrBox.Location = new Point(12, 12);
@@ -214,6 +224,7 @@
             // 
             // DetallesGroupBox
             // 
+            DetallesGroupBox.Anchor = AnchorStyles.Top;
             DetallesGroupBox.Controls.Add(ProfesorComboBox);
             DetallesGroupBox.Controls.Add(MateriaComboBox);
             DetallesGroupBox.Controls.Add(FechaDTP);
@@ -225,7 +236,7 @@
             DetallesGroupBox.ForeColor = SystemColors.ControlLightLight;
             DetallesGroupBox.Location = new Point(108, 12);
             DetallesGroupBox.Name = "DetallesGroupBox";
-            DetallesGroupBox.Size = new Size(600, 90);
+            DetallesGroupBox.Size = new Size(813, 90);
             DetallesGroupBox.TabIndex = 29;
             DetallesGroupBox.TabStop = false;
             DetallesGroupBox.Text = "Detalles";
@@ -238,7 +249,7 @@
             ProfesorComboBox.FormattingEnabled = true;
             ProfesorComboBox.Location = new Point(66, 56);
             ProfesorComboBox.Name = "ProfesorComboBox";
-            ProfesorComboBox.Size = new Size(528, 23);
+            ProfesorComboBox.Size = new Size(741, 23);
             ProfesorComboBox.TabIndex = 20;
             ProfesorComboBox.Text = "-";
             // 
@@ -250,7 +261,7 @@
             MateriaComboBox.FormattingEnabled = true;
             MateriaComboBox.Location = new Point(346, 22);
             MateriaComboBox.Name = "MateriaComboBox";
-            MateriaComboBox.Size = new Size(248, 23);
+            MateriaComboBox.Size = new Size(461, 23);
             MateriaComboBox.TabIndex = 19;
             MateriaComboBox.Text = "-";
             // 
@@ -266,18 +277,20 @@
             // 
             // richTextBox1
             // 
+            richTextBox1.Anchor = AnchorStyles.Top;
             richTextBox1.BackColor = Color.FromArgb(63, 62, 70);
             richTextBox1.BorderStyle = BorderStyle.None;
             richTextBox1.ForeColor = SystemColors.ControlLightLight;
-            richTextBox1.Location = new Point(55, 404);
+            richTextBox1.Location = new Point(48, 555);
             richTextBox1.Margin = new Padding(0);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(685, 33);
+            richTextBox1.Size = new Size(1146, 33);
             richTextBox1.TabIndex = 30;
             richTextBox1.Text = "";
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top;
             label2.ForeColor = SystemColors.Control;
             label2.Location = new Point(12, 86);
             label2.Name = "label2";
@@ -290,28 +303,29 @@
             // 
             RegistroDGV.AllowUserToDeleteRows = false;
             RegistroDGV.AllowUserToOrderColumns = true;
+            RegistroDGV.Anchor = AnchorStyles.Top;
             RegistroDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
             RegistroDGV.BorderStyle = BorderStyle.None;
             RegistroDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             RegistroDGV.ColumnHeadersHeight = 30;
             RegistroDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { Select, Boleta, Nombre, Apa, Ama, Escuela, Carrera, Observacion });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle11;
             RegistroDGV.EnableHeadersVisualStyles = false;
             RegistroDGV.GridColor = Color.White;
             RegistroDGV.Location = new Point(12, 131);
@@ -320,17 +334,17 @@
             RegistroDGV.ReadOnly = true;
             RegistroDGV.RightToLeft = RightToLeft.No;
             RegistroDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             RegistroDGV.RowHeadersVisible = false;
             RegistroDGV.RowTemplate.Height = 25;
-            RegistroDGV.Size = new Size(825, 267);
+            RegistroDGV.Size = new Size(1276, 418);
             RegistroDGV.TabIndex = 32;
             // 
             // Select
@@ -397,6 +411,7 @@
             // 
             // ClearButton
             // 
+            ClearButton.Anchor = AnchorStyles.Top;
             ClearButton.BackColor = Color.FromArgb(17, 16, 19);
             ClearButton.Cursor = Cursors.Hand;
             ClearButton.FlatAppearance.BorderSize = 0;
@@ -405,7 +420,7 @@
             ClearButton.FlatStyle = FlatStyle.Flat;
             ClearButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             ClearButton.ForeColor = SystemColors.Control;
-            ClearButton.Location = new Point(714, 66);
+            ClearButton.Location = new Point(927, 66);
             ClearButton.Name = "ClearButton";
             ClearButton.Size = new Size(123, 35);
             ClearButton.TabIndex = 33;
@@ -427,21 +442,57 @@
             // 
             // SearchPanel
             // 
+            SearchPanel.Anchor = AnchorStyles.Top;
             SearchPanel.BackColor = Color.FromArgb(63, 62, 70);
             SearchPanel.Controls.Add(SearchComboBox);
             SearchPanel.Controls.Add(SearchIcon);
             SearchPanel.Location = new Point(12, 115);
             SearchPanel.Margin = new Padding(0);
             SearchPanel.Name = "SearchPanel";
-            SearchPanel.Size = new Size(825, 15);
+            SearchPanel.Size = new Size(1276, 15);
             SearchPanel.TabIndex = 36;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Anchor = AnchorStyles.Top;
+            groupBox1.Controls.Add(FechaLabel);
+            groupBox1.Controls.Add(HoraLabel);
+            groupBox1.ForeColor = Color.White;
+            groupBox1.Location = new Point(1056, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(232, 89);
+            groupBox1.TabIndex = 91;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Reloj";
+            // 
+            // FechaLabel
+            // 
+            FechaLabel.Dock = DockStyle.Fill;
+            FechaLabel.Location = new Point(3, 66);
+            FechaLabel.Name = "FechaLabel";
+            FechaLabel.Size = new Size(226, 20);
+            FechaLabel.TabIndex = 1;
+            FechaLabel.Text = "27/12/2023";
+            FechaLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // HoraLabel
+            // 
+            HoraLabel.Dock = DockStyle.Top;
+            HoraLabel.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            HoraLabel.Location = new Point(3, 19);
+            HoraLabel.Name = "HoraLabel";
+            HoraLabel.Size = new Size(226, 47);
+            HoraLabel.TabIndex = 0;
+            HoraLabel.Text = "XX:XX P.M.";
+            HoraLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // PantallaAsistencia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(31, 30, 36);
-            ClientSize = new Size(849, 450);
+            ClientSize = new Size(1300, 600);
+            Controls.Add(groupBox1);
             Controls.Add(SearchPanel);
             Controls.Add(ClearButton);
             Controls.Add(RegistroDGV);
@@ -466,6 +517,7 @@
             ((System.ComponentModel.ISupportInitialize)SearchIcon).EndInit();
             SearchPanel.ResumeLayout(false);
             SearchPanel.PerformLayout();
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -503,5 +555,8 @@
         private DataGridViewTextBoxColumn Escuela;
         private DataGridViewTextBoxColumn Carrera;
         private DataGridViewButtonColumn Observacion;
+        private GroupBox groupBox1;
+        private Label FechaLabel;
+        private Label HoraLabel;
     }
 }

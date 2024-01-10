@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             ActualGroupBox = new GroupBox();
             MateriaActualLabel = new Label();
             ProfesorActualLabel = new Label();
@@ -65,9 +65,9 @@
             ActualGroupBox.Controls.Add(label2);
             ActualGroupBox.Controls.Add(label1);
             ActualGroupBox.ForeColor = Color.White;
-            ActualGroupBox.Location = new Point(12, 9);
+            ActualGroupBox.Location = new Point(12, 12);
             ActualGroupBox.Name = "ActualGroupBox";
-            ActualGroupBox.Size = new Size(494, 90);
+            ActualGroupBox.Size = new Size(942, 90);
             ActualGroupBox.TabIndex = 3;
             ActualGroupBox.TabStop = false;
             ActualGroupBox.Text = "Hora Actual";
@@ -134,7 +134,7 @@
             pictureBox1.Anchor = AnchorStyles.Top;
             pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Image = Properties.Resources.List_Icon;
-            pictureBox1.Location = new Point(512, 9);
+            pictureBox1.Location = new Point(960, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(90, 90);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -148,7 +148,7 @@
             groupBox1.Controls.Add(FechaLabel);
             groupBox1.Controls.Add(HoraLabel);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(608, 9);
+            groupBox1.Location = new Point(1056, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(232, 90);
             groupBox1.TabIndex = 90;
@@ -180,30 +180,31 @@
             // 
             VisualDGV.AllowUserToDeleteRows = false;
             VisualDGV.AllowUserToOrderColumns = true;
+            VisualDGV.Anchor = AnchorStyles.Top;
             VisualDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             VisualDGV.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             VisualDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
             VisualDGV.BorderStyle = BorderStyle.None;
             VisualDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            VisualDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            VisualDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             VisualDGV.ColumnHeadersHeight = 30;
             VisualDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             VisualDGV.Columns.AddRange(new DataGridViewColumn[] { Hora, Dia1, Dia2, Dia3, Dia4, Dia5 });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(54, 57, 62);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            VisualDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(54, 57, 62);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            VisualDGV.DefaultCellStyle = dataGridViewCellStyle5;
             VisualDGV.EnableHeadersVisualStyles = false;
             VisualDGV.GridColor = Color.White;
             VisualDGV.Location = new Point(12, 112);
@@ -212,17 +213,17 @@
             VisualDGV.ReadOnly = true;
             VisualDGV.RightToLeft = RightToLeft.No;
             VisualDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            VisualDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            VisualDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             VisualDGV.RowHeadersVisible = false;
             VisualDGV.RowTemplate.Height = 25;
-            VisualDGV.Size = new Size(828, 326);
+            VisualDGV.Size = new Size(1038, 476);
             VisualDGV.TabIndex = 91;
             // 
             // Hora
@@ -273,7 +274,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(31, 30, 36);
-            ClientSize = new Size(852, 450);
+            ClientSize = new Size(1300, 600);
             Controls.Add(VisualDGV);
             Controls.Add(groupBox1);
             Controls.Add(pictureBox1);

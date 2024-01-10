@@ -116,5 +116,9 @@ namespace RegistroDeAsistencia
             GrupoComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
+        private void SearchComboBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
