@@ -15,12 +15,21 @@ namespace RegistroDeAsistencia
 {
     public partial class PantallaAsistencia : Form
     {
+        private System.Windows.Forms.Timer timer;
         public PantallaAsistencia()
         {
             InitializeComponent();
             string url = "https://servicios.dae.ipn.mx/vcred/?h=2aa29dad59808777158131aed7734a20da8ba093366db3a6163b5d17df6e88d&fbclid=IwAR0X9yI7oK1QIY0FAR-5D0AW87ik02eFYr-zWtbKmkHdf-eoC4SLsjCdLtE";
             List<String> tempAlumno = WSLib.GetAlumnoFrom(url);
             int i = RegistroDGV.Rows.Add();
+            // Inicia un temporizador para actualizar la fecha y la hora cada segundo
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000; // Intervalo en milisegundos (1 segundo)
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
+            // Llama al método para mostrar la fecha y la hora inicialmente
+            MostrarFechaYHora();
             /**
             RegistroDGV.Rows[i].Cells[1].Value = 1; Boleta
             RegistroDGV.Rows[i].Cells[2].Value = 2; Nombre
@@ -43,6 +52,21 @@ namespace RegistroDeAsistencia
             temp.Show();
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Este evento se ejecutará cada segundo
+            MostrarFechaYHora();
+        }
+
+        private void MostrarFechaYHora()
+        {
+            // Obtén la fecha y la hora actuales
+            DateTime ahora = DateTime.Now;
+
+            // Actualiza el texto de los Labels con la fecha y la hora
+            FechaLabel.Text = ahora.ToString("dd-MM-yyyy"); // Formato de fecha personalizado
+            HoraLabel.Text = ahora.ToString("HH:mm:ss"); // Formato de hora personalizado
+        }
         private void ClearButton_Click(object sender, EventArgs e)
         {
 
