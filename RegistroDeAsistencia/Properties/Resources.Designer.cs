@@ -173,6 +173,16 @@ namespace RegistroDeAsistencia.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap QrBorder {
+            get {
+                object obj = ResourceManager.GetObject("QrBorder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Report_Icon {
             get {
                 object obj = ResourceManager.GetObject("Report_Icon", resourceCulture);

@@ -142,5 +142,32 @@ namespace RegistroDeAsistencia
                 MessageBox.Show("No hay ninguna imagen capturada.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void Scan_Tick()
+        {
+            if (capturedImage != null)
+            {
+                var barcodeReader = new BarcodeReader();
+                var result = barcodeReader.Decode(capturedImage);
+
+                if (result != null)
+                {
+                    MessageBox.Show($"Código QR capturado: {result.Text}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    //MessageBox.Show("No se ha capturado un código QR legible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                //MessageBox.Show("No hay ninguna imagen capturada.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Scan_Tick();
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaQR));
             Scan = new Button();
             RegistroManualButton = new Button();
@@ -45,6 +46,7 @@
             CloseButton = new PictureBox();
             panel1 = new Panel();
             CamPB = new PictureBox();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictCamImagem).BeginInit();
             Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RestoreButton).BeginInit();
@@ -276,6 +278,11 @@
             CamPB.TabStop = false;
             CamPB.Click += CamPB_Click;
             // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Tick += timer1_Tick;
+            // 
             // PantallaQR
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -326,5 +333,6 @@
         private PictureBox CloseButtonQR;
         private Panel panel1;
         private PictureBox CamPB;
+        private System.Windows.Forms.Timer timer1;
     }
 }
