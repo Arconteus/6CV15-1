@@ -46,13 +46,6 @@
             ProfesorCB = new ComboBox();
             MateriaCB = new ComboBox();
             RegistroDGV = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            Anio = new DataGridViewTextBoxColumn();
-            Periodo = new DataGridViewTextBoxColumn();
-            Grupo = new DataGridViewTextBoxColumn();
-            Profesor = new DataGridViewTextBoxColumn();
-            Materia = new DataGridViewTextBoxColumn();
-            Horario = new DataGridViewTextBoxColumn();
             pictureBox1 = new PictureBox();
             groupBox1 = new GroupBox();
             button2 = new Button();
@@ -74,6 +67,12 @@
             groupBox2 = new GroupBox();
             FechaLabel = new Label();
             HoraLabel = new Label();
+            id = new DataGridViewTextBoxColumn();
+            Anio = new DataGridViewTextBoxColumn();
+            Periodo = new DataGridViewTextBoxColumn();
+            Grupo = new DataGridViewTextBoxColumn();
+            Profesor = new DataGridViewTextBoxColumn();
+            Materia = new DataGridViewTextBoxColumn();
             AddGroupGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RegistroDGV).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -287,7 +286,7 @@
             RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             RegistroDGV.ColumnHeadersHeight = 30;
             RegistroDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { id, Anio, Periodo, Grupo, Profesor, Materia, Horario });
+            RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { id, Anio, Periodo, Grupo, Profesor, Materia });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -317,60 +316,6 @@
             RegistroDGV.Size = new Size(1058, 467);
             RegistroDGV.TabIndex = 33;
             RegistroDGV.CellContentClick += RegistroDGV_CellContentClick;
-            // 
-            // id
-            // 
-            id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            id.HeaderText = "ID";
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Width = 42;
-            // 
-            // Anio
-            // 
-            Anio.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Anio.HeaderText = "Año";
-            Anio.Name = "Anio";
-            Anio.ReadOnly = true;
-            Anio.Resizable = DataGridViewTriState.True;
-            Anio.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Anio.Width = 34;
-            // 
-            // Periodo
-            // 
-            Periodo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Periodo.HeaderText = "Periodo";
-            Periodo.Name = "Periodo";
-            Periodo.ReadOnly = true;
-            Periodo.Width = 72;
-            // 
-            // Grupo
-            // 
-            Grupo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Grupo.HeaderText = "Grupo";
-            Grupo.Name = "Grupo";
-            Grupo.ReadOnly = true;
-            Grupo.Width = 64;
-            // 
-            // Profesor
-            // 
-            Profesor.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Profesor.HeaderText = "Profesor";
-            Profesor.Name = "Profesor";
-            Profesor.ReadOnly = true;
-            // 
-            // Materia
-            // 
-            Materia.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Materia.HeaderText = "Materia";
-            Materia.Name = "Materia";
-            Materia.ReadOnly = true;
-            // 
-            // Horario
-            // 
-            Horario.HeaderText = "Horario";
-            Horario.Name = "Horario";
-            Horario.ReadOnly = true;
             // 
             // pictureBox1
             // 
@@ -619,6 +564,54 @@
             HoraLabel.Text = "XX:XX P.M.";
             HoraLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // id
+            // 
+            id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            id.HeaderText = "ID";
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Width = 42;
+            // 
+            // Anio
+            // 
+            Anio.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Anio.HeaderText = "Año";
+            Anio.Name = "Anio";
+            Anio.ReadOnly = true;
+            Anio.Resizable = DataGridViewTriState.True;
+            Anio.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Anio.Width = 34;
+            // 
+            // Periodo
+            // 
+            Periodo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Periodo.HeaderText = "Periodo";
+            Periodo.Name = "Periodo";
+            Periodo.ReadOnly = true;
+            Periodo.Width = 72;
+            // 
+            // Grupo
+            // 
+            Grupo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Grupo.HeaderText = "Grupo";
+            Grupo.Name = "Grupo";
+            Grupo.ReadOnly = true;
+            Grupo.Width = 64;
+            // 
+            // Profesor
+            // 
+            Profesor.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Profesor.HeaderText = "Profesor";
+            Profesor.Name = "Profesor";
+            Profesor.ReadOnly = true;
+            // 
+            // Materia
+            // 
+            Materia.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Materia.HeaderText = "Materia";
+            Materia.Name = "Materia";
+            Materia.ReadOnly = true;
+            // 
             // PantallaAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -692,6 +685,5 @@
         private DataGridViewTextBoxColumn Grupo;
         private DataGridViewTextBoxColumn Profesor;
         private DataGridViewTextBoxColumn Materia;
-        private DataGridViewTextBoxColumn Horario;
     }
 }
