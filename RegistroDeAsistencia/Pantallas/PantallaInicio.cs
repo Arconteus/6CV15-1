@@ -61,7 +61,7 @@ namespace RegistroDeAsistencia.Pantallas
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            PantallaRegitroHorario temp = new PantallaRegitroHorario();
+            PantalaRegHo3 temp = new PantalaRegHo3();
             temp.Show();
 
         }
