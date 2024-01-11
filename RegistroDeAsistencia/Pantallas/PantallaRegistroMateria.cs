@@ -138,46 +138,37 @@ namespace RegistroDeAsistencia
 
         private void RegistroMDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == RegistroMDGV.Columns["EliminarButtonColumn"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex != RegistroMDGV.Columns["EliminarButtonColumn"].Index && e.RowIndex >= 0) return;
+
+            DialogResult result = MessageBox.Show("¿Estás seguro que deseas eliminar esta materia?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes) return;
+
+            string _id_materia = RegistroMDGV.Rows[e.RowIndex].Cells["id_materia"].Value.ToString();
+
+            if (Ctl_Grupo.GetList("where id_materia_grupo = " + _id_materia).Count > 0)
             {
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar esta materia?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    int idMateria = (int)RegistroMDGV.Rows[e.RowIndex].Cells["id_materia"].Value;
-
-                    bool exito = Ctl_Materias.Delete(idMateria);
-
-                    if (exito)
-                    {
-                        // Refresca la lista de materias desde la base de datos
-                        List<Materia> materias = Ctl_Materias.GetList();
-
-                        // Asigna la lista actualizada al DataSource del DataGridView
-                        RegistroMDGV.DataSource = null;
-                        RegistroMDGV.DataSource = materias;
-
-                        RegistroMDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
-
-                        // Establecer anchos específicos para las columnas
-                        RegistroMDGV.Columns["id_materia"].Width = 50;  // Ancho en píxeles
-                        RegistroMDGV.Columns["nom_materia"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                        RegistroMDGV.Columns["EliminarButtonColumn"].Width = 80;  // Ancho en píxeles
-
-                        // Actualiza los números de fila
-                        for (int i = 0; i < RegistroMDGV.Rows.Count; i++)
-                        {
-                            RegistroMDGV.Rows[i].Cells[0].Value = i + 1;
-                        }
-
-                        numeroFilaActual = RegistroMDGV.Rows.Count + 1;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al eliminar la materia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+                MessageBox.Show("No se puede eliminar esta materia debido a que hay un grupo vinculado");
+                return;
             }
+
+            Materia _materia = new Materia() { id = int.Parse(_id_materia) };
+            bool DeleteSuccess = Ctl_Materias.Delete(_materia);
+
+            if (DeleteSuccess)
+            {
+                ActualizarMDGV();
+            }
+            else
+            {
+                ActualizarMDGV();
+                MessageBox.Show("Error al eliminar el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ActualizarMDGV()
+        {
+            throw new NotImplementedException();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

@@ -143,5 +143,10 @@ namespace RegistroDeAsistencia.DataBase.Control
             }
             return output;
         }
+
+        internal static bool Delete(Profesor profesor)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
