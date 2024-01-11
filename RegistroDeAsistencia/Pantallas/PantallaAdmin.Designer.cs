@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Grupolabel1 = new Label();
             Profesorlabel2 = new Label();
             Materialabel3 = new Label();
@@ -126,7 +126,7 @@
             AddMateriaButton.Margin = new Padding(0, 0, 3, 0);
             AddMateriaButton.Name = "AddMateriaButton";
             AddMateriaButton.Size = new Size(114, 24);
-            AddMateriaButton.TabIndex = 25;
+            AddMateriaButton.TabIndex = 7;
             AddMateriaButton.Text = "Agregar Materia";
             AddMateriaButton.UseVisualStyleBackColor = false;
             AddMateriaButton.Click += AddMateriaButton_Click;
@@ -166,7 +166,7 @@
             AddGrupoButton.Location = new Point(831, 22);
             AddGrupoButton.Name = "AddGrupoButton";
             AddGrupoButton.Size = new Size(105, 52);
-            AddGrupoButton.TabIndex = 35;
+            AddGrupoButton.TabIndex = 6;
             AddGrupoButton.Text = "Agregar grupo";
             AddGrupoButton.UseVisualStyleBackColor = false;
             AddGrupoButton.Click += AddGrupoButton_Click;
@@ -178,7 +178,7 @@
             AnioTB.Location = new Point(347, 22);
             AnioTB.Name = "AnioTB";
             AnioTB.Size = new Size(49, 23);
-            AnioTB.TabIndex = 38;
+            AnioTB.TabIndex = 3;
             AnioTB.KeyPress += OnlyNumbers;
             // 
             // AddProfesorButton
@@ -193,7 +193,7 @@
             AddProfesorButton.Margin = new Padding(0);
             AddProfesorButton.Name = "AddProfesorButton";
             AddProfesorButton.Size = new Size(114, 23);
-            AddProfesorButton.TabIndex = 34;
+            AddProfesorButton.TabIndex = 7;
             AddProfesorButton.Text = "Agregar profesor";
             AddProfesorButton.UseVisualStyleBackColor = false;
             AddProfesorButton.Click += AddProfesorButton_Click;
@@ -229,7 +229,7 @@
             PeriodoCB.Location = new Point(269, 23);
             PeriodoCB.Name = "PeriodoCB";
             PeriodoCB.Size = new Size(37, 23);
-            PeriodoCB.TabIndex = 8;
+            PeriodoCB.TabIndex = 2;
             PeriodoCB.Text = "-";
             PeriodoCB.KeyPress += PeriodoCB_KeyPress;
             // 
@@ -242,7 +242,7 @@
             CodigoGrupoCB.Location = new Point(67, 22);
             CodigoGrupoCB.Name = "CodigoGrupoCB";
             CodigoGrupoCB.Size = new Size(142, 23);
-            CodigoGrupoCB.TabIndex = 7;
+            CodigoGrupoCB.TabIndex = 1;
             CodigoGrupoCB.Text = "-";
             CodigoGrupoCB.KeyPress += CodigoGrupoCB_KeyPress;
             // 
@@ -256,7 +256,7 @@
             ProfesorCB.Margin = new Padding(3, 3, 0, 3);
             ProfesorCB.Name = "ProfesorCB";
             ProfesorCB.Size = new Size(644, 23);
-            ProfesorCB.TabIndex = 6;
+            ProfesorCB.TabIndex = 5;
             ProfesorCB.Text = "-";
             // 
             // MateriaCB
@@ -269,7 +269,7 @@
             MateriaCB.Margin = new Padding(3, 3, 0, 3);
             MateriaCB.Name = "MateriaCB";
             MateriaCB.Size = new Size(256, 23);
-            MateriaCB.TabIndex = 5;
+            MateriaCB.TabIndex = 4;
             MateriaCB.Text = "-";
             // 
             // RegistroDGV
@@ -280,25 +280,25 @@
             RegistroDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
             RegistroDGV.BorderStyle = BorderStyle.None;
             RegistroDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             RegistroDGV.ColumnHeadersHeight = 30;
             RegistroDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { id, Anio, Periodo, Grupo, Profesor, Materia });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(63, 62, 70);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle2;
             RegistroDGV.EnableHeadersVisualStyles = false;
             RegistroDGV.GridColor = Color.White;
             RegistroDGV.Location = new Point(12, 118);
@@ -306,14 +306,14 @@
             RegistroDGV.ReadOnly = true;
             RegistroDGV.RightToLeft = RightToLeft.No;
             RegistroDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             RegistroDGV.RowHeadersVisible = false;
             RegistroDGV.RowTemplate.Height = 25;
             RegistroDGV.Size = new Size(1058, 470);
@@ -433,7 +433,7 @@
             FiltroCodigoComboBox.Location = new Point(3, 18);
             FiltroCodigoComboBox.Name = "FiltroCodigoComboBox";
             FiltroCodigoComboBox.Size = new Size(200, 23);
-            FiltroCodigoComboBox.TabIndex = 36;
+            FiltroCodigoComboBox.TabIndex = 13;
             FiltroCodigoComboBox.Text = "-";
             // 
             // label5
@@ -467,7 +467,7 @@
             FiltroProfesorComboBox.Location = new Point(3, 18);
             FiltroProfesorComboBox.Name = "FiltroProfesorComboBox";
             FiltroProfesorComboBox.Size = new Size(200, 23);
-            FiltroProfesorComboBox.TabIndex = 36;
+            FiltroProfesorComboBox.TabIndex = 12;
             FiltroProfesorComboBox.Text = "-";
             // 
             // label4
@@ -501,7 +501,7 @@
             FiltroMateriaComboBox.Location = new Point(3, 18);
             FiltroMateriaComboBox.Name = "FiltroMateriaComboBox";
             FiltroMateriaComboBox.Size = new Size(200, 23);
-            FiltroMateriaComboBox.TabIndex = 36;
+            FiltroMateriaComboBox.TabIndex = 11;
             FiltroMateriaComboBox.Text = "-";
             // 
             // label6
@@ -532,6 +532,7 @@
             // FiltroPeriodoComboBox
             // 
             FiltroPeriodoComboBox.BackColor = Color.FromArgb(63, 62, 70);
+            FiltroPeriodoComboBox.DropDownWidth = 10;
             FiltroPeriodoComboBox.FlatStyle = FlatStyle.Flat;
             FiltroPeriodoComboBox.ForeColor = SystemColors.Window;
             FiltroPeriodoComboBox.FormattingEnabled = true;
@@ -539,7 +540,7 @@
             FiltroPeriodoComboBox.Margin = new Padding(3, 3, 0, 3);
             FiltroPeriodoComboBox.Name = "FiltroPeriodoComboBox";
             FiltroPeriodoComboBox.Size = new Size(45, 23);
-            FiltroPeriodoComboBox.TabIndex = 36;
+            FiltroPeriodoComboBox.TabIndex = 10;
             FiltroPeriodoComboBox.Text = "-";
             FiltroPeriodoComboBox.KeyPress += OnlyNumbers;
             // 
@@ -568,7 +569,7 @@
             FiltroAñoTextBox.Location = new Point(35, 18);
             FiltroAñoTextBox.Name = "FiltroAñoTextBox";
             FiltroAñoTextBox.Size = new Size(46, 23);
-            FiltroAñoTextBox.TabIndex = 2;
+            FiltroAñoTextBox.TabIndex = 9;
             FiltroAñoTextBox.KeyPress += OnlyNumbers;
             // 
             // label1

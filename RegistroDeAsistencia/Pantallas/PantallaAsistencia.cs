@@ -1,6 +1,7 @@
 ﻿using RegistroDeAsistencia.DataBase.Control;
 using RegistroDeAsistencia.DataBase.Modelo;
 using RegistroDeAsistencia.Libraries;
+using RegistroDeAsistencia.Pantallas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,7 @@ namespace RegistroDeAsistencia
             CargarDatos();
             CargarCarreras();
             CargarEscuela();
+            CargarHoras();
         }
         private void Configuracion()
         {
@@ -94,12 +96,20 @@ namespace RegistroDeAsistencia
         {
             RegistroAsistencia _registroAssitencia = new RegistroAsistencia();
 
-            int _id_grupo_registro = 0;
-            string _hora_registro = " ";
-            string _fecha_registro = " ";
-            _registroAssitencia.id_grupo_registro = _id_grupo_registro;
-            _registroAssitencia.hora_registro = _hora_registro;
-            _registroAssitencia.fecha_registro = _fecha_registro;
+            int _hora_registro = Ctl_Hora.GetList("where desc_horas = '"+HoraComboBox.Text+"'").First().id_horas;
+
+            List<string> grupo = GrupoCB.Text.Split('-').ToList();
+
+            if (grupo.Count < 2) return null;
+
+            CodigoGrupo _codigo = Ctl_CodigoGrupo.GetList("where desc_grupo = '" + grupo[2]+"'").First();
+
+            Grupo _grupo = Ctl_Grupo.GetList("where anio = " + grupo[0] +
+                " and periodo = " + grupo[1] + " and codigo_grupo = " + _codigo.id_codigo).First();
+
+            _registroAssitencia.id_grupo_registro = _grupo.id_grupo;
+            _registroAssitencia.id_hora_registro = _hora_registro;
+            _registroAssitencia.fecha_registro = DateTime.Now.Year+"-"+DateTime.Now.Month+"-"+DateTime.Now.Day;
 
             return _registroAssitencia;
         }
@@ -114,14 +124,11 @@ namespace RegistroDeAsistencia
             CargarCarreras();
             CargarEscuela();
             UpdateDGV();
+            CargarHoras();
         }
         private void GrupoCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarDatos();
-        }
-        private void GrupoCB_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
         }
         private void MateriaTB_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -169,7 +176,61 @@ namespace RegistroDeAsistencia
             EscuelaCB.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             EscuelaCB.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
-
+        private void CargarHoras()
+        {
+            List<String> _hora = new List<string>();
+            foreach (Hora iteration in Ctl_Hora.GetList())
+            {
+                _hora.Add(iteration.desc_horas);
+            }
+            HoraComboBox.DataSource = _hora;
+            HoraComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            HoraComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            if (DateTime.Now.Hour <= 7 && DateTime.Now.Minute > 0)
+            {
+                HoraComboBox.Text = _hora[0];
+            }
+            if (DateTime.Now.Hour == 8 && DateTime.Now.Minute > 30)
+            {
+                HoraComboBox.Text = _hora[1];
+            }
+            if (DateTime.Now.Hour == 10 && DateTime.Now.Minute > 0)
+            {
+                HoraComboBox.Text = _hora[2];
+            }
+            if (DateTime.Now.Hour == 11 && DateTime.Now.Minute > 30)
+            {
+                HoraComboBox.Text = _hora[3];
+            }
+            if (DateTime.Now.Hour == 13 && DateTime.Now.Minute > 0)
+            {
+                HoraComboBox.Text = _hora[4];
+            }
+            if (DateTime.Now.Hour == 14 && DateTime.Now.Minute > 30)
+            {
+                HoraComboBox.Text = _hora[5];
+            }
+            if (DateTime.Now.Hour == 16 && DateTime.Now.Minute > 0)
+            {
+                HoraComboBox.Text = _hora[6];
+            }
+            if (DateTime.Now.Hour == 17 && DateTime.Now.Minute > 30)
+            {
+                HoraComboBox.Text = _hora[7];
+            }
+            if (DateTime.Now.Hour == 19 && DateTime.Now.Minute > 0)
+            {
+                HoraComboBox.Text = _hora[8];
+            }
+            if (DateTime.Now.Hour == 20 && DateTime.Now.Minute > 30)
+            {
+                HoraComboBox.Text = _hora[9];
+            }
+            if (DateTime.Now.Hour >= 22 && DateTime.Now.Minute > 0)
+            {
+                HoraComboBox.Text = _hora[10];
+            }
+        }
         private void AddAlumnoButton_Click(object sender, EventArgs e)
         {
             if (NomTextBox.Text.Trim(' ') == "")
@@ -189,11 +250,11 @@ namespace RegistroDeAsistencia
             }
             if (!Ctl_Alumno.Contain(new Alumno() { boleta = BoletaTextBox.Text }))
             {
-                if(BoletaTextBox.Text.Length < 10)
+                if (BoletaTextBox.Text.Length < 10)
                 {
                     MessageBox.Show("La boleta debe contener al menos 10 digitos.");
                 }
-                DialogResult answer = MessageBox.Show("El alumno con la boleta "+BoletaTextBox.Text+" No esta dado de alta", "¿Deseas registrarlo?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult answer = MessageBox.Show("El alumno con la boleta " + BoletaTextBox.Text + " No esta dado de alta", "¿Deseas registrarlo?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (answer == DialogResult.Yes)
                 {
                     Ctl_Alumno.Add(GetAlumno());
@@ -208,7 +269,7 @@ namespace RegistroDeAsistencia
         private void UpdateDGV()
         {
             RegistroDGV.Rows.Clear();
-            foreach(string iteration in Boletas)
+            foreach (string iteration in Boletas)
             {
                 Alumno _alumno = Ctl_Alumno.GetList("where boleta = " + iteration).First();
                 int i = RegistroDGV.Rows.Add();
@@ -239,10 +300,10 @@ namespace RegistroDeAsistencia
         public Alumno GetAlumno()
         {
             Alumno _alumno = new Alumno();
-            _alumno.boleta = BoletaTextBox.Text.ToUpper();
-            _alumno.apa_alumno = ApaTextBox.Text.ToUpper();
-            _alumno.ama_alumno = AmaTextBox.Text.ToUpper();
-            _alumno.nom_alumno = NomTextBox.Text.ToUpper();
+            _alumno.boleta = BoletaTextBox.Text.ToUpper().Trim();
+            _alumno.apa_alumno = ApaTextBox.Text.ToUpper().Trim();
+            _alumno.ama_alumno = AmaTextBox.Text.ToUpper().Trim();
+            _alumno.nom_alumno = NomTextBox.Text.ToUpper().Trim();
             Escuela _escuela = Ctl_Escuela.GetList("where nom_escuela = '" + EscuelaCB.Text + "'").First();
             _alumno.escuela_alumno = _escuela.id_escuela;
             Carrera _carrera = Ctl_Carrera.GetList("where nom_carrera = '" + CarreraCB.Text + "'").First();
@@ -250,5 +311,52 @@ namespace RegistroDeAsistencia
             return _alumno;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult answer = MessageBox.Show("Al entrar al registro de alumnos se limpiara el registro actual", "¿Deseas continuar?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (answer != DialogResult.Yes) return;
+            Boletas.Clear();
+            UpdateDGV();
+            PantallaAdministrarAlumnos temp = new PantallaAdministrarAlumnos();
+            temp.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult answer = MessageBox.Show("¿Estas seguro que deseas eliminar la lista de asistencia actual?", "Confirma tu respuesta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (answer != DialogResult.Yes) return;
+            Boletas.Clear();
+            UpdateDGV();
+        }
+
+        private void HoraComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void FinalizarButton_Click(object sender, EventArgs e)
+        {
+            if (Boletas.Count < 1)
+            {
+                MessageBox.Show("Para generar un registro deben haber asistido alumnos.");
+                return;
+            }
+            if (GetRegistroAsistencia == null)
+            {
+                MessageBox.Show("Es necesario que exista al menos un grupo seleccionado.");
+                return;
+            }
+            RegistroAsistencia _reg = GetRegistroAsistencia();
+            Tbl_RegistroAsistencia.Add(_reg);
+            foreach(string iteration in Boletas)
+            {
+                Alumno _alumno = Ctl_Alumno.GetList("where boleta = " + iteration).First();
+                Tbl_RelacionRegistroAlumno.Add(new RelacionRegistroAlumno()
+                {
+                    id_alumno_registro = _alumno.id_alumno,
+                    id_registro_relacion = _reg.id_registro
+                });
+            }
+        }
     }
 }

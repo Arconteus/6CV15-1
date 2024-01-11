@@ -95,7 +95,26 @@ namespace RegistroDeAsistencia.DataBase.Control
             return output;
         }
 
-        
+        public static bool Delete(Alumno alumnoInput)
+        {
+            bool output = false;
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText =
+                        "DELETE FROM ctl_alumno WHERE boleta = @boleta";
+                    command.Parameters.AddWithValue("@boleta", alumnoInput.boleta);
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        output = true;
+                    }
+                    command.Parameters.Clear();
+                }
+            }
+            return output;
+        }
 
         //=============================================================================================================
         // Metodos privados

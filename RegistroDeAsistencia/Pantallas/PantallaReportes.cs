@@ -65,21 +65,9 @@ namespace RegistroDeAsistencia
             FiltroCodigoComboBox.ValueMember = "id_codigo";
             FiltroCodigoComboBox.DataSource = listaGrupos;
         }
-        public void FillDGV(List<Grupo> Temp)
+        public void FillDGV(List<RegistroAsistencia> Temp)
         {
-            foreach (Grupo iteration in Temp)
-            {
-                int i = RegistroDGV.Rows.Add();
-                RegistroDGV.Rows[i].Cells["id"].Value = iteration.id_grupo;
-                RegistroDGV.Rows[i].Cells["anio"].Value = iteration.anio;
-                RegistroDGV.Rows[i].Cells["periodo"].Value = iteration.periodo;
-                CodigoGrupo _codigoGrupo = Ctl_CodigoGrupo.GetList("where id_codigo = " + iteration.codigo_grupo).First();
-                RegistroDGV.Rows[i].Cells["Grupo"].Value = _codigoGrupo.desc_grupo;
-                Profesor _profesor = Ctl_Profesor.GetList("where id_profesor = " + iteration.id_profesor_grupo).First();
-                RegistroDGV.Rows[i].Cells["Profesor"].Value = _profesor.NombreCompleto;
-                Materia _materia = Ctl_Materias.GetList("where id_materia = " + iteration.id_materia_grupo).First();
-                RegistroDGV.Rows[i].Cells["Materia"].Value = _materia.nom_materia;
-            }
+            
         }
         private void CargarMaterias()
         {
@@ -138,12 +126,12 @@ namespace RegistroDeAsistencia
         public void ActualizarDGV()
         {
             RegistroDGV.Rows.Clear();
-            FillDGV(Ctl_Grupo.GetList());
+            //FillDGV(Ctl_Grupo.GetList());
         }
         public void ActualizarDGV(string input)
         {
             RegistroDGV.Rows.Clear();
-            FillDGV(Ctl_Grupo.GetList(input));
+            //FillDGV(Ctl_Grupo.GetList(input));
         }
 
         private void BuscarButton_Click(object sender, EventArgs e)

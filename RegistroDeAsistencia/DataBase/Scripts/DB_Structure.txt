@@ -31,9 +31,11 @@ CREATE TABLE IF NOT EXISTS tbl_registroAsistencia(
 	id_registro INTEGER PRIMARY KEY AUTOINCREMENT,
   	id_grupo_registro INTEGER not NULL,
   	fecha_registro date not NULL,
-  	hora_registro time not null,
+  	id_hora_registro INTEGER not null,
   	CONSTRAINT "fk_grupo" FOREIGN KEY(id_grupo_registro)
-  	REFERENCES ctl_grupo(id_grupo)
+  	REFERENCES ctl_grupo(id_grupo),
+  	CONSTRAINT "fk_hora" FOREIGN KEY(id_hora_registro)
+  	REFERENCES ctl_horas(id_horas)
 );
 CREATE TABLE IF NOT EXISTS tbl_observacionRegistro(
 	id_observacionRegistro INTEGER PRIMARY KEY AUTOINCREMENT,

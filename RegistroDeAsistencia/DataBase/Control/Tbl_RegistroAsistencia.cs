@@ -107,12 +107,12 @@ namespace RegistroDeAsistencia.DataBase.Control
                 {
                     command.CommandText =
                         @"INSERT INTO tbl_registroAsistencia 
-                        (id_grupo_registro,fecha_registro,hora_registro) 
+                        (id_grupo_registro,fecha_registro,id_hora_registro) 
                         values 
-                        (@id_grupo_registro,@fecha_registro,@hora_registro)";
+                        (@id_grupo_registro,@fecha_registro,@id_hora_registro)";
                     command.Parameters.AddWithValue("@id_grupo_registro", registroAsistenciaInput.id_grupo_registro);
                     command.Parameters.AddWithValue("@fecha_registro", registroAsistenciaInput.fecha_registro);
-                    command.Parameters.AddWithValue("@hora_registro", registroAsistenciaInput.hora_registro);
+                    command.Parameters.AddWithValue("@id_hora_registro", registroAsistenciaInput.id_hora_registro);
                     if (command.ExecuteNonQuery() > 0)
                     {
                         output = true;
@@ -145,7 +145,7 @@ namespace RegistroDeAsistencia.DataBase.Control
                                 id_registro = int.Parse(reader["id_registro"].ToString()),
                                 id_grupo_registro = int.Parse(reader["id_grupo_registro"].ToString()),
                                 fecha_registro = reader["fecha_registro"].ToString(),
-                                hora_registro = reader["hora_registro"].ToString()
+                                id_hora_registro = int.Parse(reader["id_hora_registro"].ToString())
                             });
                         }
                     }

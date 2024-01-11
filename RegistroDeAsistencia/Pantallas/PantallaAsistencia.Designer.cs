@@ -42,10 +42,11 @@
             label7 = new Label();
             GroupBox = new GroupBox();
             FolioLabel = new Label();
-            SearchComboBox = new TextBox();
             pictureBox2 = new PictureBox();
             QrBox = new PictureBox();
             DetallesGroupBox = new GroupBox();
+            HoraComboBox = new ComboBox();
+            Horario = new Label();
             MateriaTB = new TextBox();
             ProfesorTextBox = new TextBox();
             FechaDTP = new DateTimePicker();
@@ -60,9 +61,6 @@
             Escuela = new DataGridViewTextBoxColumn();
             Carrera = new DataGridViewTextBoxColumn();
             Observacion = new DataGridViewButtonColumn();
-            EliminarRegistroButton = new Button();
-            SearchIcon = new PictureBox();
-            SearchPanel = new Panel();
             groupBox1 = new GroupBox();
             FechaLabel = new Label();
             HoraLabel = new Label();
@@ -88,8 +86,6 @@
             ((System.ComponentModel.ISupportInitialize)QrBox).BeginInit();
             DetallesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RegistroDGV).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)SearchIcon).BeginInit();
-            SearchPanel.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -109,9 +105,10 @@
             FinalizarButton.Margin = new Padding(0);
             FinalizarButton.Name = "FinalizarButton";
             FinalizarButton.Size = new Size(97, 33);
-            FinalizarButton.TabIndex = 0;
+            FinalizarButton.TabIndex = 12;
             FinalizarButton.Text = "Finalizar";
             FinalizarButton.UseVisualStyleBackColor = false;
+            FinalizarButton.Click += FinalizarButton_Click;
             // 
             // contextMenuStrip1
             // 
@@ -138,10 +135,9 @@
             GrupoCB.Name = "GrupoCB";
             GrupoCB.RightToLeft = RightToLeft.No;
             GrupoCB.Size = new Size(114, 23);
-            GrupoCB.TabIndex = 9;
+            GrupoCB.TabIndex = 0;
             GrupoCB.Text = "-";
             GrupoCB.SelectedIndexChanged += GrupoCB_SelectedIndexChanged;
-            GrupoCB.KeyPress += GrupoCB_KeyPress;
             // 
             // label3
             // 
@@ -190,7 +186,7 @@
             GroupBox.ForeColor = SystemColors.Control;
             GroupBox.Location = new Point(927, 15);
             GroupBox.Name = "GroupBox";
-            GroupBox.Size = new Size(123, 45);
+            GroupBox.Size = new Size(123, 87);
             GroupBox.TabIndex = 21;
             GroupBox.TabStop = false;
             GroupBox.Text = "Folio";
@@ -200,22 +196,10 @@
             FolioLabel.Dock = DockStyle.Fill;
             FolioLabel.Location = new Point(3, 19);
             FolioLabel.Name = "FolioLabel";
-            FolioLabel.Size = new Size(117, 23);
+            FolioLabel.Size = new Size(117, 65);
             FolioLabel.TabIndex = 22;
             FolioLabel.Text = "000001";
             FolioLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // SearchComboBox
-            // 
-            SearchComboBox.BackColor = Color.FromArgb(63, 62, 70);
-            SearchComboBox.BorderStyle = BorderStyle.None;
-            SearchComboBox.ForeColor = SystemColors.Window;
-            SearchComboBox.Location = new Point(29, 0);
-            SearchComboBox.Margin = new Padding(0);
-            SearchComboBox.Name = "SearchComboBox";
-            SearchComboBox.Size = new Size(1247, 16);
-            SearchComboBox.TabIndex = 24;
-            SearchComboBox.Tag = "sdvsdvsd";
             // 
             // pictureBox2
             // 
@@ -244,6 +228,8 @@
             // DetallesGroupBox
             // 
             DetallesGroupBox.Anchor = AnchorStyles.Top;
+            DetallesGroupBox.Controls.Add(HoraComboBox);
+            DetallesGroupBox.Controls.Add(Horario);
             DetallesGroupBox.Controls.Add(MateriaTB);
             DetallesGroupBox.Controls.Add(ProfesorTextBox);
             DetallesGroupBox.Controls.Add(FechaDTP);
@@ -260,14 +246,38 @@
             DetallesGroupBox.TabStop = false;
             DetallesGroupBox.Text = "Detalles";
             // 
+            // HoraComboBox
+            // 
+            HoraComboBox.BackColor = Color.FromArgb(63, 62, 70);
+            HoraComboBox.FlatStyle = FlatStyle.Flat;
+            HoraComboBox.ForeColor = SystemColors.Window;
+            HoraComboBox.FormattingEnabled = true;
+            HoraComboBox.Location = new Point(701, 22);
+            HoraComboBox.Name = "HoraComboBox";
+            HoraComboBox.RightToLeft = RightToLeft.No;
+            HoraComboBox.Size = new Size(106, 23);
+            HoraComboBox.TabIndex = 19;
+            HoraComboBox.Text = "-";
+            HoraComboBox.KeyPress += HoraComboBox_KeyPress;
+            // 
+            // Horario
+            // 
+            Horario.AutoSize = true;
+            Horario.ForeColor = SystemColors.Control;
+            Horario.Location = new Point(653, 26);
+            Horario.Name = "Horario";
+            Horario.Size = new Size(36, 15);
+            Horario.TabIndex = 18;
+            Horario.Text = "Hora:";
+            // 
             // MateriaTB
             // 
             MateriaTB.BackColor = Color.FromArgb(63, 62, 70);
             MateriaTB.ForeColor = SystemColors.ControlLightLight;
             MateriaTB.Location = new Point(390, 22);
             MateriaTB.Name = "MateriaTB";
-            MateriaTB.Size = new Size(417, 23);
-            MateriaTB.TabIndex = 94;
+            MateriaTB.Size = new Size(257, 23);
+            MateriaTB.TabIndex = 2;
             MateriaTB.KeyPress += MateriaTB_KeyPress;
             // 
             // ProfesorTextBox
@@ -277,7 +287,7 @@
             ProfesorTextBox.Location = new Point(66, 57);
             ProfesorTextBox.Name = "ProfesorTextBox";
             ProfesorTextBox.Size = new Size(741, 23);
-            ProfesorTextBox.TabIndex = 93;
+            ProfesorTextBox.TabIndex = 3;
             ProfesorTextBox.KeyPress += textBox1_KeyPress;
             // 
             // FechaDTP
@@ -288,7 +298,7 @@
             FechaDTP.Location = new Point(233, 22);
             FechaDTP.Name = "FechaDTP";
             FechaDTP.Size = new Size(95, 23);
-            FechaDTP.TabIndex = 18;
+            FechaDTP.TabIndex = 1;
             // 
             // richTextBox1
             // 
@@ -300,7 +310,7 @@
             richTextBox1.Margin = new Padding(0);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(1146, 33);
-            richTextBox1.TabIndex = 30;
+            richTextBox1.TabIndex = 11;
             richTextBox1.Text = "";
             // 
             // label2
@@ -344,7 +354,7 @@
             RegistroDGV.DefaultCellStyle = dataGridViewCellStyle2;
             RegistroDGV.EnableHeadersVisualStyles = false;
             RegistroDGV.GridColor = Color.White;
-            RegistroDGV.Location = new Point(12, 131);
+            RegistroDGV.Location = new Point(12, 118);
             RegistroDGV.Margin = new Padding(3, 0, 3, 3);
             RegistroDGV.Name = "RegistroDGV";
             RegistroDGV.ReadOnly = true;
@@ -360,7 +370,7 @@
             RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             RegistroDGV.RowHeadersVisible = false;
             RegistroDGV.RowTemplate.Height = 25;
-            RegistroDGV.Size = new Size(1276, 329);
+            RegistroDGV.Size = new Size(1276, 342);
             RegistroDGV.TabIndex = 32;
             // 
             // Select
@@ -424,48 +434,6 @@
             Observacion.Name = "Observacion";
             Observacion.ReadOnly = true;
             Observacion.Width = 41;
-            // 
-            // EliminarRegistroButton
-            // 
-            EliminarRegistroButton.Anchor = AnchorStyles.Top;
-            EliminarRegistroButton.BackColor = Color.FromArgb(193, 71, 71);
-            EliminarRegistroButton.Cursor = Cursors.Hand;
-            EliminarRegistroButton.FlatAppearance.BorderSize = 0;
-            EliminarRegistroButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(193, 71, 71);
-            EliminarRegistroButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(239, 88, 88);
-            EliminarRegistroButton.FlatStyle = FlatStyle.Flat;
-            EliminarRegistroButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            EliminarRegistroButton.ForeColor = SystemColors.Control;
-            EliminarRegistroButton.Location = new Point(927, 66);
-            EliminarRegistroButton.Name = "EliminarRegistroButton";
-            EliminarRegistroButton.Size = new Size(123, 35);
-            EliminarRegistroButton.TabIndex = 33;
-            EliminarRegistroButton.Text = "Eliminar Registro";
-            EliminarRegistroButton.UseVisualStyleBackColor = false;
-            // 
-            // SearchIcon
-            // 
-            SearchIcon.BackColor = Color.FromArgb(63, 62, 70);
-            SearchIcon.Image = Properties.Resources.Search_Icon;
-            SearchIcon.Location = new Point(0, 0);
-            SearchIcon.Margin = new Padding(0);
-            SearchIcon.Name = "SearchIcon";
-            SearchIcon.Size = new Size(16, 16);
-            SearchIcon.SizeMode = PictureBoxSizeMode.Zoom;
-            SearchIcon.TabIndex = 35;
-            SearchIcon.TabStop = false;
-            // 
-            // SearchPanel
-            // 
-            SearchPanel.Anchor = AnchorStyles.Top;
-            SearchPanel.BackColor = Color.FromArgb(63, 62, 70);
-            SearchPanel.Controls.Add(SearchComboBox);
-            SearchPanel.Controls.Add(SearchIcon);
-            SearchPanel.Location = new Point(12, 115);
-            SearchPanel.Margin = new Padding(0);
-            SearchPanel.Name = "SearchPanel";
-            SearchPanel.Size = new Size(1276, 15);
-            SearchPanel.TabIndex = 36;
             // 
             // groupBox1
             // 
@@ -539,9 +507,10 @@
             button1.Location = new Point(1096, 42);
             button1.Name = "button1";
             button1.Size = new Size(71, 23);
-            button1.TabIndex = 108;
+            button1.TabIndex = 10;
             button1.Text = "Editar";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // AddAlumnoButton
             // 
@@ -558,7 +527,7 @@
             AddAlumnoButton.Margin = new Padding(0);
             AddAlumnoButton.Name = "AddAlumnoButton";
             AddAlumnoButton.Size = new Size(90, 23);
-            AddAlumnoButton.TabIndex = 105;
+            AddAlumnoButton.TabIndex = 10;
             AddAlumnoButton.Text = "Agregar";
             AddAlumnoButton.UseVisualStyleBackColor = false;
             AddAlumnoButton.Click += AddAlumnoButton_Click;
@@ -585,7 +554,7 @@
             EscuelaCB.Name = "EscuelaCB";
             EscuelaCB.RightToLeft = RightToLeft.No;
             EscuelaCB.Size = new Size(180, 23);
-            EscuelaCB.TabIndex = 103;
+            EscuelaCB.TabIndex = 9;
             EscuelaCB.KeyPress += comboBox2_KeyPress;
             // 
             // CarreraCB
@@ -599,7 +568,7 @@
             CarreraCB.Name = "CarreraCB";
             CarreraCB.RightToLeft = RightToLeft.No;
             CarreraCB.Size = new Size(180, 23);
-            CarreraCB.TabIndex = 95;
+            CarreraCB.TabIndex = 8;
             CarreraCB.KeyPress += comboBox1_KeyPress;
             // 
             // label11
@@ -654,7 +623,7 @@
             AmaTextBox.Location = new Point(247, 42);
             AmaTextBox.Name = "AmaTextBox";
             AmaTextBox.Size = new Size(125, 23);
-            AmaTextBox.TabIndex = 97;
+            AmaTextBox.TabIndex = 6;
             AmaTextBox.KeyPress += OnlyLetters;
             // 
             // ApaTextBox
@@ -665,7 +634,7 @@
             ApaTextBox.Location = new Point(116, 42);
             ApaTextBox.Name = "ApaTextBox";
             ApaTextBox.Size = new Size(125, 23);
-            ApaTextBox.TabIndex = 96;
+            ApaTextBox.TabIndex = 5;
             ApaTextBox.KeyPress += OnlyLetters;
             // 
             // NomTextBox
@@ -676,7 +645,7 @@
             NomTextBox.Location = new Point(378, 42);
             NomTextBox.Name = "NomTextBox";
             NomTextBox.Size = new Size(250, 23);
-            NomTextBox.TabIndex = 95;
+            NomTextBox.TabIndex = 7;
             NomTextBox.KeyPress += OnlyLetters;
             // 
             // BoletaTextBox
@@ -687,7 +656,7 @@
             BoletaTextBox.Location = new Point(10, 42);
             BoletaTextBox.Name = "BoletaTextBox";
             BoletaTextBox.Size = new Size(100, 23);
-            BoletaTextBox.TabIndex = 94;
+            BoletaTextBox.TabIndex = 4;
             BoletaTextBox.TextChanged += BoletaTextBox_TextChanged;
             BoletaTextBox.KeyPress += OnlyNumbers;
             // 
@@ -719,6 +688,7 @@
             button2.TabIndex = 106;
             button2.Text = "Limpiar";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // label13
             // 
@@ -741,8 +711,6 @@
             Controls.Add(button2);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(SearchPanel);
-            Controls.Add(EliminarRegistroButton);
             Controls.Add(RegistroDGV);
             Controls.Add(label2);
             Controls.Add(richTextBox1);
@@ -762,9 +730,6 @@
             DetallesGroupBox.ResumeLayout(false);
             DetallesGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)RegistroDGV).EndInit();
-            ((System.ComponentModel.ISupportInitialize)SearchIcon).EndInit();
-            SearchPanel.ResumeLayout(false);
-            SearchPanel.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
@@ -784,7 +749,6 @@
         private Label label7;
         private GroupBox GroupBox;
         private Label FolioLabel;
-        private TextBox SearchComboBox;
         private PictureBox pictureBox2;
         private PictureBox QrBox;
         private GroupBox DetallesGroupBox;
@@ -792,9 +756,6 @@
         private RichTextBox richTextBox1;
         private Label label2;
         private DataGridView RegistroDGV;
-        private Button EliminarRegistroButton;
-        private PictureBox SearchIcon;
-        private Panel SearchPanel;
         private DataGridViewCheckBoxColumn Select;
         private DataGridViewTextBoxColumn Boleta;
         private DataGridViewTextBoxColumn Nombre;
@@ -825,5 +786,7 @@
         private Button button2;
         private Label label13;
         private Button button1;
+        private ComboBox HoraComboBox;
+        private Label Horario;
     }
 }
