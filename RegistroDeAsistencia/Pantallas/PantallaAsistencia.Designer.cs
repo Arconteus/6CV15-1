@@ -362,7 +362,6 @@
             RegistroDGV.RowTemplate.Height = 25;
             RegistroDGV.Size = new Size(1276, 329);
             RegistroDGV.TabIndex = 32;
-            RegistroDGV.CellContentClick += RegistroDGV_CellContentClick;
             // 
             // Select
             // 

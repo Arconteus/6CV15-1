@@ -47,7 +47,7 @@
             groupBox1 = new GroupBox();
             BuscarButton = new Button();
             label1 = new Label();
-            FiltroAñoTextBox = new TextBox();
+            textBox1 = new TextBox();
             FiltroMateriaComboBox = new ComboBox();
             FiltroProfesorComboBox = new ComboBox();
             groupBox2 = new GroupBox();
@@ -76,16 +76,16 @@
             groupBox4.SuspendLayout();
             SuspendLayout();
             // 
-            // FiltroCodigoComboBox
+            // FiltroGrupocomboBox
             // 
-            FiltroCodigoComboBox.BackColor = Color.FromArgb(63, 62, 70);
-            FiltroCodigoComboBox.FlatStyle = FlatStyle.Flat;
-            FiltroCodigoComboBox.ForeColor = SystemColors.ControlLightLight;
-            FiltroCodigoComboBox.FormattingEnabled = true;
-            FiltroCodigoComboBox.Location = new Point(93, 22);
-            FiltroCodigoComboBox.Name = "FiltroCodigoComboBox";
-            FiltroCodigoComboBox.Size = new Size(396, 23);
-            FiltroCodigoComboBox.TabIndex = 10;
+            FiltroGrupocomboBox.BackColor = Color.FromArgb(63, 62, 70);
+            FiltroGrupocomboBox.FlatStyle = FlatStyle.Flat;
+            FiltroGrupocomboBox.ForeColor = SystemColors.ControlLightLight;
+            FiltroGrupocomboBox.FormattingEnabled = true;
+            FiltroGrupocomboBox.Location = new Point(93, 22);
+            FiltroGrupocomboBox.Name = "FiltroGrupocomboBox";
+            FiltroGrupocomboBox.Size = new Size(396, 23);
+            FiltroGrupocomboBox.TabIndex = 10;
             // 
             // Materialabel3
             // 
@@ -220,10 +220,10 @@
             // 
             groupBox1.Controls.Add(BuscarButton);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(FiltroAñoTextBox);
+            groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(FiltroMateriaComboBox);
             groupBox1.Controls.Add(FiltroProfesorComboBox);
-            groupBox1.Controls.Add(FiltroCodigoComboBox);
+            groupBox1.Controls.Add(FiltroGrupocomboBox);
             groupBox1.Controls.Add(Grupolabel1);
             groupBox1.Controls.Add(Profesorlabel2);
             groupBox1.Controls.Add(FechaSuperiorDTP);
@@ -258,7 +258,6 @@
             BuscarButton.TabIndex = 36;
             BuscarButton.Text = "Buscar";
             BuscarButton.UseVisualStyleBackColor = false;
-            BuscarButton.Click += BuscarButton_Click;
             // 
             // label1
             // 
@@ -270,14 +269,14 @@
             label1.TabIndex = 34;
             label1.Text = "Periodo";
             // 
-            // FiltroAñoTextBox
+            // textBox1
             // 
-            FiltroAñoTextBox.BackColor = Color.FromArgb(63, 62, 70);
-            FiltroAñoTextBox.ForeColor = SystemColors.ControlLightLight;
-            FiltroAñoTextBox.Location = new Point(530, 22);
-            FiltroAñoTextBox.Name = "FiltroAñoTextBox";
-            FiltroAñoTextBox.Size = new Size(49, 23);
-            FiltroAñoTextBox.TabIndex = 33;
+            textBox1.BackColor = Color.FromArgb(63, 62, 70);
+            textBox1.ForeColor = SystemColors.ControlLightLight;
+            textBox1.Location = new Point(530, 22);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(49, 23);
+            textBox1.TabIndex = 33;
             // 
             // FiltroMateriaComboBox
             // 
@@ -363,7 +362,6 @@
             RegistroDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
             RegistroDGV.BorderStyle = BorderStyle.None;
             RegistroDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-=======
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = Color.FromArgb(86, 76, 149);
             dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -578,7 +576,7 @@
         }
 
         #endregion
-        private ComboBox FiltroCodigoComboBox;
+        private ComboBox FiltroGrupocomboBox;
         private Label Materialabel3;
         private Label Profesorlabel2;
         private Label Grupolabel1;
@@ -595,7 +593,7 @@
         private ComboBox FiltroProfesorComboBox;
         private ComboBox FiltroMateriaComboBox;
         private Label label1;
-        private TextBox FiltroAñoTextBox;
+        private TextBox textBox1;
         private GroupBox groupBox2;
         private DataGridView RegistroDGV;
         private DataGridViewCheckBoxColumn Select;
