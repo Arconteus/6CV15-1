@@ -315,6 +315,7 @@
             // 
             // RegistroPDGV
             // 
+            RegistroPDGV.AllowUserToAddRows = false;
             RegistroPDGV.AllowUserToDeleteRows = false;
             RegistroPDGV.AllowUserToOrderColumns = true;
             RegistroPDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

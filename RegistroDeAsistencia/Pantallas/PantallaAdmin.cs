@@ -1,26 +1,19 @@
 ﻿using RegistroDeAsistencia.DataBase.Control;
 using RegistroDeAsistencia.DataBase.Modelo;
 using System.Data;
+using Timer = System.Windows.Forms.Timer;
 
 namespace RegistroDeAsistencia
 {
     public partial class PantallaAdmin : Form
     {
         private DataTable dt;
-        private System.Windows.Forms.Timer timer;
+        private Timer timer;
         public PantallaAdmin()
         {
             InitializeComponent();
             ActualizarDGV();
             configuracion();
-            // Inicia un temporizador para actualizar la fecha y la hora cada segundo
-            timer = new System.Windows.Forms.Timer();
-            timer.Interval = 1000; // Intervalo en milisegundos (1 segundo)
-            timer.Tick += Timer_Tick;
-            timer.Start();
-
-            // Llama al método para mostrar la fecha y la hora inicialmente
-            MostrarFechaYHora();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -28,7 +21,6 @@ namespace RegistroDeAsistencia
             // Este evento se ejecutará cada segundo
             MostrarFechaYHora();
         }
-
         private void MostrarFechaYHora()
         {
             // Obtén la fecha y la hora actuales
@@ -65,7 +57,6 @@ namespace RegistroDeAsistencia
                 }
             }
         }
-
         public void configuracion()
         {
             DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
@@ -74,8 +65,17 @@ namespace RegistroDeAsistencia
             deleteButtonColumn.Text = "Eliminar";
             deleteButtonColumn.UseColumnTextForButtonValue = true;
             RegistroDGV.Columns.Add(deleteButtonColumn);
-        }
 
+
+            // Inicia un temporizador para actualizar la fecha y la hora cada segundo
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000; // Intervalo en milisegundos (1 segundo)
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
+            // Llama al método para mostrar la fecha y la hora inicialmente
+            MostrarFechaYHora();
+        }
         public void FillDGV(List<Grupo> Temp)
         {
             foreach (Grupo iteration in Temp)
@@ -92,19 +92,16 @@ namespace RegistroDeAsistencia
                 RegistroDGV.Rows[i].Cells["Materia"].Value = _materia.nom_materia;
             }
         }
-
         private void AddMateriaButton_Click(object sender, EventArgs e)
         {
             PantallaRegistroMateria temp = new PantallaRegistroMateria();
             temp.Show();
         }
-
         private void AddProfesorButton_Click(object sender, EventArgs e)
         {
             PantallaRegistroProfesor temp = new PantallaRegistroProfesor();
             temp.Show();
         }
-
         private void PantallaAdmin_Load(object sender, EventArgs e)
         {
             // Cargar las materias al ComboBox
@@ -116,17 +113,27 @@ namespace RegistroDeAsistencia
         }
         private void CargarMaterias()
         {
-            // Obtener la lista de materias desde la base de datos
-            List<Materia> materias = Ctl_Materias.GetList();
+            List<Materia> _materias = Ctl_Materias.GetList();
 
+            /**
             // Asignar la lista de materias al DataSource del ComboBox
             MateriaCB.DataSource = materias;
             FiltroMateriaComboBox.DataSource = materias;
             // Especificar qué propiedad de la clase Materia se mostrará en el ComboBox
-            MateriaCB.DisplayMember = "nom_materia";
-            FiltroMateriaComboBox.DisplayMember = "nom_materia";
             // Opcional: Puedes especificar qué propiedad de la clase Materia se utilizará como valor
             // MateriaComboBox.ValueMember = "id_materia";
+            **/
+
+            MateriaCB.Items.Clear();
+            FiltroMateriaComboBox.Items.Clear();
+            foreach (Materia iteration in _materias)
+            {
+                MateriaCB.Items.Add(iteration);
+                FiltroMateriaComboBox.Items.Add(iteration);
+            }
+
+            MateriaCB.DisplayMember = "nom_materia";
+            FiltroMateriaComboBox.DisplayMember = "nom_materia";
 
             // Habilitar la funcionalidad de búsqueda
             MateriaCB.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -134,7 +141,6 @@ namespace RegistroDeAsistencia
             FiltroMateriaComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             FiltroMateriaComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
-
         private void CargarProfesores()
         {
             // Obtener la lista de profesores desde la base de datos
@@ -155,7 +161,6 @@ namespace RegistroDeAsistencia
             FiltroProfesorComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             FiltroProfesorComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
-
         public void CargarGrupos()
         {
             // Obtener la lista de grupos desde la base de datos
@@ -173,30 +178,14 @@ namespace RegistroDeAsistencia
             FiltroCodigoComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             FiltroCodigoComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
-
         private void AddGrupoButton_Click(object sender, EventArgs e)
         {
             bool output = true;
-            if (AnioTB.Text == null)
-            {
-                output = false;
-            }
-            if (PeriodoCB.Text == null)
-            {
-                output = false;
-            }
-            if (CodigoGrupoCB.Text == null)
-            {
-                output = false;
-            }
-            if (Materia == null)
-            {
-                output = false;
-            }
-            if (ProfesorCB.Text == null)
-            {
-                output = false;
-            }
+            if (AnioTB.Text == null) output = false;
+            if (PeriodoCB.Text == null) output = false;
+            if (CodigoGrupoCB.Text == null) output = false;
+            if (Materia == null) output = false;
+            if (ProfesorCB.Text == null) output = false;
             if (output)
             {
                 CodigoGrupo _codigoGrupo = Ctl_CodigoGrupo.GetList("where desc_grupo = '" + CodigoGrupoCB.Text.Trim() + "'").First();
@@ -220,25 +209,16 @@ namespace RegistroDeAsistencia
             }
             ActualizarDGV();
         }
-
-        //Funciones custom
         public void ActualizarDGV()
         {
             RegistroDGV.Rows.Clear();
             FillDGV(Ctl_Grupo.GetList());
         }
-
         public void ActualizarDGV(string input)
         {
             RegistroDGV.Rows.Clear();
             FillDGV(Ctl_Grupo.GetList(input));
         }
-
-        private void ProfesorCB_DropDown(object sender, EventArgs e)
-        {
-            ActualizarDGV();
-        }
-
         private void RegistroDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == RegistroDGV.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0)
@@ -268,7 +248,6 @@ namespace RegistroDeAsistencia
                 }
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             Grupo Temo = new Grupo();
@@ -318,10 +297,15 @@ namespace RegistroDeAsistencia
                 ActualizarDGV();
             }
         }
-
-        private void HoraLabel_Click(object sender, EventArgs e)
+        private void OnlyNumbers(object sender, KeyPressEventArgs e)
         {
-
+            e.Handled = !char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        private void PantallaAdmin_Enter(object sender, EventArgs e)
+        {
+            CargarMaterias();
+            CargarGrupos();
+            CargarProfesores();
         }
     }
 }

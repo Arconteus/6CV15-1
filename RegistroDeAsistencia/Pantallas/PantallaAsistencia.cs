@@ -126,23 +126,21 @@ namespace RegistroDeAsistencia
 
         private void CargarGrupos()
         {
-            // Obtener la lista de grupos desde la base de datos
-            List<CodigoGrupo> grupos = Ctl_CodigoGrupo.GetList();
+            GrupoComboBox.DataSource = null;
 
-            // Asignar la lista de grupos al DataSource del ComboBox
-            GrupoComboBox.DataSource = grupos;
-
-            // Especificar qué propiedad de la clase CodigoGrupo se mostrará en el ComboBox
-            GrupoComboBox.DisplayMember = "desc_grupo";
-
-            // Habilitar la funcionalidad de búsqueda
+            List<Grupo> _grupos = Ctl_Grupo.GetList();
+            List<String> _listaDeGrupos = new List<string>();
+            foreach (Grupo iteration in _grupos)
+            {
+                string _anio = iteration.anio.ToString();
+                string _periodo = iteration.periodo.ToString();
+                CodigoGrupo _temoGrupo = Ctl_CodigoGrupo.GetList("where id_codigo = " + iteration.codigo_grupo).First();
+                string _codigo = _temoGrupo.desc_grupo.ToString();
+                _listaDeGrupos.Add(_anio + "-" + _periodo + "-" + _codigo);
+            }
+            GrupoComboBox.DataSource = _listaDeGrupos;
             GrupoComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             GrupoComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
-        }
-
-        private void SearchComboBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

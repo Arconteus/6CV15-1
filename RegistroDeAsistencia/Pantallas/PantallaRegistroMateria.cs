@@ -1,4 +1,5 @@
-﻿using RegistroDeAsistencia.DataBase.Control;
+﻿using Microsoft.FSharp.Core;
+using RegistroDeAsistencia.DataBase.Control;
 using RegistroDeAsistencia.DataBase.Modelo;
 using System;
 using System.Collections.Generic;
@@ -20,31 +21,7 @@ namespace RegistroDeAsistencia
         public PantallaRegistroMateria()
         {
             InitializeComponent();
-
-            List<Materia> materias = Ctl_Materias.GetList();
-
-            RegistroMDGV.DataSource = materias;
-
-            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
-            buttonColumn.HeaderText = "Eliminar";
-            buttonColumn.Name = "EliminarButtonColumn";
-            buttonColumn.Text = "Eliminar";
-            buttonColumn.UseColumnTextForButtonValue = true;
-            RegistroMDGV.Columns.Add(buttonColumn);
-
-            RegistroMDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
-
-            AddMateriaButton.Click += AddMateriaButton_Click;
-            RegistroMDGV.Columns["id_materia"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            RegistroMDGV.Columns["nom_materia"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            RegistroMDGV.Columns["EliminarButtonColumn"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-            RegistroMDGV.Columns["id_materia"].HeaderText = "ID";
-            RegistroMDGV.Columns["nom_materia"].HeaderText = "Materia";
-            RegistroMDGV.Columns["EliminarButtonColumn"].HeaderText = "Eliminar";
-
-            // Establece AutoSizeColumnsMode a None para evitar ajustes automáticos de tamaño de columna
-            RegistroMDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            Configurar();
         }
         //==================================================================
         // Funciones custom
@@ -53,6 +30,60 @@ namespace RegistroDeAsistencia
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void Configurar()
+        {
+            List<Materia> materias = Ctl_Materias.GetList();
+            RegistroMDGV.DataSource = materias;
+
+            //Configuracion del estilo del boton de eliminacion
+            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
+            buttonColumn.HeaderText = "Eliminar";
+            buttonColumn.Name = "EliminarButtonColumn";
+            buttonColumn.Text = "Eliminar";
+            buttonColumn.UseColumnTextForButtonValue = true;
+            //Configuracion del estilo del boton de eliminacion
+            DataGridViewButtonColumn buttonColumn1 = new DataGridViewButtonColumn();
+            buttonColumn1.HeaderText = "Eliminar";
+            buttonColumn1.Name = "EliminarButtonColumn";
+            buttonColumn1.Text = "Eliminar";
+            buttonColumn1.UseColumnTextForButtonValue = true;
+            //Agregar el boton de aliminacion
+            RegistroMDGV.Columns.Add(buttonColumn);
+            CodigoDGV.Columns.Add(buttonColumn1);
+
+            RegistroMDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
+            CodigoDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
+
+            AddMateriaButton.Click += AddMateriaButton_Click;
+            RegistroMDGV.Columns["id_materia"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            RegistroMDGV.Columns["nom_materia"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            RegistroMDGV.Columns["EliminarButtonColumn"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            RegistroMDGV.Columns["EliminarButtonColumn"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            RegistroMDGV.Columns["id_materia"].HeaderText = "ID";
+            RegistroMDGV.Columns["nom_materia"].HeaderText = "Materia";
+            RegistroMDGV.Columns["EliminarButtonColumn"].HeaderText = "Eliminar";
+            CodigoDGV.Columns["EliminarButtonColumn"].HeaderText = "Eliminar";
+
+            // Establece AutoSizeColumnsMode a None para evitar ajustes automáticos de tamaño de columna
+            RegistroMDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            CodigoDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+
+            ActualizarCodigos();
+        }
+
+        private void ActualizarCodigos()
+        {
+            CodigoDGV.Rows.Clear();
+            List<CodigoGrupo> _codigos = Ctl_CodigoGrupo.GetList();
+            foreach (CodigoGrupo iteration in _codigos)
+            {
+                int i = CodigoDGV.Rows.Add();
+                CodigoDGV.Rows[i].Cells["ID"].Value = iteration.id_codigo;
+                CodigoDGV.Rows[i].Cells["CodigoGrupo"].Value = iteration.desc_grupo;
+            }
+        }
 
         //==================================================================
         // Funciones de forms
@@ -63,6 +94,8 @@ namespace RegistroDeAsistencia
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+
         private void AddMateriaButton_Click(object sender, EventArgs e)
         {
             // Obtén el nombre de la materia desde el TextBox
@@ -159,14 +192,37 @@ namespace RegistroDeAsistencia
             RegistroMDGV.Columns["EliminarButtonColumn"].DisplayIndex = RegistroMDGV.Columns.Count - 1;
         }
 
-        private void ActualGroupBox_Enter(object sender, EventArgs e)
+        private void AddCodigoButton_Click(object sender, EventArgs e)
         {
-
+            if(CodigoTB.Text.Length>=6)
+            {
+                Ctl_CodigoGrupo.Add(new CodigoGrupo() { desc_grupo = CodigoTB.Text.ToUpper() });
+            }
+            ActualizarCodigos();
         }
 
-        private void AddMateriaButton_Click_1(object sender, EventArgs e)
+        private void CodigoDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == CodigoDGV.Columns["EliminarButtonColumn"].Index && e.RowIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar esta materia?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                if (result == DialogResult.Yes)
+                {
+                    int _idCodigo = (int)CodigoDGV.Rows[e.RowIndex].Cells["ID"].Value;
+
+                    bool exito = Ctl_CodigoGrupo.Delete(new CodigoGrupo() { id_codigo = _idCodigo });
+
+                    if (exito)
+                    {
+                        ActualizarCodigos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al eliminar el codigo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

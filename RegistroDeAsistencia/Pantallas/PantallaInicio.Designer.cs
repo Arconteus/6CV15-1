@@ -179,6 +179,7 @@
             // 
             // VisualDGV
             // 
+            VisualDGV.AllowUserToAddRows = false;
             VisualDGV.AllowUserToDeleteRows = false;
             VisualDGV.AllowUserToOrderColumns = true;
             VisualDGV.Anchor = AnchorStyles.Top;

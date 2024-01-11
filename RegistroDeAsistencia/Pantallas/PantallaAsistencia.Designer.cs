@@ -119,7 +119,7 @@
             GrupoComboBox.Location = new Point(66, 22);
             GrupoComboBox.Name = "GrupoComboBox";
             GrupoComboBox.RightToLeft = RightToLeft.No;
-            GrupoComboBox.Size = new Size(68, 23);
+            GrupoComboBox.Size = new Size(114, 23);
             GrupoComboBox.TabIndex = 9;
             GrupoComboBox.Text = "-";
             // 
@@ -127,7 +127,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = SystemColors.Control;
-            label3.Location = new Point(290, 25);
+            label3.Location = new Point(334, 26);
             label3.Name = "label3";
             label3.Size = new Size(50, 15);
             label3.TabIndex = 11;
@@ -157,7 +157,7 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = SystemColors.Control;
-            label7.Location = new Point(142, 25);
+            label7.Location = new Point(186, 26);
             label7.Name = "label7";
             label7.Size = new Size(41, 15);
             label7.TabIndex = 17;
@@ -196,7 +196,6 @@
             SearchComboBox.Size = new Size(1247, 16);
             SearchComboBox.TabIndex = 24;
             SearchComboBox.Tag = "sdvsdvsd";
-            SearchComboBox.TextChanged += SearchComboBox_TextChanged;
             // 
             // pictureBox2
             // 
@@ -259,9 +258,9 @@
             MateriaComboBox.FlatStyle = FlatStyle.Flat;
             MateriaComboBox.ForeColor = SystemColors.Window;
             MateriaComboBox.FormattingEnabled = true;
-            MateriaComboBox.Location = new Point(346, 22);
+            MateriaComboBox.Location = new Point(390, 22);
             MateriaComboBox.Name = "MateriaComboBox";
-            MateriaComboBox.Size = new Size(461, 23);
+            MateriaComboBox.Size = new Size(417, 23);
             MateriaComboBox.TabIndex = 19;
             MateriaComboBox.Text = "-";
             // 
@@ -270,7 +269,7 @@
             FechaDTP.CalendarForeColor = Color.FromArgb(63, 62, 70);
             FechaDTP.CalendarMonthBackground = Color.Gray;
             FechaDTP.Format = DateTimePickerFormat.Short;
-            FechaDTP.Location = new Point(189, 22);
+            FechaDTP.Location = new Point(233, 22);
             FechaDTP.Name = "FechaDTP";
             FechaDTP.Size = new Size(95, 23);
             FechaDTP.TabIndex = 18;
@@ -301,6 +300,7 @@
             // 
             // RegistroDGV
             // 
+            RegistroDGV.AllowUserToAddRows = false;
             RegistroDGV.AllowUserToDeleteRows = false;
             RegistroDGV.AllowUserToOrderColumns = true;
             RegistroDGV.Anchor = AnchorStyles.Top;

@@ -84,6 +84,25 @@ namespace RegistroDeAsistencia.DataBase.Control
             }
             return output;
         }
+        public static bool Delete(CodigoGrupo input)
+        {
+            bool output = false;
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = "DELETE FROM ctl_codigoGrupo WHERE id_codigo = @id_codigo";
+                    command.Parameters.AddWithValue("@id_codigo", input.id_codigo);
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        output = true;
+                    }
+                    command.Parameters.Clear();
+                }
+            }
+            return output;
+        }
 
         //=============================================================================================================
         // Metodos privados

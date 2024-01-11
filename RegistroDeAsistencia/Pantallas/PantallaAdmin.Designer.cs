@@ -179,6 +179,7 @@
             AnioTB.Name = "AnioTB";
             AnioTB.Size = new Size(49, 23);
             AnioTB.TabIndex = 38;
+            AnioTB.KeyPress += OnlyNumbers;
             // 
             // AddProfesorButton
             // 
@@ -222,6 +223,7 @@
             PeriodoCB.BackColor = Color.FromArgb(63, 62, 70);
             PeriodoCB.FlatStyle = FlatStyle.Flat;
             PeriodoCB.ForeColor = SystemColors.Window;
+            PeriodoCB.FormatString = "N2";
             PeriodoCB.FormattingEnabled = true;
             PeriodoCB.Items.AddRange(new object[] { "1", "2" });
             PeriodoCB.Location = new Point(269, 23);
@@ -229,6 +231,7 @@
             PeriodoCB.Size = new Size(37, 23);
             PeriodoCB.TabIndex = 8;
             PeriodoCB.Text = "-";
+            PeriodoCB.KeyPress += OnlyNumbers;
             // 
             // CodigoGrupoCB
             // 
@@ -254,7 +257,6 @@
             ProfesorCB.Size = new Size(644, 23);
             ProfesorCB.TabIndex = 6;
             ProfesorCB.Text = "-";
-            ProfesorCB.DropDown += ProfesorCB_DropDown;
             // 
             // MateriaCB
             // 
@@ -271,6 +273,7 @@
             // 
             // RegistroDGV
             // 
+            RegistroDGV.AllowUserToAddRows = false;
             RegistroDGV.AllowUserToDeleteRows = false;
             RegistroDGV.AllowUserToOrderColumns = true;
             RegistroDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
@@ -538,6 +541,7 @@
             FiltroPeriodoComboBox.Size = new Size(45, 23);
             FiltroPeriodoComboBox.TabIndex = 36;
             FiltroPeriodoComboBox.Text = "-";
+            FiltroPeriodoComboBox.KeyPress += OnlyNumbers;
             // 
             // label3
             // 
@@ -565,6 +569,7 @@
             FiltroAñoTextBox.Name = "FiltroAñoTextBox";
             FiltroAñoTextBox.Size = new Size(46, 23);
             FiltroAñoTextBox.TabIndex = 2;
+            FiltroAñoTextBox.KeyPress += OnlyNumbers;
             // 
             // label1
             // 
@@ -611,7 +616,6 @@
             HoraLabel.TabIndex = 0;
             HoraLabel.Text = "XX:XX P.M.";
             HoraLabel.TextAlign = ContentAlignment.MiddleCenter;
-            HoraLabel.Click += HoraLabel_Click;
             // 
             // PantallaAdmin
             // 
@@ -628,6 +632,7 @@
             Name = "PantallaAdmin";
             Text = "Pantalla_admin";
             Load += PantallaAdmin_Load;
+            Enter += PantallaAdmin_Enter;
             AddGroupGroupBox.ResumeLayout(false);
             AddGroupGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)RegistroDGV).EndInit();
