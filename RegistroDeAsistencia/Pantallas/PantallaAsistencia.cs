@@ -74,18 +74,21 @@ namespace RegistroDeAsistencia
         private void CargarDatos()
         {
             List<String> _temp = GrupoCB.Text.Split('-').ToList();
-            CodigoGrupo _codigo = Ctl_CodigoGrupo.GetList("where desc_grupo = '" + _temp[2] + "'").First();
-            string _whereClause = "where anio = " + _temp[0] + " and periodo = " + _temp[1] + " and codigo_grupo = " + _codigo.id_codigo;
-            if (Ctl_Grupo.GetList(_whereClause).Count < 1)
+            if (_temp.Count > 2)
             {
-                ProfesorTextBox.Text = "- - Sin profesor";
-                return;
+                CodigoGrupo _codigo = Ctl_CodigoGrupo.GetList("where desc_grupo = '" + _temp[2] + "'").First();
+                string _whereClause = "where anio = " + _temp[0] + " and periodo = " + _temp[1] + " and codigo_grupo = " + _codigo.id_codigo;
+                if (Ctl_Grupo.GetList(_whereClause).Count < 1)
+                {
+                    ProfesorTextBox.Text = "- - Sin profesor";
+                    return;
+                }
+                Grupo _grupo = Ctl_Grupo.GetList(_whereClause).First();
+                Profesor _profesor = Ctl_Profesor.GetList("where id_profesor = " + _grupo.id_profesor_grupo).First();
+                ProfesorTextBox.Text = _profesor.apa_profesor.ToString() + " " + _profesor.ama_profesor.ToString() + " " + _profesor.nom_profesor;
+                Materia _materia = Ctl_Materias.GetList("where id_materia = " + _grupo.id_materia_grupo).First();
+                MateriaTB.Text = _materia.nom_materia;
             }
-            Grupo _grupo = Ctl_Grupo.GetList(_whereClause).First();
-            Profesor _profesor = Ctl_Profesor.GetList("where id_profesor = " + _grupo.id_profesor_grupo).First();
-            ProfesorTextBox.Text = _profesor.apa_profesor.ToString() + " " + _profesor.ama_profesor.ToString() + " " + _profesor.nom_profesor;
-            Materia _materia = Ctl_Materias.GetList("where id_materia = " + _grupo.id_materia_grupo).First();
-            MateriaTB.Text = _materia.nom_materia;
         }
         private RegistroAsistencia GetRegistroAsistencia()
         {
