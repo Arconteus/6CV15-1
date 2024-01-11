@@ -124,5 +124,10 @@ namespace RegistroDeAsistencia
         {
             e.Handled = true;
         }
+
+        private void RegistroDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
