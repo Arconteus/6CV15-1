@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="1.0.7" />
+    <PackageReference Include="itext7" Version="8.0.2" />
     <PackageReference Include="ScrapySharp" Version="3.0.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
     <PackageReference Include="ZXing.Net" Version="0.16.9" />

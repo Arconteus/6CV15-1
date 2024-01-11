@@ -4,6 +4,11 @@ using System.Data;
 using System.Windows.Forms;
 using RegistroDeAsistencia.DataBase.Control;
 using RegistroDeAsistencia.DataBase.Modelo;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace RegistroDeAsistencia
 {
@@ -12,6 +17,8 @@ namespace RegistroDeAsistencia
         private DataTable dt;
         private List<CodigoGrupo> listaGrupos;
         private System.Windows.Forms.Timer timer;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["DataBase"].ConnectionString;
+
 
         public PantallaReportes()
         {
@@ -190,5 +197,7 @@ namespace RegistroDeAsistencia
                 ActualizarDGV();
             }
         }
+
+       
     }
 }

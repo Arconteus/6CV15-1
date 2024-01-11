@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using ZXing.QrCode;
 using ZXing.Windows.Compatibility;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace RegistroDeAsistencia
 {
@@ -168,6 +170,50 @@ namespace RegistroDeAsistencia
         private void timer1_Tick(object sender, EventArgs e)
         {
             Scan_Tick();
+        }
+
+        private void escaner(object sender, EventArgs e)
+        {
+            Console.WriteLine("Esperando la lectura de escaner");
+            ConsoleKeyInfo keyInfo;
+            string barcodeData = "";
+
+            do
+            {
+                keyInfo = Console.ReadKey();
+                if (keyInfo.Key != ConsoleKey.Enter)
+                {
+
+                    barcodeData += keyInfo.KeyChar;
+                }
+                else
+                {
+
+                    Console.WriteLine($"\nCodigo de barras escaneado");
+                    InsertarEnBaseDeDatos(barcodeData);
+                    Console.Write("Esperando la lectura del código...");
+                    barcodeData = "";
+                }
+            } while (keyInfo.Key != ConsoleKey.Escape);
+        }
+
+        static void InsertarEnBaseDeDatos(string barcodeData)
+        {
+            // Conexión a la base de datos
+            string connectionString = ConfigurationManager.ConnectionStrings["DataBase"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Comando SQL para la inserción 
+                string insertQuery = $"INSERT INTO Alumno (CodigoBarras) VALUES ('{barcodeData}')";
+
+                using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+
         }
     }
 }

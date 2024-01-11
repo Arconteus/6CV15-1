@@ -174,6 +174,7 @@
             Header.Name = "Header";
             Header.Size = new Size(320, 25);
             Header.TabIndex = 6;
+           
             Header.MouseDown += Header_MouseDown;
             // 
             // RestoreButton
