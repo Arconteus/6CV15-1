@@ -231,7 +231,7 @@
             PeriodoCB.Size = new Size(37, 23);
             PeriodoCB.TabIndex = 8;
             PeriodoCB.Text = "-";
-            PeriodoCB.KeyPress += OnlyNumbers;
+            PeriodoCB.KeyPress += PeriodoCB_KeyPress;
             // 
             // CodigoGrupoCB
             // 

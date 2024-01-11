@@ -272,7 +272,7 @@ namespace RegistroDeAsistencia
         }
         private void OnlyNumbers(object sender, KeyPressEventArgs e)
         {
-            e.Handled = true;
+            e.Handled = !char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
         private void PantallaAdmin_Enter(object sender, EventArgs e)
         {
@@ -282,6 +282,11 @@ namespace RegistroDeAsistencia
         }
 
         private void CodigoGrupoCB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void PeriodoCB_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
