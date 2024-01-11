@@ -54,7 +54,7 @@
             Materia = new DataGridViewTextBoxColumn();
             pictureBox1 = new PictureBox();
             groupBox1 = new GroupBox();
-            button2 = new Button();
+            BuscarFiltro = new Button();
             panel4 = new Panel();
             FiltroCodigoComboBox = new ComboBox();
             label5 = new Label();
@@ -381,7 +381,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(BuscarFiltro);
             groupBox1.Controls.Add(panel4);
             groupBox1.Controls.Add(panel3);
             groupBox1.Controls.Add(panel2);
@@ -394,25 +394,25 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Filtro";
             // 
-            // button2
+            // BuscarFiltro
             // 
-            button2.BackColor = Color.FromArgb(86, 76, 149);
-            button2.Dock = DockStyle.Bottom;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
-            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.ForeColor = SystemColors.Control;
-            button2.Location = new Point(3, 434);
-            button2.Margin = new Padding(0);
-            button2.Name = "button2";
-            button2.Size = new Size(206, 33);
-            button2.TabIndex = 36;
-            button2.Text = "Buscar";
-            button2.TextAlign = ContentAlignment.TopCenter;
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            BuscarFiltro.BackColor = Color.FromArgb(86, 76, 149);
+            BuscarFiltro.Dock = DockStyle.Bottom;
+            BuscarFiltro.FlatAppearance.BorderSize = 0;
+            BuscarFiltro.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            BuscarFiltro.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            BuscarFiltro.FlatStyle = FlatStyle.Flat;
+            BuscarFiltro.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            BuscarFiltro.ForeColor = SystemColors.Control;
+            BuscarFiltro.Location = new Point(3, 434);
+            BuscarFiltro.Margin = new Padding(0);
+            BuscarFiltro.Name = "BuscarFiltro";
+            BuscarFiltro.Size = new Size(206, 33);
+            BuscarFiltro.TabIndex = 36;
+            BuscarFiltro.Text = "Buscar";
+            BuscarFiltro.TextAlign = ContentAlignment.TopCenter;
+            BuscarFiltro.UseVisualStyleBackColor = false;
+            BuscarFiltro.Click += button2_Click;
             // 
             // panel4
             // 
@@ -675,7 +675,7 @@
         private ComboBox FiltroMateriaComboBox;
         private Label label6;
         private ComboBox FiltroPeriodoComboBox;
-        private Button button2;
+        private Button BuscarFiltro;
         private Panel panel4;
         private ComboBox FiltroCodigoComboBox;
         private Label label5;
