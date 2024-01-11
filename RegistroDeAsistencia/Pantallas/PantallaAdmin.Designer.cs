@@ -244,6 +244,7 @@
             CodigoGrupoCB.Size = new Size(142, 23);
             CodigoGrupoCB.TabIndex = 7;
             CodigoGrupoCB.Text = "-";
+            CodigoGrupoCB.KeyPress += CodigoGrupoCB_KeyPress;
             // 
             // ProfesorCB
             // 
@@ -301,7 +302,6 @@
             RegistroDGV.EnableHeadersVisualStyles = false;
             RegistroDGV.GridColor = Color.White;
             RegistroDGV.Location = new Point(12, 118);
-            RegistroDGV.Margin = new Padding(3, 0, 3, 3);
             RegistroDGV.Name = "RegistroDGV";
             RegistroDGV.ReadOnly = true;
             RegistroDGV.RightToLeft = RightToLeft.No;
@@ -316,7 +316,7 @@
             RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             RegistroDGV.RowHeadersVisible = false;
             RegistroDGV.RowTemplate.Height = 25;
-            RegistroDGV.Size = new Size(1058, 467);
+            RegistroDGV.Size = new Size(1058, 470);
             RegistroDGV.TabIndex = 33;
             RegistroDGV.CellContentClick += RegistroDGV_CellContentClick;
             // 

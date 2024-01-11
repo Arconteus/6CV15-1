@@ -35,7 +35,7 @@
             FinalizarButton = new Button();
             contextMenuStrip1 = new ContextMenuStrip(components);
             label1 = new Label();
-            GrupoComboBox = new ComboBox();
+            GrupoCB = new ComboBox();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
@@ -46,8 +46,8 @@
             pictureBox2 = new PictureBox();
             QrBox = new PictureBox();
             DetallesGroupBox = new GroupBox();
-            ProfesorComboBox = new ComboBox();
-            MateriaComboBox = new ComboBox();
+            MateriaTB = new TextBox();
+            ProfesorTextBox = new TextBox();
             FechaDTP = new DateTimePicker();
             richTextBox1 = new RichTextBox();
             label2 = new Label();
@@ -110,18 +110,20 @@
             label1.TabIndex = 8;
             label1.Text = " ";
             // 
-            // GrupoComboBox
+            // GrupoCB
             // 
-            GrupoComboBox.BackColor = Color.FromArgb(63, 62, 70);
-            GrupoComboBox.FlatStyle = FlatStyle.Flat;
-            GrupoComboBox.ForeColor = SystemColors.Window;
-            GrupoComboBox.FormattingEnabled = true;
-            GrupoComboBox.Location = new Point(66, 22);
-            GrupoComboBox.Name = "GrupoComboBox";
-            GrupoComboBox.RightToLeft = RightToLeft.No;
-            GrupoComboBox.Size = new Size(114, 23);
-            GrupoComboBox.TabIndex = 9;
-            GrupoComboBox.Text = "-";
+            GrupoCB.BackColor = Color.FromArgb(63, 62, 70);
+            GrupoCB.FlatStyle = FlatStyle.Flat;
+            GrupoCB.ForeColor = SystemColors.Window;
+            GrupoCB.FormattingEnabled = true;
+            GrupoCB.Location = new Point(66, 22);
+            GrupoCB.Name = "GrupoCB";
+            GrupoCB.RightToLeft = RightToLeft.No;
+            GrupoCB.Size = new Size(114, 23);
+            GrupoCB.TabIndex = 9;
+            GrupoCB.Text = "-";
+            GrupoCB.SelectedIndexChanged += GrupoCB_SelectedIndexChanged;
+            GrupoCB.KeyPress += GrupoCB_KeyPress;
             // 
             // label3
             // 
@@ -137,7 +139,7 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = SystemColors.Control;
-            label4.Location = new Point(6, 56);
+            label4.Location = new Point(6, 60);
             label4.Name = "label4";
             label4.Size = new Size(54, 15);
             label4.TabIndex = 12;
@@ -224,10 +226,10 @@
             // DetallesGroupBox
             // 
             DetallesGroupBox.Anchor = AnchorStyles.Top;
-            DetallesGroupBox.Controls.Add(ProfesorComboBox);
-            DetallesGroupBox.Controls.Add(MateriaComboBox);
+            DetallesGroupBox.Controls.Add(MateriaTB);
+            DetallesGroupBox.Controls.Add(ProfesorTextBox);
             DetallesGroupBox.Controls.Add(FechaDTP);
-            DetallesGroupBox.Controls.Add(GrupoComboBox);
+            DetallesGroupBox.Controls.Add(GrupoCB);
             DetallesGroupBox.Controls.Add(label7);
             DetallesGroupBox.Controls.Add(label5);
             DetallesGroupBox.Controls.Add(label4);
@@ -240,29 +242,25 @@
             DetallesGroupBox.TabStop = false;
             DetallesGroupBox.Text = "Detalles";
             // 
-            // ProfesorComboBox
+            // MateriaTB
             // 
-            ProfesorComboBox.BackColor = Color.FromArgb(63, 62, 70);
-            ProfesorComboBox.FlatStyle = FlatStyle.Flat;
-            ProfesorComboBox.ForeColor = SystemColors.Window;
-            ProfesorComboBox.FormattingEnabled = true;
-            ProfesorComboBox.Location = new Point(66, 56);
-            ProfesorComboBox.Name = "ProfesorComboBox";
-            ProfesorComboBox.Size = new Size(741, 23);
-            ProfesorComboBox.TabIndex = 20;
-            ProfesorComboBox.Text = "-";
+            MateriaTB.BackColor = Color.FromArgb(63, 62, 70);
+            MateriaTB.ForeColor = SystemColors.ControlLightLight;
+            MateriaTB.Location = new Point(390, 22);
+            MateriaTB.Name = "MateriaTB";
+            MateriaTB.Size = new Size(417, 23);
+            MateriaTB.TabIndex = 94;
+            MateriaTB.KeyPress += MateriaTB_KeyPress;
             // 
-            // MateriaComboBox
+            // ProfesorTextBox
             // 
-            MateriaComboBox.BackColor = Color.FromArgb(63, 62, 70);
-            MateriaComboBox.FlatStyle = FlatStyle.Flat;
-            MateriaComboBox.ForeColor = SystemColors.Window;
-            MateriaComboBox.FormattingEnabled = true;
-            MateriaComboBox.Location = new Point(390, 22);
-            MateriaComboBox.Name = "MateriaComboBox";
-            MateriaComboBox.Size = new Size(417, 23);
-            MateriaComboBox.TabIndex = 19;
-            MateriaComboBox.Text = "-";
+            ProfesorTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            ProfesorTextBox.ForeColor = SystemColors.ControlLightLight;
+            ProfesorTextBox.Location = new Point(66, 57);
+            ProfesorTextBox.Name = "ProfesorTextBox";
+            ProfesorTextBox.Size = new Size(741, 23);
+            ProfesorTextBox.TabIndex = 93;
+            ProfesorTextBox.KeyPress += textBox1_KeyPress;
             // 
             // FechaDTP
             // 
@@ -426,7 +424,6 @@
             ClearButton.TabIndex = 33;
             ClearButton.Text = "Limpiar";
             ClearButton.UseVisualStyleBackColor = false;
-            ClearButton.Click += ClearButton_Click;
             // 
             // SearchIcon
             // 
@@ -507,7 +504,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaAsistencia";
             Text = " ";
-            Load += PantallaAsistencia_Load;
+            Enter += PantallaAsistencia_Enter;
             GroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)QrBox).EndInit();
@@ -527,7 +524,7 @@
         private Button FinalizarButton;
         private ContextMenuStrip contextMenuStrip1;
         private Label label1;
-        private ComboBox GrupoComboBox;
+        private ComboBox GrupoCB;
         private Label label3;
         private Label label4;
         private Label label5;
@@ -540,8 +537,6 @@
         private GroupBox DetallesGroupBox;
         private DateTimePicker FechaDTP;
         private RichTextBox richTextBox1;
-        private ComboBox MateriaComboBox;
-        private ComboBox ProfesorComboBox;
         private Label label2;
         private DataGridView RegistroDGV;
         private Button ClearButton;
@@ -558,5 +553,7 @@
         private GroupBox groupBox1;
         private Label FechaLabel;
         private Label HoraLabel;
+        private TextBox ProfesorTextBox;
+        private TextBox MateriaTB;
     }
 }
