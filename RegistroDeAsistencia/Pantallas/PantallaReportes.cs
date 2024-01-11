@@ -16,6 +16,7 @@ namespace RegistroDeAsistencia
         public PantallaReportes()
         {
             InitializeComponent();
+            ActualizarDGV();
             dt = new DataTable();
             // Inicia un temporizador para actualizar la fecha y la hora cada segundo
             timer = new System.Windows.Forms.Timer();
@@ -60,9 +61,25 @@ namespace RegistroDeAsistencia
             CargarMaterias();
 
             // Configurar el ComboBox
-            FiltroGrupocomboBox.DisplayMember = "desc_grupo";
-            FiltroGrupocomboBox.ValueMember = "id_codigo";
-            FiltroGrupocomboBox.DataSource = listaGrupos;
+            FiltroCodigoComboBox.DisplayMember = "desc_grupo";
+            FiltroCodigoComboBox.ValueMember = "id_codigo";
+            FiltroCodigoComboBox.DataSource = listaGrupos;
+        }
+        public void FillDGV(List<Grupo> Temp)
+        {
+            foreach (Grupo iteration in Temp)
+            {
+                int i = RegistroDGV.Rows.Add();
+                RegistroDGV.Rows[i].Cells["id"].Value = iteration.id_grupo;
+                RegistroDGV.Rows[i].Cells["anio"].Value = iteration.anio;
+                RegistroDGV.Rows[i].Cells["periodo"].Value = iteration.periodo;
+                CodigoGrupo _codigoGrupo = Ctl_CodigoGrupo.GetList("where id_codigo = " + iteration.codigo_grupo).First();
+                RegistroDGV.Rows[i].Cells["Grupo"].Value = _codigoGrupo.desc_grupo;
+                Profesor _profesor = Ctl_Profesor.GetList("where id_profesor = " + iteration.id_profesor_grupo).First();
+                RegistroDGV.Rows[i].Cells["Profesor"].Value = _profesor.NombreCompleto;
+                Materia _materia = Ctl_Materias.GetList("where id_materia = " + iteration.id_materia_grupo).First();
+                RegistroDGV.Rows[i].Cells["Materia"].Value = _materia.nom_materia;
+            }
         }
         private void CargarMaterias()
         {
@@ -112,6 +129,78 @@ namespace RegistroDeAsistencia
             Profesor _profesor = Ctl_Profesor.GetList("where apa_profesor = '" + apa_profesor + "' " +
                 "and ama_profesor = '" + ama_profesor + "' " +
                 "and nom_profesor = '" + nom_profesor + "' ").First();
+        }
+
+        private void FiltroMateriaComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        public void ActualizarDGV()
+        {
+            RegistroDGV.Rows.Clear();
+            FillDGV(Ctl_Grupo.GetList());
+        }
+        public void ActualizarDGV(string input)
+        {
+            RegistroDGV.Rows.Clear();
+            FillDGV(Ctl_Grupo.GetList(input));
+        }
+
+        private void BuscarButton_Click(object sender, EventArgs e)
+        {
+            Grupo Temo = new Grupo();
+            Temo.id_profesor_grupo = 0;
+            string whereClause = "where ";
+            if (FiltroAñoTextBox.Text.Trim() != "")
+            {
+                whereClause += "anio = " + FiltroAñoTextBox.Text;
+            }
+            if (FiltroCodigoComboBox.Text != "Sin codigo" && FiltroCodigoComboBox.Text.Trim() != "")
+            {
+                string _whereClause = "where desc_grupo = '" + FiltroCodigoComboBox.Text + "'";
+                if (Ctl_CodigoGrupo.GetList(_whereClause).Count > 0)
+                {
+                    CodigoGrupo _codigoGrupo = Ctl_CodigoGrupo.GetList(_whereClause).First();
+                    if (whereClause != "where ") whereClause += "and ";
+                    whereClause += "codigo_grupo = " + _codigoGrupo.id_codigo;
+                }
+            }
+            if (FiltroMateriaComboBox.Text != "HORA LIBRE" && FiltroMateriaComboBox.Text.Trim() != "-" && FiltroMateriaComboBox.Text.Trim() != "")
+            {
+                Materia _materia = Ctl_Materias.GetList("where nom_materia = '" + FiltroMateriaComboBox.Text + "'").First();
+                if (whereClause != "where ") whereClause += "and ";
+                whereClause += "id_materia_grupo = " + _materia.id_materia;
+            }
+            if (FiltroPeriodoComboBox.Text != "-" && FiltroPeriodoComboBox.Text.Trim() != "")
+            {
+                if (whereClause != "where ") whereClause += "and ";
+                whereClause += "periodo = " + FiltroPeriodoComboBox.Text;
+            }
+            if (FiltroProfesorComboBox.Text != "- - Sin profesor" && FiltroProfesorComboBox.Text.Trim() != "")
+            {
+                List<String> fullname = FiltroProfesorComboBox.Text.Split(' ').ToList();
+                if (fullname.Count > 2)
+                {
+                    string apa_profesor = fullname[0];
+                    string ama_profesor = fullname[1];
+                    string nom_profesor = fullname[2];
+                    if (fullname.Count == 4) nom_profesor += " " + fullname[3];
+                    Profesor _profesor = Ctl_Profesor.GetList(
+                        "where apa_profesor = '" + apa_profesor + "' " +
+                        "and ama_profesor = '" + ama_profesor + "' " +
+                        "and nom_profesor = '" + nom_profesor + "' ").First();
+                    if (whereClause != "where ") whereClause += "and ";
+                    whereClause += "id_profesor_grupo = " + _profesor.id_profesor;
+                }
+            }
+            if (whereClause != "where ")
+            {
+                ActualizarDGV(whereClause);
+            }
+            else
+            {
+                ActualizarDGV();
+            }
         }
     }
 }

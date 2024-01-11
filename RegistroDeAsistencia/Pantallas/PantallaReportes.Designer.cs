@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            FiltroGrupocomboBox = new ComboBox();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            FiltroCodigoComboBox = new ComboBox();
             Materialabel3 = new Label();
             Profesorlabel2 = new Label();
             Grupolabel1 = new Label();
@@ -45,9 +45,9 @@
             excelxmlcheckBox2 = new CheckBox();
             excelxlsxcheckBox3 = new CheckBox();
             groupBox1 = new GroupBox();
-            BuscarButton = new Button();
+            BuscarFiltro = new Button();
             label1 = new Label();
-            textBox1 = new TextBox();
+            FiltroAñoTextBox = new TextBox();
             FiltroMateriaComboBox = new ComboBox();
             FiltroProfesorComboBox = new ComboBox();
             groupBox2 = new GroupBox();
@@ -76,16 +76,16 @@
             groupBox4.SuspendLayout();
             SuspendLayout();
             // 
-            // FiltroGrupocomboBox
+            // FiltroCodigoComboBox
             // 
-            FiltroGrupocomboBox.BackColor = Color.FromArgb(63, 62, 70);
-            FiltroGrupocomboBox.FlatStyle = FlatStyle.Flat;
-            FiltroGrupocomboBox.ForeColor = SystemColors.ControlLightLight;
-            FiltroGrupocomboBox.FormattingEnabled = true;
-            FiltroGrupocomboBox.Location = new Point(93, 22);
-            FiltroGrupocomboBox.Name = "FiltroGrupocomboBox";
-            FiltroGrupocomboBox.Size = new Size(396, 23);
-            FiltroGrupocomboBox.TabIndex = 10;
+            FiltroCodigoComboBox.BackColor = Color.FromArgb(63, 62, 70);
+            FiltroCodigoComboBox.FlatStyle = FlatStyle.Flat;
+            FiltroCodigoComboBox.ForeColor = SystemColors.ControlLightLight;
+            FiltroCodigoComboBox.FormattingEnabled = true;
+            FiltroCodigoComboBox.Location = new Point(93, 22);
+            FiltroCodigoComboBox.Name = "FiltroCodigoComboBox";
+            FiltroCodigoComboBox.Size = new Size(396, 23);
+            FiltroCodigoComboBox.TabIndex = 10;
             // 
             // Materialabel3
             // 
@@ -218,12 +218,12 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(BuscarButton);
+            groupBox1.Controls.Add(BuscarFiltro);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(FiltroAñoTextBox);
             groupBox1.Controls.Add(FiltroMateriaComboBox);
             groupBox1.Controls.Add(FiltroProfesorComboBox);
-            groupBox1.Controls.Add(FiltroGrupocomboBox);
+            groupBox1.Controls.Add(FiltroCodigoComboBox);
             groupBox1.Controls.Add(Grupolabel1);
             groupBox1.Controls.Add(Profesorlabel2);
             groupBox1.Controls.Add(FechaSuperiorDTP);
@@ -241,23 +241,24 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Filtros";
             // 
-            // BuscarButton
+            // BuscarFiltro
             // 
-            BuscarButton.BackColor = Color.FromArgb(86, 76, 149);
-            BuscarButton.Cursor = Cursors.Hand;
-            BuscarButton.FlatAppearance.BorderSize = 0;
-            BuscarButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
-            BuscarButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
-            BuscarButton.FlatStyle = FlatStyle.Flat;
-            BuscarButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            BuscarButton.ForeColor = SystemColors.Control;
-            BuscarButton.Location = new Point(684, 80);
-            BuscarButton.Margin = new Padding(0);
-            BuscarButton.Name = "BuscarButton";
-            BuscarButton.Size = new Size(187, 23);
-            BuscarButton.TabIndex = 36;
-            BuscarButton.Text = "Buscar";
-            BuscarButton.UseVisualStyleBackColor = false;
+            BuscarFiltro.BackColor = Color.FromArgb(86, 76, 149);
+            BuscarFiltro.Cursor = Cursors.Hand;
+            BuscarFiltro.FlatAppearance.BorderSize = 0;
+            BuscarFiltro.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            BuscarFiltro.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            BuscarFiltro.FlatStyle = FlatStyle.Flat;
+            BuscarFiltro.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            BuscarFiltro.ForeColor = SystemColors.Control;
+            BuscarFiltro.Location = new Point(684, 80);
+            BuscarFiltro.Margin = new Padding(0);
+            BuscarFiltro.Name = "BuscarFiltro";
+            BuscarFiltro.Size = new Size(187, 23);
+            BuscarFiltro.TabIndex = 36;
+            BuscarFiltro.Text = "Buscar";
+            BuscarFiltro.UseVisualStyleBackColor = false;
+            BuscarFiltro.Click += BuscarButton_Click;
             // 
             // label1
             // 
@@ -269,14 +270,14 @@
             label1.TabIndex = 34;
             label1.Text = "Periodo";
             // 
-            // textBox1
+            // FiltroAñoTextBox
             // 
-            textBox1.BackColor = Color.FromArgb(63, 62, 70);
-            textBox1.ForeColor = SystemColors.ControlLightLight;
-            textBox1.Location = new Point(530, 22);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(49, 23);
-            textBox1.TabIndex = 33;
+            FiltroAñoTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            FiltroAñoTextBox.ForeColor = SystemColors.ControlLightLight;
+            FiltroAñoTextBox.Location = new Point(530, 22);
+            FiltroAñoTextBox.Name = "FiltroAñoTextBox";
+            FiltroAñoTextBox.Size = new Size(49, 23);
+            FiltroAñoTextBox.TabIndex = 33;
             // 
             // FiltroMateriaComboBox
             // 
@@ -362,25 +363,25 @@
             RegistroDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
             RegistroDGV.BorderStyle = BorderStyle.None;
             RegistroDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             RegistroDGV.ColumnHeadersHeight = 30;
             RegistroDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { Select, Semestre, Grupo, Profesor, Materia, Horario, Eliminar });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(63, 62, 70);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle5;
             RegistroDGV.EnableHeadersVisualStyles = false;
             RegistroDGV.GridColor = Color.White;
             RegistroDGV.Location = new Point(12, 149);
@@ -388,14 +389,14 @@
             RegistroDGV.ReadOnly = true;
             RegistroDGV.RightToLeft = RightToLeft.No;
             RegistroDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             RegistroDGV.RowHeadersVisible = false;
             RegistroDGV.RowTemplate.Height = 25;
             RegistroDGV.Size = new Size(1058, 439);
@@ -576,7 +577,7 @@
         }
 
         #endregion
-        private ComboBox FiltroGrupocomboBox;
+        private ComboBox FiltroCodigoComboBox;
         private Label Materialabel3;
         private Label Profesorlabel2;
         private Label Grupolabel1;
@@ -593,7 +594,7 @@
         private ComboBox FiltroProfesorComboBox;
         private ComboBox FiltroMateriaComboBox;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox FiltroAñoTextBox;
         private GroupBox groupBox2;
         private DataGridView RegistroDGV;
         private DataGridViewCheckBoxColumn Select;
@@ -603,7 +604,7 @@
         private DataGridViewTextBoxColumn Materia;
         private DataGridViewButtonColumn Horario;
         private DataGridViewButtonColumn Eliminar;
-        private Button BuscarButton;
+        private Button BuscarFiltro;
         private Button ReporteExportInButton;
         private Button ReporteExportButton;
         private PictureBox pictureBox1;
