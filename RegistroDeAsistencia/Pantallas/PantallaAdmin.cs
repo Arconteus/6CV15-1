@@ -30,33 +30,6 @@ namespace RegistroDeAsistencia
             FechaLabel.Text = ahora.ToString("dd-MM-yyyy"); // Formato de fecha personalizado
             HoraLabel.Text = ahora.ToString("HH:mm:ss"); // Formato de hora personalizado
         }
-        private void RegistroPDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == RegistroDGV.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0)
-            {
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este registro?",
-                                                      "Confirmar eliminación",
-                                                      MessageBoxButtons.YesNo,
-                                                      MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    string num_trabajador = RegistroDGV.Rows[e.RowIndex].Cells[1].Value.ToString();
-
-                    // Llamar al método Delete de Ctl_Profesor
-                    bool deleteSuccess = Ctl_Profesor.Delete(num_trabajador);
-
-                    if (deleteSuccess)
-                    {
-                        ActualizarDGV();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al eliminar el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
         public void configuracion()
         {
             DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
@@ -221,31 +194,31 @@ namespace RegistroDeAsistencia
         }
         private void RegistroDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == RegistroDGV.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex != RegistroDGV.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0) return;
+
+            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este registro?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes) return;
+
+            string _id_grupo = RegistroDGV.Rows[e.RowIndex].Cells["id"].Value.ToString();
+
+            if (Tbl_RegistroAsistencia.GetList("where id_grupo_registro = " + _id_grupo).Count > 0)
             {
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este registro?",
-                                                      "Confirmar eliminación",
-                                                      MessageBoxButtons.YesNo,
-                                                      MessageBoxIcon.Question);
+                MessageBox.Show("No se puede eliminar este grupo porque hay registros vinculados");
+                return;
+            }
 
-                if (result == DialogResult.Yes)
-                {
-                    string _id_grupo = RegistroDGV.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                    Grupo _grupo = new Grupo() { id_grupo = int.Parse(_id_grupo) };
+            Grupo _grupo = new Grupo() { id_grupo = int.Parse(_id_grupo) };
+            bool deleteSuccess = Ctl_Grupo.Delete(_grupo);
 
-                    // Llamar al método Delete de Ctl_Profesor
-                    bool deleteSuccess = Ctl_Grupo.Delete(_grupo);
-
-                    if (deleteSuccess)
-                    {
-                        ActualizarDGV();
-                    }
-                    else
-                    {
-                        ActualizarDGV();
-                        MessageBox.Show("Error al eliminar el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+            if (deleteSuccess)
+            {
+                ActualizarDGV();
+            }
+            else
+            {
+                ActualizarDGV();
+                MessageBox.Show("Error al eliminar el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void button2_Click(object sender, EventArgs e)
@@ -299,13 +272,18 @@ namespace RegistroDeAsistencia
         }
         private void OnlyNumbers(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = true;
         }
         private void PantallaAdmin_Enter(object sender, EventArgs e)
         {
             CargarMaterias();
             CargarGrupos();
             CargarProfesores();
+        }
+
+        private void CodigoGrupoCB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }
