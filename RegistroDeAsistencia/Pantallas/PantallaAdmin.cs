@@ -158,7 +158,7 @@ namespace RegistroDeAsistencia
             if (AnioTB.Text == null) output = false;
             if (PeriodoCB.Text == null) output = false;
             if (CodigoGrupoCB.Text == null) output = false;
-            if (Materia == null) output = false;
+            if (MateriaCB == null) output = false;
             if (ProfesorCB.Text == null) output = false;
             if (output)
             {

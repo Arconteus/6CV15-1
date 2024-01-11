@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             FiltroGrupocomboBox = new ComboBox();
             Materialabel3 = new Label();
             Profesorlabel2 = new Label();
@@ -337,12 +337,12 @@
             // 
             // ReporteExportInButton
             // 
-            ReporteExportInButton.BackColor = Color.FromArgb(17, 16, 19);
+            ReporteExportInButton.BackColor = Color.FromArgb(62, 124, 185);
             ReporteExportInButton.Cursor = Cursors.Hand;
             ReporteExportInButton.Dock = DockStyle.Bottom;
             ReporteExportInButton.FlatAppearance.BorderSize = 0;
-            ReporteExportInButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
-            ReporteExportInButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            ReporteExportInButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(62, 124, 185);
+            ReporteExportInButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(85, 170, 255);
             ReporteExportInButton.FlatStyle = FlatStyle.Flat;
             ReporteExportInButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             ReporteExportInButton.ForeColor = SystemColors.Control;
@@ -362,25 +362,25 @@
             RegistroDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
             RegistroDGV.BorderStyle = BorderStyle.None;
             RegistroDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             RegistroDGV.ColumnHeadersHeight = 30;
             RegistroDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { Select, Semestre, Grupo, Profesor, Materia, Horario, Eliminar });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle8;
             RegistroDGV.EnableHeadersVisualStyles = false;
             RegistroDGV.GridColor = Color.White;
             RegistroDGV.Location = new Point(12, 149);
@@ -388,14 +388,14 @@
             RegistroDGV.ReadOnly = true;
             RegistroDGV.RightToLeft = RightToLeft.No;
             RegistroDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             RegistroDGV.RowHeadersVisible = false;
             RegistroDGV.RowTemplate.Height = 25;
             RegistroDGV.Size = new Size(1058, 439);
@@ -482,7 +482,7 @@
             // 
             // DBExport
             // 
-            DBExport.BackColor = Color.FromArgb(17, 16, 19);
+            DBExport.BackColor = Color.FromArgb(193, 71, 71);
             DBExport.Cursor = Cursors.Hand;
             DBExport.FlatAppearance.BorderSize = 0;
             DBExport.FlatAppearance.MouseDownBackColor = Color.FromArgb(193, 71, 71);
