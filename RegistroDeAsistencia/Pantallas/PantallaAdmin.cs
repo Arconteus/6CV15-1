@@ -1,4 +1,5 @@
-﻿using RegistroDeAsistencia.DataBase.Control;
+﻿using AngleSharp.Html.Dom;
+using RegistroDeAsistencia.DataBase.Control;
 using RegistroDeAsistencia.DataBase.Modelo;
 using System.Data;
 using Timer = System.Windows.Forms.Timer;
@@ -232,11 +233,15 @@ namespace RegistroDeAsistencia
             }
             if (FiltroCodigoComboBox.Text != "Sin codigo" && FiltroCodigoComboBox.Text.Trim() != "")
             {
-                CodigoGrupo _codigoGrupo = Ctl_CodigoGrupo.GetList("where desc_grupo = '" + FiltroCodigoComboBox.Text + "'").First();
-                if (whereClause != "where ") whereClause += "and ";
-                whereClause += "codigo_grupo = " + _codigoGrupo.id_codigo;
+                string _whereClause = "where desc_grupo = '" + FiltroCodigoComboBox.Text + "'";
+                if (Ctl_CodigoGrupo.GetList(_whereClause).Count > 0)
+                {
+                    CodigoGrupo _codigoGrupo = Ctl_CodigoGrupo.GetList(_whereClause).First();
+                    if (whereClause != "where ") whereClause += "and ";
+                    whereClause += "codigo_grupo = " + _codigoGrupo.id_codigo;
+                }
             }
-            if (FiltroMateriaComboBox.Text != "HORA LIBRE" && FiltroMateriaComboBox.Text.Trim() != "")
+            if (FiltroMateriaComboBox.Text != "HORA LIBRE" && FiltroMateriaComboBox.Text.Trim() != "-" && FiltroMateriaComboBox.Text.Trim() != "")
             {
                 Materia _materia = Ctl_Materias.GetList("where nom_materia = '" + FiltroMateriaComboBox.Text + "'").First();
                 if (whereClause != "where ") whereClause += "and ";
@@ -250,16 +255,19 @@ namespace RegistroDeAsistencia
             if (FiltroProfesorComboBox.Text != "- - Sin profesor" && FiltroProfesorComboBox.Text.Trim() != "")
             {
                 List<String> fullname = FiltroProfesorComboBox.Text.Split(' ').ToList();
-                string apa_profesor = fullname[0];
-                string ama_profesor = fullname[1];
-                string nom_profesor = fullname[2];
-                if (fullname.Count == 4) nom_profesor += " " + fullname[3];
-                Profesor _profesor = Ctl_Profesor.GetList(
-                    "where apa_profesor = '" + apa_profesor + "' " +
-                    "and ama_profesor = '" + ama_profesor + "' " +
-                    "and nom_profesor = '" + nom_profesor + "' ").First();
-                if (whereClause != "where ") whereClause += "and ";
-                whereClause += "id_profesor_grupo = " + _profesor.id_profesor;
+                if (fullname.Count > 2)
+                {
+                    string apa_profesor = fullname[0];
+                    string ama_profesor = fullname[1];
+                    string nom_profesor = fullname[2];
+                    if (fullname.Count == 4) nom_profesor += " " + fullname[3];
+                    Profesor _profesor = Ctl_Profesor.GetList(
+                        "where apa_profesor = '" + apa_profesor + "' " +
+                        "and ama_profesor = '" + ama_profesor + "' " +
+                        "and nom_profesor = '" + nom_profesor + "' ").First();
+                    if (whereClause != "where ") whereClause += "and ";
+                    whereClause += "id_profesor_grupo = " + _profesor.id_profesor;
+                } 
             }
             if (whereClause != "where ")
             {
