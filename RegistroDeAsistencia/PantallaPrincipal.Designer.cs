@@ -251,6 +251,7 @@
             Controls.Add(MainPanel);
             Controls.Add(ButtonsPanel);
             Controls.Add(Header);
+            ForeColor = SystemColors.ControlLightLight;
             FormBorderStyle = FormBorderStyle.None;
             MinimumSize = new Size(852, 500);
             Name = "PantallaPrincipal";

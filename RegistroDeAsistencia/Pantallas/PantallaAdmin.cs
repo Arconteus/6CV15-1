@@ -155,11 +155,11 @@ namespace RegistroDeAsistencia
         private void AddGrupoButton_Click(object sender, EventArgs e)
         {
             bool output = true;
-            if (AnioTB.Text == null) output = false;
-            if (PeriodoCB.Text == null) output = false;
-            if (CodigoGrupoCB.Text == null) output = false;
-            if (MateriaCB == null) output = false;
-            if (ProfesorCB.Text == null) output = false;
+            if (AnioTB.Text == "") output = false;
+            if (PeriodoCB.Text == "-") output = false;
+            if (CodigoGrupoCB.Text.Trim() == "") output = false;
+            if (MateriaCB.Text.Trim() == "-") output = false;
+            if (ProfesorCB.Text == "- - Sin profesor") output = false;
             if (output)
             {
                 CodigoGrupo _codigoGrupo = Ctl_CodigoGrupo.GetList("where desc_grupo = '" + CodigoGrupoCB.Text.Trim() + "'").First();

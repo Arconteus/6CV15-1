@@ -109,7 +109,14 @@ namespace RegistroDeAsistencia
 
             _registroAssitencia.id_grupo_registro = _grupo.id_grupo;
             _registroAssitencia.id_hora_registro = _hora_registro;
-            _registroAssitencia.fecha_registro = DateTime.Now.Year+"-"+DateTime.Now.Month+"-"+DateTime.Now.Day;
+            string _anio = DateTime.Now.Year.ToString();
+            string _mes = "";
+            if(DateTime.Now.Month<10) _mes+="0";
+            _mes += DateTime.Now.Month.ToString();
+            string _dia = "";
+            if(DateTime.Now.Day<10)_dia+="0";
+            _dia += DateTime.Now.Day.ToString();
+            _registroAssitencia.fecha_registro = _anio+"-"+_mes+"-"+_dia;
 
             return _registroAssitencia;
         }
@@ -355,6 +362,14 @@ namespace RegistroDeAsistencia
                 {
                     id_alumno_registro = _alumno.id_alumno,
                     id_registro_relacion = _reg.id_registro
+                });
+            }
+            if (ObservacionRTB.Text.Trim() != "")
+            {
+                Tbl_ObservacionRegistro.Add(new ObservacionRegistro() 
+                { 
+                    id_registro_observacion = _reg.id_registro,
+                    observacion = ObservacionRTB.Text.Trim()
                 });
             }
         }

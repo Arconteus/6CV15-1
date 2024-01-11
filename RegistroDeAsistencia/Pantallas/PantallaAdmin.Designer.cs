@@ -126,7 +126,7 @@
             AddMateriaButton.Margin = new Padding(0, 0, 3, 0);
             AddMateriaButton.Name = "AddMateriaButton";
             AddMateriaButton.Size = new Size(114, 24);
-            AddMateriaButton.TabIndex = 7;
+            AddMateriaButton.TabIndex = 4;
             AddMateriaButton.Text = "Agregar Materia";
             AddMateriaButton.UseVisualStyleBackColor = false;
             AddMateriaButton.Click += AddMateriaButton_Click;
@@ -166,7 +166,7 @@
             AddGrupoButton.Location = new Point(831, 22);
             AddGrupoButton.Name = "AddGrupoButton";
             AddGrupoButton.Size = new Size(105, 52);
-            AddGrupoButton.TabIndex = 6;
+            AddGrupoButton.TabIndex = 7;
             AddGrupoButton.Text = "Agregar grupo";
             AddGrupoButton.UseVisualStyleBackColor = false;
             AddGrupoButton.Click += AddGrupoButton_Click;
@@ -178,7 +178,7 @@
             AnioTB.Location = new Point(347, 22);
             AnioTB.Name = "AnioTB";
             AnioTB.Size = new Size(49, 23);
-            AnioTB.TabIndex = 3;
+            AnioTB.TabIndex = 2;
             AnioTB.KeyPress += OnlyNumbers;
             // 
             // AddProfesorButton
@@ -193,7 +193,7 @@
             AddProfesorButton.Margin = new Padding(0);
             AddProfesorButton.Name = "AddProfesorButton";
             AddProfesorButton.Size = new Size(114, 23);
-            AddProfesorButton.TabIndex = 7;
+            AddProfesorButton.TabIndex = 6;
             AddProfesorButton.Text = "Agregar profesor";
             AddProfesorButton.UseVisualStyleBackColor = false;
             AddProfesorButton.Click += AddProfesorButton_Click;
@@ -229,7 +229,7 @@
             PeriodoCB.Location = new Point(269, 23);
             PeriodoCB.Name = "PeriodoCB";
             PeriodoCB.Size = new Size(37, 23);
-            PeriodoCB.TabIndex = 2;
+            PeriodoCB.TabIndex = 1;
             PeriodoCB.Text = "-";
             PeriodoCB.KeyPress += PeriodoCB_KeyPress;
             // 
@@ -242,7 +242,7 @@
             CodigoGrupoCB.Location = new Point(67, 22);
             CodigoGrupoCB.Name = "CodigoGrupoCB";
             CodigoGrupoCB.Size = new Size(142, 23);
-            CodigoGrupoCB.TabIndex = 1;
+            CodigoGrupoCB.TabIndex = 0;
             CodigoGrupoCB.Text = "-";
             CodigoGrupoCB.KeyPress += CodigoGrupoCB_KeyPress;
             // 
@@ -269,7 +269,7 @@
             MateriaCB.Margin = new Padding(3, 3, 0, 3);
             MateriaCB.Name = "MateriaCB";
             MateriaCB.Size = new Size(256, 23);
-            MateriaCB.TabIndex = 4;
+            MateriaCB.TabIndex = 3;
             MateriaCB.Text = "-";
             // 
             // RegistroDGV
@@ -317,7 +317,7 @@
             RegistroDGV.RowHeadersVisible = false;
             RegistroDGV.RowTemplate.Height = 25;
             RegistroDGV.Size = new Size(1058, 470);
-            RegistroDGV.TabIndex = 33;
+            RegistroDGV.TabIndex = 8;
             RegistroDGV.CellContentClick += RegistroDGV_CellContentClick;
             // 
             // id
@@ -408,7 +408,7 @@
             BuscarFiltro.Margin = new Padding(0);
             BuscarFiltro.Name = "BuscarFiltro";
             BuscarFiltro.Size = new Size(206, 33);
-            BuscarFiltro.TabIndex = 36;
+            BuscarFiltro.TabIndex = 14;
             BuscarFiltro.Text = "Buscar";
             BuscarFiltro.TextAlign = ContentAlignment.TopCenter;
             BuscarFiltro.UseVisualStyleBackColor = false;

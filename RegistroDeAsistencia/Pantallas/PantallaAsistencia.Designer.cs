@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             FinalizarButton = new Button();
             contextMenuStrip1 = new ContextMenuStrip(components);
             label1 = new Label();
@@ -39,18 +39,18 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            label7 = new Label();
             GroupBox = new GroupBox();
             FolioLabel = new Label();
             pictureBox2 = new PictureBox();
             QrBox = new PictureBox();
             DetallesGroupBox = new GroupBox();
+            dateTimePicker1 = new DateTimePicker();
+            label7 = new Label();
             HoraComboBox = new ComboBox();
             Horario = new Label();
             MateriaTB = new TextBox();
             ProfesorTextBox = new TextBox();
-            FechaDTP = new DateTimePicker();
-            richTextBox1 = new RichTextBox();
+            ObservacionRTB = new RichTextBox();
             label2 = new Label();
             RegistroDGV = new DataGridView();
             Select = new DataGridViewCheckBoxColumn();
@@ -105,7 +105,7 @@
             FinalizarButton.Margin = new Padding(0);
             FinalizarButton.Name = "FinalizarButton";
             FinalizarButton.Size = new Size(97, 33);
-            FinalizarButton.TabIndex = 12;
+            FinalizarButton.TabIndex = 14;
             FinalizarButton.Text = "Finalizar";
             FinalizarButton.UseVisualStyleBackColor = false;
             FinalizarButton.Click += FinalizarButton_Click;
@@ -134,7 +134,7 @@
             GrupoCB.Location = new Point(66, 22);
             GrupoCB.Name = "GrupoCB";
             GrupoCB.RightToLeft = RightToLeft.No;
-            GrupoCB.Size = new Size(114, 23);
+            GrupoCB.Size = new Size(117, 23);
             GrupoCB.TabIndex = 0;
             GrupoCB.Text = "-";
             GrupoCB.SelectedIndexChanged += GrupoCB_SelectedIndexChanged;
@@ -168,16 +168,6 @@
             label5.Size = new Size(43, 15);
             label5.TabIndex = 13;
             label5.Text = "Grupo:";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.ForeColor = SystemColors.Control;
-            label7.Location = new Point(186, 26);
-            label7.Name = "label7";
-            label7.Size = new Size(41, 15);
-            label7.TabIndex = 17;
-            label7.Text = "Fecha:";
             // 
             // GroupBox
             // 
@@ -228,13 +218,13 @@
             // DetallesGroupBox
             // 
             DetallesGroupBox.Anchor = AnchorStyles.Top;
+            DetallesGroupBox.Controls.Add(dateTimePicker1);
+            DetallesGroupBox.Controls.Add(label7);
             DetallesGroupBox.Controls.Add(HoraComboBox);
             DetallesGroupBox.Controls.Add(Horario);
             DetallesGroupBox.Controls.Add(MateriaTB);
             DetallesGroupBox.Controls.Add(ProfesorTextBox);
-            DetallesGroupBox.Controls.Add(FechaDTP);
             DetallesGroupBox.Controls.Add(GrupoCB);
-            DetallesGroupBox.Controls.Add(label7);
             DetallesGroupBox.Controls.Add(label5);
             DetallesGroupBox.Controls.Add(label4);
             DetallesGroupBox.Controls.Add(label3);
@@ -246,6 +236,24 @@
             DetallesGroupBox.TabStop = false;
             DetallesGroupBox.Text = "Detalles";
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(233, 22);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(95, 23);
+            dateTimePicker1.TabIndex = 1;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ForeColor = SystemColors.Control;
+            label7.Location = new Point(189, 26);
+            label7.Name = "label7";
+            label7.Size = new Size(38, 15);
+            label7.TabIndex = 20;
+            label7.Text = "Fecha";
+            // 
             // HoraComboBox
             // 
             HoraComboBox.BackColor = Color.FromArgb(63, 62, 70);
@@ -256,7 +264,7 @@
             HoraComboBox.Name = "HoraComboBox";
             HoraComboBox.RightToLeft = RightToLeft.No;
             HoraComboBox.Size = new Size(106, 23);
-            HoraComboBox.TabIndex = 19;
+            HoraComboBox.TabIndex = 3;
             HoraComboBox.Text = "-";
             HoraComboBox.KeyPress += HoraComboBox_KeyPress;
             // 
@@ -287,31 +295,21 @@
             ProfesorTextBox.Location = new Point(66, 57);
             ProfesorTextBox.Name = "ProfesorTextBox";
             ProfesorTextBox.Size = new Size(741, 23);
-            ProfesorTextBox.TabIndex = 3;
+            ProfesorTextBox.TabIndex = 4;
             ProfesorTextBox.KeyPress += textBox1_KeyPress;
             // 
-            // FechaDTP
+            // ObservacionRTB
             // 
-            FechaDTP.CalendarForeColor = Color.FromArgb(63, 62, 70);
-            FechaDTP.CalendarMonthBackground = Color.Gray;
-            FechaDTP.Format = DateTimePickerFormat.Short;
-            FechaDTP.Location = new Point(233, 22);
-            FechaDTP.Name = "FechaDTP";
-            FechaDTP.Size = new Size(95, 23);
-            FechaDTP.TabIndex = 1;
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Anchor = AnchorStyles.Top;
-            richTextBox1.BackColor = Color.FromArgb(63, 62, 70);
-            richTextBox1.BorderStyle = BorderStyle.None;
-            richTextBox1.ForeColor = SystemColors.ControlLightLight;
-            richTextBox1.Location = new Point(48, 555);
-            richTextBox1.Margin = new Padding(0);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(1146, 33);
-            richTextBox1.TabIndex = 11;
-            richTextBox1.Text = "";
+            ObservacionRTB.Anchor = AnchorStyles.Top;
+            ObservacionRTB.BackColor = Color.FromArgb(63, 62, 70);
+            ObservacionRTB.BorderStyle = BorderStyle.None;
+            ObservacionRTB.ForeColor = SystemColors.ControlLightLight;
+            ObservacionRTB.Location = new Point(48, 555);
+            ObservacionRTB.Margin = new Padding(0);
+            ObservacionRTB.Name = "ObservacionRTB";
+            ObservacionRTB.Size = new Size(1146, 33);
+            ObservacionRTB.TabIndex = 13;
+            ObservacionRTB.Text = "";
             // 
             // label2
             // 
@@ -333,25 +331,25 @@
             RegistroDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
             RegistroDGV.BorderStyle = BorderStyle.None;
             RegistroDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             RegistroDGV.ColumnHeadersHeight = 30;
             RegistroDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             RegistroDGV.Columns.AddRange(new DataGridViewColumn[] { Select, Boleta, Nombre, Apa, Ama, Escuela, Carrera, Observacion });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            RegistroDGV.DefaultCellStyle = dataGridViewCellStyle5;
             RegistroDGV.EnableHeadersVisualStyles = false;
             RegistroDGV.GridColor = Color.White;
             RegistroDGV.Location = new Point(12, 118);
@@ -360,18 +358,18 @@
             RegistroDGV.ReadOnly = true;
             RegistroDGV.RightToLeft = RightToLeft.No;
             RegistroDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             RegistroDGV.RowHeadersVisible = false;
             RegistroDGV.RowTemplate.Height = 25;
             RegistroDGV.Size = new Size(1276, 342);
-            RegistroDGV.TabIndex = 32;
+            RegistroDGV.TabIndex = 5;
             // 
             // Select
             // 
@@ -507,7 +505,7 @@
             button1.Location = new Point(1096, 42);
             button1.Name = "button1";
             button1.Size = new Size(71, 23);
-            button1.TabIndex = 10;
+            button1.TabIndex = 15;
             button1.Text = "Editar";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
@@ -527,7 +525,7 @@
             AddAlumnoButton.Margin = new Padding(0);
             AddAlumnoButton.Name = "AddAlumnoButton";
             AddAlumnoButton.Size = new Size(90, 23);
-            AddAlumnoButton.TabIndex = 10;
+            AddAlumnoButton.TabIndex = 12;
             AddAlumnoButton.Text = "Agregar";
             AddAlumnoButton.UseVisualStyleBackColor = false;
             AddAlumnoButton.Click += AddAlumnoButton_Click;
@@ -554,7 +552,7 @@
             EscuelaCB.Name = "EscuelaCB";
             EscuelaCB.RightToLeft = RightToLeft.No;
             EscuelaCB.Size = new Size(180, 23);
-            EscuelaCB.TabIndex = 9;
+            EscuelaCB.TabIndex = 11;
             EscuelaCB.KeyPress += comboBox2_KeyPress;
             // 
             // CarreraCB
@@ -568,7 +566,7 @@
             CarreraCB.Name = "CarreraCB";
             CarreraCB.RightToLeft = RightToLeft.No;
             CarreraCB.Size = new Size(180, 23);
-            CarreraCB.TabIndex = 8;
+            CarreraCB.TabIndex = 10;
             CarreraCB.KeyPress += comboBox1_KeyPress;
             // 
             // label11
@@ -623,7 +621,7 @@
             AmaTextBox.Location = new Point(247, 42);
             AmaTextBox.Name = "AmaTextBox";
             AmaTextBox.Size = new Size(125, 23);
-            AmaTextBox.TabIndex = 6;
+            AmaTextBox.TabIndex = 8;
             AmaTextBox.KeyPress += OnlyLetters;
             // 
             // ApaTextBox
@@ -634,7 +632,7 @@
             ApaTextBox.Location = new Point(116, 42);
             ApaTextBox.Name = "ApaTextBox";
             ApaTextBox.Size = new Size(125, 23);
-            ApaTextBox.TabIndex = 5;
+            ApaTextBox.TabIndex = 7;
             ApaTextBox.KeyPress += OnlyLetters;
             // 
             // NomTextBox
@@ -645,7 +643,7 @@
             NomTextBox.Location = new Point(378, 42);
             NomTextBox.Name = "NomTextBox";
             NomTextBox.Size = new Size(250, 23);
-            NomTextBox.TabIndex = 7;
+            NomTextBox.TabIndex = 9;
             NomTextBox.KeyPress += OnlyLetters;
             // 
             // BoletaTextBox
@@ -656,7 +654,7 @@
             BoletaTextBox.Location = new Point(10, 42);
             BoletaTextBox.Name = "BoletaTextBox";
             BoletaTextBox.Size = new Size(100, 23);
-            BoletaTextBox.TabIndex = 4;
+            BoletaTextBox.TabIndex = 6;
             BoletaTextBox.TextChanged += BoletaTextBox_TextChanged;
             BoletaTextBox.KeyPress += OnlyNumbers;
             // 
@@ -685,7 +683,7 @@
             button2.Location = new Point(1191, 466);
             button2.Name = "button2";
             button2.Size = new Size(97, 34);
-            button2.TabIndex = 106;
+            button2.TabIndex = 16;
             button2.Text = "Limpiar";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
@@ -713,7 +711,7 @@
             Controls.Add(groupBox1);
             Controls.Add(RegistroDGV);
             Controls.Add(label2);
-            Controls.Add(richTextBox1);
+            Controls.Add(ObservacionRTB);
             Controls.Add(DetallesGroupBox);
             Controls.Add(QrBox);
             Controls.Add(pictureBox2);
@@ -746,14 +744,12 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private Label label7;
         private GroupBox GroupBox;
         private Label FolioLabel;
         private PictureBox pictureBox2;
         private PictureBox QrBox;
         private GroupBox DetallesGroupBox;
-        private DateTimePicker FechaDTP;
-        private RichTextBox richTextBox1;
+        private RichTextBox ObservacionRTB;
         private Label label2;
         private DataGridView RegistroDGV;
         private DataGridViewCheckBoxColumn Select;
@@ -788,5 +784,7 @@
         private Button button1;
         private ComboBox HoraComboBox;
         private Label Horario;
+        private DateTimePicker dateTimePicker1;
+        private Label label7;
     }
 }

@@ -123,6 +123,16 @@ namespace RegistroDeAsistencia.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icono {
+            get {
+                object obj = ResourceManager.GetObject("Icono", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ID_Icon {
             get {
                 object obj = ResourceManager.GetObject("ID_Icon", resourceCulture);
