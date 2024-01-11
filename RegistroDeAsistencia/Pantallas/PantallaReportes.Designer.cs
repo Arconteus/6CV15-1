@@ -299,6 +299,7 @@
             FiltroProfesorComboBox.Name = "FiltroProfesorComboBox";
             FiltroProfesorComboBox.Size = new Size(588, 23);
             FiltroProfesorComboBox.TabIndex = 33;
+            FiltroProfesorComboBox.SelectedIndexChanged += FiltroProfesorComboBox_SelectedIndexChanged;
             // 
             // groupBox2
             // 

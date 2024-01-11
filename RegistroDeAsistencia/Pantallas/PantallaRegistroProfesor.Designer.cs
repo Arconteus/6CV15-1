@@ -362,7 +362,6 @@
             RegistroPDGV.RowTemplate.Height = 25;
             RegistroPDGV.Size = new Size(576, 277);
             RegistroPDGV.TabIndex = 38;
-            RegistroPDGV.CellContentClick += RegistroMDGV_CellContentClick;
             // 
             // ID2
             // 

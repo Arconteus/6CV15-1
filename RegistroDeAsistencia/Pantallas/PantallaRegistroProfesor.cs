@@ -60,32 +60,37 @@ namespace RegistroDeAsistencia
         }
         private void RegistroPDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == RegistroPDGV.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex != RegistroPDGV.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0) return;
+
+            DialogResult result = MessageBox.Show("¿Estás seguro que deseas eliminar a este profesor?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes) return;
+
+            string _id_profesor = RegistroPDGV.Rows[e.RowIndex].Cells["ID2"].Value.ToString();
+
+            if (Ctl_Grupo.GetList("where id_profesor_grupo = " + _id_profesor).Count > 0)
             {
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este registro?",
-                                                      "Confirmar eliminación",
-                                                      MessageBoxButtons.YesNo,
-                                                      MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    string num_trabajador = RegistroPDGV.Rows[e.RowIndex].Cells[1].Value.ToString();
-
-                    // Llamar al método Delete de Ctl_Profesor
-                    bool deleteSuccess = Ctl_Profesor.Delete(num_trabajador);
-
-                    if (deleteSuccess)
-                    {
-                        // Actualizar la lista de profesores después de eliminar uno
-                        listaProfesores = Ctl_Profesor.GetList();
-                        CargarDatosAlDataGridView();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al eliminar el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+                MessageBox.Show("No se puede eliminar esta materia debido a que hay un grupo vinculado");
+                return;
             }
+
+            Profesor _profesor = new Profesor() { id = int.Parse(_id_profesor) };
+            bool DeleteSuccess = Ctl_Profesor.Delete(_profesor);
+
+            if (DeleteSuccess)
+            {
+                ActualizarPDGV();
+            }
+            else
+            {
+                ActualizarPDGV();
+                MessageBox.Show("Error al eliminar el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ActualizarPDGV()
+        {
+            throw new NotImplementedException();
         }
 
         private void AgregarPButton_Click(object sender, EventArgs e)
@@ -185,11 +190,6 @@ namespace RegistroDeAsistencia
         }
 
         private void PantallaRegistroProfesor_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegistroMDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

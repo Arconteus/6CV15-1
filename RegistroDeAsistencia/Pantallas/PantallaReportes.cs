@@ -101,5 +101,17 @@ namespace RegistroDeAsistencia
             FiltroProfesorComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
+        private void FiltroProfesorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<String> fullname = FiltroProfesorComboBox.Text.Split(' ').ToList();
+            if (fullname.Count < 3) return;
+            string apa_profesor = fullname[0];
+            string ama_profesor = fullname[1];
+            string nom_profesor = fullname[2];
+            if (fullname.Count == 4) nom_profesor += " " + fullname[3];
+            Profesor _profesor = Ctl_Profesor.GetList("where apa_profesor = '" + apa_profesor + "' " +
+                "and ama_profesor = '" + ama_profesor + "' " +
+                "and nom_profesor = '" + nom_profesor + "' ").First();
+        }
     }
 }

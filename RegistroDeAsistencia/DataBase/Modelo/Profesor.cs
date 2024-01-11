@@ -2,6 +2,8 @@
 {
     public class Profesor
     {
+        internal int id;
+
         public int id_profesor { get; set; }
         public string num_trabajador { get; set; }
         public string nom_profesor { get; set; }

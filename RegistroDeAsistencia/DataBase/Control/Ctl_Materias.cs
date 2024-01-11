@@ -162,5 +162,10 @@ namespace RegistroDeAsistencia.DataBase.Control
             }
             return output;
         }
+
+        internal static bool Delete(Materia materia)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
