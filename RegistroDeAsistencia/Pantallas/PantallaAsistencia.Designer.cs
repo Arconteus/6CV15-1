@@ -60,12 +60,29 @@
             Escuela = new DataGridViewTextBoxColumn();
             Carrera = new DataGridViewTextBoxColumn();
             Observacion = new DataGridViewButtonColumn();
-            ClearButton = new Button();
+            EliminarRegistroButton = new Button();
             SearchIcon = new PictureBox();
             SearchPanel = new Panel();
             groupBox1 = new GroupBox();
             FechaLabel = new Label();
             HoraLabel = new Label();
+            groupBox2 = new GroupBox();
+            button1 = new Button();
+            AddAlumnoButton = new Button();
+            label12 = new Label();
+            EscuelaCB = new ComboBox();
+            CarreraCB = new ComboBox();
+            label11 = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            label8 = new Label();
+            AmaTextBox = new TextBox();
+            ApaTextBox = new TextBox();
+            NomTextBox = new TextBox();
+            BoletaTextBox = new TextBox();
+            label6 = new Label();
+            button2 = new Button();
+            label13 = new Label();
             GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)QrBox).BeginInit();
@@ -74,6 +91,7 @@
             ((System.ComponentModel.ISupportInitialize)SearchIcon).BeginInit();
             SearchPanel.SuspendLayout();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // FinalizarButton
@@ -342,7 +360,7 @@
             RegistroDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             RegistroDGV.RowHeadersVisible = false;
             RegistroDGV.RowTemplate.Height = 25;
-            RegistroDGV.Size = new Size(1276, 418);
+            RegistroDGV.Size = new Size(1276, 329);
             RegistroDGV.TabIndex = 32;
             RegistroDGV.CellContentClick += RegistroDGV_CellContentClick;
             // 
@@ -408,23 +426,23 @@
             Observacion.ReadOnly = true;
             Observacion.Width = 41;
             // 
-            // ClearButton
+            // EliminarRegistroButton
             // 
-            ClearButton.Anchor = AnchorStyles.Top;
-            ClearButton.BackColor = Color.FromArgb(17, 16, 19);
-            ClearButton.Cursor = Cursors.Hand;
-            ClearButton.FlatAppearance.BorderSize = 0;
-            ClearButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(193, 71, 71);
-            ClearButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(239, 88, 88);
-            ClearButton.FlatStyle = FlatStyle.Flat;
-            ClearButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            ClearButton.ForeColor = SystemColors.Control;
-            ClearButton.Location = new Point(927, 66);
-            ClearButton.Name = "ClearButton";
-            ClearButton.Size = new Size(123, 35);
-            ClearButton.TabIndex = 33;
-            ClearButton.Text = "Limpiar";
-            ClearButton.UseVisualStyleBackColor = false;
+            EliminarRegistroButton.Anchor = AnchorStyles.Top;
+            EliminarRegistroButton.BackColor = Color.FromArgb(193, 71, 71);
+            EliminarRegistroButton.Cursor = Cursors.Hand;
+            EliminarRegistroButton.FlatAppearance.BorderSize = 0;
+            EliminarRegistroButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(193, 71, 71);
+            EliminarRegistroButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(239, 88, 88);
+            EliminarRegistroButton.FlatStyle = FlatStyle.Flat;
+            EliminarRegistroButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            EliminarRegistroButton.ForeColor = SystemColors.Control;
+            EliminarRegistroButton.Location = new Point(927, 66);
+            EliminarRegistroButton.Name = "EliminarRegistroButton";
+            EliminarRegistroButton.Size = new Size(123, 35);
+            EliminarRegistroButton.TabIndex = 33;
+            EliminarRegistroButton.Text = "Eliminar Registro";
+            EliminarRegistroButton.UseVisualStyleBackColor = false;
             // 
             // SearchIcon
             // 
@@ -484,15 +502,248 @@
             HoraLabel.Text = "XX:XX P.M.";
             HoraLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(button1);
+            groupBox2.Controls.Add(AddAlumnoButton);
+            groupBox2.Controls.Add(label12);
+            groupBox2.Controls.Add(EscuelaCB);
+            groupBox2.Controls.Add(CarreraCB);
+            groupBox2.Controls.Add(label11);
+            groupBox2.Controls.Add(label10);
+            groupBox2.Controls.Add(label9);
+            groupBox2.Controls.Add(label8);
+            groupBox2.Controls.Add(AmaTextBox);
+            groupBox2.Controls.Add(ApaTextBox);
+            groupBox2.Controls.Add(NomTextBox);
+            groupBox2.Controls.Add(BoletaTextBox);
+            groupBox2.Controls.Add(label6);
+            groupBox2.ForeColor = SystemColors.ControlLightLight;
+            groupBox2.Location = new Point(12, 466);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(1173, 83);
+            groupBox2.TabIndex = 92;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Agregar alumno manualmente";
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Top;
+            button1.BackColor = Color.FromArgb(62, 124, 185);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(62, 124, 185);
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(85, 170, 255);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.Control;
+            button1.Location = new Point(1096, 42);
+            button1.Name = "button1";
+            button1.Size = new Size(71, 23);
+            button1.TabIndex = 108;
+            button1.Text = "Editar";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // AddAlumnoButton
+            // 
+            AddAlumnoButton.Anchor = AnchorStyles.Left;
+            AddAlumnoButton.BackColor = Color.FromArgb(86, 76, 149);
+            AddAlumnoButton.Cursor = Cursors.Hand;
+            AddAlumnoButton.FlatAppearance.BorderSize = 0;
+            AddAlumnoButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(86, 76, 149);
+            AddAlumnoButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(140, 126, 236);
+            AddAlumnoButton.FlatStyle = FlatStyle.Flat;
+            AddAlumnoButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            AddAlumnoButton.ForeColor = SystemColors.Control;
+            AddAlumnoButton.Location = new Point(1003, 42);
+            AddAlumnoButton.Margin = new Padding(0);
+            AddAlumnoButton.Name = "AddAlumnoButton";
+            AddAlumnoButton.Size = new Size(90, 23);
+            AddAlumnoButton.TabIndex = 105;
+            AddAlumnoButton.Text = "Agregar";
+            AddAlumnoButton.UseVisualStyleBackColor = false;
+            AddAlumnoButton.Click += AddAlumnoButton_Click;
+            // 
+            // label12
+            // 
+            label12.Anchor = AnchorStyles.Left;
+            label12.AutoSize = true;
+            label12.ForeColor = SystemColors.Control;
+            label12.Location = new Point(820, 19);
+            label12.Name = "label12";
+            label12.Size = new Size(46, 15);
+            label12.TabIndex = 104;
+            label12.Text = "Escuela";
+            // 
+            // EscuelaCB
+            // 
+            EscuelaCB.Anchor = AnchorStyles.Left;
+            EscuelaCB.BackColor = Color.FromArgb(63, 62, 70);
+            EscuelaCB.FlatStyle = FlatStyle.Flat;
+            EscuelaCB.ForeColor = SystemColors.Window;
+            EscuelaCB.FormattingEnabled = true;
+            EscuelaCB.Location = new Point(820, 42);
+            EscuelaCB.Name = "EscuelaCB";
+            EscuelaCB.RightToLeft = RightToLeft.No;
+            EscuelaCB.Size = new Size(180, 23);
+            EscuelaCB.TabIndex = 103;
+            EscuelaCB.KeyPress += comboBox2_KeyPress;
+            // 
+            // CarreraCB
+            // 
+            CarreraCB.Anchor = AnchorStyles.Left;
+            CarreraCB.BackColor = Color.FromArgb(63, 62, 70);
+            CarreraCB.FlatStyle = FlatStyle.Flat;
+            CarreraCB.ForeColor = SystemColors.Window;
+            CarreraCB.FormattingEnabled = true;
+            CarreraCB.Location = new Point(634, 42);
+            CarreraCB.Name = "CarreraCB";
+            CarreraCB.RightToLeft = RightToLeft.No;
+            CarreraCB.Size = new Size(180, 23);
+            CarreraCB.TabIndex = 95;
+            CarreraCB.KeyPress += comboBox1_KeyPress;
+            // 
+            // label11
+            // 
+            label11.Anchor = AnchorStyles.Left;
+            label11.AutoSize = true;
+            label11.ForeColor = SystemColors.Control;
+            label11.Location = new Point(634, 19);
+            label11.Name = "label11";
+            label11.Size = new Size(45, 15);
+            label11.TabIndex = 102;
+            label11.Text = "Carrera";
+            // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Left;
+            label10.AutoSize = true;
+            label10.ForeColor = SystemColors.Control;
+            label10.Location = new Point(378, 19);
+            label10.Name = "label10";
+            label10.Size = new Size(64, 15);
+            label10.TabIndex = 101;
+            label10.Text = "Nombre(s)";
+            // 
+            // label9
+            // 
+            label9.Anchor = AnchorStyles.Left;
+            label9.AutoSize = true;
+            label9.ForeColor = SystemColors.Control;
+            label9.Location = new Point(247, 19);
+            label9.Name = "label9";
+            label9.Size = new Size(99, 15);
+            label9.TabIndex = 100;
+            label9.Text = "Apellido materno";
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.Left;
+            label8.AutoSize = true;
+            label8.ForeColor = SystemColors.Control;
+            label8.Location = new Point(116, 19);
+            label8.Name = "label8";
+            label8.Size = new Size(95, 15);
+            label8.TabIndex = 99;
+            label8.Text = "Apellido paterno";
+            // 
+            // AmaTextBox
+            // 
+            AmaTextBox.Anchor = AnchorStyles.Left;
+            AmaTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            AmaTextBox.ForeColor = SystemColors.ControlLightLight;
+            AmaTextBox.Location = new Point(247, 42);
+            AmaTextBox.Name = "AmaTextBox";
+            AmaTextBox.Size = new Size(125, 23);
+            AmaTextBox.TabIndex = 97;
+            AmaTextBox.KeyPress += OnlyLetters;
+            // 
+            // ApaTextBox
+            // 
+            ApaTextBox.Anchor = AnchorStyles.Left;
+            ApaTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            ApaTextBox.ForeColor = SystemColors.ControlLightLight;
+            ApaTextBox.Location = new Point(116, 42);
+            ApaTextBox.Name = "ApaTextBox";
+            ApaTextBox.Size = new Size(125, 23);
+            ApaTextBox.TabIndex = 96;
+            ApaTextBox.KeyPress += OnlyLetters;
+            // 
+            // NomTextBox
+            // 
+            NomTextBox.Anchor = AnchorStyles.Left;
+            NomTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            NomTextBox.ForeColor = SystemColors.ControlLightLight;
+            NomTextBox.Location = new Point(378, 42);
+            NomTextBox.Name = "NomTextBox";
+            NomTextBox.Size = new Size(250, 23);
+            NomTextBox.TabIndex = 95;
+            NomTextBox.KeyPress += OnlyLetters;
+            // 
+            // BoletaTextBox
+            // 
+            BoletaTextBox.Anchor = AnchorStyles.Left;
+            BoletaTextBox.BackColor = Color.FromArgb(63, 62, 70);
+            BoletaTextBox.ForeColor = SystemColors.ControlLightLight;
+            BoletaTextBox.Location = new Point(10, 42);
+            BoletaTextBox.Name = "BoletaTextBox";
+            BoletaTextBox.Size = new Size(100, 23);
+            BoletaTextBox.TabIndex = 94;
+            BoletaTextBox.TextChanged += BoletaTextBox_TextChanged;
+            BoletaTextBox.KeyPress += OnlyNumbers;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Left;
+            label6.AutoSize = true;
+            label6.ForeColor = SystemColors.Control;
+            label6.Location = new Point(10, 19);
+            label6.Name = "label6";
+            label6.Size = new Size(40, 15);
+            label6.TabIndex = 14;
+            label6.Text = "Boleta";
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Top;
+            button2.BackColor = Color.FromArgb(193, 71, 71);
+            button2.Cursor = Cursors.Hand;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(193, 71, 71);
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(239, 88, 88);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = SystemColors.Control;
+            button2.Location = new Point(1191, 466);
+            button2.Name = "button2";
+            button2.Size = new Size(97, 34);
+            button2.TabIndex = 106;
+            button2.Text = "Limpiar";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // label13
+            // 
+            label13.Anchor = AnchorStyles.Left;
+            label13.ForeColor = SystemColors.Control;
+            label13.Location = new Point(1191, 508);
+            label13.Name = "label13";
+            label13.Size = new Size(97, 41);
+            label13.TabIndex = 107;
+            label13.Text = "\\(^w^)/";
+            label13.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // PantallaAsistencia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(31, 30, 36);
             ClientSize = new Size(1300, 600);
+            Controls.Add(label13);
+            Controls.Add(button2);
+            Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(SearchPanel);
-            Controls.Add(ClearButton);
+            Controls.Add(EliminarRegistroButton);
             Controls.Add(RegistroDGV);
             Controls.Add(label2);
             Controls.Add(richTextBox1);
@@ -516,6 +767,8 @@
             SearchPanel.ResumeLayout(false);
             SearchPanel.PerformLayout();
             groupBox1.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -540,7 +793,7 @@
         private RichTextBox richTextBox1;
         private Label label2;
         private DataGridView RegistroDGV;
-        private Button ClearButton;
+        private Button EliminarRegistroButton;
         private PictureBox SearchIcon;
         private Panel SearchPanel;
         private DataGridViewCheckBoxColumn Select;
@@ -556,5 +809,22 @@
         private Label HoraLabel;
         private TextBox ProfesorTextBox;
         private TextBox MateriaTB;
+        private GroupBox groupBox2;
+        private Label label6;
+        private TextBox BoletaTextBox;
+        private TextBox AmaTextBox;
+        private TextBox ApaTextBox;
+        private TextBox NomTextBox;
+        private Label label11;
+        private Label label10;
+        private Label label9;
+        private Label label8;
+        private ComboBox EscuelaCB;
+        private ComboBox CarreraCB;
+        private Label label12;
+        private Button AddAlumnoButton;
+        private Button button2;
+        private Label label13;
+        private Button button1;
     }
 }
