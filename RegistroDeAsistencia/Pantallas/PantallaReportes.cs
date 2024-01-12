@@ -53,15 +53,6 @@ namespace RegistroDeAsistencia
             FechaLabel.Text = ahora.ToString("dd-MM-yyyy"); // Formato de fecha personalizado
             HoraLabel.Text = ahora.ToString("HH:mm:ss"); // Formato de hora personalizado
         }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegistroDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void PantallaReportes_Load(object sender, EventArgs e)
         {
@@ -74,10 +65,6 @@ namespace RegistroDeAsistencia
             FiltroCodigoComboBox.DisplayMember = "desc_grupo";
             FiltroCodigoComboBox.ValueMember = "id_codigo";
             FiltroCodigoComboBox.DataSource = listaGrupos;
-        }
-        public void FillDGV(List<RegistroAsistencia> Temp)
-        {
-
         }
         private void CargarMaterias()
         {
@@ -128,20 +115,37 @@ namespace RegistroDeAsistencia
                 "and ama_profesor = '" + ama_profesor + "' " +
                 "and nom_profesor = '" + nom_profesor + "' ").First();
         }
-
-        private void FiltroMateriaComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         public void ActualizarDGV()
         {
             RegistroDGV.Rows.Clear();
-            //FillDGV(Ctl_Grupo.GetList());
+            FillDGV(Tbl_RegistroAsistencia.GetList());
         }
         public void ActualizarDGV(string input)
         {
             RegistroDGV.Rows.Clear();
-            //FillDGV(Ctl_Grupo.GetList(input));
+            FillDGV(Tbl_RegistroAsistencia.GetList(input));
+        }
+
+        private void FillDGV(List<RegistroAsistencia> input)
+        {
+            foreach(RegistroAsistencia iteration in input) 
+            {
+                int i = RegistroDGV.Rows.Add();
+                RegistroDGV.Rows[i].Cells["ID"].Value = iteration.id_registro;
+                RegistroDGV.Rows[i].Cells["Fecha"].Value = iteration.fecha_registro;
+                Grupo _grupo = Ctl_Grupo.GetList("where id_grupo = " + iteration.id_grupo_registro).First();
+                RegistroDGV.Rows[i].Cells["Anio"].Value = _grupo.anio;
+                RegistroDGV.Rows[i].Cells["Periodo"].Value = _grupo.periodo;
+                CodigoGrupo _codigo = Ctl_CodigoGrupo.GetList("where id_codigo = " + _grupo.codigo_grupo).First();
+                RegistroDGV.Rows[i].Cells["Grupo"].Value = _codigo.desc_grupo;
+                Profesor _profesor = Ctl_Profesor.GetList("where id_profesor = " + _grupo.id_profesor_grupo).First();
+                RegistroDGV.Rows[i].Cells["Profesor"].Value = _profesor.NombreCompleto;
+                Materia _materia = Ctl_Materias.GetList("where id_materia = " + _grupo.id_materia_grupo).First();
+                RegistroDGV.Rows[i].Cells["Profesor"].Value = _materia.nom_materia;
+                int noAlumnos = Tbl_RelacionRegistroAlumno.GetList("where id_registro_relacion = "+iteration.id_registro).Count;
+                RegistroDGV.Rows[i].Cells["NoAlumnos"].Value = noAlumnos;
+            }
+            
         }
 
         private void BuscarButton_Click(object sender, EventArgs e)
