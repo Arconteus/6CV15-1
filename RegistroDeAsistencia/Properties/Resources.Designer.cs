@@ -171,6 +171,78 @@ namespace RegistroDeAsistencia.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///
+        ///&lt;head&gt;
+        ///  &lt;meta charset=&quot;UTF-8&quot;&gt;
+        ///  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+        ///  &lt;title&gt;Documentación&lt;/title&gt;
+        ///  &lt;style&gt;
+        ///    body {
+        ///      font-family: Arial, sans-serif;
+        ///    }
+        ///
+        ///    header {
+        ///      text-align: left;
+        ///      margin-bottom: 20px;
+        ///    }
+        ///
+        ///    table {
+        ///      width: 100%;
+        ///      border-collapse: collapse;
+        ///      margin-bottom: 20px;
+        ///    }
+        ///
+        ///    th,
+        ///    td {
+        ///      border: 1px solid #dddddd;
+        ///      text-align: left;
+        ///       [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string Plantilla {
+            get {
+                return ResourceManager.GetString("Plantilla", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///
+        ///&lt;head&gt;
+        ///  &lt;meta charset=&quot;UTF-8&quot;&gt;
+        ///  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+        ///  &lt;title&gt;Documentación&lt;/title&gt;
+        ///  &lt;style&gt;
+        ///    body {
+        ///      font-family: Arial, sans-serif;
+        ///    }
+        ///
+        ///    header {
+        ///      text-align: left;
+        ///      margin-bottom: 20px;
+        ///    }
+        ///
+        ///    table {
+        ///      width: 100%;
+        ///      border-collapse: collapse;
+        ///      margin-bottom: 20px;
+        ///    }
+        ///
+        ///    th,
+        ///    td {
+        ///      border: 1px solid #dddddd;
+        ///      text-align: left;
+        ///       [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string Plantillaprueba {
+            get {
+                return ResourceManager.GetString("Plantillaprueba", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap QR_Icon {

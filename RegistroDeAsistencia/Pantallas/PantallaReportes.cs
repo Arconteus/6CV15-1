@@ -1,7 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
+using iTextSharp.tool.xml.pipeline;
+using iTextSharp.tool.xml.pipeline.html;
+using iTextSharp.tool.xml.pipeline.end;
+using iTextSharp.tool.xml.parser;
+using iTextSharp.tool.xml.css;
+using System.Linq;
 using RegistroDeAsistencia.DataBase.Control;
 using RegistroDeAsistencia.DataBase.Modelo;
 using iText.Kernel.Pdf;
@@ -50,15 +60,6 @@ namespace RegistroDeAsistencia
             FechaLabel.Text = ahora.ToString("dd-MM-yyyy"); // Formato de fecha personalizado
             HoraLabel.Text = ahora.ToString("HH:mm:ss"); // Formato de hora personalizado
         }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegistroDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void PantallaReportes_Load(object sender, EventArgs e)
         {
@@ -71,10 +72,6 @@ namespace RegistroDeAsistencia
             FiltroCodigoComboBox.DisplayMember = "desc_grupo";
             FiltroCodigoComboBox.ValueMember = "id_codigo";
             FiltroCodigoComboBox.DataSource = listaGrupos;
-        }
-        public void FillDGV(List<RegistroAsistencia> Temp)
-        {
-            
         }
         private void CargarMaterias()
         {
@@ -125,20 +122,37 @@ namespace RegistroDeAsistencia
                 "and ama_profesor = '" + ama_profesor + "' " +
                 "and nom_profesor = '" + nom_profesor + "' ").First();
         }
-
-        private void FiltroMateriaComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         public void ActualizarDGV()
         {
             RegistroDGV.Rows.Clear();
-            //FillDGV(Ctl_Grupo.GetList());
+            FillDGV(Tbl_RegistroAsistencia.GetList());
         }
         public void ActualizarDGV(string input)
         {
             RegistroDGV.Rows.Clear();
-            //FillDGV(Ctl_Grupo.GetList(input));
+            FillDGV(Tbl_RegistroAsistencia.GetList(input));
+        }
+
+        private void FillDGV(List<RegistroAsistencia> input)
+        {
+            foreach(RegistroAsistencia iteration in input) 
+            {
+                int i = RegistroDGV.Rows.Add();
+                RegistroDGV.Rows[i].Cells["ID"].Value = iteration.id_registro;
+                RegistroDGV.Rows[i].Cells["Fecha"].Value = iteration.fecha_registro;
+                Grupo _grupo = Ctl_Grupo.GetList("where id_grupo = " + iteration.id_grupo_registro).First();
+                RegistroDGV.Rows[i].Cells["Anio"].Value = _grupo.anio;
+                RegistroDGV.Rows[i].Cells["Periodo"].Value = _grupo.periodo;
+                CodigoGrupo _codigo = Ctl_CodigoGrupo.GetList("where id_codigo = " + _grupo.codigo_grupo).First();
+                RegistroDGV.Rows[i].Cells["Grupo"].Value = _codigo.desc_grupo;
+                Profesor _profesor = Ctl_Profesor.GetList("where id_profesor = " + _grupo.id_profesor_grupo).First();
+                RegistroDGV.Rows[i].Cells["Profesor"].Value = _profesor.NombreCompleto;
+                Materia _materia = Ctl_Materias.GetList("where id_materia = " + _grupo.id_materia_grupo).First();
+                RegistroDGV.Rows[i].Cells["Profesor"].Value = _materia.nom_materia;
+                int noAlumnos = Tbl_RelacionRegistroAlumno.GetList("where id_registro_relacion = "+iteration.id_registro).Count;
+                RegistroDGV.Rows[i].Cells["NoAlumnos"].Value = noAlumnos;
+            }
+            
         }
 
         private void BuscarButton_Click(object sender, EventArgs e)
@@ -197,7 +211,31 @@ namespace RegistroDeAsistencia
                 ActualizarDGV();
             }
         }
+        private void ReporteExportButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog guardar = new SaveFileDialog();
+            guardar.FileName = DateTime.Now.ToString("ddMMyyyyHHmmsss") + ".pdf";
+            guardar.ShowDialog();
 
-       
+            string paginahtml_texto = Properties.Resources.Plantilla.ToString();
+
+            if (guardar.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream stream = new FileStream(guardar.FileName, FileMode.Create))
+                {
+                    Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+
+                    pdfDoc.Open();
+
+                    pdfDoc.Add(new Phrase(""));
+                    using (StringReader sr = new StringReader(paginahtml_texto))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                    }
+                }
+            }
+        }
     }
 }
