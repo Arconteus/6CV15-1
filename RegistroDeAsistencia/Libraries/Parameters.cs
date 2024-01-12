@@ -10,5 +10,6 @@ namespace RegistroDeAsistencia.Libraries
     internal static class Parameters
     {
         public static Grupo CurrentGroup = new Grupo();
+        public static List<String> _Boletas = new List<String>();
     }
 }
