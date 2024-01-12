@@ -1,7 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
+using iTextSharp.tool.xml.pipeline;
+using iTextSharp.tool.xml.pipeline.html;
+using iTextSharp.tool.xml.pipeline.end;
+using iTextSharp.tool.xml.parser;
+using iTextSharp.tool.xml.css;
+using System.Linq;
 using RegistroDeAsistencia.DataBase.Control;
 using RegistroDeAsistencia.DataBase.Modelo;
 
@@ -67,7 +77,7 @@ namespace RegistroDeAsistencia
         }
         public void FillDGV(List<RegistroAsistencia> Temp)
         {
-            
+
         }
         private void CargarMaterias()
         {
@@ -188,6 +198,33 @@ namespace RegistroDeAsistencia
             else
             {
                 ActualizarDGV();
+            }
+        }
+
+        private void ReporteExportButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog guardar = new SaveFileDialog();
+            guardar.FileName = DateTime.Now.ToString("ddMMyyyyHHmmsss") + ".pdf";
+            guardar.ShowDialog();
+
+            string paginahtml_texto = Properties.Resources.Plantilla.ToString();
+
+            if (guardar.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream stream = new FileStream(guardar.FileName, FileMode.Create))
+                {
+                    Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+
+                    pdfDoc.Open();
+
+                    pdfDoc.Add(new Phrase(""));
+                    using (StringReader sr = new StringReader(paginahtml_texto))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                    }
+                }
             }
         }
     }

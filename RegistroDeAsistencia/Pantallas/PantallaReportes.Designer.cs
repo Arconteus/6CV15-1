@@ -54,13 +54,6 @@
             ReporteExportButton = new Button();
             ReporteExportInButton = new Button();
             RegistroDGV = new DataGridView();
-            pictureBox1 = new PictureBox();
-            groupBox3 = new GroupBox();
-            DBExport = new Button();
-            DBExportButton = new Button();
-            groupBox4 = new GroupBox();
-            FechaLabel = new Label();
-            HoraLabel = new Label();
             Select = new DataGridViewCheckBoxColumn();
             id = new DataGridViewTextBoxColumn();
             Semestre = new DataGridViewTextBoxColumn();
@@ -69,6 +62,13 @@
             Materia = new DataGridViewTextBoxColumn();
             Horario = new DataGridViewButtonColumn();
             Eliminar = new DataGridViewButtonColumn();
+            pictureBox1 = new PictureBox();
+            groupBox3 = new GroupBox();
+            DBExport = new Button();
+            DBExportButton = new Button();
+            groupBox4 = new GroupBox();
+            FechaLabel = new Label();
+            HoraLabel = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RegistroDGV).BeginInit();
@@ -336,6 +336,7 @@
             ReporteExportButton.TabIndex = 36;
             ReporteExportButton.Text = "Exportar";
             ReporteExportButton.UseVisualStyleBackColor = false;
+            ReporteExportButton.Click += ReporteExportButton_Click;
             // 
             // ReporteExportInButton
             // 
@@ -402,7 +403,68 @@
             RegistroDGV.RowTemplate.Height = 25;
             RegistroDGV.Size = new Size(1058, 439);
             RegistroDGV.TabIndex = 34;
-            RegistroDGV.CellContentClick += RegistroDGV_CellContentClick;
+            // 
+            // Select
+            // 
+            Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Select.HeaderText = "S";
+            Select.Name = "Select";
+            Select.ReadOnly = true;
+            Select.Width = 18;
+            // 
+            // id
+            // 
+            id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            id.HeaderText = "id";
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Width = 41;
+            // 
+            // Semestre
+            // 
+            Semestre.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Semestre.HeaderText = "Semestre";
+            Semestre.Name = "Semestre";
+            Semestre.ReadOnly = true;
+            Semestre.Width = 79;
+            // 
+            // Grupo
+            // 
+            Grupo.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Grupo.HeaderText = "Grupo";
+            Grupo.Name = "Grupo";
+            Grupo.ReadOnly = true;
+            Grupo.Width = 64;
+            // 
+            // Profesor
+            // 
+            Profesor.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Profesor.HeaderText = "Profesor";
+            Profesor.Name = "Profesor";
+            Profesor.ReadOnly = true;
+            // 
+            // Materia
+            // 
+            Materia.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Materia.HeaderText = "Materia";
+            Materia.Name = "Materia";
+            Materia.ReadOnly = true;
+            // 
+            // Horario
+            // 
+            Horario.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Horario.HeaderText = "Horario";
+            Horario.Name = "Horario";
+            Horario.ReadOnly = true;
+            Horario.Width = 52;
+            // 
+            // Eliminar
+            // 
+            Eliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.Name = "Eliminar";
+            Eliminar.ReadOnly = true;
+            Eliminar.Width = 55;
             // 
             // pictureBox1
             // 
@@ -414,7 +476,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 37;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // groupBox3
             // 
@@ -495,68 +556,6 @@
             HoraLabel.TabIndex = 0;
             HoraLabel.Text = "XX:XX P.M.";
             HoraLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // Select
-            // 
-            Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Select.HeaderText = "S";
-            Select.Name = "Select";
-            Select.ReadOnly = true;
-            Select.Width = 18;
-            // 
-            // id
-            // 
-            id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            id.HeaderText = "id";
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Width = 41;
-            // 
-            // Semestre
-            // 
-            Semestre.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Semestre.HeaderText = "Semestre";
-            Semestre.Name = "Semestre";
-            Semestre.ReadOnly = true;
-            Semestre.Width = 79;
-            // 
-            // Grupo
-            // 
-            Grupo.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Grupo.HeaderText = "Grupo";
-            Grupo.Name = "Grupo";
-            Grupo.ReadOnly = true;
-            Grupo.Width = 64;
-            // 
-            // Profesor
-            // 
-            Profesor.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Profesor.HeaderText = "Profesor";
-            Profesor.Name = "Profesor";
-            Profesor.ReadOnly = true;
-            // 
-            // Materia
-            // 
-            Materia.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Materia.HeaderText = "Materia";
-            Materia.Name = "Materia";
-            Materia.ReadOnly = true;
-            // 
-            // Horario
-            // 
-            Horario.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Horario.HeaderText = "Horario";
-            Horario.Name = "Horario";
-            Horario.ReadOnly = true;
-            Horario.Width = 52;
-            // 
-            // Eliminar
-            // 
-            Eliminar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Eliminar.HeaderText = "Eliminar";
-            Eliminar.Name = "Eliminar";
-            Eliminar.ReadOnly = true;
-            Eliminar.Width = 55;
             // 
             // PantallaReportes
             // 
