@@ -14,6 +14,11 @@ using iTextSharp.tool.xml.css;
 using System.Linq;
 using RegistroDeAsistencia.DataBase.Control;
 using RegistroDeAsistencia.DataBase.Modelo;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace RegistroDeAsistencia
 {
@@ -22,6 +27,8 @@ namespace RegistroDeAsistencia
         private DataTable dt;
         private List<CodigoGrupo> listaGrupos;
         private System.Windows.Forms.Timer timer;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["DataBase"].ConnectionString;
+
 
         public PantallaReportes()
         {
@@ -204,7 +211,6 @@ namespace RegistroDeAsistencia
                 ActualizarDGV();
             }
         }
-
         private void ReporteExportButton_Click(object sender, EventArgs e)
         {
             SaveFileDialog guardar = new SaveFileDialog();

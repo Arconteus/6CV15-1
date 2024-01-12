@@ -16,7 +16,6 @@ namespace RegistroDeAsistencia
 {
     public partial class PantallaAsistencia : Form
     {
-        HashSet<string> Boletas = new HashSet<string>();
         private System.Windows.Forms.Timer timer;
         public PantallaAsistencia()
         {
@@ -41,6 +40,13 @@ namespace RegistroDeAsistencia
         }
         private void QrBox_Click(object sender, EventArgs e)
         {
+
+            List<string> grupo = GrupoCB.Text.Split('-').ToList();
+            if (grupo.Count < 2) return;
+            CodigoGrupo _codigo = Ctl_CodigoGrupo.GetList("where desc_grupo = '" + grupo[2] + "'").First();
+            Grupo _grupo = Ctl_Grupo.GetList("where anio = " + grupo[0] +
+                " and periodo = " + grupo[1] + " and codigo_grupo = " + _codigo.id_codigo).First();
+            Parameters.CurrentGroup = _grupo;
             PantallaQR temp = new PantallaQR();
             temp.Show();
         }
@@ -96,13 +102,13 @@ namespace RegistroDeAsistencia
         {
             RegistroAsistencia _registroAssitencia = new RegistroAsistencia();
 
-            int _hora_registro = Ctl_Hora.GetList("where desc_horas = '"+HoraComboBox.Text+"'").First().id_horas;
+            int _hora_registro = Ctl_Hora.GetList("where desc_horas = '" + HoraComboBox.Text + "'").First().id_horas;
 
             List<string> grupo = GrupoCB.Text.Split('-').ToList();
 
             if (grupo.Count < 2) return null;
 
-            CodigoGrupo _codigo = Ctl_CodigoGrupo.GetList("where desc_grupo = '" + grupo[2]+"'").First();
+            CodigoGrupo _codigo = Ctl_CodigoGrupo.GetList("where desc_grupo = '" + grupo[2] + "'").First();
 
             Grupo _grupo = Ctl_Grupo.GetList("where anio = " + grupo[0] +
                 " and periodo = " + grupo[1] + " and codigo_grupo = " + _codigo.id_codigo).First();
@@ -111,12 +117,12 @@ namespace RegistroDeAsistencia
             _registroAssitencia.id_hora_registro = _hora_registro;
             string _anio = DateTime.Now.Year.ToString();
             string _mes = "";
-            if(DateTime.Now.Month<10) _mes+="0";
+            if (DateTime.Now.Month < 10) _mes += "0";
             _mes += DateTime.Now.Month.ToString();
             string _dia = "";
-            if(DateTime.Now.Day<10)_dia+="0";
+            if (DateTime.Now.Day < 10) _dia += "0";
             _dia += DateTime.Now.Day.ToString();
-            _registroAssitencia.fecha_registro = _anio+"-"+_mes+"-"+_dia;
+            _registroAssitencia.fecha_registro = _anio + "-" + _mes + "-" + _dia;
 
             return _registroAssitencia;
         }
@@ -269,14 +275,14 @@ namespace RegistroDeAsistencia
             }
             SetDatos();
             int i = RegistroDGV.Rows.Add();
-            Boletas.Add(BoletaTextBox.Text);
+            Parameters._Boletas.Add(BoletaTextBox.Text);
             UpdateDGV();
         }
 
         private void UpdateDGV()
         {
             RegistroDGV.Rows.Clear();
-            foreach (string iteration in Boletas)
+            foreach (string iteration in Parameters._Boletas)
             {
                 Alumno _alumno = Ctl_Alumno.GetList("where boleta = " + iteration).First();
                 int i = RegistroDGV.Rows.Add();
@@ -322,7 +328,7 @@ namespace RegistroDeAsistencia
         {
             DialogResult answer = MessageBox.Show("Al entrar al registro de alumnos se limpiara el registro actual", "¿Deseas continuar?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (answer != DialogResult.Yes) return;
-            Boletas.Clear();
+            Parameters._Boletas.Clear();
             UpdateDGV();
             PantallaAdministrarAlumnos temp = new PantallaAdministrarAlumnos();
             temp.Show();
@@ -332,7 +338,7 @@ namespace RegistroDeAsistencia
         {
             DialogResult answer = MessageBox.Show("¿Estas seguro que deseas eliminar la lista de asistencia actual?", "Confirma tu respuesta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (answer != DialogResult.Yes) return;
-            Boletas.Clear();
+            Parameters._Boletas.Clear();
             UpdateDGV();
         }
 
@@ -343,7 +349,7 @@ namespace RegistroDeAsistencia
 
         private void FinalizarButton_Click(object sender, EventArgs e)
         {
-            if (Boletas.Count < 1)
+            if (Parameters._Boletas.Count < 1)
             {
                 MessageBox.Show("Para generar un registro deben haber asistido alumnos.");
                 return;
@@ -353,9 +359,12 @@ namespace RegistroDeAsistencia
                 MessageBox.Show("Es necesario que exista al menos un grupo seleccionado.");
                 return;
             }
-            RegistroAsistencia _reg = GetRegistroAsistencia();
-            Tbl_RegistroAsistencia.Add(_reg);
-            foreach(string iteration in Boletas)
+            RegistroAsistencia _Tempreg = GetRegistroAsistencia();
+            Tbl_RegistroAsistencia.Add(_Tempreg);
+            RegistroAsistencia _reg = Tbl_RegistroAsistencia.GetList("where fecha_registro = '" + _Tempreg.fecha_registro + "'" +
+                " and id_hora_registro = " + _Tempreg.id_hora_registro +
+                " and id_grupo_registro = " + _Tempreg.id_grupo_registro).First();
+            foreach (string iteration in Parameters._Boletas)
             {
                 Alumno _alumno = Ctl_Alumno.GetList("where boleta = " + iteration).First();
                 Tbl_RelacionRegistroAlumno.Add(new RelacionRegistroAlumno()
@@ -366,12 +375,25 @@ namespace RegistroDeAsistencia
             }
             if (ObservacionRTB.Text.Trim() != "")
             {
-                Tbl_ObservacionRegistro.Add(new ObservacionRegistro() 
-                { 
+                Tbl_ObservacionRegistro.Add(new ObservacionRegistro()
+                {
                     id_registro_observacion = _reg.id_registro,
                     observacion = ObservacionRTB.Text.Trim()
                 });
             }
+            Parameters._Boletas.Clear();
+            ObservacionRTB.Text = "";
+            BoletaTextBox.Text = "";
+            NomTextBox.Text = "";
+            ApaTextBox.Text = "";
+            AmaTextBox.Text = "";
+            UpdateDGV();
+            MessageBox.Show("El registro ha sido agregado a la pantalla de reportes.");
+        }
+
+        private void RegistroDGV_MouseEnter(object sender, EventArgs e)
+        {
+            UpdateDGV();
         }
     }
 }

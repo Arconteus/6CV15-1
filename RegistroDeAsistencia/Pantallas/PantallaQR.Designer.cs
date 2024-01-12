@@ -174,6 +174,7 @@
             Header.Name = "Header";
             Header.Size = new Size(320, 25);
             Header.TabIndex = 6;
+           
             Header.MouseDown += Header_MouseDown;
             // 
             // RestoreButton
@@ -281,7 +282,6 @@
             // timer1
             // 
             timer1.Enabled = true;
-            timer1.Tick += timer1_Tick;
             // 
             // PantallaQR
             // 

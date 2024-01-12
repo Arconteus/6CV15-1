@@ -13,6 +13,11 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using ZXing.QrCode;
 using ZXing.Windows.Compatibility;
+using System.Data.SqlClient;
+using System.Configuration;
+using RegistroDeAsistencia.DataBase.Control;
+using RegistroDeAsistencia.Libraries;
+using RegistroDeAsistencia.DataBase.Modelo;
 
 namespace RegistroDeAsistencia
 {
@@ -121,8 +126,10 @@ namespace RegistroDeAsistencia
             }
         }
 
-        private void Scan_Click(object sender, EventArgs e)
+
+        private void Scanear()
         {
+            if (_videoCaptureDevice == null) return;
             if (capturedImage != null)
             {
                 var barcodeReader = new BarcodeReader();
@@ -131,6 +138,10 @@ namespace RegistroDeAsistencia
                 if (result != null)
                 {
                     MessageBox.Show($"Código QR capturado: {result.Text}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (WSLib.GetAlumnoFrom(result.Text) == null) MessageBox.Show("Ha courrido un error al escanear el codigo QR de la credencial.", "Vuelve a escanear el QR por favor.");
+                    Alumno _alumno = WSLib.GetAlumnoFrom(result.Text);
+                    Ctl_Alumno.Add(_alumno);
+                    Parameters._Boletas.Add(_alumno.boleta);
                 }
                 else
                 {
@@ -143,31 +154,53 @@ namespace RegistroDeAsistencia
             }
         }
 
-        private void Scan_Tick()
+        private void Scan_Click(object sender, EventArgs e)
         {
-            if (capturedImage != null)
-            {
-                var barcodeReader = new BarcodeReader();
-                var result = barcodeReader.Decode(capturedImage);
+            Scanear();
+        }
 
-                if (result != null)
+        private void escaner(object sender, EventArgs e)
+        {
+            Console.WriteLine("Esperando la lectura de escaner");
+            ConsoleKeyInfo keyInfo;
+            string barcodeData = "";
+
+            do
+            {
+                keyInfo = Console.ReadKey();
+                if (keyInfo.Key != ConsoleKey.Enter)
                 {
-                    MessageBox.Show($"Código QR capturado: {result.Text}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    barcodeData += keyInfo.KeyChar;
                 }
                 else
                 {
-                    //MessageBox.Show("No se ha capturado un código QR legible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    Console.WriteLine($"\nCodigo de barras escaneado");
+                    InsertarEnBaseDeDatos(barcodeData);
+                    Console.Write("Esperando la lectura del código...");
+                    barcodeData = "";
                 }
-            }
-            else
-            {
-                //MessageBox.Show("No hay ninguna imagen capturada.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            } while (keyInfo.Key != ConsoleKey.Escape);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        static void InsertarEnBaseDeDatos(string barcodeData)
         {
-            Scan_Tick();
+            // Conexión a la base de datos
+            string connectionString = ConfigurationManager.ConnectionStrings["DataBase"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Comando SQL para la inserción 
+                string insertQuery = $"INSERT INTO Alumno (CodigoBarras) VALUES ('{barcodeData}')";
+
+                using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+
         }
     }
 }

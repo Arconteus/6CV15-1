@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             ActualGroupBox = new GroupBox();
             MateriaActualLabel = new Label();
             ProfesorActualLabel = new Label();
@@ -42,19 +42,19 @@
             groupBox1 = new GroupBox();
             FechaLabel = new Label();
             HoraLabel = new Label();
-            VisualDGV = new DataGridView();
-            Hora = new DataGridViewTextBoxColumn();
-            Dia1 = new DataGridViewTextBoxColumn();
-            Dia2 = new DataGridViewTextBoxColumn();
-            Dia3 = new DataGridViewTextBoxColumn();
-            Dia4 = new DataGridViewTextBoxColumn();
-            Dia5 = new DataGridViewTextBoxColumn();
             pictureBox2 = new PictureBox();
+            HorarioDGV = new DataGridView();
+            Hora = new DataGridViewTextBoxColumn();
+            Lunes = new DataGridViewTextBoxColumn();
+            Martes = new DataGridViewTextBoxColumn();
+            Miercoles = new DataGridViewTextBoxColumn();
+            Jueves = new DataGridViewTextBoxColumn();
+            Viernes = new DataGridViewTextBoxColumn();
             ActualGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)VisualDGV).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)HorarioDGV).BeginInit();
             SuspendLayout();
             // 
             // ActualGroupBox
@@ -177,101 +177,6 @@
             HoraLabel.TabIndex = 0;
             HoraLabel.Text = "XX:XX P.M.";
             HoraLabel.TextAlign = ContentAlignment.MiddleCenter;
-            HoraLabel.Click += HoraLabel_Click;
-            // 
-            // VisualDGV
-            // 
-            VisualDGV.AllowUserToAddRows = false;
-            VisualDGV.AllowUserToDeleteRows = false;
-            VisualDGV.AllowUserToOrderColumns = true;
-            VisualDGV.Anchor = AnchorStyles.Top;
-            VisualDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            VisualDGV.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            VisualDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
-            VisualDGV.BorderStyle = BorderStyle.None;
-            VisualDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            VisualDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            VisualDGV.ColumnHeadersHeight = 30;
-            VisualDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            VisualDGV.Columns.AddRange(new DataGridViewColumn[] { Hora, Dia1, Dia2, Dia3, Dia4, Dia5 });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(63, 62, 70);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(54, 57, 62);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(162, 151, 240);
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            VisualDGV.DefaultCellStyle = dataGridViewCellStyle5;
-            VisualDGV.EnableHeadersVisualStyles = false;
-            VisualDGV.GridColor = Color.White;
-            VisualDGV.Location = new Point(12, 112);
-            VisualDGV.Margin = new Padding(3, 0, 3, 3);
-            VisualDGV.Name = "VisualDGV";
-            VisualDGV.ReadOnly = true;
-            VisualDGV.RightToLeft = RightToLeft.No;
-            VisualDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(86, 76, 149);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            VisualDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            VisualDGV.RowHeadersVisible = false;
-            VisualDGV.RowTemplate.Height = 25;
-            VisualDGV.Size = new Size(1038, 476);
-            VisualDGV.TabIndex = 91;
-            // 
-            // Hora
-            // 
-            Hora.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Hora.HeaderText = "Horas";
-            Hora.Name = "Hora";
-            Hora.ReadOnly = true;
-            Hora.Width = 62;
-            // 
-            // Dia1
-            // 
-            Dia1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Dia1.HeaderText = "Lunes";
-            Dia1.Name = "Dia1";
-            Dia1.ReadOnly = true;
-            // 
-            // Dia2
-            // 
-            Dia2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Dia2.HeaderText = "Martes";
-            Dia2.Name = "Dia2";
-            Dia2.ReadOnly = true;
-            // 
-            // Dia3
-            // 
-            Dia3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Dia3.HeaderText = "Miercoles";
-            Dia3.Name = "Dia3";
-            Dia3.ReadOnly = true;
-            // 
-            // Dia4
-            // 
-            Dia4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Dia4.HeaderText = "Jueves";
-            Dia4.Name = "Dia4";
-            Dia4.ReadOnly = true;
-            // 
-            // Dia5
-            // 
-            Dia5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Dia5.HeaderText = "Viernes";
-            Dia5.Name = "Dia5";
-            Dia5.ReadOnly = true;
             // 
             // pictureBox2
             // 
@@ -283,28 +188,139 @@
             pictureBox2.TabIndex = 92;
             pictureBox2.TabStop = false;
             // 
+            // HorarioDGV
+            // 
+            HorarioDGV.AllowUserToAddRows = false;
+            HorarioDGV.AllowUserToDeleteRows = false;
+            HorarioDGV.AllowUserToResizeColumns = false;
+            HorarioDGV.AllowUserToResizeRows = false;
+            HorarioDGV.Anchor = AnchorStyles.Top;
+            HorarioDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            HorarioDGV.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            HorarioDGV.BackgroundColor = Color.FromArgb(63, 62, 70);
+            HorarioDGV.BorderStyle = BorderStyle.None;
+            HorarioDGV.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            HorarioDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            HorarioDGV.ColumnHeadersHeight = 30;
+            HorarioDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            HorarioDGV.Columns.AddRange(new DataGridViewColumn[] { Hora, Lunes, Martes, Miercoles, Jueves, Viernes });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(63, 62, 70);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(162, 151, 240);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            HorarioDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            HorarioDGV.EnableHeadersVisualStyles = false;
+            HorarioDGV.GridColor = Color.White;
+            HorarioDGV.Location = new Point(12, 112);
+            HorarioDGV.Margin = new Padding(3, 0, 3, 3);
+            HorarioDGV.MultiSelect = false;
+            HorarioDGV.Name = "HorarioDGV";
+            HorarioDGV.ReadOnly = true;
+            HorarioDGV.RightToLeft = RightToLeft.No;
+            HorarioDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(86, 76, 149);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            HorarioDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            HorarioDGV.RowHeadersVisible = false;
+            HorarioDGV.RowTemplate.Height = 25;
+            HorarioDGV.Size = new Size(1038, 476);
+            HorarioDGV.TabIndex = 93;
+            // 
+            // Hora
+            // 
+            Hora.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Hora.Frozen = true;
+            Hora.HeaderText = "Horas";
+            Hora.Name = "Hora";
+            Hora.ReadOnly = true;
+            Hora.Resizable = DataGridViewTriState.True;
+            Hora.Width = 72;
+            // 
+            // Lunes
+            // 
+            Lunes.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Lunes.Frozen = true;
+            Lunes.HeaderText = "Lunes";
+            Lunes.Name = "Lunes";
+            Lunes.ReadOnly = true;
+            Lunes.Resizable = DataGridViewTriState.True;
+            Lunes.Width = 195;
+            // 
+            // Martes
+            // 
+            Martes.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Martes.Frozen = true;
+            Martes.HeaderText = "Martes";
+            Martes.Name = "Martes";
+            Martes.ReadOnly = true;
+            Martes.Resizable = DataGridViewTriState.True;
+            Martes.Width = 195;
+            // 
+            // Miercoles
+            // 
+            Miercoles.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Miercoles.Frozen = true;
+            Miercoles.HeaderText = "Miercoles";
+            Miercoles.Name = "Miercoles";
+            Miercoles.ReadOnly = true;
+            Miercoles.Resizable = DataGridViewTriState.True;
+            Miercoles.Width = 195;
+            // 
+            // Jueves
+            // 
+            Jueves.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Jueves.Frozen = true;
+            Jueves.HeaderText = "Jueves";
+            Jueves.MinimumWidth = 30;
+            Jueves.Name = "Jueves";
+            Jueves.ReadOnly = true;
+            Jueves.Resizable = DataGridViewTriState.True;
+            Jueves.Width = 195;
+            // 
+            // Viernes
+            // 
+            Viernes.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Viernes.HeaderText = "Viernes";
+            Viernes.Name = "Viernes";
+            Viernes.ReadOnly = true;
+            Viernes.Resizable = DataGridViewTriState.True;
+            // 
             // PantallaInicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(31, 30, 36);
             ClientSize = new Size(1300, 600);
+            Controls.Add(HorarioDGV);
             Controls.Add(pictureBox2);
-            Controls.Add(VisualDGV);
             Controls.Add(groupBox1);
             Controls.Add(pictureBox1);
             Controls.Add(ActualGroupBox);
-            ForeColor = Color.FromArgb(54, 57, 62);
+            ForeColor = Color.White;
             FormBorderStyle = FormBorderStyle.None;
             Name = "PantallaInicio";
             Text = "PantallaInicio";
-            Load += PantallaInicio_Load;
             ActualGroupBox.ResumeLayout(false);
             ActualGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)VisualDGV).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)HorarioDGV).EndInit();
             ResumeLayout(false);
         }
 
@@ -320,13 +336,13 @@
         private GroupBox groupBox1;
         private Label HoraLabel;
         private Label FechaLabel;
-        private DataGridView VisualDGV;
-        private DataGridViewTextBoxColumn Hora;
-        private DataGridViewTextBoxColumn Dia1;
-        private DataGridViewTextBoxColumn Dia2;
-        private DataGridViewTextBoxColumn Dia3;
-        private DataGridViewTextBoxColumn Dia4;
-        private DataGridViewTextBoxColumn Dia5;
         private PictureBox pictureBox2;
+        private DataGridView HorarioDGV;
+        private DataGridViewTextBoxColumn Hora;
+        private DataGridViewTextBoxColumn Lunes;
+        private DataGridViewTextBoxColumn Martes;
+        private DataGridViewTextBoxColumn Miercoles;
+        private DataGridViewTextBoxColumn Jueves;
+        private DataGridViewTextBoxColumn Viernes;
     }
 }
